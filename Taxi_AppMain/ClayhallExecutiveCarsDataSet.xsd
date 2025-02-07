@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ClayhallExecutiveCarsDataSet" targetNamespace="http://tempuri.org/ClayhallExecutiveCarsDataSet.xsd" xmlns:mstns="http://tempuri.org/ClayhallExecutiveCarsDataSet.xsd" xmlns="http://tempuri.org/ClayhallExecutiveCarsDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ClayhallExecutiveCarsConnectionString" IsAppSettingsProperty="true" Modifier="Assembly" Name="ClayhallExecutiveCarsConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Taxi_AppMain.Properties.Settings.GlobalReference.Default.ClayhallExecutiveCarsConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Vu_AgentCommissionSummaryTableAdapter" GeneratorDataComponentClassName="Vu_AgentCommissionSummaryTableAdapter" Name="Vu_AgentCommissionSummary" UserDataComponentName="Vu_AgentCommissionSummaryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ClayhallExecutiveCarsConnectionString (Settings)" DbObjectName="ClayhallExecutiveCars.dbo.Vu_AgentCommissionSummary" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT CompanyId, ClientName, Period, Job, Amount FROM dbo.Vu_AgentCommissionSummary</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CompanyId" DataSetColumn="CompanyId" />
+              <Mapping SourceColumn="ClientName" DataSetColumn="ClientName" />
+              <Mapping SourceColumn="Period" DataSetColumn="Period" />
+              <Mapping SourceColumn="Job" DataSetColumn="Job" />
+              <Mapping SourceColumn="Amount" DataSetColumn="Amount" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ClayhallExecutiveCarsDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="ClayhallExecutiveCarsDataSet" msprop:Generator_UserDSName="ClayhallExecutiveCarsDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Vu_AgentCommissionSummary" msprop:Generator_TableClassName="Vu_AgentCommissionSummaryDataTable" msprop:Generator_TableVarName="tableVu_AgentCommissionSummary" msprop:Generator_RowChangedName="Vu_AgentCommissionSummaryRowChanged" msprop:Generator_TablePropName="Vu_AgentCommissionSummary" msprop:Generator_RowDeletingName="Vu_AgentCommissionSummaryRowDeleting" msprop:Generator_RowChangingName="Vu_AgentCommissionSummaryRowChanging" msprop:Generator_RowEvHandlerName="Vu_AgentCommissionSummaryRowChangeEventHandler" msprop:Generator_RowDeletedName="Vu_AgentCommissionSummaryRowDeleted" msprop:Generator_RowClassName="Vu_AgentCommissionSummaryRow" msprop:Generator_UserTableName="Vu_AgentCommissionSummary" msprop:Generator_RowEvArgName="Vu_AgentCommissionSummaryRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CompanyId" msprop:Generator_ColumnVarNameInTable="columnCompanyId" msprop:Generator_ColumnPropNameInRow="CompanyId" msprop:Generator_ColumnPropNameInTable="CompanyIdColumn" msprop:Generator_UserColumnName="CompanyId" type="xs:int" minOccurs="0" />
+              <xs:element name="ClientName" msprop:Generator_ColumnVarNameInTable="columnClientName" msprop:Generator_ColumnPropNameInRow="ClientName" msprop:Generator_ColumnPropNameInTable="ClientNameColumn" msprop:Generator_UserColumnName="ClientName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Period" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPeriod" msprop:Generator_ColumnPropNameInRow="Period" msprop:Generator_ColumnPropNameInTable="PeriodColumn" msprop:Generator_UserColumnName="Period" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Job" msprop:Generator_ColumnVarNameInTable="columnJob" msprop:Generator_ColumnPropNameInRow="Job" msprop:Generator_ColumnPropNameInTable="JobColumn" msprop:Generator_UserColumnName="Job" type="xs:int" minOccurs="0" />
+              <xs:element name="Amount" msprop:Generator_ColumnVarNameInTable="columnAmount" msprop:Generator_ColumnPropNameInRow="Amount" msprop:Generator_ColumnPropNameInTable="AmountColumn" msprop:Generator_UserColumnName="Amount" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
