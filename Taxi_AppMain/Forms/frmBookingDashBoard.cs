@@ -27686,7 +27686,7 @@ namespace Taxi_AppMain
                                        a.driverworkstatusid == Enums.Driver_WORKINGSTATUS.SOONTOCLEAR
                                         || a.driverworkstatusid == Enums.Driver_WORKINGSTATUS.ARRIVED
                                                                 || a.driverworkstatusid == Enums.Driver_WORKINGSTATUS.ONROUTE))
-                                        orderby a.QueueDateTime
+                                        orderby a.plotdate
 
                                         select new
                                         {
