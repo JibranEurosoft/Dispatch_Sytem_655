@@ -78,11 +78,11 @@ namespace Taxi_AppMain
             AddCommisionItems.Items.Add(AddCommisionItems1);
 
 
-      
+
             grdLister.RowsChanging += new Telerik.WinControls.UI.GridViewCollectionChangingEventHandler(Grid_RowsChanging);
 
             objMaster = new InvoiceBO();
-           
+
 
             this.SetProperties((INavigation)objMaster);
 
@@ -580,7 +580,7 @@ namespace Taxi_AppMain
         }
 
         string templateName = "0";
-             
+
 
         void frmCompanyPendingInvoice_Shown(object sender, EventArgs e)
         {
@@ -592,7 +592,7 @@ namespace Taxi_AppMain
 
             this.InitializeForm("frmInvoice");
 
-          
+
 
             templateName = GetTemplate().ToStr().ToLower();
 
@@ -601,7 +601,7 @@ namespace Taxi_AppMain
             AddUpdateColumn(grdLister);
 
 
-        
+
 
             grdLister.Columns["InvoiceNo"].HeaderText = "Invoice No";
             grdLister.Columns["InvoiceNo"].Width = 80;
@@ -663,10 +663,10 @@ namespace Taxi_AppMain
 
 
 
-            
 
 
-          
+
+
 
 
         }
@@ -674,30 +674,38 @@ namespace Taxi_AppMain
 
 
 
-     
+
         private void LoadInvoiceList()
         {
             try
             {
 
-              
 
-             
+                decimal discountAmount = 0.00m;
+                decimal DiscountPercent = 0.00m;
+                decimal valueAddedTax = 0.0m;
+                decimal AdminFeesPercent = 0.00m;
+                decimal AdminFees = 0.00m;
+                decimal? extraTotal = 0.00m;
+                decimal? invoiceGrandTotal = 0.00m;
+                decimal GrandAmount = 0;
+                decimal InvoiceTotal = 0;
 
-                    using (TaxiDataContext db = new TaxiDataContext())
-                    {
+
+                using (TaxiDataContext db = new TaxiDataContext())
+                {
 
                     var list = db.ExecuteQuery<stp_GetPendingInvoicesEx>("exec stp_GetPendingInvoices {0}", CompanyId).ToList();
 
 
 
-                    if(OPTASC.Checked)
+                    if (OPTASC.Checked)
                     {
-                       list=  list.OrderBy(item => item.InvoiceNo, new NaturalSortComparer<string>()).ToList();
+                        list = list.OrderBy(item => item.InvoiceNo, new NaturalSortComparer<string>()).ToList();
 
 
-                }
-                   else if (OPTDESC.Checked)
+                    }
+                    else if (OPTDESC.Checked)
                     {
                         list = list.OrderByDescending(item => item.InvoiceNo, new NaturalSortComparer<string>()).ToList();
 
@@ -708,18 +716,13 @@ namespace Taxi_AppMain
 
                     grdLister.RowCount = list.Count;
 
-                 
-                                    
-                                  
-                                        
 
 
-                    decimal discountAmount = 0.00m;
-                    decimal DiscountPercent = 0.00m;
-                    decimal valueAddedTax = 0.0m;
-                    decimal AdminFeesPercent = 0.00m;
-                    decimal AdminFees = 0.00m;
 
+
+
+
+                  
                     grdLister.BeginUpdate();
                     for (int i = 0; i < list.Count; i++)
                     {
@@ -739,7 +742,7 @@ namespace Taxi_AppMain
 
 
                         grdLister.Rows[i].Cells[COLS.Telephone].Value = list[i].TelephoneNo;
-                        grdLister.Rows[i].Cells[COLS.InvoiceTotal].Value = list[i].NetTotal;
+                        //  grdLister.Rows[i].Cells[COLS.InvoiceTotal].Value = list[i].NetTotal;
                         grdLister.Rows[i].Cells[COLS.NetTotal].Value = list[i].NetTotal;
                         grdLister.Rows[i].Cells[COLS.CreditNote].Value = list[i].CreditNoteTotal;
                         grdLister.Rows[i].Cells[COLS.Paid].Value = list[i].PaidAmount.ToDecimal();
@@ -751,76 +754,76 @@ namespace Taxi_AppMain
                             grdLister.Rows[i].Cells[COLS.DueDate].Value = list[i].DueDate;
                         }
                         //
-                        decimal? extraTotal = grdLister.Rows[i].Cells["TotalInvoiceAmount"].Value.ToDecimal();
+                        //extraTotal = grdLister.Rows[i].Cells["TotalInvoiceAmount"].Value.ToDecimal();
 
                         //if (templateName.ToStr() != "template10")
                         //    extraTotal = 0.00m;
 
-                        decimal? invoiceGrandTotal = list[i].NetTotal- extraTotal;
+                        invoiceGrandTotal = list[i].NetTotal;
 
-                      
+
                         try
                         {
 
-                         
-                                 discountAmount = 0.00m;
-                                 DiscountPercent = 0.00m;
-                                 valueAddedTax = 0.0m;
-                                 AdminFeesPercent = 0.00m;
-                                 AdminFees = 0.00m;
+
+                            discountAmount = 0.00m;
+                            DiscountPercent = 0.00m;
+                            valueAddedTax = 0.0m;
+                            AdminFeesPercent = 0.00m;
+                            AdminFees = 0.00m;
 
 
 
-                                if  (list[i].DiscountPercentage.ToDecimal() > 0)
-                                    {
-                                        discountAmount = (invoiceGrandTotal.ToDecimal() * list[i].DiscountPercentage.ToDecimal()) / 100;
-                                        DiscountPercent = list[i].DiscountPercentage.ToDecimal();
+                            if (list[i].DiscountPercentage.ToDecimal() > 0)
+                            {
+                                discountAmount = (invoiceGrandTotal.ToDecimal() * list[i].DiscountPercentage.ToDecimal()) / 100;
+                                DiscountPercent = list[i].DiscountPercentage.ToDecimal();
 
-                                    }
+                            }
 
 
-                            decimal GrandAmount = (invoiceGrandTotal.ToDecimal() - discountAmount);
+                            GrandAmount = (invoiceGrandTotal.ToDecimal() - discountAmount);
                             if (list[i].AdminFees > 0)
-                                    {
-                                     
+                            {
+
                                 if (list[i].AdminFeeType.ToStr().ToLower() == "percent")
                                     AdminFees = Math.Round(((GrandAmount.ToDecimal() * list[i].AdminFees.ToDecimal()) / 100).ToDecimal(), 2);
                                 else
                                     AdminFees = list[i].AdminFees.ToDecimal();
 
 
-                                  AdminFeesPercent = list[i].AdminFees.ToDecimal();
+                                AdminFeesPercent = list[i].AdminFees.ToDecimal();
 
 
-                                        //     HasAdminFees = "1";
-                                    }
+                                //     HasAdminFees = "1";
+                            }
 
-                                    if (list[i].Vat.ToBool())
-                                    {
-
-
-                                        valueAddedTax = (GrandAmount.ToDecimal() * 20) / 100;
-                                       
-                                        if (list[i].VatOnlyOnAdminFees.ToBool())
-                                        {
-                                            valueAddedTax = (AdminFees * 20) / 100;
-                                           
-
-                                        }
-                                        else
-                                        {
-                                            valueAddedTax = ((GrandAmount.ToDecimal() + AdminFees) * 20) / 100;
-
-                                        }
-
-                                    }
-                                    invoiceGrandTotal = ((invoiceGrandTotal + valueAddedTax) - discountAmount) + AdminFees+extraTotal;
-                                   invoiceGrandTotal = Math.Round(invoiceGrandTotal.ToDecimal(), 2);
-                                   grdLister.Rows[i].Cells[COLS.InvoiceTotal].Value = invoiceGrandTotal;
+                            if (list[i].Vat.ToBool())
+                            {
 
 
-                               
-                          
+                                valueAddedTax = (GrandAmount.ToDecimal() * 20) / 100;
+
+                                if (list[i].VatOnlyOnAdminFees.ToBool())
+                                {
+                                    valueAddedTax = (AdminFees * 20) / 100;
+
+
+                                }
+                                else
+                                {
+                                    valueAddedTax = ((GrandAmount.ToDecimal() + AdminFees) * 20) / 100;
+
+                                }
+
+                            }
+                            invoiceGrandTotal = ((invoiceGrandTotal + valueAddedTax) - discountAmount) + AdminFees + extraTotal;
+                            invoiceGrandTotal = Math.Round(invoiceGrandTotal.ToDecimal(), 2);
+
+
+
+
+
 
 
 
@@ -830,17 +833,17 @@ namespace Taxi_AppMain
 
                         }
 
+                        grdLister.Rows[i].Cells[COLS.InvoiceTotal].Value = invoiceGrandTotal;
 
-                     
-                        
+
                         //
 
 
 
 
-                        grdLister.Rows[i].Cells[COLS.Balance].Value =(((invoiceGrandTotal - list[i].CreditNoteTotal.ToDecimal())) - list[i].PaidAmount.ToDecimal());
+                        grdLister.Rows[i].Cells[COLS.Balance].Value = list[i].CurrentBalance.ToDecimal();
 
-                      
+
                         grdLister.Rows[i].Cells[COLS.Payment_ID].Value = Enums.INVOICE_PAYMENTTYPES.CUSTOM;
 
                     }
@@ -848,11 +851,11 @@ namespace Taxi_AppMain
                     grdLister.EndUpdate();
                 }
 
-                decimal InvoiceTotal = 0.00m;
+                InvoiceTotal = 0.00m;
 
 
                 InvoiceTotal = grdLister.Rows.Sum(c => c.Cells[COLS.InvoiceTotal].Value.ToDecimal());
-                lblInvoiceTotal.Text = "Invoice Total: " + string.Format("{0:f2}", InvoiceTotal )+ " | Paid Total : " + string.Format("{0:f2}", grdLister.Rows.Sum(c => c.Cells[COLS.Paid].Value.ToDecimal())) + " | Balance Total : " + string.Format("{0:f2}",grdLister.Rows.Sum(c => c.Cells[COLS.Balance].Value.ToDecimal()));
+                lblInvoiceTotal.Text = "Invoice Total: " + string.Format("{0:f2}", InvoiceTotal) + " | Paid Total : " + string.Format("{0:f2}", grdLister.Rows.Sum(c => c.Cells[COLS.Paid].Value.ToDecimal())) + " | Balance Total : " + string.Format("{0:f2}", grdLister.Rows.Sum(c => c.Cells[COLS.Balance].Value.ToDecimal()));
 
             }
             catch (Exception ex)
@@ -865,7 +868,7 @@ namespace Taxi_AppMain
         }
 
 
-     
+
 
         private void grid_CommandCellClick(object sender, EventArgs e)
         {
@@ -925,7 +928,7 @@ namespace Taxi_AppMain
                     //        objMaster.Save();
                     //    }
                     //}
-                      
+
                 }
                 else if (gridCell.ColumnInfo.Name.ToLower() == "btninfo")
                 {
@@ -962,16 +965,16 @@ namespace Taxi_AppMain
                     decimal extra = row.Cells["TotalInvoiceAmount"].Value.ToDecimal();
 
 
-                    decimal netAmount = row.Cells[COLS.NetTotal].Value.ToDecimal()-extra;
-                   
+                    decimal netAmount = row.Cells[COLS.NetTotal].Value.ToDecimal() - extra;
+
                     using (TaxiDataContext db = new TaxiDataContext())
                     {
-                     
+
 
                         decimal invoiceGrandTotal = netAmount;
 
 
-                       
+
                         decimal discountAmount = 0.00m;
                         decimal DiscountPercent = 0.00m;
                         decimal valueAddedTax = 0.0m;
@@ -979,12 +982,12 @@ namespace Taxi_AppMain
                         decimal AdminFees = 0.00m;
                         string HasAdminFees = string.Empty;
                         string HasDiscount = "0";
-                       
+
 
 
                         if (companyId != 0)
                         {
-                            var objCompany = db.Gen_Companies.Where(c => c.Id == companyId).Select(args=>new {args.Address, args.HasVat,args.AdminFees,args.AdminFeeType,args.DiscountPercentage,args.VatOnlyOnAdminFees })
+                            var objCompany = db.Gen_Companies.Where(c => c.Id == companyId).Select(args => new { args.Address, args.HasVat, args.AdminFees, args.AdminFeeType, args.DiscountPercentage, args.VatOnlyOnAdminFees })
                                 .FirstOrDefault();
 
                             if (objCompany != null)
@@ -998,12 +1001,12 @@ namespace Taxi_AppMain
                                     HasDiscount = "1";
                                 }
 
-                                decimal grandTotal = invoiceGrandTotal-discountAmount;
+                                decimal grandTotal = invoiceGrandTotal - discountAmount;
 
                                 if (objCompany.AdminFees > 0)
                                 {
 
-                                  
+
                                     AdminFeesPercent = objCompany.AdminFees.ToDecimal();
                                     HasAdminFees = "1";
 
@@ -1016,7 +1019,7 @@ namespace Taxi_AppMain
                                         AdminFees = objCompany.AdminFees.ToDecimal();
 
 
-                                 
+
 
 
                                     AdminFees = Math.Round(AdminFees, 2);
@@ -1027,27 +1030,27 @@ namespace Taxi_AppMain
 
 
 
-                                  
+
                                     if (objCompany.VatOnlyOnAdminFees.ToBool())
                                     {
                                         valueAddedTax = (AdminFees * 20) / 100;
-                                     
+
 
                                     }
                                     else
                                     {
-                                        valueAddedTax = ((grandTotal+ AdminFees) * 20) / 100;
+                                        valueAddedTax = ((grandTotal + AdminFees) * 20) / 100;
                                     }
 
 
                                     valueAddedTax = Math.Round(valueAddedTax, 2);
                                 }
 
-                            
 
 
 
-                               
+
+
                             }
 
 
@@ -1070,8 +1073,8 @@ namespace Taxi_AppMain
                             text.Append(newLine + newLine);
                             text.Append("<br><b><color=Black>Company : " + row.Cells[COLS.Company].Value.ToStr() + "</b>");
                             text.Append(newLine + newLine);
-                            text.Append("<br><b>Address : " + objCompany.Address.ToStr()+" </b> "  );
-    
+                            text.Append("<br><b>Address : " + objCompany.Address.ToStr() + " </b> ");
+
                             text.Append("<br><br>");
                             text.Append(newLine + newLine);
                             text.Append("<br><b>Net Total :        </b>" + Math.Round(netAmount.ToDecimal(), 2));
@@ -1107,7 +1110,7 @@ namespace Taxi_AppMain
                                 text.Append(newLine);
                             }
 
-                            invoiceGrandTotal =Math.Round (( (netAmount + valueAddedTax + AdminFees + extra) - discountAmount).ToDecimal(),2);
+                            invoiceGrandTotal = Math.Round(((netAmount + valueAddedTax + AdminFees + extra) - discountAmount).ToDecimal(), 2);
                             text.Append("<br><b><color=Red>Invoice Total : </b>" + Math.Round(invoiceGrandTotal, 2));
                             text.Append("<br><br>");
                             text.Append(newLine);
@@ -1138,7 +1141,7 @@ namespace Taxi_AppMain
         void frmLocationList_Load(object sender, EventArgs e)
         {
 
-     
+
 
             GridViewTextBoxColumn col = new GridViewTextBoxColumn();
             col.ReadOnly = true;
@@ -1197,7 +1200,7 @@ namespace Taxi_AppMain
 
 
             GridViewDecimalColumn colD = new GridViewDecimalColumn();
-           
+
             colD.ReadOnly = true;
             colD.HeaderText = "Invoice Total";
             colD.Name = COLS.InvoiceTotal;
@@ -1282,18 +1285,18 @@ namespace Taxi_AppMain
             grdLister.Columns.Add(colCombo);
             colCombo.ReadOnly = false;
             colCombo.IsVisible = false;
-        
+
         }
 
-   
-        
-        public  void PaymetForm(GridViewRowInfo row)
+
+
+        public void PaymetForm(GridViewRowInfo row)
         {
 
             try
             {
 
-              
+
                 frmPayment frm = new frmPayment(row.Cells["CompanyId"].Value.ToInt(), row.Cells["InvoiceId"].Value.ToInt(), row.Cells["TotalInvoiceAmount"].Value.ToDecimal());
                 frm.MaximizeBox = false;
                 frm.ShowDialog();
