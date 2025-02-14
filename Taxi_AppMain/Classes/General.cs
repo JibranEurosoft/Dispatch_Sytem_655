@@ -12825,11 +12825,111 @@ namespace Taxi_AppMain
         }
 
 
+        public static string GetETADistanceWithDuration(string origin, string destination, string key, string vias = "")
+        {
+            string res = "";
+            try
+            {
 
-     
+                if (key.ToStr().Trim().Length == 0)
+                    GetETAKey();
 
-             
-       
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+
+                if (AppVars.routemode == null && AppVars.objPolicyConfiguration.PreferredShortestDistance.ToBool() == false)
+                    AppVars.routemode = "fastest;car";
+
+                var obj = new
+                {
+                    originLat = Convert.ToDouble(origin.Split(',')[0]),
+                    originLng = Convert.ToDouble(origin.Split(',')[1]),
+                    destLat = Convert.ToDouble(destination.Split(',')[0]),
+                    destLng = Convert.ToDouble(destination.Split(',')[1]),
+                    defaultclientid = AppVars.objPolicyConfiguration.DefaultClientId.ToStr(),
+                    keys = key,
+                    MapType = AppVars.objPolicyConfiguration.MapType.ToInt(),
+                    sourceType = "dispatch",
+                    routeType = AppVars.routemode.ToStr(),
+                    vias
+                };
+
+
+                string json = new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(obj);
+                string API = Program.objLic.AppServiceUrl + "GetETADistanceWithDuration" + "?json=" + json;
+
+                try
+                {
+
+
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(API);
+                    request.ContentType = "application/json; charset=utf-8";
+                    request.Accept = "application/json";
+                    request.Method = WebRequestMethods.Http.Post;
+                    request.Proxy = null;
+                    request.ContentLength = 0;
+
+
+
+                    using (WebResponse responsea = request.GetResponse())
+                    {
+
+                        using (StreamReader sr = new StreamReader(responsea.GetResponseStream()))
+                        {
+                            res = sr.ReadToEnd().ToStr();
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    if (ex.Message.ToLower().Contains("ssl"))
+                    {
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(API.Replace("https", "http"));
+                        request.ContentType = "application/json; charset=utf-8";
+                        request.Accept = "application/json";
+                        request.Method = WebRequestMethods.Http.Post;
+                        request.Proxy = null;
+                        request.ContentLength = 0;
+
+
+
+                        using (WebResponse responsea = request.GetResponse())
+                        {
+
+                            using (StreamReader sr = new StreamReader(responsea.GetResponseStream()))
+                            {
+                                res = sr.ReadToEnd().ToStr();
+                            }
+                        }
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    File.AppendAllText(Application.StartupPath + "\\GetETADistance_exception.txt", DateTime.Now.ToStr() + "," + ex.Message + Environment.NewLine);
+
+                }
+                catch
+                {
+
+
+                }
+
+            }
+            return res;
+
+        }
+
+
+
+
+
 
 
         #region  ROUTE API Classes and Properties

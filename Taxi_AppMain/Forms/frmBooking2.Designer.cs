@@ -2682,5 +2682,11 @@ namespace Taxi_AppMain
 
         //
 
+        private System.Windows.Forms.ComboBox ddlMilesDrvs2;
+        private System.Windows.Forms.DataGridView grdDrivers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DriverId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn details;
+        private System.Windows.Forms.DataGridViewButtonColumn btnDespatchJob;
+
     }
 }
