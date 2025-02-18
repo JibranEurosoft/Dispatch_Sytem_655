@@ -13792,6 +13792,10 @@ namespace Taxi_AppMain
 
 
             int? toLocTypeId = ddlToLocType.SelectedValue.ToInt();
+            //int? toLocTypeId = 7;//ddlToLocType.SelectedValue.ToInt();
+
+
+
             int? toLocationId = null;
 
             //string fromLocName = ddlFromLocation.SelectedItem != null ? (ddlFromLocation.SelectedItem as RadComboBoxItem).Text.Trim() : ddlFromLocation.Text.Trim();
@@ -13799,6 +13803,20 @@ namespace Taxi_AppMain
 
             string fromAddress = txtFromAddress.Text.Trim().ToUpper();
             string toAddress = txtToAddress.Text.Trim().ToUpper();
+
+
+
+
+            if (toAddress.ToLower().Contains("airport"))
+            {
+                toLocTypeId = 1;
+            }
+            if (fromAddress.ToLower().Contains("airport"))
+            {
+                fromLocTypeId = 1;
+            }
+
+
 
             if (fromLocTypeId.ToInt() == Enums.LOCATION_TYPES.ADDRESS && txtFromAddress.Text != null && txtFromAddress.Text.ToStr().Contains(".") && General.GetPostCodeMatch(fromAddress).Contains(" ") == false)
             {
