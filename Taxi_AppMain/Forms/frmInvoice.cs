@@ -30,7 +30,7 @@ namespace Taxi_AppMain
         private bool AutoInc = true;
 
         InvoiceBO objMaster = null;
-       
+
         public struct COLS
         {
             public static string ID = "ID";
@@ -76,15 +76,15 @@ namespace Taxi_AppMain
         {
             InitializeComponent();
             InitializeConstructor();
-           
-           
+
+
         }
 
         public frmInvoice(int Id)
         {
             InitializeComponent();
             InitializeConstructor();
-         
+
             ddlCompany.SelectedValue = Id;
         }
 
@@ -102,7 +102,7 @@ namespace Taxi_AppMain
 
                     if (menu_Job == null)
                     {
-                        menu_Job = new RadDropDownMenu();                      
+                        menu_Job = new RadDropDownMenu();
 
                         RadMenuItem viewJobItem1 = new RadMenuItem("View Job");
                         viewJobItem1.ForeColor = Color.DarkBlue;
@@ -110,7 +110,7 @@ namespace Taxi_AppMain
                         viewJobItem1.Font = new Font("Tahoma", 10, FontStyle.Bold);
 
                         viewJobItem1.Click += new EventHandler(viewJobItem1_Click);
-                        menu_Job.Items.Add(viewJobItem1);             
+                        menu_Job.Items.Add(viewJobItem1);
 
                     }
 
@@ -129,16 +129,16 @@ namespace Taxi_AppMain
         {
             try
             {
-                
+
                 if (grdLister.CurrentRow != null && grdLister.CurrentRow is GridViewDataRowInfo)
                 {
                     General.ShowBookingForm(grdLister.CurrentRow.Cells[COLS.BookingId].Value.ToInt(), true, "", "", Enums.BOOKING_TYPES.LOCAL);
 
                 }
             }
-            catch 
+            catch
             {
-               // ENUtils.ShowMessage(ex.Message);
+                // ENUtils.ShowMessage(ex.Message);
 
             }
         }
@@ -147,20 +147,20 @@ namespace Taxi_AppMain
         {
 
 
-           var obj= General.GetObject<Gen_SysPolicy_DocumentNumberSetup>(c => c.DocumentId == Enums.GEN_DOCUMENTS.INVOICENO && (c.AutoIncrement == null || c.AutoIncrement == false));
+            var obj = General.GetObject<Gen_SysPolicy_DocumentNumberSetup>(c => c.DocumentId == Enums.GEN_DOCUMENTS.INVOICENO && (c.AutoIncrement == null || c.AutoIncrement == false));
 
-           if (obj != null)
-           {
-               txtInvoiceNo.ReadOnly = false;
-               txtInvoiceNo.Enabled = true;
-               this.AutoInc = false;
-           }
+            if (obj != null)
+            {
+                txtInvoiceNo.ReadOnly = false;
+                txtInvoiceNo.Enabled = true;
+                this.AutoInc = false;
+            }
 
             this.ddlCompany.InitializeSettings();
-          
+
 
             ComboFunctions.FillCompanyForInvoiceCombo(ddlCompany);
-              ComboFunctions.FillAccountTypeCombo(ddlAccountType,null);
+            ComboFunctions.FillAccountTypeCombo(ddlAccountType, null);
 
 
             ComboFunctions.FillSubCompanyNameCombo(ddlSubCompany);
@@ -174,20 +174,20 @@ namespace Taxi_AppMain
             }
             else
             {
-               
 
-               ddlSubCompany.SelectedValue = AppVars.objSubCompany.Id;
+
+                ddlSubCompany.SelectedValue = AppVars.objSubCompany.Id;
             }
 
             ddlAccountType.SelectedValue = Enums.BOOKING_TYPES.LOCAL;
-          
+
 
             dtpInvoiceDate.Value = DateTime.Now.ToDate();
             dtpDueDate.Value = DateTime.Now.ToDate().AddMonths(1);
             FormatChargesGrid();
 
             grdLister.ShowGroupPanel = false;
-           // grdLister.AutoCellFormatting = true;
+            // grdLister.AutoCellFormatting = true;
             grdLister.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
             grdLister.ShowRowHeaderColumn = false;
 
@@ -201,7 +201,7 @@ namespace Taxi_AppMain
             dtpTillDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.LastDayOfMonthValue());
 
             grdLister.CommandCellClick += new CommandCellClickEventHandler(grdLister_CommandCellClick);
-            grdLister.ContextMenuOpening+=new ContextMenuOpeningEventHandler(grdLister_ContextMenuOpening);
+            grdLister.ContextMenuOpening += new ContextMenuOpeningEventHandler(grdLister_ContextMenuOpening);
 
             grdLister.ViewCellFormatting += new CellFormattingEventHandler(grdLister_ViewCellFormatting);
 
@@ -212,7 +212,7 @@ namespace Taxi_AppMain
 
         private void DdlDepartment_SelectedValueChanged(object sender, EventArgs e)
         {
-              if(ddlDepartment.SelectedValue!=null)
+            if (ddlDepartment.SelectedValue != null)
             {
                 try
                 {
@@ -276,23 +276,23 @@ namespace Taxi_AppMain
                         string Destination = row.Cells[COLS.Destination].Value.ToStr();
                         string PickupPoint = row.Cells[COLS.PickupPoint].Value.ToStr();
                         string Passenger = row.Cells[COLS.Passenger].Value.ToStr();
-               
+
                         int? invoicepaymentId = row.Cells[COLS.Payment_ID].Value.ToIntorNull();
 
 
-                        if(grdLister.Columns[COLS.WaitingTime].IsVisible)
-                        waitingMins = row.Cells[COLS.WaitingTime].Value.ToInt();
+                        if (grdLister.Columns[COLS.WaitingTime].IsVisible)
+                            waitingMins = row.Cells[COLS.WaitingTime].Value.ToInt();
 
                         if (Destination == "")
-                         {
-                                RadMessageBox.Show("Required: Destination");
-                                return;
-                         }
-                         if (PickupPoint == "")
-                         {
-                             RadMessageBox.Show("Required: PickupPoint");
-                             return;
-                         }                              
+                        {
+                            RadMessageBox.Show("Required: Destination");
+                            return;
+                        }
+                        if (PickupPoint == "")
+                        {
+                            RadMessageBox.Show("Required: PickupPoint");
+                            return;
+                        }
 
                         string orderNo = row.Cells[COLS.OrderNo].Value.ToStr();
 
@@ -317,24 +317,24 @@ namespace Taxi_AppMain
                             objMaster.Current.CustomerName = Passenger;
 
 
-                            if(waitingMins!=null)
-                            objMaster.Current.DriverWaitingMins = waitingMins;
+                            if (waitingMins != null)
+                                objMaster.Current.DriverWaitingMins = waitingMins;
 
                             if (escortprice != null)
                                 objMaster.Current.EscortPrice = escortprice;
 
                             if (vehicleTypeId != 0)
-                             {
-                                 objMaster.Current.VehicleTypeId = vehicleTypeId;
-                             }
+                            {
+                                objMaster.Current.VehicleTypeId = vehicleTypeId;
+                            }
 
-                              
 
-                             objMaster.CheckCustomerValidation = false;
-                             objMaster.CheckDataValidation = false;
-                             objMaster.DisableUpdateReturnJob = true;
-                             objMaster.Save();
-                           
+
+                            objMaster.CheckCustomerValidation = false;
+                            objMaster.CheckDataValidation = false;
+                            objMaster.DisableUpdateReturnJob = true;
+                            objMaster.Save();
+
 
                             CalculateTotal();
 
@@ -360,7 +360,7 @@ namespace Taxi_AppMain
 
 
             }
-           
+
         }
 
 
@@ -444,7 +444,7 @@ namespace Taxi_AppMain
 
                 GridViewComboBoxColumn colCombo = new GridViewComboBoxColumn();
                 colCombo.Name = COLS.VehicleID;
-              //  colCombo.IsVisible = false;
+                //  colCombo.IsVisible = false;
                 colCombo.HeaderText = "Vehicle";
                 colCombo.DataSource = General.GetQueryable<Fleet_VehicleType>(null).OrderBy(c => c.OrderNo).Select(args => new { Id = args.Id, VehicleType = args.VehicleType }).ToList();
                 colCombo.DisplayMember = "VehicleType";
@@ -452,7 +452,7 @@ namespace Taxi_AppMain
                 colCombo.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDown;
                 colCombo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 colCombo.ReadOnly = false;
-               
+
                 grdLister.Columns.Add(colCombo);
 
 
@@ -461,7 +461,7 @@ namespace Taxi_AppMain
                 col = new GridViewTextBoxColumn();
                 col.IsVisible = false;
                 col.HeaderText = COLS.BookingStatusId;
-                col.Name =COLS.BookingStatusId;
+                col.Name = COLS.BookingStatusId;
                 grdLister.Columns.Add(col);
 
 
@@ -525,7 +525,7 @@ namespace Taxi_AppMain
                 colD.HeaderText = "Parking";
                 colD.Name = "Parking";
                 colD.IsVisible = TemplateName != "Template13" && TemplateName != "Template24";
-   
+
                 colD.Maximum = 9999999;
                 colD.FormatString = "{0:#,###0.00}";
                 grdLister.Columns.Add(colD);
@@ -573,7 +573,7 @@ namespace Taxi_AppMain
                 colD.Name = "ExtraDrop";
                 colD.Maximum = 9999999;
                 colD.IsVisible = true;
-             //   colD.IsVisible = TemplateName != "Template13";
+                //   colD.IsVisible = TemplateName != "Template13";
 
 
                 // colD.IsVisible = !IsTemplate13;
@@ -606,7 +606,7 @@ namespace Taxi_AppMain
                 colD.Expression = "Charges+Parking+Waiting+ExtraDrop+BookingFee";
                 colD.FormatString = "{0:#,###0.00}";
 
-               
+
                 colD.Expression = "Charges+Parking+Waiting+ExtraDrop+BookingFee";
 
 
@@ -614,7 +614,7 @@ namespace Taxi_AppMain
                     colD.Expression = "Charges+Parking+Waiting+ExtraDrop+BookingFee+EscortPrice";
 
                 grdLister.Columns["ExtraDrop"].IsVisible = true;
-               
+
 
 
 
@@ -653,8 +653,8 @@ namespace Taxi_AppMain
                 grdLister.Columns["Parking"].Width = 45;
                 grdLister.Columns["Waiting"].Width = 50;
                 grdLister.Columns["ExtraDrop"].Width = 60;
-              //  grdLister.Columns["MeetAndGreet"].Width = 50;
-              // // grdLister.Columns["CongtionCharge"].Width = 60;
+                //  grdLister.Columns["MeetAndGreet"].Width = 50;
+                // // grdLister.Columns["CongtionCharge"].Width = 60;
                 grdLister.Columns["Total"].Width = 45;
                 grdLister.Columns["OrderNo"].Width = 55;
 
@@ -663,8 +663,8 @@ namespace Taxi_AppMain
                 grdLister.Columns["PickUpPoint"].HeaderText = "Pickup Point";
                 grdLister.Columns["ExtraDrop"].HeaderText = "Extra Charges";
 
-              //  grdLister.Columns["MeetAndGreet"].HeaderText = "M & G";
-              //  grdLister.Columns["CongtionCharge"].HeaderText = "Congestion";
+                //  grdLister.Columns["MeetAndGreet"].HeaderText = "M & G";
+                //  grdLister.Columns["CongtionCharge"].HeaderText = "Congestion";
                 grdLister.Columns["Payment_ID"].Width = 70;
 
 
@@ -707,13 +707,13 @@ namespace Taxi_AppMain
 
 
                 if (TemplateName.ToStr().ToLower().Trim() == "template15" || TemplateName.ToStr().ToLower().Trim() == "template10" || TemplateName.ToStr().ToLower().Trim() == "template32" || TemplateName == "Template45"
-                    
-                    || TemplateName == "Template48" || TemplateName == "Template50" )
+
+                    || TemplateName == "Template48" || TemplateName == "Template50")
                 {
                     ddlSplitBy.Visible = true;
                     lblSplitBy.Visible = true;
                     if (TemplateName.ToStr().ToLower().Trim() == "template10" || TemplateName.ToStr().ToLower().Trim() == "template32" || TemplateName == "Template45" || TemplateName == "Template48"
-                    || TemplateName == "Template50" )
+                    || TemplateName == "Template50")
                     {
                         ddlSplitBy.Items.RemoveAt(2);
                     }
@@ -730,7 +730,7 @@ namespace Taxi_AppMain
 
 
             }
-            catch 
+            catch
             {
 
             }
@@ -767,7 +767,7 @@ namespace Taxi_AppMain
 
                 }
             }
-            catch 
+            catch
             {
 
 
@@ -806,7 +806,7 @@ namespace Taxi_AppMain
                 if (objMaster.PrimaryKeyValue == null)
                 {
                     objMaster.New();
-                  //  objMaster.Current.InvoicePaymentTypeID = 1;
+                    //  objMaster.Current.InvoicePaymentTypeID = 1;
                     objMaster.Current.AddOn = DateTime.Now;
                     objMaster.Current.AddBy = AppVars.LoginObj.LuserId.ToIntorNull();
                     objMaster.Current.AddLog = AppVars.LoginObj.UserName.ToStr();
@@ -826,8 +826,8 @@ namespace Taxi_AppMain
                 objMaster.Current.DepartmentId = ddlDepartment.SelectedValue.ToLongorNull();
                 objMaster.Current.DepartmentWise = chkDepartmentWise.Checked;
 
-              //  objMaster.Current.CostCenterId=ddlCostCenter.SelectedValue.ToIntorNull();
-               // objMaster.Current.CostCenterWise=chkCostCenterWise.Checked;
+                //  objMaster.Current.CostCenterId=ddlCostCenter.SelectedValue.ToIntorNull();
+                // objMaster.Current.CostCenterWise=chkCostCenterWise.Checked;
                 objMaster.Current.DueDate = dtpDueDate.Value.ToDate();
 
 
@@ -874,22 +874,40 @@ namespace Taxi_AppMain
                 objMaster.Current.InvoiceNo = txtInvoiceNo.Text.Trim();
                 objMaster.Current.InvoiceTypeId = Enums.INVOICE_TYPE.ACCOUNT;
 
-                objMaster.Current.InvoiceTotal = grdLister.Rows.Where(c=>c.Cells[COLS.PaymentTypeId].Value.ToInt()!=6)
+                objMaster.Current.InvoiceTotal = grdLister.Rows.Where(c => c.Cells[COLS.PaymentTypeId].Value.ToInt() != 6)
                                     .Sum(c => c.Cells[COLS.Total].Value.ToDecimal());
 
                 objMaster.Current.TotalInvoiceAmount = grdLister.Rows.Where(c => c.Cells[COLS.PaymentTypeId].Value.ToInt() != 6)
-                                .Sum(c => c.Cells[COLS.Parking].Value.ToDecimal()+c.Cells[COLS.ExtraDrop].Value.ToDecimal());
+                                .Sum(c => c.Cells[COLS.Parking].Value.ToDecimal() + c.Cells[COLS.ExtraDrop].Value.ToDecimal());
 
 
                 objMaster.Current.SubCompanyId = ddlSubCompany.SelectedValue.ToIntorNull();
 
 
 
-            //   var distinctRows= grdLister.Rows.Select(c => c.Cells[COLS.BookingId].ToLong()).Distinct();
+                //   var distinctRows= grdLister.Rows.Select(c => c.Cells[COLS.BookingId].ToLong()).Distinct();
+                try
+                {
 
-                objMaster.Current.OrderNo = txtOrderNo.Text.Trim();
-               
-             
+                    if (txtOrderNo.Text != "")
+                    {
+                        objMaster.Current.OrderNo = txtOrderNo.Text.Trim();
+                    }
+                    else
+                    {
+                        using (TaxiDataContext db = new TaxiDataContext())
+                        {
+                            objMaster.Current.OrderNo = db.Gen_Companies.Where(x => x.Id == objMaster.Current.CompanyId).FirstOrDefault().CreditCardDetails;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+
 
 
                 string[] skipProperties = { "Invoice", "Booking" };
@@ -897,12 +915,12 @@ namespace Taxi_AppMain
                 List<Invoice_Charge> listofDetail = (from r in grdLister.Rows
 
                                                      select new Invoice_Charge
-                                                            {
-                                                                Id = r.Cells[COLS.ID].Value.ToLong(),
-                                                                InvoiceId = r.Cells[COLS.InvoiceId].Value.ToLong(),
-                                                                BookingId = r.Cells[COLS.BookingId].Value.ToLongorNull(),
+                                                     {
+                                                         Id = r.Cells[COLS.ID].Value.ToLong(),
+                                                         InvoiceId = r.Cells[COLS.InvoiceId].Value.ToLong(),
+                                                         BookingId = r.Cells[COLS.BookingId].Value.ToLongorNull(),
 
-                                                            }).ToList();
+                                                     }).ToList();
 
 
                 Utils.General.SyncChildCollection(ref savedList, ref listofDetail, "Id", skipProperties);
@@ -936,11 +954,11 @@ namespace Taxi_AppMain
 
                 if (objMaster.Current == null) return;
 
-                
+
                 btnExportPDF.Enabled = true;
                 btnPrint.Enabled = true;
                 btnSendEmail.Enabled = true;
-               
+
                 if (AppVars.listUserRights.Count(c => c.functionId == "EXPORT INVOICE BOOKING") > 0)
                 {
                     btnExportToExcel2.Visible = true;
@@ -954,7 +972,7 @@ namespace Taxi_AppMain
                     btnExportExcel.Enabled = true;
                 }
 
-                 
+
                 txtInvoiceNo.ReadOnly = false;
                 txtInvoiceNo.Text = objMaster.Current.InvoiceNo.ToStr();
                 dtpInvoiceDate.Value = objMaster.Current.InvoiceDate.ToDate();
@@ -981,7 +999,7 @@ namespace Taxi_AppMain
                 ddlDepartment.SelectedValue = objMaster.Current.DepartmentId;
                 chkDepartmentWise.Checked = objMaster.Current.DepartmentWise.ToBool();
 
-              
+
 
 
                 ddlSubCompany.SelectedValue = objMaster.Current.SubCompanyId;
@@ -997,7 +1015,7 @@ namespace Taxi_AppMain
                 using (TaxiDataContext db = new TaxiDataContext())
                 {
 
-                    list = db.ExecuteQuery<stp_GetInvoiceBookingsResultEx>("exec stp_GetInvoiceBookings {0}",objMaster.Current.Id).ToList();
+                    list = db.ExecuteQuery<stp_GetInvoiceBookingsResultEx>("exec stp_GetInvoiceBookings {0}", objMaster.Current.Id).ToList();
                 }
 
 
@@ -1039,9 +1057,9 @@ namespace Taxi_AppMain
 
                     grdLister.Rows[i].Cells[COLS.BOOKINGFEE].Value = list[i].BookingFee.ToDecimal();
 
-                  
-                    grdLister.Rows[i].Cells[COLS.Total].Value = list[i].CompanyPrice.ToDecimal() + list[i].WaitingCharges.ToDecimal() + list[i].ParkingCharges.ToDecimal() + list[i].ExtraDropCharges.ToDecimal() + list[i].BookingFee.ToDecimal()+list[i].EscortPrice.ToDecimal();
-                    
+
+                    grdLister.Rows[i].Cells[COLS.Total].Value = list[i].CompanyPrice.ToDecimal() + list[i].WaitingCharges.ToDecimal() + list[i].ParkingCharges.ToDecimal() + list[i].ExtraDropCharges.ToDecimal() + list[i].BookingFee.ToDecimal() + list[i].EscortPrice.ToDecimal();
+
 
                     grdLister.Rows[i].Cells[COLS.Passenger].Value = list[i].CustomerName.ToStr().Trim();
                     grdLister.Rows[i].Cells[COLS.PaymentTypeId].Value = list[i].PaymentTypeId.ToInt();
@@ -1121,16 +1139,16 @@ namespace Taxi_AppMain
 
 
 
-                       
-                            if (TemplateName.ToLower() == "template10")
-                            {
-                                extras= grdLister.Rows.Sum(c => c.Cells[COLS.Parking].Value.ToDecimal() + c.Cells[COLS.ExtraDrop].Value.ToDecimal());
 
-                                invoiceTotal = invoiceTotal - extras;
+                        if (TemplateName.ToLower() == "template10")
+                        {
+                            extras = grdLister.Rows.Sum(c => c.Cells[COLS.Parking].Value.ToDecimal() + c.Cells[COLS.ExtraDrop].Value.ToDecimal());
 
-                            }
+                            invoiceTotal = invoiceTotal - extras;
 
-                       
+                        }
+
+
 
                         if (objCompany.AdminFees > 0)
                         {
@@ -1167,19 +1185,19 @@ namespace Taxi_AppMain
 
                             }
                             else
-                                valueAddedTax = ((invoiceTotal+ AdminFees) * 20) / 100;
+                                valueAddedTax = ((invoiceTotal + AdminFees) * 20) / 100;
 
 
                             valueAddedTax = Math.Round(valueAddedTax, 2);
                         }
 
-                     
 
 
-                    
 
 
-                        decimal grandTotal =Math.Round ( ( (invoiceTotal + valueAddedTax + extras+ AdminFees) ).ToDecimal(),2);
+
+
+                        decimal grandTotal = Math.Round(((invoiceTotal + valueAddedTax + extras + AdminFees)).ToDecimal(), 2);
 
 
 
@@ -1189,7 +1207,7 @@ namespace Taxi_AppMain
                         txtInvoiceAmount.Text = string.Format("{0:f2}", grandTotal);
 
 
-                        if(extras>0)
+                        if (extras > 0)
                         {
                             lblExtras.Visible = true;
                             numExtras.Visible = true;
@@ -1202,9 +1220,9 @@ namespace Taxi_AppMain
                             numExtras.Visible = false;
                         }
 
-                       
 
-                        if (valueAddedTax==0)
+
+                        if (valueAddedTax == 0)
                         {
                             lblVat.Visible = false;
                             txtVat.Visible = false;
@@ -1217,7 +1235,7 @@ namespace Taxi_AppMain
 
                         }
 
-                        if (AdminFees==0)
+                        if (AdminFees == 0)
                         {
                             lblAdminfee.Visible = false;
                             txtAdminFee.Visible = false;
@@ -1229,7 +1247,7 @@ namespace Taxi_AppMain
                             txtAdminFee.Visible = true;
                         }
 
-                        if(invoiceTotal==grandTotal && valueAddedTax==0)
+                        if (invoiceTotal == grandTotal && valueAddedTax == 0)
                         {
                             lblNet.Visible = false;
                             txtNet.Visible = false;
@@ -1267,7 +1285,7 @@ namespace Taxi_AppMain
         {
             GridViewCommandColumn col = new GridViewCommandColumn();
             col.Width = 50;
-            
+
             col.Name = "btnUpdate";
             col.UseDefaultText = true;
             col.ImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -1288,7 +1306,7 @@ namespace Taxi_AppMain
                 DateTime? tillDate = dtpTillDate.Value.ToDate();
 
                 long departmentId = ddlDepartment.SelectedValue.ToLong();
-              
+
 
                 string error = string.Empty;
                 if (companyId == 0)
@@ -1332,7 +1350,7 @@ namespace Taxi_AppMain
 
 
                 bool IsDepartmentWise = chkDepartmentWise.Checked;
-             
+
                 string orderNo = ddlOrderNo.SelectedValue.ToStr().Trim();
 
 
@@ -1349,16 +1367,16 @@ namespace Taxi_AppMain
 
 
 
-                Expression<Func<Booking,bool>> expPickBooking=null;
+                Expression<Func<Booking, bool>> expPickBooking = null;
                 Expression<Func<Invoice_Charge, bool>> _invoiceCondition = null;
 
-                if(AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt()==0 || AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt()==1)
+                if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 0 || AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 1)
                 {
                     expPickBooking = c => c.CompanyId == companyId && (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED) && (orderNo == "" || c.OrderNo == orderNo)
                                                                            && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false))
 ;
                 }
-                else if(AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt()==2) // Pick DISPATCHED AND NOPICKUP BOOKINGS
+                else if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 2) // Pick DISPATCHED AND NOPICKUP BOOKINGS
                 {
                     expPickBooking = c => c.CompanyId == companyId &&
                                        (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || (c.PaymentTypeId != Enums.PAYMENT_TYPES.CASH && c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP))
@@ -1366,7 +1384,7 @@ namespace Taxi_AppMain
                                      && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false))
                                    ;
 
-                                                                                                             
+
 
 
 
@@ -1377,12 +1395,12 @@ namespace Taxi_AppMain
                                                                            && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false))
                        ;
 
-                                                                                                             
+
                 }
                 else if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 4) // Pick DISPATCHED AND NOPICKUP and cancelled BOOKINGS
                 {
                     expPickBooking = c => c.CompanyId == companyId &&
-                                       (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || ( c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP) || (c.BookingStatusId == Enums.BOOKINGSTATUS.CANCELLED))
+                                       (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || (c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP) || (c.BookingStatusId == Enums.BOOKINGSTATUS.CANCELLED))
                                      && (orderNo == "" || c.OrderNo == orderNo)
                                      && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false))
                                    ;
@@ -1453,7 +1471,7 @@ namespace Taxi_AppMain
 
                     int cnt = list.Count;
                     grdLister.Rows.Clear();
-                    
+
                     for (int i = 0; i < cnt; i++)
                     {
 
@@ -1636,14 +1654,14 @@ namespace Taxi_AppMain
                         row.Cells[COLS.BookingStatusId].Value = list[i].BookingStatusId.ToInt();
                     }
                 }
-                CalculateTotal();              
+                CalculateTotal();
 
             }
             catch (Exception ex)
             {
                 ENUtils.ShowMessage(ex.Message);
             }
-        
+
         }
         private void btnPickBooking_Click(object sender, EventArgs e)
         {
@@ -1653,13 +1671,13 @@ namespace Taxi_AppMain
                 int companyId = ddlCompany.SelectedValue.ToInt();
 
                 DateTime? fromDate = dtpFromDate.Value.ToDate();
-                DateTime? tillDate = dtpTillDate.Value.ToDate() + new TimeSpan(23,59,59);
+                DateTime? tillDate = dtpTillDate.Value.ToDate() + new TimeSpan(23, 59, 59);
 
                 if (chkAllFromDate.Checked)
                     fromDate = new DateTime(DateTime.Now.Year - 1, 1, 1);
 
                 long departmentId = ddlDepartment.SelectedValue.ToLong();
-               
+
 
                 string error = string.Empty;
                 if (companyId == 0)
@@ -1703,7 +1721,7 @@ namespace Taxi_AppMain
 
 
                 bool IsDepartmentWise = chkDepartmentWise.Checked;
-           
+
 
                 string orderNo = ddlOrderNo.SelectedValue.ToStr().Trim();
 
@@ -1721,8 +1739,8 @@ namespace Taxi_AppMain
 
 
                 bool ForProcessedJobs = AppVars.objPolicyConfiguration.RentForProcessedJobs.ToBool();
-                
-                Expression<Func<Booking,bool>> expPickBooking=null;
+
+                Expression<Func<Booking, bool>> expPickBooking = null;
 
 
                 if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 0 || AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 1)
@@ -1736,15 +1754,15 @@ namespace Taxi_AppMain
                 else if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 2) // Pick DISPATCHED AND NOPICKUP BOOKINGS
                 {
 
-               
-                  
-                        expPickBooking = c => c.CompanyId == companyId &&
-                                           (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP)
-                                          && (c.PickupDateTime >= fromDate && c.PickupDateTime <= tillDate)
-                                           && (orderNo == "" || c.OrderNo == orderNo)
-                                           && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false));
 
-                   
+
+                    expPickBooking = c => c.CompanyId == companyId &&
+                                       (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP)
+                                      && (c.PickupDateTime >= fromDate && c.PickupDateTime <= tillDate)
+                                       && (orderNo == "" || c.OrderNo == orderNo)
+                                       && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false));
+
+
 
                 }
                 else if (AppVars.objPolicyConfiguration.PickBookingOnInvoicingType.ToInt() == 3)
@@ -1761,7 +1779,7 @@ namespace Taxi_AppMain
 
 
                     expPickBooking = c => c.CompanyId == companyId &&
-                                       (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP || c.BookingStatusId == Enums.BOOKINGSTATUS.CANCELLED) 
+                                       (c.BookingStatusId == Enums.BOOKINGSTATUS.DISPATCHED || c.BookingStatusId == Enums.BOOKINGSTATUS.NOPICKUP || c.BookingStatusId == Enums.BOOKINGSTATUS.CANCELLED)
                                       && (c.PickupDateTime >= fromDate && c.PickupDateTime <= tillDate)
                                        && (orderNo == "" || c.OrderNo == orderNo)
                                        && ((IsDepartmentWise && c.DepartmentId == departmentId) || (IsDepartmentWise == false));
@@ -1775,23 +1793,23 @@ namespace Taxi_AppMain
 
 
 
-                List<object[]> list = ShowBookingMultiLister(expPickBooking,a => a.Invoice.InvoiceTypeId!=Enums.INVOICE_TYPE.ESCORT_INVOICE , hiddenColumns, _conditionDate, TemplateName.ToStr());
+                List<object[]> list = ShowBookingMultiLister(expPickBooking, a => a.Invoice.InvoiceTypeId != Enums.INVOICE_TYPE.ESCORT_INVOICE, hiddenColumns, _conditionDate, TemplateName.ToStr());
                 GridViewRowInfo row;
 
                 int cnt = list.Count;
 
 
-             
+
 
                 var existBookingId = grdLister.Rows.Select(c => c.Cells[COLS.BookingId].Value.ToLong()).ToList<long>();
-            
-               list.RemoveAll(c => existBookingId.Contains(c[0].ToLong()));
+
+                list.RemoveAll(c => existBookingId.Contains(c[0].ToLong()));
 
                 cnt = list.Count;
 
                 for (int i = 0; i < cnt; i++)
                 {
-                  
+
 
                     row = grdLister.Rows.AddNew();
 
@@ -1818,7 +1836,7 @@ namespace Taxi_AppMain
                     row.Cells[COLS.Parking].Value = list[i][13].ToDecimal();
                     row.Cells[COLS.Waiting].Value = list[i][14].ToDecimal();
                     row.Cells[COLS.ExtraDrop].Value = list[i][15].ToDecimal();
-             
+
 
                     row.Cells[COLS.BOOKINGFEE].Value = list[i][26].ToDecimal();
 
@@ -1828,9 +1846,9 @@ namespace Taxi_AppMain
                     row.Cells[COLS.RemovalDescription].Value = list[i][18].ToStr();
 
                     row.Cells[COLS.BookedBy].Value = list[i][20].ToStr();
-                    
-                    row.Cells[COLS.PaymentTypeId].Value = list[i][23].ToInt();                   
-                   
+
+                    row.Cells[COLS.PaymentTypeId].Value = list[i][23].ToInt();
+
                     row.Cells[COLS.BookingStatusId].Value = list[i][24].ToInt();
 
 
@@ -1851,7 +1869,7 @@ namespace Taxi_AppMain
 
         }
 
-      
+
         private List<object[]> ShowBookingMultiLister(Expression<Func<Booking, bool>> _condition, Expression<Func<Invoice_Charge, bool>> _invoiceCondition, string[] hiddenColumns, Func<Booking, bool> _condition2, string templateName)
         {
 
@@ -1901,11 +1919,11 @@ namespace Taxi_AppMain
                                 PaymentTypeId = b.PaymentTypeId,
                                 BookingStatusId = b.BookingStatusId.ToIntorNull(),
                                 PaymentType = b.Gen_PaymentType.PaymentType,
-                                BookingFee=b.ServiceCharges.ToDecimal(),
+                                BookingFee = b.ServiceCharges.ToDecimal(),
                                 WaitingTime = b.DriverWaitingMins,
                                 b.ViaString,
                                 b.EscortPrice,
-                               Status= b.BookingStatus.StatusName
+                                Status = b.BookingStatus.StatusName
                             }).OrderBy(c => c.PickupDate).ToList();
 
 
@@ -1952,17 +1970,17 @@ namespace Taxi_AppMain
                                 Congtion = b.CongtionCharges.ToDecimal(),
                                 Description = "",
                                 Total = (b.CompanyPrice.ToDecimal() + b.WaitingCharges.ToDecimal() + b.ParkingCharges.ToDecimal() + b.ExtraDropCharges.ToDecimal()),
-            
+
                                 BookedBy = b.BookedBy.ToStr(),
                                 Fare = b.FareRate.ToDecimal(),
 
                                 AccountType = b.CompanyId != null ? b.Gen_Company.AccountTypeId.ToInt() : 0,
                                 PaymentTypeId = b.PaymentTypeId,
-                                BookingStatusId=b.BookingStatusId.ToIntorNull(),
+                                BookingStatusId = b.BookingStatusId.ToIntorNull(),
                                 PaymentType = b.Gen_PaymentType.PaymentType,
                                 BookingFee = b.ServiceCharges.ToDecimal(),
                                 WaitingTime = b.DriverWaitingMins,
-                                  b.ViaString,
+                                b.ViaString,
                                 b.EscortPrice,
                                 Status = b.BookingStatus.StatusName
                             }).OrderBy(c => c.PickupDate).ToList();
@@ -2011,7 +2029,7 @@ namespace Taxi_AppMain
                                 MeetAndGreet = b.MeetAndGreetCharges.ToDecimal(),
                                 Congtion = b.CongtionCharges.ToDecimal(),
                                 Description = "",
-                                Total = (b.CompanyPrice.ToDecimal() + b.WaitingCharges.ToDecimal() + b.ParkingCharges.ToDecimal() + b.ExtraDropCharges.ToDecimal()+ b.EscortPrice.ToDecimal()),
+                                Total = (b.CompanyPrice.ToDecimal() + b.WaitingCharges.ToDecimal() + b.ParkingCharges.ToDecimal() + b.ExtraDropCharges.ToDecimal() + b.EscortPrice.ToDecimal()),
 
                                 BookedBy = b.BookedBy.ToStr(),
                                 Fare = b.FareRate.ToDecimal(),
@@ -2042,62 +2060,62 @@ namespace Taxi_AppMain
                 {
                     var list1 = db.Bookings.Where(_condition).Where(_condition2);
                     var list2 = db.Invoice_Charges.Where(c => c.Invoice.InvoiceTypeId != Enums.INVOICE_TYPE.ESCORT_INVOICE);
-                    
-                   
-                        var list = (from b in list1
-                                    join c in list2 on b.Id equals c.BookingId into table2
-                                    join v in db.Fleet_VehicleTypes on b.VehicleTypeId equals v.Id
-                                    join p in db.Gen_PaymentTypes on b.PaymentTypeId equals p.Id
-                                    from c in table2.DefaultIfEmpty()
-                                    where (c == null)
-                                    select new
-                                    {
-                                        Id = b.Id,
 
 
-                                        BookingDate = b.BookingDate,
-                                        PickupDate = b.PickupDateTime,
-
-                                        RefNo = b.BookingNo,
-                                        Vehicle = v.VehicleType,
-                                        OrderNo = b.OrderNo,
-                                        PupilNo = b.PupilNo,
-                                        Passenger = b.CustomerName,
-                                        PickupPoint = b.FromAddress,
-                                        Destination = b.ToAddress,
-                                        //  Charges = b.FareRate.ToDecimal(),
-                                        Charges = b.CompanyPrice,
-                                        CompanyId = b.CompanyId,
-                                        CompanyName = "",
-                                        Parking = b.ParkingCharges,
-                                        Waiting = b.WaitingCharges,
-                                        ExtraDrop = b.ExtraDropCharges,
-                                        MeetAndGreet = b.MeetAndGreetCharges,
-                                        Congtion = b.CongtionCharges,
-                                        Description = "",
-                                        Total = b.TotalCharges,
-                                        //  BookedBy = b.DepartmentId != null ? b.Gen_Company_Department.DepartmentName.ToStr() : "",
-                                        BookedBy = b.BookedBy,
-                                        Fare = b.FareRate,
-
-                                        AccountType = 0,
-                                        PaymentTypeId = b.PaymentTypeId,
-                                        BookingStatusId = b.BookingStatusId,
-                                        PaymentType = p.PaymentType,
-                                        BookingFee = b.ServiceCharges.ToDecimal(),
-                                        WaitingTime = b.DriverWaitingMins,
-                                      b.ViaString,
-                                        b.EscortPrice,
-                                        Status = b.BookingStatus.StatusName
-                                    }).OrderBy(c=>c.PickupDate).ToList();
+                    var list = (from b in list1
+                                join c in list2 on b.Id equals c.BookingId into table2
+                                join v in db.Fleet_VehicleTypes on b.VehicleTypeId equals v.Id
+                                join p in db.Gen_PaymentTypes on b.PaymentTypeId equals p.Id
+                                from c in table2.DefaultIfEmpty()
+                                where (c == null)
+                                select new
+                                {
+                                    Id = b.Id,
 
 
+                                    BookingDate = b.BookingDate,
+                                    PickupDate = b.PickupDateTime,
+
+                                    RefNo = b.BookingNo,
+                                    Vehicle = v.VehicleType,
+                                    OrderNo = b.OrderNo,
+                                    PupilNo = b.PupilNo,
+                                    Passenger = b.CustomerName,
+                                    PickupPoint = b.FromAddress,
+                                    Destination = b.ToAddress,
+                                    //  Charges = b.FareRate.ToDecimal(),
+                                    Charges = b.CompanyPrice,
+                                    CompanyId = b.CompanyId,
+                                    CompanyName = "",
+                                    Parking = b.ParkingCharges,
+                                    Waiting = b.WaitingCharges,
+                                    ExtraDrop = b.ExtraDropCharges,
+                                    MeetAndGreet = b.MeetAndGreetCharges,
+                                    Congtion = b.CongtionCharges,
+                                    Description = "",
+                                    Total = b.TotalCharges,
+                                    //  BookedBy = b.DepartmentId != null ? b.Gen_Company_Department.DepartmentName.ToStr() : "",
+                                    BookedBy = b.BookedBy,
+                                    Fare = b.FareRate,
+
+                                    AccountType = 0,
+                                    PaymentTypeId = b.PaymentTypeId,
+                                    BookingStatusId = b.BookingStatusId,
+                                    PaymentType = p.PaymentType,
+                                    BookingFee = b.ServiceCharges.ToDecimal(),
+                                    WaitingTime = b.DriverWaitingMins,
+                                    b.ViaString,
+                                    b.EscortPrice,
+                                    Status = b.BookingStatus.StatusName
+                                }).OrderBy(c => c.PickupDate).ToList();
 
 
-                        frm = new Taxi_AppMain.frmLister(list, "Id", true, hiddenColumns);
-                        frm.HiddenColumns = hiddenColumns;
-                        frm.ShowDialog();
-                    
+
+
+                    frm = new Taxi_AppMain.frmLister(list, "Id", true, hiddenColumns);
+                    frm.HiddenColumns = hiddenColumns;
+                    frm.ShowDialog();
+
                 }
 
             }
@@ -2174,7 +2192,7 @@ namespace Taxi_AppMain
         //        hiddenColumns = new string[] {  "Id", "CompanyId","CompanyName","Parking","Destination","Waiting","ExtraDrop","MeetAndGreet","Congtion",
         //                                        "Total","OrderNo","PupilNo","BookingDate","Description","Fare","AccountType","PaymentTypeId"};
 
-                
+
 
         //        bool IsDepartmentWise = chkDepartmentWise.Checked;
         //        bool IsCostCenterWise = chkCostCenterWise.Checked;
@@ -2198,7 +2216,7 @@ namespace Taxi_AppMain
         //        GridViewRowInfo row;
 
         //        int cnt=list.Count;
-                
+
 
         //        //foreach (object[] obj in list)
         //        //{
@@ -2268,7 +2286,7 @@ namespace Taxi_AppMain
         //            row.Cells[COLS.Vehicle].Value = list[i][4].ToStr();
 
 
-                   
+
 
         //            row.Cells[COLS.OrderNo].Value = list[i][5].ToStr();
         //            row.Cells[COLS.PupilNo].Value = list[i][6].ToStr();
@@ -2284,10 +2302,10 @@ namespace Taxi_AppMain
         //            row.Cells[COLS.ExtraDrop].Value = list[i][15].ToDecimal();
         //            row.Cells[COLS.MeetAndGreet].Value = list[i][16].ToDecimal();
         //            row.Cells[COLS.CongtionCharge].Value = list[i][17].ToDecimal();
-                   
-                    
-                    
-                   
+
+
+
+
         //            row.Cells[COLS.Total].Value = list[i][19].ToDecimal();
 
         //            row.Cells[COLS.RemovalDescription].Value = list[i][18].ToStr();
@@ -2312,7 +2330,7 @@ namespace Taxi_AppMain
         private void CalculateTotal()
         {
 
-            txtInvoiceAmount.Text =string.Format("{0:£ #.##}",grdLister.Rows.Where(c=>c.Cells[COLS.PaymentTypeId].Value.ToInt()!=6)
+            txtInvoiceAmount.Text = string.Format("{0:£ #.##}", grdLister.Rows.Where(c => c.Cells[COLS.PaymentTypeId].Value.ToInt() != 6)
                                                     .Sum(c => c.Cells[COLS.Total].Value.ToDecimal()));
 
         }
@@ -2336,20 +2354,20 @@ namespace Taxi_AppMain
                 SetPupilNoColumn(false);
                 SetBookedByColumn(false);
                 ClearDepartment();
-              
+
                 ClearOrderNo();
-              
+
             }
             else
             {
                 Gen_Company obj = General.GetObject<Gen_Company>(c => c.Id == companyId);
                 if (obj != null)
                 {
-                    if(ddlSubCompany!=null && obj.SubCompanyId!=null)
-                         this.ddlSubCompany.SelectedValue = obj.SubCompanyId;
+                    if (ddlSubCompany != null && obj.SubCompanyId != null)
+                        this.ddlSubCompany.SelectedValue = obj.SubCompanyId;
                     this.companyEmail = obj.Email.ToStr().Trim();
                     FillDepartmentCombo(obj.Id);
-                
+
                     bool orderNo = obj.HasOrderNo.ToBool();
                     bool pupilNo = obj.HasPupilNo.ToBool();
 
@@ -2374,9 +2392,9 @@ namespace Taxi_AppMain
 
                     }
 
-                   
 
-                    if (orderNo && obj.HasSingleOrderNo.ToBool()==false)
+
+                    if (orderNo && obj.HasSingleOrderNo.ToBool() == false)
                     {
 
                         var list = General.GetQueryable<Booking>(c => c.CompanyId == obj.Id && (c.OrderNo != null && c.OrderNo != ""))
@@ -2394,7 +2412,7 @@ namespace Taxi_AppMain
                     }
 
 
-                    if(txtNotes.Text.Length==0 && obj.NoteForInvoice.ToStr().Trim().Length>0)
+                    if (txtNotes.Text.Length == 0 && obj.NoteForInvoice.ToStr().Trim().Length > 0)
                     {
                         txtNotes.Text = obj.NoteForInvoice.ToStr().Trim();
 
@@ -2426,12 +2444,12 @@ namespace Taxi_AppMain
         }
 
 
-       
-
-       
 
 
-       
+
+
+
+
 
 
 
@@ -2485,15 +2503,15 @@ namespace Taxi_AppMain
             long id = objMaster.Current.Id;
 
             frmInvoiceReport frm = new frmInvoiceReport();
-           // frm.HasSplitByDept = chkSplitByDept.Checked;
+            // frm.HasSplitByDept = chkSplitByDept.Checked;
             frm.HasSplitByField = ddlSplitBy.Text;
             frm.ObjInvoice = objMaster.Current;
-            var list = General.GetQueryable<vu_Invoice>(a => a.Id == id).OrderBy(c=>c.PickupDate).ToList();
+            var list = General.GetQueryable<vu_Invoice>(a => a.Id == id).OrderBy(c => c.PickupDate).ToList();
             int count = list.Count;
 
             frm.DataSource = list;
 
-           
+
 
             frm.GenerateReport();
             frm.reportViewer1.ShowExportButton = btnExportExcel.Visible;
@@ -2506,7 +2524,7 @@ namespace Taxi_AppMain
             }
 
             UI.MainMenuForm.MainMenuFrm.ShowForm(frm);
-          //  MainMenuForm.MainMenuFrm.ShowForm(frm);
+            //  MainMenuForm.MainMenuFrm.ShowForm(frm);
         }
 
         private void ExportReport(string exportTo)
@@ -2515,7 +2533,7 @@ namespace Taxi_AppMain
             long id = objMaster.Current.Id;
 
             frmInvoiceReport frm = new frmInvoiceReport();
-           // frm.HasSplitByDept = chkSplitByDept.Checked;
+            // frm.HasSplitByDept = chkSplitByDept.Checked;
             frm.HasSplitByField = ddlSplitBy.Text;
             frm.ObjInvoice = objMaster.Current;
 
@@ -2533,7 +2551,7 @@ namespace Taxi_AppMain
 
         }
 
-       
+
 
         private void btnExportPDF_Click(object sender, EventArgs e)
         {
@@ -2548,14 +2566,14 @@ namespace Taxi_AppMain
         private void btnSaveInvoice_Click(object sender, EventArgs e)
         {
             OnSave();
-          
+
         }
         public override void OnNew()
         {
             txtInvoiceNo.Text = string.Empty;
             ComboFunctions.FillCompanyForInvoiceCombo(ddlCompany);
             chkDepartmentWise.Checked = false;
-           
+
             grdLister.Rows.Clear();
             txtInvoiceAmount.Text = string.Empty;
             ddlCompany.Enabled = true;
@@ -2568,14 +2586,14 @@ namespace Taxi_AppMain
             if (args.NewValue == Telerik.WinControls.Enumerations.ToggleState.On)
             {
                 ddlDepartment.Enabled = true;
-              //  chkAutoContinue.Visible = true;
+                //  chkAutoContinue.Visible = true;
             }
             else
             {
 
                 ddlDepartment.Enabled = false;
                 ddlDepartment.SelectedValue = null;
-               // chkAutoContinue.Visible = false;
+                // chkAutoContinue.Visible = false;
             }
         }
 
@@ -2585,23 +2603,23 @@ namespace Taxi_AppMain
             long id = objMaster.Current.Id;
 
             frmInvoiceReport frm = new frmInvoiceReport();
-          
+
             frm.HasSplitByField = ddlSplitBy.Text;
             frm.ObjInvoice = objMaster.Current;
 
-            var list = General.GetQueryable<vu_Invoice>(a => a.Id == id).OrderBy(c=>c.PickupDate).ToList();
+            var list = General.GetQueryable<vu_Invoice>(a => a.Id == id).OrderBy(c => c.PickupDate).ToList();
             int count = list.Count;
 
             frm.DataSource = list;
 
-         
+
 
             frm.GenerateReport();
 
-            frm.SendEmail(objMaster.Current.InvoiceNo,this.companyEmail);
+            frm.SendEmail(objMaster.Current.InvoiceNo, this.companyEmail);
         }
 
-     
+
 
 
 
@@ -2615,7 +2633,7 @@ namespace Taxi_AppMain
             grdLister.Columns[COLS.Destination].IsVisible = show;
             grdLister.Columns[COLS.ExtraDrop].IsVisible = show;
             grdLister.Columns[COLS.MeetAndGreet].IsVisible = show;
-         //   grdLister.Columns[COLS.OrderNo].IsVisible = show;
+            //   grdLister.Columns[COLS.OrderNo].IsVisible = show;
             grdLister.Columns[COLS.Parking].IsVisible = show;
             grdLister.Columns[COLS.Passenger].IsVisible = show;
             grdLister.Columns[COLS.PickupDate].IsVisible = show;
@@ -2641,7 +2659,7 @@ namespace Taxi_AppMain
             }
         }
 
-      
+
 
         private void frmInvoice_Shown(object sender, EventArgs e)
         {
@@ -2672,25 +2690,25 @@ namespace Taxi_AppMain
         }
 
 
-        private  void OnCreateNew()
+        private void OnCreateNew()
         {
             txtInvoiceNo.Text = string.Empty;
-          //  ComboFunctions.FillCompanyCombo(ddlCompany);
-           
-          //  chkCostCenterWise.Checked = false;
+            //  ComboFunctions.FillCompanyCombo(ddlCompany);
+
+            //  chkCostCenterWise.Checked = false;
             grdLister.Rows.Clear();
             txtInvoiceAmount.Text = string.Empty;
             ddlCompany.Enabled = true;
             if (chkAutoContinue.Visible == true && chkAutoContinue.Checked)
             {
-                int Index=ddlDepartment.SelectedIndex.ToInt();
-                Index=(Index+1);
+                int Index = ddlDepartment.SelectedIndex.ToInt();
+                Index = (Index + 1);
                 ddlDepartment.SelectedIndex = Index;
                 AutoPickUp();
             }
             else
             {
-                chkDepartmentWise.Checked = false; 
+                chkDepartmentWise.Checked = false;
             }
 
             btnCreditNote.BackColor = Color.AliceBlue;
@@ -2749,7 +2767,7 @@ namespace Taxi_AppMain
                 var objNote = db.InvoiceCreditNotes.FirstOrDefault(c => c.InvoiceId == objMaster.Current.Id);
 
 
-                if (objNote!=null)
+                if (objNote != null)
                 {
 
                     db.InvoiceCreditNotes.DeleteOnSubmit(objNote);
@@ -2798,7 +2816,7 @@ namespace Taxi_AppMain
                         InitializeExportGrid2();
 
                     radGridView2.Columns.Clear();
-                  
+
                     // grdOperatorVehicleRecord.Columns["MonthCommencing"].IsVisible = false;
                     // grdOperatorVehicleRecord.Columns["OperatorLicenceNumber"].IsVisible = false;
                     //  grdOperatorVehicleRecord.Columns["OperatorName"].IsVisible = false;
@@ -2835,29 +2853,29 @@ namespace Taxi_AppMain
                                         ToAddress = a.ToAddress,
                                         OrderNo = a.OrderNo,
                                         DepartmentName = a.DepartmentName,
-                                        PassengerType = a.PassengerType,                                   
+                                        PassengerType = a.PassengerType,
                                         TotalCharges = a.CompanyPrice.ToDecimal() + a.WaitingCharges.ToDecimal() + a.ParkingCharges.ToDecimal() + a.ExtraDropCharges.ToDecimal(),
-                                      //TotalCharges = a.TotalCharges,
+                                        //TotalCharges = a.TotalCharges,
                                         BookerEmail = a.BookerEmail,
-                                       a.CompanyCode
+                                        a.CompanyCode
 
-                                }).OrderBy(c=>c.PickupDate).ToList();
-                    radGridView2.RowCount = list.Count;
+                                    }).OrderBy(c => c.PickupDate).ToList();
+                        radGridView2.RowCount = list.Count;
 
-                    for (int i = 0; i < list.Count; i++)
-                    {
-                        radGridView2.Rows[i].Cells["BookingNo"].Value = " " + list[i].BookingNo + " ";
-                        radGridView2.Rows[i].Cells["InvoiceNo"].Value = " " + list[i].InvoiceNo + " ";
-                        radGridView2.Rows[i].Cells["PickupDate"].Value = " " + list[i].PickupDate.ToDateTime().ToShortDateString() + " ";
-                        radGridView2.Rows[i].Cells["PickupTime"].Value = " " + list[i].PickupTime.ToDateTime().ToShortTimeString() + " ";
-                        radGridView2.Rows[i].Cells["CustomerName"].Value = " " + list[i].CustomerName + " ";
-                        radGridView2.Rows[i].Cells["FromAddress"].Value = " " + list[i].FromAddress + " ";
-                        radGridView2.Rows[i].Cells["ToAddress"].Value = " " + list[i].ToAddress + " ";
-                        radGridView2.Rows[i].Cells["OrderNo"].Value = " " + list[i].OrderNo + " ";
-                        radGridView2.Rows[i].Cells["DepartmentName"].Value = " " + list[i].DepartmentName + " ";
-                        radGridView2.Rows[i].Cells["PassengerType"].Value = " " + list[i].PassengerType + " ";
-                        radGridView2.Rows[i].Cells["TotalCharges"].Value = " " + list[i].TotalCharges.ToDecimal() + " ";
-                        radGridView2.Rows[i].Cells["BookerEmail"].Value = " " + list[i].BookerEmail + " ";
+                        for (int i = 0; i < list.Count; i++)
+                        {
+                            radGridView2.Rows[i].Cells["BookingNo"].Value = " " + list[i].BookingNo + " ";
+                            radGridView2.Rows[i].Cells["InvoiceNo"].Value = " " + list[i].InvoiceNo + " ";
+                            radGridView2.Rows[i].Cells["PickupDate"].Value = " " + list[i].PickupDate.ToDateTime().ToShortDateString() + " ";
+                            radGridView2.Rows[i].Cells["PickupTime"].Value = " " + list[i].PickupTime.ToDateTime().ToShortTimeString() + " ";
+                            radGridView2.Rows[i].Cells["CustomerName"].Value = " " + list[i].CustomerName + " ";
+                            radGridView2.Rows[i].Cells["FromAddress"].Value = " " + list[i].FromAddress + " ";
+                            radGridView2.Rows[i].Cells["ToAddress"].Value = " " + list[i].ToAddress + " ";
+                            radGridView2.Rows[i].Cells["OrderNo"].Value = " " + list[i].OrderNo + " ";
+                            radGridView2.Rows[i].Cells["DepartmentName"].Value = " " + list[i].DepartmentName + " ";
+                            radGridView2.Rows[i].Cells["PassengerType"].Value = " " + list[i].PassengerType + " ";
+                            radGridView2.Rows[i].Cells["TotalCharges"].Value = " " + list[i].TotalCharges.ToDecimal() + " ";
+                            radGridView2.Rows[i].Cells["BookerEmail"].Value = " " + list[i].BookerEmail + " ";
                             radGridView2.Rows[i].Cells["CompanyCode"].Value = " " + list[i].CompanyCode + " ";
                         }
                     }
@@ -2877,9 +2895,9 @@ namespace Taxi_AppMain
                     this.btnExportToExcel2.Enabled = false;
                     ClsExportGridView exporter = new ClsExportGridView(radGridView2, saveFileDialog2.FileName);
                     exporter.ApplyCellFormatting = true;
-                
+
                     exporter.ExportExcel();
-                     
+
 
                     this.btnExportToExcel2.Enabled = true;
                     MessageBox.Show("Export successfully.");
@@ -2894,7 +2912,7 @@ namespace Taxi_AppMain
             }
         }
 
-       
+
 
         private void radMenuExportToExcel_Click(object sender, EventArgs e)
         {

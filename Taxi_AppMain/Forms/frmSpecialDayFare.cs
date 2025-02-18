@@ -1581,19 +1581,19 @@ namespace Taxi_AppMain
             {
                 try
                 {
-                    //string ZoneArr = string.Join(",", obj.Select(c => c.Id.ToStr()).ToArray<string>());
-                    //List<GetTariffZones> list = null;
+                    string ZoneArr = string.Join(",", obj.Select(c => c.Id.ToStr()).ToArray<string>());
+                    List<GetTariffZones> list = null;
 
 
-                    //try
-                    //{
-                    //    if(ddlZone.Visible)
-                    //    list = db.ExecuteQuery<GetTariffZones>("exec stp_gettariffdetails {0} ", ZoneArr).ToList();
-                    //}
-                    //catch(Exception ex)
-                    //{
+                    try
+                    {
+                        if (ddlZone.Visible)
+                            list = db.ExecuteQuery<GetTariffZones>("exec stp_gettariffdetails {0} ", ZoneArr).ToList();
+                    }
+                    catch (Exception ex)
+                    {
 
-                    //}
+                    }
 
                     //string[] ZoneArr = input_values.ToStr().Trim().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -1631,29 +1631,29 @@ namespace Taxi_AppMain
                         grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.CompanyId].Value = obj[i].CompanyId;
                         grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.IsCompanyWise].Value = obj[i].IsCompanyWise;
 
-                        //if (list != null)
+                        if (list != null)
+                        {
+                            var Zonelist = list.Where(c => c.FareId == obj[i].Id.ToStr()).FirstOrDefault();
+                            grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneName].Value = Zonelist.ZoneName;
+                            grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneId].Value = Zonelist.ZoneId;
+                        }
+                        //try
                         //{
-                        //     var Zonelist =   list.Where(c => c.FareId == obj[i].Id.ToStr()).FirstOrDefault();
-                        //     grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneName].Value = Zonelist.ZoneName;
-                        //            grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneId].Value = Zonelist.ZoneId;
+                        //    var zoneId = db.ExecuteQuery<int?>("Select ZoneId From Fare Where Id = " + obj[i].Id).FirstOrDefault();
+                        //    if (zoneId != null)
+                        //    {
+                        //        grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneId].Value = zoneId;
+                        //        var zoneName = db.ExecuteQuery<string>("Select ZoneName From Gen_Zones Where Id = " + zoneId).FirstOrDefault();
+                        //        if (zoneName != null)
+                        //        {
+                        //            grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneName].Value = zoneName;
+                        //        }
+                        //    }
                         //}
-                        try
-                        {
-                            var zoneId = db.ExecuteQuery<int?>("Select ZoneId From Fare Where Id = " + obj[i].Id).FirstOrDefault();
-                            if (zoneId != null)
-                            {
-                                grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneId].Value = zoneId;
-                                var zoneName = db.ExecuteQuery<string>("Select ZoneName From Gen_Zones Where Id = " + zoneId).FirstOrDefault();
-                                if (zoneName != null)
-                                {
-                                    grdOtherCharges.Rows[i].Cells[COLS_OTHERDETAILS.ZoneName].Value = zoneName;
-                                }
-                            }
-                        }
-                        catch (Exception ex)
-                        {
+                        //catch (Exception ex)
+                        //{
 
-                        }
+                        //}
                     }
 
                 }
@@ -5324,7 +5324,7 @@ namespace Taxi_AppMain
 public class GetTariffZones
 {
     public string FareId;
-    public int VehicleTypeId;
-    public string ZoneId;
+    public int? VehicleTypeId;
+    public int? ZoneId;
     public string ZoneName;
 }

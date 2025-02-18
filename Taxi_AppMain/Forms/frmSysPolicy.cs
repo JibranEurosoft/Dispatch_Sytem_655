@@ -5478,13 +5478,14 @@ namespace Taxi_AppMain
                 grdAirportPickupChrges.Visible = true;
 
 
-                lblAirportDropOff.Visible = true;
-                grdAirportDropOff.Visible = true;
+              
                 if (grdAirportPickupChrges.Columns.Count == 0)
                 {
                     FormatAirportWisePickupGrid();
 
                 }
+                lblAirportDropOff.Visible = true;
+                grdAirportDropOff.Visible = true;
 
             }
             else
@@ -5493,7 +5494,8 @@ namespace Taxi_AppMain
                 lblAirportPickupChrges.Visible = false;
                 grdAirportPickupChrges.Visible = false;
 
-
+                lblAirportDropOff.Visible = false;
+                grdAirportDropOff.Visible = false;
 
             }
         }
