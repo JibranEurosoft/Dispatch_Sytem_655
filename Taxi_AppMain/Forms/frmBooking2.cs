@@ -895,6 +895,7 @@ namespace Taxi_AppMain
                 btnAttributes.Click += btnAttributes_Click;
                 txtToFlightDoorNo.KeyDown += new KeyEventHandler(txtToFlightDoorNo_KeyDown);
                 ENABLECMACBOOKINGCALCULATION = AppVars.listUserRights.Count(c => c.functionId == "ENABLE CMAC BOOKING CALCULATION") > 0;
+
             }
             catch (Exception ex)
             {
@@ -9318,7 +9319,7 @@ namespace Taxi_AppMain
                 //if (chkGenerateToken.Checked && txtTokenNo.Text.Length > 0)
                 //    objMaster.Current.JobCode = txtTokenNo.Text.Trim();
 
-                //  objMaster.Current.TipAmount = numTipAmount.Value.ToDecimal();
+                objMaster.Current.TipAmount = numTipAmount.Value.ToDecimal();
 
                 objMaster.CheckServiceCharges = AppVars.objPolicyConfiguration.SendBookingCompletionEmail.ToBool();
 
@@ -11564,6 +11565,7 @@ namespace Taxi_AppMain
                 numExtraChrgs.Value = objMaster.Current.ExtraDropCharges.ToDecimal();
                 numMeetCharges.Value = objMaster.Current.MeetAndGreetCharges.ToDecimal();
                 numCongChrgs.Value = objMaster.Current.CongtionCharges.ToDecimal();
+                numTipAmount.Value = objMaster.Current.TipAmount.ToDecimal();
 
                 numTotalChrgs.Value = objMaster.Current.TotalCharges.ToDecimal();
 
@@ -16211,8 +16213,7 @@ namespace Taxi_AppMain
 
         private void ShowMultiBooking()
         {
-            if (AppVars.listUserRights.Count(c => c.formName == "frmMultiBooking" && c.functionId == "EXECUTE") == 0  )
-                return;
+
 
             string customerName = ddlCustomerName.Text.ToStr().Trim();
             string MobileNo = txtCustomerMobileNo.Text.Trim();

@@ -189,6 +189,7 @@ namespace Taxi_AppMain
             this.ddlSubCompany = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.pnlMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -1077,7 +1078,7 @@ namespace Taxi_AppMain
             this.dtpPickupTime.Size = new System.Drawing.Size(69, 23);
             this.dtpPickupTime.TabIndex = 4;
             this.dtpPickupTime.TabStop = false;
-            this.dtpPickupTime.Text = "20:13";
+            this.dtpPickupTime.Text = "21:36";
             this.dtpPickupTime.Value = null;
             this.dtpPickupTime.Visible = false;
             // 
@@ -1695,6 +1696,7 @@ namespace Taxi_AppMain
             // pnlOtherCharges
             // 
             this.pnlOtherCharges.BackColor = System.Drawing.Color.Lavender;
+            this.pnlOtherCharges.Controls.Add(this.label17);
             this.pnlOtherCharges.Controls.Add(this.btnExtrAcHARGES);
             this.pnlOtherCharges.Controls.Add(this.numTipAmount);
             this.pnlOtherCharges.Controls.Add(this.radLabel4);
@@ -1732,9 +1734,9 @@ namespace Taxi_AppMain
             // 
             // numTipAmount
             // 
-            this.numTipAmount.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.numTipAmount.Font = new System.Drawing.Font("Tahoma", 10.25F);
             this.numTipAmount.InterceptArrowKeys = false;
-            this.numTipAmount.Location = new System.Drawing.Point(249, 2);
+            this.numTipAmount.Location = new System.Drawing.Point(276, 2);
             this.numTipAmount.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -1746,10 +1748,9 @@ namespace Taxi_AppMain
             0,
             -2147483648});
             this.numTipAmount.Name = "numTipAmount";
-            this.numTipAmount.Size = new System.Drawing.Size(31, 22);
+            this.numTipAmount.Size = new System.Drawing.Size(48, 24);
             this.numTipAmount.TabIndex = 0;
             this.numTipAmount.TabStop = false;
-            this.numTipAmount.Visible = false;
             // 
             // radLabel4
             // 
@@ -2358,6 +2359,17 @@ namespace Taxi_AppMain
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // label17
+            // 
+            this.label17.BackColor = this.pnlOtherCharges.BackColor;
+            this.label17.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(232, 7);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(32, 20);
+            this.label17.TabIndex = 509;
+            this.label17.Text = "Tip";
+            // 
             // frmBooking2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2687,6 +2699,6 @@ namespace Taxi_AppMain
         private System.Windows.Forms.DataGridViewTextBoxColumn DriverId;
         private System.Windows.Forms.DataGridViewTextBoxColumn details;
         private System.Windows.Forms.DataGridViewButtonColumn btnDespatchJob;
-
+        private Label label17;
     }
 }
