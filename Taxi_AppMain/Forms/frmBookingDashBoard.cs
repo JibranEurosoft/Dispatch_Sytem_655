@@ -2127,6 +2127,7 @@ namespace Taxi_AppMain
 
                         if (e.Column.Name == "Driver")
                         {
+
                             if (e.Row.Cells["IsConfirmedDriver"].Value.ToBool())
                             {
                                 e.CellElement.NumberOfColors = 1;
@@ -2136,12 +2137,12 @@ namespace Taxi_AppMain
                             }
                             else
                             {
-                                if (e.CellElement.BackColor == Color.Aqua)
-                                {
+                                
                                     e.CellElement.BackColor = GridBackColor;
                                     e.CellElement.ForeColor = Color.Black;
                                     e.CellElement.DrawFill = true;
-                                }
+                                
+
 
                             }
 
@@ -24614,7 +24615,7 @@ namespace Taxi_AppMain
 
 
 
-        bool IsNotification = false;
+        bool IsNotification = true;
         private int xpos = 0;
         private int lblNotiX;
         private void tmrAlert_Tick(object sender, EventArgs e)
@@ -24627,8 +24628,8 @@ namespace Taxi_AppMain
                 if (IsNotification == true)
                 {
 
-                    if (lblNotification != null)
-                    {
+                    //if (lblNotification != null)
+                    //{
                         if (lblNotification.Text != string.Empty)
                         {
 
@@ -24658,13 +24659,13 @@ namespace Taxi_AppMain
                                     xpos = -1;
                                 }
                             }
-                        }
-                        else
-                        {
-                            lblNotification.Location = new System.Drawing.Point((lblNotification.Location.X + lblNotification.Width) / 2, 4);
-                            xpos = 0;
+                        //}
+                        //else
+                        //{
+                        //    lblNotification.Location = new System.Drawing.Point((lblNotification.Location.X + lblNotification.Width) / 2, 4);
+                        //    xpos = 0;
 
-                        }
+                        //}
                     }
 
                 }
