@@ -307,6 +307,10 @@ namespace Taxi_AppMain
 
         private void ddlCriteria_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (ddlCriteria.SelectedIndex == 1 && AppVars.listUserRights.Count(c => c.formTitle == "Job Receipt Report" && c.functionId == "HIDE COMPANY PRICE") != 0)
+            {
+                this.DataSource[0].CompanyPrice = 0;
+            }
             GenerateReport();
         }
 

@@ -16211,7 +16211,8 @@ namespace Taxi_AppMain
 
         private void ShowMultiBooking()
         {
-
+            if (AppVars.listUserRights.Count(c => c.formName == "frmMultiBooking" && c.functionId == "EXECUTE") == 0  )
+                return;
 
             string customerName = ddlCustomerName.Text.ToStr().Trim();
             string MobileNo = txtCustomerMobileNo.Text.Trim();
