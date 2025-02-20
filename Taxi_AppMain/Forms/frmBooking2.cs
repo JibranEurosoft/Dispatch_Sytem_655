@@ -5104,8 +5104,10 @@ namespace Taxi_AppMain
                 InstallEventHandlers(pnlBookingFees);
                 InstallEventHandlers(panel2);
 
+                if (AppVars.listUserRights.Count(x => x.functionId == "HIDE COMPANY PRICE") == 0)
+                    InitializeCompanyPrice();
 
-                InitializeCompanyPrice();
+
                 numReturnCompanyFares.Enabled = false;
                 numCompanyFares.Enabled = false;
 
@@ -12885,8 +12887,8 @@ namespace Taxi_AppMain
                         numReturnCompanyFares.Enabled = true;
                     if (ddlCompany.DataSource == null)
                     {
-
-                        InitializeCompanyPrice();
+                        if (AppVars.listUserRights.Count(x => x.functionId == "HIDE COMPANY PRICE") == 0)
+                            InitializeCompanyPrice();
 
 
                         this.ddlCompany.InitializeSettings(pnlAutoDespatch);
@@ -20429,7 +20431,7 @@ namespace Taxi_AppMain
 
 
 
-                            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 && obj.DisableCompanyFaresForController.ToBool() == false)
+                            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 && obj.DisableCompanyFaresForController.ToBool() == false || AppVars.listUserRights.Count(c => c.functionId == "HIDE COMPANY PRICE") == 0)
                             {
 
 
