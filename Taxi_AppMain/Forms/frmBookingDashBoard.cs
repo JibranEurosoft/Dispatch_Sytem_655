@@ -2137,11 +2137,11 @@ namespace Taxi_AppMain
                             }
                             else
                             {
-                                
-                                    e.CellElement.BackColor = GridBackColor;
-                                    e.CellElement.ForeColor = Color.Black;
-                                    e.CellElement.DrawFill = true;
-                                
+
+                                e.CellElement.BackColor = GridBackColor;
+                                e.CellElement.ForeColor = Color.Black;
+                                e.CellElement.DrawFill = true;
+
 
 
                             }
@@ -10618,7 +10618,8 @@ namespace Taxi_AppMain
                         {
                             driverContextMenu.Items["TrackEscort"].Visibility = ElementVisibility.Hidden;
                         }
-                        else { 
+                        else
+                        {
                             driverContextMenu.Items["TrackEscort"].Visibility = ElementVisibility.Visible;
                             driverContextMenu.Items["TrackEscort"].Tag = cell.GridControl.Name;
                         }
@@ -20355,7 +20356,7 @@ namespace Taxi_AppMain
                 int journeytypeid = 0;
                 if (ddlJourneyType != null)
                 {
-                     journeytypeid = ddlJourneyType.SelectedValue.ToInt();
+                    journeytypeid = ddlJourneyType.SelectedValue.ToInt();
 
                 }
 
@@ -21099,58 +21100,63 @@ namespace Taxi_AppMain
 
                 if (e.Page.Name == "Pg_RecentJobs")
                 {
-                    if (IsRecentJob_TabbedOpened == false)
+                    //if (IsRecentJob_TabbedOpened == false)
+                    //{
+                    //    if (ddlSearchDateType.Items.Count == 0)
+                    //    {
+
+                    Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+                    Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+
+                    ddlSearchDateType.Items.Clear();
+
+                    radListDataItem3.Selected = false;
+                    radListDataItem3.Text = "Booking Date";
+                    radListDataItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                    radListDataItem3.TextWrap = true;
+                    radListDataItem4.Text = "Pickup Date";
+                    radListDataItem4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                    radListDataItem4.TextWrap = true;
+                    radListDataItem4.Selected = true;
+                    this.ddlSearchDateType.Items.Add(radListDataItem3);
+                    this.ddlSearchDateType.Items.Add(radListDataItem4);
+
+                    if (ddlJourneyType != null)
                     {
-                        if (ddlSearchDateType.Items.Count == 0)
-                        {
-
-                            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-                            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-
-
-                            radListDataItem3.Selected = false;
-                            radListDataItem3.Text = "Booking Date";
-                            radListDataItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            radListDataItem3.TextWrap = true;
-                            radListDataItem4.Text = "Pickup Date";
-                            radListDataItem4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            radListDataItem4.TextWrap = true;
-                            radListDataItem4.Selected = true;
-                            this.ddlSearchDateType.Items.Add(radListDataItem3);
-                            this.ddlSearchDateType.Items.Add(radListDataItem4);
-
-                            ddlJourneyType.Items.Clear();
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "One Way", Value = 1 });
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "Return", Value = 2 });
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "Wait & Return", Value = 3 });
-
-                            ComboFunctions.FillPaymentTypeCombo(ddlPaymentType);
-                            ComboFunctions.FillBookingStatusCombo(ddlStatus);
-                            ComboFunctions.FillBookingTypeCombo(ddlBookingType);
-
-
-                            grdRecentJobs.ViewCellFormatting += new CellFormattingEventHandler(grdRecentJobs_ViewCellFormatting);
-
-                            grdRecentJobs.EnableFiltering = true; ;
-                            grdRecentJobs.ShowFilteringRow = true;
-
-
-                            ddlCust.Enter += new EventHandler(ddlCust_Enter);
-
-                            opt_JOneWay.Visible = false;
-                            opt_JReturnWay.Visible = false;
-                        }
-
-
-
-
-                        grdRecentJobs.TableElement.Font = newFont;
-
-
-
-                        IsRecentJob_TabbedOpened = true;
-
+                        ddlJourneyType.Items.Clear();
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "One Way", Value = 1 });
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "Return", Value = 2 });
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "Wait & Return", Value = 3 });
                     }
+
+                    ComboFunctions.FillPaymentTypeCombo(ddlPaymentType);
+                    ComboFunctions.FillBookingStatusCombo(ddlStatus);
+                    ComboFunctions.FillBookingTypeCombo(ddlBookingType);
+                    grdRecentJobs.Rows.Clear(); 
+                    lblSearchResults.Visible = false;
+
+                    grdRecentJobs.ViewCellFormatting += new CellFormattingEventHandler(grdRecentJobs_ViewCellFormatting);
+
+                    grdRecentJobs.EnableFiltering = true; ;
+                    grdRecentJobs.ShowFilteringRow = true;
+
+
+                    ddlCust.Enter += new EventHandler(ddlCust_Enter);
+
+                    opt_JOneWay.Visible = false;
+                    opt_JReturnWay.Visible = false;
+                    //}
+
+
+
+
+                    grdRecentJobs.TableElement.Font = newFont;
+
+
+
+                    //IsRecentJob_TabbedOpened = true;
+
+                    //}
 
 
 
@@ -24630,35 +24636,35 @@ namespace Taxi_AppMain
 
                     //if (lblNotification != null)
                     //{
-                        if (lblNotification.Text != string.Empty)
+                    if (lblNotification.Text != string.Empty)
+                    {
+
+                        int lbl = lblNotification.Location.X + lblNotification.Width;
+
+                        if (pnlNotification.Location.X >= (pnlNotification.Location.X + lblNotification.Location.X + lblNotification.Width))
+                        {
+                            lblNotification.Location = new System.Drawing.Point(pnlNotification.Width, 4);
+                            xpos = 0;
+
+                        }
+
+                        else if (xpos == 0)
                         {
 
-                            int lbl = lblNotification.Location.X + lblNotification.Width;
+                            int xval = lblNotification.Location.X;
+                            lblNotification.Location = new System.Drawing.Point(xval, 4);
+                            xpos = xval;
+                        }
+                        else
+                        {
 
-                            if (pnlNotification.Location.X >= (pnlNotification.Location.X + lblNotification.Location.X + lblNotification.Width))
+                            lblNotification.Location = new System.Drawing.Point(xpos, 4);
+                            xpos -= 2;
+                            if (xpos == 0)
                             {
-                                lblNotification.Location = new System.Drawing.Point(pnlNotification.Width, 4);
-                                xpos = 0;
-
+                                xpos = -1;
                             }
-
-                            else if (xpos == 0)
-                            {
-
-                                int xval = lblNotification.Location.X;
-                                lblNotification.Location = new System.Drawing.Point(xval, 4);
-                                xpos = xval;
-                            }
-                            else
-                            {
-
-                                lblNotification.Location = new System.Drawing.Point(xpos, 4);
-                                xpos -= 2;
-                                if (xpos == 0)
-                                {
-                                    xpos = -1;
-                                }
-                            }
+                        }
                         //}
                         //else
                         //{
