@@ -36637,15 +36637,11 @@ namespace Taxi_AppMain
 
                 RadButtonElement btnAllow = new RadButtonElement();
                 RadButtonElement btnDeny = new RadButtonElement();
-                RadButtonElement btnTrackDriver = new RadButtonElement();
-                RadButtonElement btnTrackEscort = new RadButtonElement();
 
 
                 alertAuthorization.ButtonItems.AddRange(new Telerik.WinControls.RadItem[] {
                 btnAllow,
-                btnDeny,
-                btnTrackDriver,
-                btnTrackEscort});
+                btnDeny});
 
 
 
@@ -36690,35 +36686,7 @@ namespace Taxi_AppMain
                 ((Telerik.WinControls.Primitives.FillPrimitive)(btnDeny.GetChildAt(0))).BackColor4 = System.Drawing.Color.Red;
                 ((Telerik.WinControls.Primitives.FillPrimitive)(btnDeny.GetChildAt(0))).BackColor = System.Drawing.Color.Red;
                 ((Telerik.WinControls.Primitives.BorderPrimitive)(btnDeny.GetChildAt(2))).BoxStyle = Telerik.WinControls.BorderBoxStyle.SingleBorder;
-                // 
-                // btnTrackDriver
-                // 
-                btnTrackDriver.AutoSize = false;
-                btnTrackDriver.Bounds = new System.Drawing.Rectangle(90, 0, 90, 30);
-                btnTrackDriver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btnTrackDriver.ForeColor = System.Drawing.Color.Black;
-                btnTrackDriver.Name = "btnTrackDriver";
-                btnTrackDriver.Text = "Track Driver";
-                btnTrackDriver.Tag = msg;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor2 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor3 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor4 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor = System.Drawing.Color.Aqua;
-                // 
-                // btnTrackEscort
-                // 
-                btnTrackEscort.AutoSize = false;
-                btnTrackEscort.Bounds = new System.Drawing.Rectangle(90, 0, 90, 30);
-                btnTrackEscort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btnTrackEscort.ForeColor = System.Drawing.Color.Black;
-                btnTrackEscort.Name = "btnTrackEscort";
-                btnTrackEscort.Text = "Track Escort";
-                btnTrackEscort.Tag = msg;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor2 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor3 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor4 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor = System.Drawing.Color.Aqua;
-
+                
                 alertAuthorization.FixedSize = new Size(360, 110);
 
                 //if (AppVars.objPolicyConfiguration.PDAJobOfferRequestTimeout.ToInt() >= 60)
@@ -36745,10 +36713,7 @@ namespace Taxi_AppMain
                 btnAllow.Click += new EventHandler(btnAllow_Click);
                 btnDeny.Click += new EventHandler(btnDeny_Click);
                 btnDeny.TextElement.Tag = alertAuthorization;
-                btnTrackDriver.Click += new EventHandler(btnTrackDriver_Click);
-                btnTrackEscort.Click += new EventHandler(btnTrackEscort_Click);
-                btnTrackDriver.TextElement.Tag = alertAuthorization;
-                btnTrackEscort.TextElement.Tag = alertAuthorization;
+                
                 alertAuthorization.Popup.AlertElement.CaptionElement.CaptionGrip.BackColor = Color.GhostWhite;
 
                 string captionText = "";
