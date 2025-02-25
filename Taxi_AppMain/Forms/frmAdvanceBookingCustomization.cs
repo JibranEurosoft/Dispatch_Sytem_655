@@ -2237,7 +2237,7 @@ namespace Taxi_AppMain
 
 
 
-            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 || AppVars.listUserRights.Count(c => c.functionId == "HIDE COMPANY PRICE") == 0)
+            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 || AppVars.listUserRights.Count(c => c.functionId == "HIDE COMPANY PRICE") > 0)
             {
                 if (numCompanyFares != null)
                 {
