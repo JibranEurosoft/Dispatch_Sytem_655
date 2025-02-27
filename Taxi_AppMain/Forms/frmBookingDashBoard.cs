@@ -605,6 +605,14 @@ namespace Taxi_AppMain
                 trackEscortItem.BackColor = Color.Blue;
                 trackEscortItem.Click += new EventHandler(TrackEscortItem_Click);
                 trackEscortItem.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                {
+                    trackEscortItem.Visibility = ElementVisibility.Visible;
+                }
+                else
+                {
+                    trackEscortItem.Visibility = ElementVisibility.Hidden;
+                }
                 driverContextMenu.Items.Add(trackEscortItem);
 
                 RadMenuItem ForceLogoutItem = new RadMenuItem("Logout");
@@ -4230,6 +4238,14 @@ namespace Taxi_AppMain
                             mItem.Text = "Track Escort";
                             mItem.Name = "trackescort";
                             mItem.Tag = e.RowIndex.ToStr() + "," + e.ColumnIndex.ToStr();
+                            if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                            {
+                                mItem.Visible = true;
+                            }
+                            else
+                            {
+                                mItem.Visible = false;
+                            }
                             mItem.Click += new EventHandler(EscortOnPlots_ItemClick);
 
                             plotsContextMenu.MenuItems.Add(mItem);
@@ -37627,6 +37643,14 @@ namespace Taxi_AppMain
                         EditFareItem1.ForeColor = Color.Blue;
                         EditFareItem1.Font = new Font("Tahoma", 10, FontStyle.Bold);
                         EditFareItem1.Click += new EventHandler(btnTrackEscortPoolJob_Click);
+                        if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                        {
+                            EditFareItem1.Visibility = ElementVisibility.Visible;
+                        }
+                        else
+                        {
+                            EditFareItem1.Visibility = ElementVisibility.Hidden;
+                        }
                         CMenu_PoolJobs.Items.Add(EditFareItem1);
 
                         EditFareItem1 = new RadMenuItem("View Job");  // 0 index
