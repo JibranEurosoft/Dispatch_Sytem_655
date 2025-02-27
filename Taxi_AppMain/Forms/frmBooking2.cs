@@ -31,6 +31,7 @@ using System.Diagnostics;
 
 using System.Drawing.Drawing2D;
 using System.Web.Script.Serialization;
+using Taxi_AppMain.Classes;
 
 namespace Taxi_AppMain
 {
@@ -13319,6 +13320,7 @@ namespace Taxi_AppMain
                 }
                 CalculateFares();
 
+
                 if (worker_fares == null)
                 {
 
@@ -14583,7 +14585,6 @@ namespace Taxi_AppMain
 
 
             //return true;
-
         }
 
         private void CalculatingFares(string tag)
@@ -14872,7 +14873,9 @@ namespace Taxi_AppMain
                 if (btnPickFares.Tag != null)
                 {
                     btnSaveNew.Tag = "wait";
-                    MessageBox.Show("Please wait while system is calculating fares...");
+                    //MessageBox.Show("Please wait while system is calculating fares...", "Wait");
+                    CustomMsgBox.ShowAutoClosingMessageBox("Please wait while system is calculating fares...", "Wait", 5000);
+
                     btnSaveNew.Tag = null;
 
                     if (btnPickFares.Tag != null)
@@ -22853,7 +22856,8 @@ namespace Taxi_AppMain
 
                 if (btnPickFares.Enabled == false && ddlPaymentType.Enabled)
                 {
-                    MessageBox.Show("Please wait while system is calculating fares...");
+                    //MessageBox.Show("Please wait while system is calculating fares...", "Wait");
+                    CustomMsgBox.ShowAutoClosingMessageBox("Please wait while system is calculating fares...", "Wait", 5000);
                     return;
                 }
 
