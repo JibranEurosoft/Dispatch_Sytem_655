@@ -390,6 +390,7 @@
     </Compile>
     <Compile Include="Classes\ResponseData.cs" />
     <Compile Include="Classes\ScheduleMessage.cs" />
+    <Compile Include="Classes\CustomMsgBox.cs" />
     <Compile Include="Classes\SIPPhoneCfgWrap.cs" />
     <Compile Include="Classes\SIP\AccountConfig.cs" />
     <Compile Include="Classes\SIP\CIDSipLauncher.cs" />
