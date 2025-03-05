@@ -15,6 +15,7 @@ using System.IO;
 using Microsoft.Reporting.WinForms;
 using Taxi_AppMain.Classes;
 using System.Collections;
+using System.Drawing.Printing;
 
 namespace Taxi_AppMain
 {
@@ -465,8 +466,17 @@ namespace Taxi_AppMain
                 reportViewer1.LocalReport.SetParameters(param);
                 this.vu_DriverCommisionExpenses2BindingSource.DataSource = this.DataSource;
                 this.vu_FleetDriverCommissionExpenseBindingSource.DataSource = this.DataSource2;
-              
-               
+
+                // Create the PageSettings object
+                PageSettings pgSettings = new PageSettings
+                {
+                    PaperSize = new PaperSize("A4", 827, 1169), // A4 in hundredths of an inch
+                    Margins = new Margins(50, 50, 50, 50)       // Set margins (optional)
+                };
+
+                // Assign the PageSettings to the ReportViewer
+                reportViewer1.SetPageSettings(pgSettings);
+                
                 this.reportViewer1.ZoomPercent = 100;
                 this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
                 this.reportViewer1.RefreshReport();
