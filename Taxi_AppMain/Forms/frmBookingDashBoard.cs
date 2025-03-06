@@ -14809,7 +14809,22 @@ namespace Taxi_AppMain
 
                     return;
                 }
+                else if (message.StartsWith("booking created from cmac>>"))
+                {
 
+                    if (this.InvokeRequired)
+                    {
+                        this.BeginInvoke(new UIParameterizedDelegate(CloseCreatedBookingFromCMAC), values[1].ToStr() , null);
+                    }
+                    else
+                    {
+                        CloseCreatedBookingFromCMAC(values[1].ToStr(), null);
+
+                    }
+                    //   }
+
+                    return;
+                }
 
                 else if (message.StartsWith("voice request>>"))
                 {
@@ -15763,6 +15778,29 @@ namespace Taxi_AppMain
 
         }
 
+        private void CloseDesktopAlertCreatedBookingFromCMACForm(string msg, string msg2)
+        {
+            try
+            {
+                if (listOfBreakPopups != null)
+                {
+                    msg = msg.Replace("<<", ">>").Trim();
+                    var aler = listOfBreakPopups.FirstOrDefault(c => c.Popup.Tag.ToStr().StartsWith(msg));
+
+                    if (aler != null)
+                    {
+                        listOfBreakPopups.Remove(aler);
+                        aler.Dispose();
+                        aler = null;
+                    }
+                     RefreshDashBoardDrivers();
+                }
+            }
+            catch
+            {
+                    RefreshDashBoardDrivers();
+            }
+        }
 
 
 
@@ -15865,6 +15903,10 @@ namespace Taxi_AppMain
             }
         }
 
+        private void CloseCreatedBookingFromCMAC(string driverId, string other)
+        {
+            CloseDesktopAlertCreatedBookingFromCMACForm(driverId, other);
+        }
 
 
 
