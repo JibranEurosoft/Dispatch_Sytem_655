@@ -27297,7 +27297,7 @@ namespace Taxi_AppMain
             else if (e.Argument.ToStr() == "PopulatePlotDrivers")
             {
                 e.Result = e.Argument.ToStr();
-                LoadPlotsDriversByWorker();
+                LoadDriversByWorker();
 
             }
             else if (e.Argument.ToStr() == "PopulatePricePlotDrivers")
@@ -27794,33 +27794,6 @@ namespace Taxi_AppMain
                 AddExcepLog("LoadDriversByWorker");
             }
         }
-
-
-
-        public void LoadPlotsDriversByWorker()
-        {
-            try
-            {
-                using (TaxiDataContext db = new TaxiDataContext())
-                {
-                    //  listofDriverPlots = db.ExecuteQuery<stp_GetDashboardDriversResult>("exec stp_GetDashboardDrivers {0},{1}", AppVars.DefaultDriverSubCompanyId, selectedAutoMode).OrderBy(c => c.orderno).ToList();
-
-                    //   listofDriverPlots = db.stp_GetDashboardDrivers(AppVars.DefaultDriverSubCompanyId).OrderBy(c => c.orderno).ToList();
-
-                    db.ExecuteQuery<stp_GetDashboardDriversResultEx>("exec stp_GetDashboardDrivers {0}", (AppVars.DefaultDriverSubCompanyId)).OrderBy(c => c.orderno).ToList();
-
-                }
-
-                // listofDriverPlots = new TaxiDataContext().stp_GetDriverPlots(AppVars.DefaultDriverSubCompanyId).OrderBy(c => c.orderno).ToList();
-            }
-            catch (Exception ex)
-            {
-
-                AddExcepLog("LoadPlotsDriversByWorker :" + ex.Message);
-
-            }
-        }
-
 
 
         public void PopulateRequiredData()
