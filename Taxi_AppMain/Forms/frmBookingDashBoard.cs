@@ -17343,9 +17343,9 @@ namespace Taxi_AppMain
                 grdAllJobs.Columns["VehicleID"].IsVisible = false;
 
 
-                grdPendingJobs.Columns["Total"].IsVisible = false;
+                //grdPendingJobs.Columns["Total"].IsVisible = false;
                 grdPendingJobs.Columns["OrderNo"].IsVisible = false;
-
+               // grdPendingJobs.Columns["Fare"].IsVisible = false;
 
                 hiddenColumnsList = hiddenColumnsList.OrderBy(c => c.GridColMoveTo).ToList();
 
@@ -18778,7 +18778,8 @@ namespace Taxi_AppMain
 
 
                 grdPendingJobs.Columns["Total"].Width = 50;
-                grdPendingJobs.Columns["Total"].HeaderText = "Fares(£)";
+                grdPendingJobs.Columns["Total"].HeaderText = "Total";
+                //grdPendingJobs.Columns["Total"].HeaderText = "Fares(£)";
 
                 grdPendingJobs.Columns["OrderNo"].Width = 50;
                 grdPendingJobs.Columns["OrderNo"].HeaderText = "Order No";
