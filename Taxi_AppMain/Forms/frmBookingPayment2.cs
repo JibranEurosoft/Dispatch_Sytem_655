@@ -154,8 +154,8 @@ namespace Taxi_AppMain
                         {
                             if (objMaster.Current.BookingReturns.Count > 0)
                             {
-                                returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal();
-
+                                //returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal();
+                                returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal() + objMaster.Current.ExtraDropCharges.ToDecimal();
 
                             }
 
@@ -196,8 +196,8 @@ namespace Taxi_AppMain
                         {
                             if (objMaster.Current.BookingReturns.Count > 0)
                             {
-                                returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].ServiceCharges.ToDecimal()+ objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal();
-
+                                //returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].ServiceCharges.ToDecimal()+ objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal();
+                                returnAmount = objMaster.Current.BookingReturns[0].FareRate.ToDecimal() + objMaster.Current.BookingReturns[0].ServiceCharges.ToDecimal() + objMaster.Current.BookingReturns[0].MeetAndGreetCharges.ToDecimal() + objMaster.Current.BookingReturns[0].CongtionCharges.ToDecimal() + objMaster.Current.ExtraDropCharges.ToDecimal();
 
                             }
 
