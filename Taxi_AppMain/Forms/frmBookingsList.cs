@@ -2014,10 +2014,10 @@ namespace Taxi_AppMain
                         }
 
 
-                        if (fromDate != null && toDate != null && toDate.Value.Subtract(fromDate.Value).TotalDays > 60)
+                        if (fromDate != null && toDate != null && toDate.Value.Subtract(fromDate.Value).TotalDays > 365)
                         {
 
-                            MessageBox.Show("Required : You cannot filter more than 60 days of Data");
+                            MessageBox.Show("Required : You cannot filter more than 365 days of Data");
                             return;
                         }
 
@@ -2139,10 +2139,10 @@ namespace Taxi_AppMain
             if (dtpFromDate.Value != null && dtpToDate.Value != null)
             {
 
-                if (dtpToDate.Value.ToDate().Subtract(dtpFromDate.Value.ToDate()).TotalDays > 40)
+                if (dtpToDate.Value.ToDate().Subtract(dtpFromDate.Value.ToDate()).TotalDays > 365)
                 {
 
-                    MessageBox.Show("You cannot filter more than 40 days of Data");
+                    MessageBox.Show("You cannot filter more than 365 days of Data");
                     return;
 
                 }

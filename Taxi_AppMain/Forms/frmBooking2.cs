@@ -35351,7 +35351,7 @@ var via ='" + viaadd + @"'
             {
 
 
-                numFareRate.Enabled = false;
+                numFareRate.Enabled = true;
                 numCongChrgs.Enabled = false;
                 numMeetCharges.Enabled = false;
                 numExtraChrgs.Enabled = false;
