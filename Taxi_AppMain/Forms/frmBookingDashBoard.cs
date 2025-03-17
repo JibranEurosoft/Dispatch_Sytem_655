@@ -17345,7 +17345,6 @@ namespace Taxi_AppMain
 
                 //grdPendingJobs.Columns["Total"].IsVisible = false;
                 grdPendingJobs.Columns["OrderNo"].IsVisible = false;
-               // grdPendingJobs.Columns["Fare"].IsVisible = false;
 
                 hiddenColumnsList = hiddenColumnsList.OrderBy(c => c.GridColMoveTo).ToList();
 
