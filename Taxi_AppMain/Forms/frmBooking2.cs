@@ -8749,6 +8749,7 @@ namespace Taxi_AppMain
 
                 objMaster.Current.NoofPassengers = num_TotalPassengers.Value.ToInt();
                 objMaster.Current.NoofLuggages = numTotalLuggages.Value.ToInt();
+                objMaster.Current.NoofHandLuggages = numHandLugg.Value.ToInt();
 
                 objMaster.Current.SMSType = Enums.SMSACCOUNT_TYPE.MODEMSMS;
 
@@ -11546,6 +11547,7 @@ namespace Taxi_AppMain
 
                 num_TotalPassengers.Value = objMaster.Current.NoofPassengers.ToDecimal();
                 numTotalLuggages.Value = objMaster.Current.NoofLuggages.ToDecimal();
+                numHandLugg.Value = objMaster.Current.NoofHandLuggages.ToDecimal();
 
                 numFareRate.Value = objMaster.Current.FareRate.ToDecimal();
 

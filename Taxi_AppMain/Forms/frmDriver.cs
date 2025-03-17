@@ -19,6 +19,8 @@ using Taxi_AppMain.Classes;
 using Telerik.WinControls.Enumerations;
 using Telerik.WinControls;
 using System.Threading;
+using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 
 namespace Taxi_AppMain
 {
@@ -2527,6 +2529,10 @@ namespace Taxi_AppMain
             public static int MOT2 = 5;
             public static int LICENSE = 6;
             public static int ROADTAX = 7;
+            public static int SchoolBadgeExpiry1 = 8;
+            public static int SchoolBadgeExpiry2 = 9;
+            public static int SchoolBadgeExpiry3 = 10;
+
 
 
         }
@@ -3225,6 +3231,7 @@ namespace Taxi_AppMain
 
                 objMaster.Current.DriverNo = txtDriverNo.Text.Trim();
 
+
                 objMaster.Current.LoginId = txtWebLoginPwd.Text.Trim();
 
                 objMaster.Current.LoginPassword = txtPassword.Text.Trim();
@@ -3410,6 +3417,34 @@ namespace Taxi_AppMain
                         objMaster.Current.RoadTaxiExpiryDate = row.Cells[COL_DOCUMENT.EXPIRYDATE].Value.ToDateTimeorNull();
 
                     }
+
+
+                    DateTime? schoolbadgeexpiry1 = null;
+                    DateTime? schoolbadgeexpiry2 = null;
+
+                    DateTime? schoolbadgeexpiry3 = null;
+
+
+                    if (row.Cells[COL_DOCUMENT.DOCUMENTTITLEID].Value.ToInt() == DRIVER_DOCUMENTS.SchoolBadgeExpiry1)
+                    {
+                        schoolbadgeexpiry1 = row.Cells[COL_DOCUMENT.EXPIRYDATE].Value.ToDateTimeorNull();
+
+                    }
+
+                    if (row.Cells[COL_DOCUMENT.DOCUMENTTITLEID].Value.ToInt() == DRIVER_DOCUMENTS.SchoolBadgeExpiry2)
+                    {
+                        schoolbadgeexpiry2 = row.Cells[COL_DOCUMENT.EXPIRYDATE].Value.ToDateTimeorNull();
+
+                    }
+
+                    if (row.Cells[COL_DOCUMENT.DOCUMENTTITLEID].Value.ToInt() == DRIVER_DOCUMENTS.SchoolBadgeExpiry3)
+                    {
+                        schoolbadgeexpiry3 = row.Cells[COL_DOCUMENT.EXPIRYDATE].Value.ToDateTimeorNull();
+
+                    }
+
+
+                    bool result = UpdateDriverExpiryDates(txtDriverNo.Text, schoolbadgeexpiry1, schoolbadgeexpiry2, schoolbadgeexpiry3);
 
 
                 }
@@ -3866,6 +3901,59 @@ namespace Taxi_AppMain
             }
         }
 
+        public bool UpdateDriverExpiryDates(string driverNo, DateTime? date1, DateTime? date2, DateTime? date3)
+        {
+            try
+            {
+                string constr = Cryptography.Decrypt(System.Configuration.ConfigurationSettings.AppSettings["ConnectionString"].ToString(), "tcloudX@@!", true);
+
+                using (SqlConnection conn = new SqlConnection(constr))
+                {
+                    conn.Open();
+
+                    // Dynamically build the query based on provided parameters
+                    List<string> updates = new List<string>();
+                    List<SqlParameter> parameters = new List<SqlParameter>();
+
+                    if (date1.HasValue)
+                    {
+                        updates.Add("SchoolBadgeExpiry1 = @date1");
+                        parameters.Add(new SqlParameter("@date1", SqlDbType.DateTime) { Value = date1.Value });
+                    }
+                    if (date2.HasValue)
+                    {
+                        updates.Add("SchoolBadgeExpiry2 = @date2");
+                        parameters.Add(new SqlParameter("@date2", SqlDbType.DateTime) { Value = date2.Value });
+                    }
+                    if (date3.HasValue)
+                    {
+                        updates.Add("SchoolBadgeExpiry3 = @date3");
+                        parameters.Add(new SqlParameter("@date3", SqlDbType.DateTime) { Value = date3.Value });
+                    }
+
+                    // If no dates are provided, return false (no update needed)
+                    if (updates.Count == 0)
+                    {
+                        return false;
+                    }
+
+                    string query = $"UPDATE Fleet_Driver SET {string.Join(", ", updates)} WHERE DriverNo = @driverNo";
+                    parameters.Add(new SqlParameter("@driverNo", SqlDbType.VarChar) { Value = driverNo });
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddRange(parameters.ToArray());
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        return rowsAffected > 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+        }
 
         public override void DisplayRecord()
         {

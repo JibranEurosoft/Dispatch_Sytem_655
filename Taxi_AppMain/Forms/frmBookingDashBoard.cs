@@ -12468,7 +12468,7 @@ namespace Taxi_AppMain
                     if (row != null)
                     {
 
-                        var list = (List<stp_GetBookingsDataResult>)grdAllJobs.DataSource;
+                         var list = (List<stp_GetBookingsDataResult>)grdAllJobs.DataSource;
 
 
                         if (objBook != null)
@@ -17396,8 +17396,8 @@ namespace Taxi_AppMain
                 (grdPendingJobs.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
 
-                grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
-
+                grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
+                grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
                 grdPendingJobs.Columns["Vias"].Width = 30;
 
                 grdPendingJobs.Columns["TelephoneNo"].IsVisible = false;
@@ -23487,13 +23487,18 @@ namespace Taxi_AppMain
         {
             if (optMonthWise.ToggleState == Telerik.WinControls.Enumerations.ToggleState.On)
             {
+                dtpStatsFromDate.Format = DateTimePickerFormat.Custom;
                 dtpStatsFromDate.CustomFormat = "dd/MM/yyyy HH:mm";
+
+                dtpStatsTillDate.Format = DateTimePickerFormat.Custom;
                 dtpStatsTillDate.CustomFormat = "dd/MM/yyyy HH:mm";
 
-
                 dtpStatsFromDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                dtpStatsTillDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.LastDayOfMonthValue());
+                dtpStatsTillDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                                                      DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+
                 pnlMonthWise.Enabled = true;
+
             }
             else if (optToday.ToggleState == ToggleState.On)
             {
@@ -30072,7 +30077,7 @@ namespace Taxi_AppMain
 
                 try
                 {
-                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
+                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
 
                 }
                 catch
@@ -30080,7 +30085,7 @@ namespace Taxi_AppMain
 
 
                 }
-
+                grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
 
                 grdPendingJobs.Columns["Due"].IsVisible = false;
                 grdPendingJobs.Columns["JourneyTypeId"].IsVisible = false;
@@ -30368,7 +30373,7 @@ namespace Taxi_AppMain
 
                 try
                 {
-                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
+                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
                     //  grdPendingJobs.Columns["Vias"].IsVisible = true;
                 }
                 catch
