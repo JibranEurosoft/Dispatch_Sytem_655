@@ -35810,7 +35810,7 @@ var via ='" + viaadd + @"'
                 }
 
 
-                frmCustomer c = new frmCustomer();
+                frmCustomer c = new frmCustomer(true);
 
                 int? custId = null;
 
