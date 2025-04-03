@@ -81,38 +81,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlVehicleType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkBookedBy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWebLogin)).BeginInit();
-            //((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(533, 0);
-            this.btnExit.Size = new System.Drawing.Size(77, 38);
+            this.btnExit.Location = new System.Drawing.Point(617, 0);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExit.Size = new System.Drawing.Size(90, 47);
             this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
             // btnSaveAndClose
             // 
-            this.btnSaveAndClose.Location = new System.Drawing.Point(509, 558);
+            this.btnSaveAndClose.Location = new System.Drawing.Point(594, 687);
+            this.btnSaveAndClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveAndClose.Visible = true;
             // 
             // btnSaveAndNew
             // 
-            this.btnSaveAndNew.Location = new System.Drawing.Point(412, 557);
+            this.btnSaveAndNew.Location = new System.Drawing.Point(481, 686);
+            this.btnSaveAndNew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             // 
             // txtContactName
             // 
             this.txtContactName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtContactName.Location = new System.Drawing.Point(155, 93);
+            this.txtContactName.Location = new System.Drawing.Point(181, 114);
+            this.txtContactName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtContactName.MaxLength = 50;
             this.txtContactName.Name = "txtContactName";
-            this.txtContactName.Size = new System.Drawing.Size(220, 24);
+            this.txtContactName.Size = new System.Drawing.Size(257, 24);
             this.txtContactName.TabIndex = 117;
             this.txtContactName.TabStop = false;
             // 
             // radLabel2
             // 
             this.radLabel2.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(26, 96);
+            this.radLabel2.Location = new System.Drawing.Point(30, 118);
+            this.radLabel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(114, 22);
             this.radLabel2.TabIndex = 116;
@@ -125,37 +129,31 @@
             this.ddlCompany.DropDownHeight = 0;
             this.ddlCompany.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             this.ddlCompany.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlCompany.Location = new System.Drawing.Point(31, 54);
+            this.ddlCompany.Location = new System.Drawing.Point(36, 66);
+            this.ddlCompany.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ddlCompany.Name = "ddlCompany";
             this.ddlCompany.Property = null;
             this.ddlCompany.ShowDownArrow = false;
-            this.ddlCompany.Size = new System.Drawing.Size(343, 26);
+            this.ddlCompany.Size = new System.Drawing.Size(400, 24);
             this.ddlCompany.TabIndex = 114;
             ((Telerik.WinControls.UI.RadDropDownListElement)(this.ddlCompany.GetChildAt(0))).DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
-            //((Telerik.WinControls.UI.RadDropDownListEditableAreaElement)(this.ddlCompany.GetChildAt(0).GetChildAt(0))).BackColor2 = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.UI.RadDropDownListEditableAreaElement)(this.ddlCompany.GetChildAt(0).GetChildAt(0))).BackColor3 = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.UI.RadDropDownListEditableAreaElement)(this.ddlCompany.GetChildAt(0).GetChildAt(0))).BackColor4 = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.UI.RadDropDownListEditableAreaElement)(this.ddlCompany.GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.UI.RadTextBoxElement)(this.ddlCompany.GetChildAt(0).GetChildAt(0).GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Hidden;
-            //((Telerik.WinControls.UI.RadTextBoxItem)(this.ddlCompany.GetChildAt(0).GetChildAt(0).GetChildAt(0).GetChildAt(0))).BackColor = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.UI.RadDropDownListArrowButtonElement)(this.ddlCompany.GetChildAt(0).GetChildAt(1))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
-           // ((Telerik.WinControls.Primitives.FillPrimitive)(this.ddlCompany.GetChildAt(0).GetChildAt(1).GetChildAt(0))).BackColor4 = System.Drawing.Color.AliceBlue;
-            //((Telerik.WinControls.Primitives.FillPrimitive)(this.ddlCompany.GetChildAt(0).GetChildAt(1).GetChildAt(0))).BackColor = System.Drawing.Color.AliceBlue;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(155, 128);
+            this.txtEmail.Location = new System.Drawing.Point(181, 158);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(220, 24);
+            this.txtEmail.Size = new System.Drawing.Size(257, 24);
             this.txtEmail.TabIndex = 119;
             this.txtEmail.TabStop = false;
             // 
             // radLabel3
             // 
             this.radLabel3.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel3.Location = new System.Drawing.Point(26, 130);
+            this.radLabel3.Location = new System.Drawing.Point(30, 160);
+            this.radLabel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel3.Name = "radLabel3";
             this.radLabel3.Size = new System.Drawing.Size(55, 22);
             this.radLabel3.TabIndex = 118;
@@ -164,17 +162,19 @@
             // txtMobNo
             // 
             this.txtMobNo.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMobNo.Location = new System.Drawing.Point(155, 196);
+            this.txtMobNo.Location = new System.Drawing.Point(181, 241);
+            this.txtMobNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtMobNo.MaxLength = 50;
             this.txtMobNo.Name = "txtMobNo";
-            this.txtMobNo.Size = new System.Drawing.Size(220, 24);
+            this.txtMobNo.Size = new System.Drawing.Size(257, 24);
             this.txtMobNo.TabIndex = 123;
             this.txtMobNo.TabStop = false;
             // 
             // radLabel4
             // 
             this.radLabel4.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel4.Location = new System.Drawing.Point(26, 198);
+            this.radLabel4.Location = new System.Drawing.Point(30, 244);
+            this.radLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(85, 22);
             this.radLabel4.TabIndex = 122;
@@ -183,17 +183,19 @@
             // txtTelNo
             // 
             this.txtTelNo.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelNo.Location = new System.Drawing.Point(155, 161);
+            this.txtTelNo.Location = new System.Drawing.Point(181, 198);
+            this.txtTelNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtTelNo.MaxLength = 50;
             this.txtTelNo.Name = "txtTelNo";
-            this.txtTelNo.Size = new System.Drawing.Size(220, 24);
+            this.txtTelNo.Size = new System.Drawing.Size(257, 24);
             this.txtTelNo.TabIndex = 121;
             this.txtTelNo.TabStop = false;
             // 
             // radLabel5
             // 
             this.radLabel5.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel5.Location = new System.Drawing.Point(26, 163);
+            this.radLabel5.Location = new System.Drawing.Point(30, 201);
+            this.radLabel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel5.Name = "radLabel5";
             this.radLabel5.Size = new System.Drawing.Size(112, 22);
             this.radLabel5.TabIndex = 120;
@@ -202,17 +204,19 @@
             // txtPwd
             // 
             this.txtPwd.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPwd.Location = new System.Drawing.Point(156, 234);
+            this.txtPwd.Location = new System.Drawing.Point(182, 288);
+            this.txtPwd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPwd.MaxLength = 50;
             this.txtPwd.Name = "txtPwd";
-            this.txtPwd.Size = new System.Drawing.Size(220, 24);
+            this.txtPwd.Size = new System.Drawing.Size(257, 24);
             this.txtPwd.TabIndex = 125;
             this.txtPwd.TabStop = false;
             // 
             // radLabel1
             // 
             this.radLabel1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.Location = new System.Drawing.Point(26, 236);
+            this.radLabel1.Location = new System.Drawing.Point(30, 290);
+            this.radLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(82, 22);
             this.radLabel1.TabIndex = 124;
@@ -221,17 +225,19 @@
             // txtUserName
             // 
             this.txtUserName.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(156, 272);
+            this.txtUserName.Location = new System.Drawing.Point(182, 335);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUserName.MaxLength = 50;
             this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(220, 24);
+            this.txtUserName.Size = new System.Drawing.Size(257, 24);
             this.txtUserName.TabIndex = 127;
             this.txtUserName.TabStop = false;
             // 
             // radLabel6
             // 
             this.radLabel6.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel6.Location = new System.Drawing.Point(26, 274);
+            this.radLabel6.Location = new System.Drawing.Point(30, 337);
+            this.radLabel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel6.Name = "radLabel6";
             this.radLabel6.Size = new System.Drawing.Size(93, 22);
             this.radLabel6.TabIndex = 126;
@@ -240,17 +246,19 @@
             // txtJobTitle
             // 
             this.txtJobTitle.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJobTitle.Location = new System.Drawing.Point(156, 311);
+            this.txtJobTitle.Location = new System.Drawing.Point(182, 383);
+            this.txtJobTitle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtJobTitle.MaxLength = 50;
             this.txtJobTitle.Name = "txtJobTitle";
-            this.txtJobTitle.Size = new System.Drawing.Size(220, 24);
+            this.txtJobTitle.Size = new System.Drawing.Size(257, 24);
             this.txtJobTitle.TabIndex = 129;
             this.txtJobTitle.TabStop = false;
             // 
             // radLabel7
             // 
             this.radLabel7.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel7.Location = new System.Drawing.Point(26, 313);
+            this.radLabel7.Location = new System.Drawing.Point(30, 385);
+            this.radLabel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel7.Name = "radLabel7";
             this.radLabel7.Size = new System.Drawing.Size(75, 22);
             this.radLabel7.TabIndex = 128;
@@ -259,7 +267,8 @@
             // radLabel8
             // 
             this.radLabel8.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel8.Location = new System.Drawing.Point(26, 431);
+            this.radLabel8.Location = new System.Drawing.Point(30, 530);
+            this.radLabel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel8.Name = "radLabel8";
             this.radLabel8.Size = new System.Drawing.Size(72, 22);
             this.radLabel8.TabIndex = 130;
@@ -270,9 +279,10 @@
             this.btnAttributes.BackColor = System.Drawing.Color.AliceBlue;
             this.btnAttributes.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.btnAttributes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
-            this.btnAttributes.Location = new System.Drawing.Point(156, 558);
+            this.btnAttributes.Location = new System.Drawing.Point(182, 687);
+            this.btnAttributes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAttributes.Name = "btnAttributes";
-            this.btnAttributes.Size = new System.Drawing.Size(145, 46);
+            this.btnAttributes.Size = new System.Drawing.Size(169, 57);
             this.btnAttributes.TabIndex = 503;
             this.btnAttributes.Text = "Attri&butes";
             this.btnAttributes.UseVisualStyleBackColor = false;
@@ -281,7 +291,8 @@
             // radLabel9
             // 
             this.radLabel9.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel9.Location = new System.Drawing.Point(26, 493);
+            this.radLabel9.Location = new System.Drawing.Point(30, 607);
+            this.radLabel9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel9.Name = "radLabel9";
             this.radLabel9.Size = new System.Drawing.Size(109, 22);
             this.radLabel9.TabIndex = 504;
@@ -290,17 +301,19 @@
             // txtRefNo
             // 
             this.txtRefNo.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRefNo.Location = new System.Drawing.Point(155, 351);
+            this.txtRefNo.Location = new System.Drawing.Point(181, 432);
+            this.txtRefNo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtRefNo.MaxLength = 50;
             this.txtRefNo.Name = "txtRefNo";
-            this.txtRefNo.Size = new System.Drawing.Size(220, 24);
+            this.txtRefNo.Size = new System.Drawing.Size(257, 24);
             this.txtRefNo.TabIndex = 507;
             this.txtRefNo.TabStop = false;
             // 
             // radLabel10
             // 
             this.radLabel10.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel10.Location = new System.Drawing.Point(26, 353);
+            this.radLabel10.Location = new System.Drawing.Point(30, 434);
+            this.radLabel10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.radLabel10.Name = "radLabel10";
             this.radLabel10.Size = new System.Drawing.Size(64, 22);
             this.radLabel10.TabIndex = 506;
@@ -310,23 +323,25 @@
             // 
             this.txtSpecialRequirements.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.txtSpecialRequirements.ForeColor = System.Drawing.Color.Red;
-            this.txtSpecialRequirements.Location = new System.Drawing.Point(155, 493);
+            this.txtSpecialRequirements.Location = new System.Drawing.Point(181, 607);
+            this.txtSpecialRequirements.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSpecialRequirements.MaxLength = 500;
             this.txtSpecialRequirements.Multiline = true;
             this.txtSpecialRequirements.Name = "txtSpecialRequirements";
             this.txtSpecialRequirements.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtSpecialRequirements.Size = new System.Drawing.Size(218, 53);
+            this.txtSpecialRequirements.Size = new System.Drawing.Size(254, 64);
             this.txtSpecialRequirements.TabIndex = 508;
             this.txtSpecialRequirements.TabStop = false;
             // 
             // txtAddress
             // 
             this.txtAddress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(155, 431);
+            this.txtAddress.Location = new System.Drawing.Point(181, 530);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtAddress.MaxLength = 200;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.txtAddress.Size = new System.Drawing.Size(219, 49);
+            this.txtAddress.Size = new System.Drawing.Size(255, 59);
             this.txtAddress.TabIndex = 509;
             this.txtAddress.Text = "";
             this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
@@ -334,9 +349,10 @@
             // lblVehicleType
             // 
             this.lblVehicleType.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.lblVehicleType.Location = new System.Drawing.Point(24, 392);
+            this.lblVehicleType.Location = new System.Drawing.Point(28, 482);
+            this.lblVehicleType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVehicleType.Name = "lblVehicleType";
-            this.lblVehicleType.Size = new System.Drawing.Size(122, 20);
+            this.lblVehicleType.Size = new System.Drawing.Size(142, 25);
             this.lblVehicleType.TabIndex = 511;
             this.lblVehicleType.Text = "Default Vehicle :";
             // 
@@ -345,15 +361,12 @@
             this.ddlVehicleType.Caption = null;
             this.ddlVehicleType.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlVehicleType.ForeColor = System.Drawing.Color.Black;
-            this.ddlVehicleType.Location = new System.Drawing.Point(156, 392);
+            this.ddlVehicleType.Location = new System.Drawing.Point(182, 482);
+            this.ddlVehicleType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ddlVehicleType.Name = "ddlVehicleType";
             this.ddlVehicleType.Property = null;
-            // 
-            // 
-            // 
-            this.ddlVehicleType.RootElement.ForeColor = System.Drawing.Color.Black;
             this.ddlVehicleType.ShowDownArrow = true;
-            this.ddlVehicleType.Size = new System.Drawing.Size(217, 22);
+            this.ddlVehicleType.Size = new System.Drawing.Size(253, 20);
             this.ddlVehicleType.TabIndex = 513;
             // 
             // chkBookedBy
@@ -361,12 +374,9 @@
             this.chkBookedBy.BackColor = System.Drawing.Color.Transparent;
             this.chkBookedBy.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBookedBy.ForeColor = System.Drawing.Color.Black;
-            this.chkBookedBy.Location = new System.Drawing.Point(255, 616);
+            this.chkBookedBy.Location = new System.Drawing.Point(518, 488);
+            this.chkBookedBy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkBookedBy.Name = "chkBookedBy";
-            // 
-            // 
-            // 
-            this.chkBookedBy.RootElement.ForeColor = System.Drawing.Color.Black;
             this.chkBookedBy.Size = new System.Drawing.Size(83, 19);
             this.chkBookedBy.TabIndex = 515;
             this.chkBookedBy.Text = "Booked By";
@@ -377,12 +387,9 @@
             this.chkWebLogin.BackColor = System.Drawing.Color.Transparent;
             this.chkWebLogin.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkWebLogin.ForeColor = System.Drawing.Color.Black;
-            this.chkWebLogin.Location = new System.Drawing.Point(156, 616);
+            this.chkWebLogin.Location = new System.Drawing.Point(518, 432);
+            this.chkWebLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.chkWebLogin.Name = "chkWebLogin";
-            // 
-            // 
-            // 
-            this.chkWebLogin.RootElement.ForeColor = System.Drawing.Color.Black;
             this.chkWebLogin.Size = new System.Drawing.Size(83, 19);
             this.chkWebLogin.TabIndex = 514;
             this.chkWebLogin.Text = "Web Login";
@@ -390,10 +397,10 @@
             // 
             // frmCompanyContacts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(609, 647);
+            this.ClientSize = new System.Drawing.Size(710, 796);
             this.Controls.Add(this.chkBookedBy);
             this.Controls.Add(this.chkWebLogin);
             this.Controls.Add(this.ddlVehicleType);
@@ -423,12 +430,8 @@
             this.FixedExitButtonOnTopRight = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.FormTitle = "Contacts";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCompanyContacts";
-            // 
-            // 
-            // 
-            //this.RootElement.ApplyShapeToControl = true;
-            //this.RootElement.MinSize = new System.Drawing.Size(150, 36);
             this.ShowExitButton = true;
             this.ShowHeader = true;
             this.ShowSaveAndCloseButton = true;
@@ -491,7 +494,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ddlVehicleType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkBookedBy)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkWebLogin)).EndInit();
-            //((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
