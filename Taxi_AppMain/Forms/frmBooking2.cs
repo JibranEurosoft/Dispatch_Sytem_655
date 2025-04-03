@@ -10505,6 +10505,9 @@ namespace Taxi_AppMain
                             listofSummary.Add(new BookingSummary { label = "Agent Fee", value = string.Format("{0:0.00}", objMaster.Current.AgentCommission.ToDecimal() + objMaster.Current.CashRate.ToDecimal()) });
 
 
+                        listofSummary.Add(new BookingSummary { label = "BookingFee", value = string.Format("{0:0.00}", objMaster.Current.ServiceCharges.ToDecimal()) });
+
+
                         listofSummary.Add(new BookingSummary { label = "Parking", value = string.Format("{0:0.00}", objMaster.Current.CongtionCharges.ToDecimal()) });
                         listofSummary.Add(new BookingSummary { label = "Waiting", value = string.Format("{0:0.00}", objMaster.Current.MeetAndGreetCharges.ToDecimal()) });
 

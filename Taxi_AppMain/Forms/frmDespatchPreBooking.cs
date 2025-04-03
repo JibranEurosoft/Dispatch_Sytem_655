@@ -927,13 +927,13 @@ namespace Taxi_AppMain
 
                         string summary = string.Empty;
 
-                        if (AppVars.objPolicyConfiguration.PDAVersion.ToDecimal() > 100)
-                        {
-
+                      
                             List<BookingSummary> listofSummary = new List<BookingSummary>();
 
                             if (objBooking.CompanyId != null)
                                 listofSummary.Add(new BookingSummary { label = "Agent Fee", value = string.Format("{0:0.00}", objBooking.AgentCommission.ToDecimal() + objBooking.CashRate.ToDecimal()) });
+
+                            listofSummary.Add(new BookingSummary { label = "BookingFee", value = string.Format("{0:0.00}", objBooking.ServiceCharges.ToDecimal()) });
 
 
                             listofSummary.Add(new BookingSummary { label = "Parking", value = string.Format("{0:0.00}", objBooking.CongtionCharges.ToDecimal()) });
@@ -947,7 +947,7 @@ namespace Taxi_AppMain
 
 
                             summary = ",\"Summary\":" + Newtonsoft.Json.JsonConvert.SerializeObject(listofSummary);
-                        }
+                      
 
 
 
