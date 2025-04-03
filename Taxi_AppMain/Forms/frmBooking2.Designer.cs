@@ -140,6 +140,7 @@ namespace Taxi_AppMain
             this.chkMiles = new System.Windows.Forms.CheckBox();
             this.numMiles = new System.Windows.Forms.NumericUpDown();
             this.pnlOtherCharges = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
             this.btnExtrAcHARGES = new System.Windows.Forms.Button();
             this.numTipAmount = new System.Windows.Forms.NumericUpDown();
             this.radLabel4 = new System.Windows.Forms.Label();
@@ -189,6 +190,7 @@ namespace Taxi_AppMain
             this.ddlSubCompany = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnPickAccountBooking = new System.Windows.Forms.Button();
             this.pnlMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -255,6 +257,7 @@ namespace Taxi_AppMain
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel2.Controls.Add(this.btnPickAccountBooking);
             this.panel2.Controls.Add(this.chkSurge);
             this.panel2.Controls.Add(this.chkAllocateDriver);
             this.panel2.Controls.Add(this.btnAccountInformation);
@@ -944,7 +947,7 @@ namespace Taxi_AppMain
             this.ddlCompany.Location = new System.Drawing.Point(486, 120);
             this.ddlCompany.Name = "ddlCompany";
             this.ddlCompany.PropertySelector = null;
-            this.ddlCompany.Size = new System.Drawing.Size(406, 25);
+            this.ddlCompany.Size = new System.Drawing.Size(369, 25);
             this.ddlCompany.SuggestBoxHeight = 96;
             this.ddlCompany.SuggestListOrderRule = null;
             this.ddlCompany.TabIndex = 240;
@@ -1077,7 +1080,7 @@ namespace Taxi_AppMain
             this.dtpPickupTime.Size = new System.Drawing.Size(69, 23);
             this.dtpPickupTime.TabIndex = 4;
             this.dtpPickupTime.TabStop = false;
-            this.dtpPickupTime.Text = "20:13";
+            this.dtpPickupTime.Text = "15:58";
             this.dtpPickupTime.Value = null;
             this.dtpPickupTime.Visible = false;
             // 
@@ -1695,6 +1698,7 @@ namespace Taxi_AppMain
             // pnlOtherCharges
             // 
             this.pnlOtherCharges.BackColor = System.Drawing.Color.Lavender;
+            this.pnlOtherCharges.Controls.Add(this.label17);
             this.pnlOtherCharges.Controls.Add(this.btnExtrAcHARGES);
             this.pnlOtherCharges.Controls.Add(this.numTipAmount);
             this.pnlOtherCharges.Controls.Add(this.radLabel4);
@@ -1717,6 +1721,17 @@ namespace Taxi_AppMain
             this.pnlOtherCharges.TabIndex = 0;
             this.pnlOtherCharges.TabStop = true;
             // 
+            // label17
+            // 
+            this.label17.BackColor = this.pnlOtherCharges.BackColor;
+            this.label17.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(232, 7);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(32, 20);
+            this.label17.TabIndex = 509;
+            this.label17.Text = "Tip";
+            // 
             // btnExtrAcHARGES
             // 
             this.btnExtrAcHARGES.BackColor = System.Drawing.Color.AliceBlue;
@@ -1732,9 +1747,9 @@ namespace Taxi_AppMain
             // 
             // numTipAmount
             // 
-            this.numTipAmount.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.numTipAmount.Font = new System.Drawing.Font("Tahoma", 10.25F);
             this.numTipAmount.InterceptArrowKeys = false;
-            this.numTipAmount.Location = new System.Drawing.Point(249, 2);
+            this.numTipAmount.Location = new System.Drawing.Point(276, 2);
             this.numTipAmount.Maximum = new decimal(new int[] {
             99999999,
             0,
@@ -1746,10 +1761,9 @@ namespace Taxi_AppMain
             0,
             -2147483648});
             this.numTipAmount.Name = "numTipAmount";
-            this.numTipAmount.Size = new System.Drawing.Size(31, 22);
+            this.numTipAmount.Size = new System.Drawing.Size(48, 24);
             this.numTipAmount.TabIndex = 0;
             this.numTipAmount.TabStop = false;
-            this.numTipAmount.Visible = false;
             // 
             // radLabel4
             // 
@@ -2358,6 +2372,18 @@ namespace Taxi_AppMain
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnPickAccountBooking
+            // 
+            this.btnPickAccountBooking.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(240)))), ((int)(((byte)(249)))));
+            this.btnPickAccountBooking.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPickAccountBooking.Location = new System.Drawing.Point(867, 300);
+            this.btnPickAccountBooking.Name = "btnPickAccountBooking";
+            this.btnPickAccountBooking.Size = new System.Drawing.Size(30, 23);
+            this.btnPickAccountBooking.TabIndex = 530;
+            this.btnPickAccountBooking.Text = "...";
+            this.btnPickAccountBooking.UseVisualStyleBackColor = false;
+            this.btnPickAccountBooking.Click += new System.EventHandler(this.btnPickAccountBooking_Click);
+            // 
             // frmBooking2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2687,6 +2713,7 @@ namespace Taxi_AppMain
         private System.Windows.Forms.DataGridViewTextBoxColumn DriverId;
         private System.Windows.Forms.DataGridViewTextBoxColumn details;
         private System.Windows.Forms.DataGridViewButtonColumn btnDespatchJob;
-
+        private Label label17;
+        private Button btnPickAccountBooking;
     }
 }

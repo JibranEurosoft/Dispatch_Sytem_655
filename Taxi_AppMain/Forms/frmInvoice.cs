@@ -2507,6 +2507,21 @@ namespace Taxi_AppMain
             frm.HasSplitByField = ddlSplitBy.Text;
             frm.ObjInvoice = objMaster.Current;
             var list = General.GetQueryable<vu_Invoice>(a => a.Id == id).OrderBy(c => c.PickupDate).ToList();
+            // new code
+            if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "PRINT INVOICE CALCULATION") > 0)
+            {
+                foreach (var invoice in list)
+                {
+                    var booking = General.GetQueryable<Booking>(a => a.Id == invoice.BookingId).FirstOrDefault();
+                    // var booking = bookings.FirstOrDefault(b => b.id == invoice.BookingId);
+                    if (booking != null)
+                    {
+                        invoice.Charges += booking.ServiceCharges;
+                    }
+                }
+            }
+            //end
+
             int count = list.Count;
 
             frm.DataSource = list;

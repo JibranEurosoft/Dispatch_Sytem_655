@@ -605,6 +605,14 @@ namespace Taxi_AppMain
                 trackEscortItem.BackColor = Color.Blue;
                 trackEscortItem.Click += new EventHandler(TrackEscortItem_Click);
                 trackEscortItem.Font = new Font("Tahoma", 10, FontStyle.Bold);
+                if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                {
+                    trackEscortItem.Visibility = ElementVisibility.Visible;
+                }
+                else
+                {
+                    trackEscortItem.Visibility = ElementVisibility.Hidden;
+                }
                 driverContextMenu.Items.Add(trackEscortItem);
 
                 RadMenuItem ForceLogoutItem = new RadMenuItem("Logout");
@@ -2127,6 +2135,7 @@ namespace Taxi_AppMain
 
                         if (e.Column.Name == "Driver")
                         {
+
                             if (e.Row.Cells["IsConfirmedDriver"].Value.ToBool())
                             {
                                 e.CellElement.NumberOfColors = 1;
@@ -2136,12 +2145,12 @@ namespace Taxi_AppMain
                             }
                             else
                             {
-                                if (e.CellElement.BackColor == Color.Aqua)
-                                {
-                                    e.CellElement.BackColor = GridBackColor;
-                                    e.CellElement.ForeColor = Color.Black;
-                                    e.CellElement.DrawFill = true;
-                                }
+
+                                e.CellElement.BackColor = GridBackColor;
+                                e.CellElement.ForeColor = Color.Black;
+                                e.CellElement.DrawFill = true;
+
+
 
                             }
 
@@ -4229,6 +4238,14 @@ namespace Taxi_AppMain
                             mItem.Text = "Track Escort";
                             mItem.Name = "trackescort";
                             mItem.Tag = e.RowIndex.ToStr() + "," + e.ColumnIndex.ToStr();
+                            if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                            {
+                                mItem.Visible = true;
+                            }
+                            else
+                            {
+                                mItem.Visible = false;
+                            }
                             mItem.Click += new EventHandler(EscortOnPlots_ItemClick);
 
                             plotsContextMenu.MenuItems.Add(mItem);
@@ -10617,7 +10634,8 @@ namespace Taxi_AppMain
                         {
                             driverContextMenu.Items["TrackEscort"].Visibility = ElementVisibility.Hidden;
                         }
-                        else { 
+                        else
+                        {
                             driverContextMenu.Items["TrackEscort"].Visibility = ElementVisibility.Visible;
                             driverContextMenu.Items["TrackEscort"].Tag = cell.GridControl.Name;
                         }
@@ -14791,7 +14809,22 @@ namespace Taxi_AppMain
 
                     return;
                 }
+                else if (message.StartsWith("booking created from cmac>>"))
+                {
 
+                    if (this.InvokeRequired)
+                    {
+                        this.BeginInvoke(new UIParameterizedDelegate(CloseCreatedBookingFromCMAC), values[1].ToStr() , null);
+                    }
+                    else
+                    {
+                        CloseCreatedBookingFromCMAC(values[1].ToStr(), null);
+
+                    }
+                    //   }
+
+                    return;
+                }
 
                 else if (message.StartsWith("voice request>>"))
                 {
@@ -15745,6 +15778,29 @@ namespace Taxi_AppMain
 
         }
 
+        private void CloseDesktopAlertCreatedBookingFromCMACForm(string msg, string msg2)
+        {
+            try
+            {
+                if (listOfBreakPopups != null)
+                {
+                    msg = msg.Replace("<<", ">>").Trim();
+                    var aler = listOfBreakPopups.FirstOrDefault(c => c.Popup.Tag.ToStr().StartsWith(msg));
+
+                    if (aler != null)
+                    {
+                        listOfBreakPopups.Remove(aler);
+                        aler.Dispose();
+                        aler = null;
+                    }
+                     RefreshDashBoardDrivers();
+                }
+            }
+            catch
+            {
+                    RefreshDashBoardDrivers();
+            }
+        }
 
 
 
@@ -15847,6 +15903,10 @@ namespace Taxi_AppMain
             }
         }
 
+        private void CloseCreatedBookingFromCMAC(string driverId, string other)
+        {
+            CloseDesktopAlertCreatedBookingFromCMACForm(driverId, other);
+        }
 
 
 
@@ -17283,9 +17343,8 @@ namespace Taxi_AppMain
                 grdAllJobs.Columns["VehicleID"].IsVisible = false;
 
 
-                grdPendingJobs.Columns["Total"].IsVisible = false;
+                //grdPendingJobs.Columns["Total"].IsVisible = false;
                 grdPendingJobs.Columns["OrderNo"].IsVisible = false;
-
 
                 hiddenColumnsList = hiddenColumnsList.OrderBy(c => c.GridColMoveTo).ToList();
 
@@ -18718,7 +18777,8 @@ namespace Taxi_AppMain
 
 
                 grdPendingJobs.Columns["Total"].Width = 50;
-                grdPendingJobs.Columns["Total"].HeaderText = "Fares(£)";
+                grdPendingJobs.Columns["Total"].HeaderText = "Total";
+                //grdPendingJobs.Columns["Total"].HeaderText = "Fares(£)";
 
                 grdPendingJobs.Columns["OrderNo"].Width = 50;
                 grdPendingJobs.Columns["OrderNo"].HeaderText = "Order No";
@@ -20354,7 +20414,7 @@ namespace Taxi_AppMain
                 int journeytypeid = 0;
                 if (ddlJourneyType != null)
                 {
-                     journeytypeid = ddlJourneyType.SelectedValue.ToInt();
+                    journeytypeid = ddlJourneyType.SelectedValue.ToInt();
 
                 }
 
@@ -21098,58 +21158,63 @@ namespace Taxi_AppMain
 
                 if (e.Page.Name == "Pg_RecentJobs")
                 {
-                    if (IsRecentJob_TabbedOpened == false)
+                    //if (IsRecentJob_TabbedOpened == false)
+                    //{
+                    //    if (ddlSearchDateType.Items.Count == 0)
+                    //    {
+
+                    Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+                    Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
+
+                    ddlSearchDateType.Items.Clear();
+
+                    radListDataItem3.Selected = false;
+                    radListDataItem3.Text = "Booking Date";
+                    radListDataItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                    radListDataItem3.TextWrap = true;
+                    radListDataItem4.Text = "Pickup Date";
+                    radListDataItem4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+                    radListDataItem4.TextWrap = true;
+                    radListDataItem4.Selected = true;
+                    this.ddlSearchDateType.Items.Add(radListDataItem3);
+                    this.ddlSearchDateType.Items.Add(radListDataItem4);
+
+                    if (ddlJourneyType != null)
                     {
-                        if (ddlSearchDateType.Items.Count == 0)
-                        {
-
-                            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
-                            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
-
-
-                            radListDataItem3.Selected = false;
-                            radListDataItem3.Text = "Booking Date";
-                            radListDataItem3.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            radListDataItem3.TextWrap = true;
-                            radListDataItem4.Text = "Pickup Date";
-                            radListDataItem4.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-                            radListDataItem4.TextWrap = true;
-                            radListDataItem4.Selected = true;
-                            this.ddlSearchDateType.Items.Add(radListDataItem3);
-                            this.ddlSearchDateType.Items.Add(radListDataItem4);
-
-                            ddlJourneyType.Items.Clear();
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "One Way", Value = 1 });
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "Return", Value = 2 });
-                            ddlJourneyType.Items.Add(new RadListDataItem { Text = "Wait & Return", Value = 3 });
-
-                            ComboFunctions.FillPaymentTypeCombo(ddlPaymentType);
-                            ComboFunctions.FillBookingStatusCombo(ddlStatus);
-                            ComboFunctions.FillBookingTypeCombo(ddlBookingType);
-
-
-                            grdRecentJobs.ViewCellFormatting += new CellFormattingEventHandler(grdRecentJobs_ViewCellFormatting);
-
-                            grdRecentJobs.EnableFiltering = true; ;
-                            grdRecentJobs.ShowFilteringRow = true;
-
-
-                            ddlCust.Enter += new EventHandler(ddlCust_Enter);
-
-                            opt_JOneWay.Visible = false;
-                            opt_JReturnWay.Visible = false;
-                        }
-
-
-
-
-                        grdRecentJobs.TableElement.Font = newFont;
-
-
-
-                        IsRecentJob_TabbedOpened = true;
-
+                        ddlJourneyType.Items.Clear();
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "One Way", Value = 1 });
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "Return", Value = 2 });
+                        ddlJourneyType.Items.Add(new RadListDataItem { Text = "Wait & Return", Value = 3 });
                     }
+
+                    ComboFunctions.FillPaymentTypeCombo(ddlPaymentType);
+                    ComboFunctions.FillBookingStatusCombo(ddlStatus);
+                    ComboFunctions.FillBookingTypeCombo(ddlBookingType);
+                    grdRecentJobs.Rows.Clear(); 
+                    lblSearchResults.Visible = false;
+
+                    grdRecentJobs.ViewCellFormatting += new CellFormattingEventHandler(grdRecentJobs_ViewCellFormatting);
+
+                    grdRecentJobs.EnableFiltering = true; ;
+                    grdRecentJobs.ShowFilteringRow = true;
+
+
+                    ddlCust.Enter += new EventHandler(ddlCust_Enter);
+
+                    opt_JOneWay.Visible = false;
+                    opt_JReturnWay.Visible = false;
+                    //}
+
+
+
+
+                    grdRecentJobs.TableElement.Font = newFont;
+
+
+
+                    //IsRecentJob_TabbedOpened = true;
+
+                    //}
 
 
 
@@ -24614,7 +24679,7 @@ namespace Taxi_AppMain
 
 
 
-        bool IsNotification = false;
+        bool IsNotification = true;
         private int xpos = 0;
         private int lblNotiX;
         private void tmrAlert_Tick(object sender, EventArgs e)
@@ -24627,44 +24692,44 @@ namespace Taxi_AppMain
                 if (IsNotification == true)
                 {
 
-                    if (lblNotification != null)
+                    //if (lblNotification != null)
+                    //{
+                    if (lblNotification.Text != string.Empty)
                     {
-                        if (lblNotification.Text != string.Empty)
+
+                        int lbl = lblNotification.Location.X + lblNotification.Width;
+
+                        if (pnlNotification.Location.X >= (pnlNotification.Location.X + lblNotification.Location.X + lblNotification.Width))
                         {
-
-                            int lbl = lblNotification.Location.X + lblNotification.Width;
-
-                            if (pnlNotification.Location.X >= (pnlNotification.Location.X + lblNotification.Location.X + lblNotification.Width))
-                            {
-                                lblNotification.Location = new System.Drawing.Point(pnlNotification.Width, 4);
-                                xpos = 0;
-
-                            }
-
-                            else if (xpos == 0)
-                            {
-
-                                int xval = lblNotification.Location.X;
-                                lblNotification.Location = new System.Drawing.Point(xval, 4);
-                                xpos = xval;
-                            }
-                            else
-                            {
-
-                                lblNotification.Location = new System.Drawing.Point(xpos, 4);
-                                xpos -= 2;
-                                if (xpos == 0)
-                                {
-                                    xpos = -1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            lblNotification.Location = new System.Drawing.Point((lblNotification.Location.X + lblNotification.Width) / 2, 4);
+                            lblNotification.Location = new System.Drawing.Point(pnlNotification.Width, 4);
                             xpos = 0;
 
                         }
+
+                        else if (xpos == 0)
+                        {
+
+                            int xval = lblNotification.Location.X;
+                            lblNotification.Location = new System.Drawing.Point(xval, 4);
+                            xpos = xval;
+                        }
+                        else
+                        {
+
+                            lblNotification.Location = new System.Drawing.Point(xpos, 4);
+                            xpos -= 2;
+                            if (xpos == 0)
+                            {
+                                xpos = -1;
+                            }
+                        }
+                        //}
+                        //else
+                        //{
+                        //    lblNotification.Location = new System.Drawing.Point((lblNotification.Location.X + lblNotification.Width) / 2, 4);
+                        //    xpos = 0;
+
+                        //}
                     }
 
                 }
@@ -27232,7 +27297,7 @@ namespace Taxi_AppMain
             else if (e.Argument.ToStr() == "PopulatePlotDrivers")
             {
                 e.Result = e.Argument.ToStr();
-                LoadPlotsDriversByWorker();
+                LoadDriversByWorker();
 
             }
             else if (e.Argument.ToStr() == "PopulatePricePlotDrivers")
@@ -27729,33 +27794,6 @@ namespace Taxi_AppMain
                 AddExcepLog("LoadDriversByWorker");
             }
         }
-
-
-
-        public void LoadPlotsDriversByWorker()
-        {
-            try
-            {
-                using (TaxiDataContext db = new TaxiDataContext())
-                {
-                    //  listofDriverPlots = db.ExecuteQuery<stp_GetDashboardDriversResult>("exec stp_GetDashboardDrivers {0},{1}", AppVars.DefaultDriverSubCompanyId, selectedAutoMode).OrderBy(c => c.orderno).ToList();
-
-                    //   listofDriverPlots = db.stp_GetDashboardDrivers(AppVars.DefaultDriverSubCompanyId).OrderBy(c => c.orderno).ToList();
-
-                    db.ExecuteQuery<stp_GetDashboardDriversResultEx>("exec stp_GetDashboardDrivers {0}", (AppVars.DefaultDriverSubCompanyId)).OrderBy(c => c.orderno).ToList();
-
-                }
-
-                // listofDriverPlots = new TaxiDataContext().stp_GetDriverPlots(AppVars.DefaultDriverSubCompanyId).OrderBy(c => c.orderno).ToList();
-            }
-            catch (Exception ex)
-            {
-
-                AddExcepLog("LoadPlotsDriversByWorker :" + ex.Message);
-
-            }
-        }
-
 
 
         public void PopulateRequiredData()
@@ -36630,15 +36668,11 @@ namespace Taxi_AppMain
 
                 RadButtonElement btnAllow = new RadButtonElement();
                 RadButtonElement btnDeny = new RadButtonElement();
-                RadButtonElement btnTrackDriver = new RadButtonElement();
-                RadButtonElement btnTrackEscort = new RadButtonElement();
 
 
                 alertAuthorization.ButtonItems.AddRange(new Telerik.WinControls.RadItem[] {
                 btnAllow,
-                btnDeny,
-                btnTrackDriver,
-                btnTrackEscort});
+                btnDeny});
 
 
 
@@ -36683,35 +36717,7 @@ namespace Taxi_AppMain
                 ((Telerik.WinControls.Primitives.FillPrimitive)(btnDeny.GetChildAt(0))).BackColor4 = System.Drawing.Color.Red;
                 ((Telerik.WinControls.Primitives.FillPrimitive)(btnDeny.GetChildAt(0))).BackColor = System.Drawing.Color.Red;
                 ((Telerik.WinControls.Primitives.BorderPrimitive)(btnDeny.GetChildAt(2))).BoxStyle = Telerik.WinControls.BorderBoxStyle.SingleBorder;
-                // 
-                // btnTrackDriver
-                // 
-                btnTrackDriver.AutoSize = false;
-                btnTrackDriver.Bounds = new System.Drawing.Rectangle(90, 0, 90, 30);
-                btnTrackDriver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btnTrackDriver.ForeColor = System.Drawing.Color.Black;
-                btnTrackDriver.Name = "btnTrackDriver";
-                btnTrackDriver.Text = "Track Driver";
-                btnTrackDriver.Tag = msg;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor2 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor3 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor4 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackDriver.GetChildAt(0))).BackColor = System.Drawing.Color.Aqua;
-                // 
-                // btnTrackEscort
-                // 
-                btnTrackEscort.AutoSize = false;
-                btnTrackEscort.Bounds = new System.Drawing.Rectangle(90, 0, 90, 30);
-                btnTrackEscort.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                btnTrackEscort.ForeColor = System.Drawing.Color.Black;
-                btnTrackEscort.Name = "btnTrackEscort";
-                btnTrackEscort.Text = "Track Escort";
-                btnTrackEscort.Tag = msg;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor2 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor3 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor4 = System.Drawing.Color.Aqua;
-                ((Telerik.WinControls.Primitives.FillPrimitive)(btnTrackEscort.GetChildAt(0))).BackColor = System.Drawing.Color.Aqua;
-
+                
                 alertAuthorization.FixedSize = new Size(360, 110);
 
                 //if (AppVars.objPolicyConfiguration.PDAJobOfferRequestTimeout.ToInt() >= 60)
@@ -36738,10 +36744,7 @@ namespace Taxi_AppMain
                 btnAllow.Click += new EventHandler(btnAllow_Click);
                 btnDeny.Click += new EventHandler(btnDeny_Click);
                 btnDeny.TextElement.Tag = alertAuthorization;
-                btnTrackDriver.Click += new EventHandler(btnTrackDriver_Click);
-                btnTrackEscort.Click += new EventHandler(btnTrackEscort_Click);
-                btnTrackDriver.TextElement.Tag = alertAuthorization;
-                btnTrackEscort.TextElement.Tag = alertAuthorization;
+                
                 alertAuthorization.Popup.AlertElement.CaptionElement.CaptionGrip.BackColor = Color.GhostWhite;
 
                 string captionText = "";
@@ -37655,6 +37658,14 @@ namespace Taxi_AppMain
                         EditFareItem1.ForeColor = Color.Blue;
                         EditFareItem1.Font = new Font("Tahoma", 10, FontStyle.Bold);
                         EditFareItem1.Click += new EventHandler(btnTrackEscortPoolJob_Click);
+                        if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "SHOW TRACK ESCORT") > 0)
+                        {
+                            EditFareItem1.Visibility = ElementVisibility.Visible;
+                        }
+                        else
+                        {
+                            EditFareItem1.Visibility = ElementVisibility.Hidden;
+                        }
                         CMenu_PoolJobs.Items.Add(EditFareItem1);
 
                         EditFareItem1 = new RadMenuItem("View Job");  // 0 index

@@ -22,6 +22,7 @@ namespace Taxi_AppMain
     public partial class frmCustomer : UI.SetupBase
     {
         CustomerBO objMaster;
+        bool ISshowNo = false;
         public frmCustomer()
         {
             InitializeComponent();
@@ -40,7 +41,30 @@ namespace Taxi_AppMain
             radPageView1.SelectedPageChanged += RadPageView1_SelectedPageChanged;
             grdccdetails.CommandCellClick += Grdccdetails_CommandCellClick;
         }
+        public frmCustomer(bool IsNewBooking)
+        {
 
+            if (IsNewBooking == true)
+            {
+                ISshowNo = true;
+            }
+            
+            InitializeComponent();
+
+            chkBlackList.ToggleStateChanged += chkBlackList_ToggleStateChanged;
+            InitializeConstructor();
+
+            //foreach (var item in General.GetQueryable<Gen_SubCompany>(null).Select(args => new { args.BackgroundColor, args.CompanyName, args.Id }).ToList())
+            //{
+            //    ddlSubCompany.Items.Add(new RadCustomListDataItem { Text = item.CompanyName, Value = item.BackgroundColor, Tag = item.Id });
+            //}
+
+            //ddlSubCompany.SelectedIndex = 0;
+
+            tabIVRAddresses.Item.Visibility = ElementVisibility.Collapsed;
+            radPageView1.SelectedPageChanged += RadPageView1_SelectedPageChanged;
+            grdccdetails.CommandCellClick += Grdccdetails_CommandCellClick;
+        }
         private void Grdccdetails_CommandCellClick(object sender, GridViewCellEventArgs e)
         {
             try
@@ -731,10 +755,10 @@ namespace Taxi_AppMain
                 if (objMaster.Current == null) return;
 
 
-                txtName.Text = objMaster.Current.Name.ToStr();
+                txtName.Text = ISshowNo == true? "" : objMaster.Current.Name.ToStr();
                 txtEmail.Text = objMaster.Current.Email.ToStr();
                 txtTelephoneNo.Text = objMaster.Current.TelephoneNo.ToStr();
-                txtMobileNo.Text = objMaster.Current.MobileNo.ToStr();
+                txtMobileNo.Text = ISshowNo == true ? "" : objMaster.Current.MobileNo.ToStr();
 
               //  ddlSubCompany.SelectedValue = objMaster.Current.SubCompanyId;
 

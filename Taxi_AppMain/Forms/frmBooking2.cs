@@ -31,6 +31,7 @@ using System.Diagnostics;
 
 using System.Drawing.Drawing2D;
 using System.Web.Script.Serialization;
+using Taxi_AppMain.Classes;
 
 namespace Taxi_AppMain
 {
@@ -895,6 +896,7 @@ namespace Taxi_AppMain
                 btnAttributes.Click += btnAttributes_Click;
                 txtToFlightDoorNo.KeyDown += new KeyEventHandler(txtToFlightDoorNo_KeyDown);
                 ENABLECMACBOOKINGCALCULATION = AppVars.listUserRights.Count(c => c.functionId == "ENABLE CMAC BOOKING CALCULATION") > 0;
+
             }
             catch (Exception ex)
             {
@@ -5103,8 +5105,10 @@ namespace Taxi_AppMain
                 InstallEventHandlers(pnlBookingFees);
                 InstallEventHandlers(panel2);
 
+                if (AppVars.listUserRights.Count(x => x.functionId == "HIDE COMPANY PRICE") == 0)
+                    InitializeCompanyPrice();
 
-                InitializeCompanyPrice();
+
                 numReturnCompanyFares.Enabled = false;
                 numCompanyFares.Enabled = false;
 
@@ -9318,7 +9322,7 @@ namespace Taxi_AppMain
                 //if (chkGenerateToken.Checked && txtTokenNo.Text.Length > 0)
                 //    objMaster.Current.JobCode = txtTokenNo.Text.Trim();
 
-                //  objMaster.Current.TipAmount = numTipAmount.Value.ToDecimal();
+                objMaster.Current.TipAmount = numTipAmount.Value.ToDecimal();
 
                 objMaster.CheckServiceCharges = AppVars.objPolicyConfiguration.SendBookingCompletionEmail.ToBool();
 
@@ -11564,6 +11568,7 @@ namespace Taxi_AppMain
                 numExtraChrgs.Value = objMaster.Current.ExtraDropCharges.ToDecimal();
                 numMeetCharges.Value = objMaster.Current.MeetAndGreetCharges.ToDecimal();
                 numCongChrgs.Value = objMaster.Current.CongtionCharges.ToDecimal();
+                numTipAmount.Value = objMaster.Current.TipAmount.ToDecimal();
 
                 numTotalChrgs.Value = objMaster.Current.TotalCharges.ToDecimal();
 
@@ -12012,7 +12017,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                //      btnPickAccountBooking.Enabled = false;
+                                btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
@@ -12037,7 +12042,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                //  btnPickAccountBooking.Enabled = false;
+                                btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
@@ -12883,8 +12888,8 @@ namespace Taxi_AppMain
                         numReturnCompanyFares.Enabled = true;
                     if (ddlCompany.DataSource == null)
                     {
-
-                        InitializeCompanyPrice();
+                        if (AppVars.listUserRights.Count(x => x.functionId == "HIDE COMPANY PRICE") == 0)
+                            InitializeCompanyPrice();
 
 
                         this.ddlCompany.InitializeSettings(pnlAutoDespatch);
@@ -13314,6 +13319,7 @@ namespace Taxi_AppMain
                     mileageError = false;
                 }
                 CalculateFares();
+
 
                 if (worker_fares == null)
                 {
@@ -14579,7 +14585,6 @@ namespace Taxi_AppMain
 
 
             //return true;
-
         }
 
         private void CalculatingFares(string tag)
@@ -14868,7 +14873,9 @@ namespace Taxi_AppMain
                 if (btnPickFares.Tag != null)
                 {
                     btnSaveNew.Tag = "wait";
-                    MessageBox.Show("Please wait while system is calculating fares...");
+                    //MessageBox.Show("Please wait while system is calculating fares...", "Wait");
+                    CustomMsgBox.ShowAutoClosingMessageBox("Please wait while system is calculating fares...", "Wait", 5000);
+
                     btnSaveNew.Tag = null;
 
                     if (btnPickFares.Tag != null)
@@ -16211,8 +16218,7 @@ namespace Taxi_AppMain
 
         private void ShowMultiBooking()
         {
-            if (AppVars.listUserRights.Count(c => c.formName == "frmMultiBooking" && c.functionId == "EXECUTE") == 0  )
-                return;
+
 
             string customerName = ddlCustomerName.Text.ToStr().Trim();
             string MobileNo = txtCustomerMobileNo.Text.Trim();
@@ -20428,7 +20434,7 @@ namespace Taxi_AppMain
 
 
 
-                            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 && obj.DisableCompanyFaresForController.ToBool() == false)
+                            if (AppVars.listUserRights.Count(c => c.functionId == "HIDE ACCOUNT FARES") > 0 && obj.DisableCompanyFaresForController.ToBool() == false || AppVars.listUserRights.Count(c => c.functionId == "HIDE COMPANY PRICE") > 0)
                             {
 
 
@@ -22850,7 +22856,8 @@ namespace Taxi_AppMain
 
                 if (btnPickFares.Enabled == false && ddlPaymentType.Enabled)
                 {
-                    MessageBox.Show("Please wait while system is calculating fares...");
+                    //MessageBox.Show("Please wait while system is calculating fares...", "Wait");
+                    CustomMsgBox.ShowAutoClosingMessageBox("Please wait while system is calculating fares...", "Wait", 5000);
                     return;
                 }
 
@@ -35344,7 +35351,7 @@ var via ='" + viaadd + @"'
             {
 
 
-                numFareRate.Enabled = false;
+                numFareRate.Enabled = true;
                 numCongChrgs.Enabled = false;
                 numMeetCharges.Enabled = false;
                 numExtraChrgs.Enabled = false;
@@ -35803,7 +35810,7 @@ var via ='" + viaadd + @"'
                 }
 
 
-                frmCustomer c = new frmCustomer();
+                frmCustomer c = new frmCustomer(true);
 
                 int? custId = null;
 

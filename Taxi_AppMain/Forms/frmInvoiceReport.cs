@@ -68,10 +68,10 @@ namespace Taxi_AppMain
         {
             try
             {
-       
-               
 
-                if (ObjInvoice==null || ObjInvoice.SubCompanyId == null)
+
+
+                if (ObjInvoice == null || ObjInvoice.SubCompanyId == null)
                     objSubCompany = AppVars.objSubCompany;
                 else
                     objSubCompany = ObjInvoice.Gen_SubCompany;
@@ -84,8 +84,8 @@ namespace Taxi_AppMain
 
                 Microsoft.Reporting.WinForms.ReportParameter[] param = null;
 
-            //    if (ddlCompany.SelectedValue == null)
-           //         pnlCriteria.Visible = false;
+                //    if (ddlCompany.SelectedValue == null)
+                //         pnlCriteria.Visible = false;
 
                 reportViewer1.LocalReport.EnableExternalImages = true;
 
@@ -114,7 +114,7 @@ namespace Taxi_AppMain
 
                 }
 
-                
+
 
                 if (!string.IsNullOrEmpty(sortCode))
                     sortCode = "Sort Code : " + sortCode;
@@ -151,7 +151,7 @@ namespace Taxi_AppMain
 
 
 
-               
+
 
                 int? companyId = this.DataSource.FirstOrDefault().DefaultIfEmpty().CompanyId;
 
@@ -163,19 +163,19 @@ namespace Taxi_AppMain
 
                 UM_Form_Template objTemplate = General.GetObject<UM_Form_Template>(c => c.UM_Form.FormName == this.Name && c.IsDefault == true);
 
-              
 
-            
-               // if (AppVars.objPolicyConfiguration.DefaultClientId.ToStr() == "!ndex_@ut0_$erv!ce$_Ltd")
-               // {
-               //     objTemplate.TemplateName = "Template48";
 
-               // }
-               //else if (System.Diagnostics.Debugger.IsAttached)
-               // {
-               //     objTemplate.TemplateName = "Template53";
 
-               // }
+                // if (AppVars.objPolicyConfiguration.DefaultClientId.ToStr() == "!ndex_@ut0_$erv!ce$_Ltd")
+                // {
+                //     objTemplate.TemplateName = "Template48";
+
+                // }
+                //else if (System.Diagnostics.Debugger.IsAttached)
+                // {
+                //     objTemplate.TemplateName = "Template53";
+
+                // }
 
 
                 if (objTemplate.TemplateName.ToStr() == "Template13" || objTemplate.TemplateName.ToStr() == "Template14")
@@ -255,7 +255,7 @@ namespace Taxi_AppMain
                     param = new Microsoft.Reporting.WinForms.ReportParameter[26];
 
 
-                  
+
 
                 }
                 else if (objTemplate.TemplateName.ToStr() == "Template16")
@@ -273,7 +273,7 @@ namespace Taxi_AppMain
                 else if (objTemplate.TemplateName.ToStr() == "Template45" || objTemplate.TemplateName.ToStr() == "Template48" || objTemplate.TemplateName.ToStr() == "Template50" || objTemplate.TemplateName.ToStr() == "Template54")
                     param = new Microsoft.Reporting.WinForms.ReportParameter[27];
 
-                else if ( objTemplate.TemplateName.ToStr() == "Template53")
+                else if (objTemplate.TemplateName.ToStr() == "Template53")
                     param = new Microsoft.Reporting.WinForms.ReportParameter[26];
                 else
                     param = new Microsoft.Reporting.WinForms.ReportParameter[22];
@@ -304,15 +304,15 @@ namespace Taxi_AppMain
                         if (objTemplate.TemplateName.ToStr() == "Template25")
                         {
                             footer = "If you have any queries regarding invoice, please dont hesitate to contact Accounts Team on " + objSubCompany.EmailAddress.ToStr() + " or " + objSubCompany.TelephoneNo.ToStr();
-                                                   
+
 
                         }
-                    
+
                         else
                         {
 
 
-                            if (objTemplate.TemplateName.ToStr() == "Template50" )
+                            if (objTemplate.TemplateName.ToStr() == "Template50")
                             {
                                 footer = "If you have any queries regarding invoice, please dont hesitate to contact Accounts Team on " + objSubCompany.EmailAddress.ToStr() + " or +44(0)" + objSubCompany.TelephoneNo.ToStr().Substring(1);
 
@@ -320,11 +320,11 @@ namespace Taxi_AppMain
                             }
 
                             else
-                            footer = "If you have any queries regarding invoice, please dont hesitate to contact Accounts Team on " + objSubCompany.EmailAddress.ToStr() + " or " + objSubCompany.TelephoneNo.ToStr();
+                                footer = "If you have any queries regarding invoice, please dont hesitate to contact Accounts Team on " + objSubCompany.EmailAddress.ToStr() + " or " + objSubCompany.TelephoneNo.ToStr();
 
                             if (objTemplate.TemplateName.ToStr() == "Template49")
                             {
-                               
+
 
                                 if (objTemplate.ShowSpecialColumns.ToBool())
                                 {
@@ -355,8 +355,8 @@ namespace Taxi_AppMain
                             {
                                 footer += "\r\n" + objSubCompany.WebsiteUrl.ToStr();
 
-                                if(objSubCompany.AccountTitle.ToStr().Trim().Length>0)
-                                    footer+= " are part of " + objSubCompany.AccountTitle.ToStr();
+                                if (objSubCompany.AccountTitle.ToStr().Trim().Length > 0)
+                                    footer += " are part of " + objSubCompany.AccountTitle.ToStr();
 
 
                                 if (objTemplate.ShowSpecialColumns.ToBool())
@@ -364,7 +364,7 @@ namespace Taxi_AppMain
                                     footer += "\r\n" + "Registered in England and Wales No. GB " + objSubCompany.CompanyNumber;
                                 }
 
-                              
+
                                 try
                                 {
                                     using (TaxiDataContext db = new TaxiDataContext())
@@ -394,7 +394,7 @@ namespace Taxi_AppMain
                 if (objTemplate.TemplateName.ToStr() == "Template54")
                 {
                     minRows = 1;
-                        }
+                }
 
 
                 if (objTemplate.TemplateName.ToStr() == "Template16")
@@ -456,7 +456,7 @@ namespace Taxi_AppMain
                 {
                     if (objTemplate.TemplateName.ToStr() == "Template24")
                     {
-                        var dateRange=this.DataSource.FirstOrDefault(c=>c.Id!=0);
+                        var dateRange = this.DataSource.FirstOrDefault(c => c.Id != 0);
 
                         string accTitle = string.Empty;
 
@@ -465,13 +465,13 @@ namespace Taxi_AppMain
 
 
                         param[6] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_CompanyHeader", objSubCompany.CompanyName.ToStr());
-                        param[9] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AccountTitle",  objSubCompany.AccountTitle.ToStr());
+                        param[9] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AccountTitle", objSubCompany.AccountTitle.ToStr());
 
 
-                        string dateCriteria=" ";
+                        string dateCriteria = " ";
 
-                        if(dateRange!=null && dateRange.FromDate!=null && dateRange.TillDate!=null)
-                        dateCriteria="From "+string.Format("{0:dd-MMM-yy}",dateRange.FromDate.ToDate()) + " till " +string.Format("{0:dd-MMM-yy}",dateRange.TillDate.ToDate()) ;
+                        if (dateRange != null && dateRange.FromDate != null && dateRange.TillDate != null)
+                            dateCriteria = "From " + string.Format("{0:dd-MMM-yy}", dateRange.FromDate.ToDate()) + " till " + string.Format("{0:dd-MMM-yy}", dateRange.TillDate.ToDate());
 
                         param[31] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_DateRange", dateCriteria);
 
@@ -507,7 +507,7 @@ namespace Taxi_AppMain
                 }
                 else if (objTemplate.TemplateName.ToStr() == "Template6" || objTemplate.TemplateName.ToStr() == "Template7"
                     || objTemplate.TemplateName.ToStr() == "Template8" || objTemplate.TemplateName.ToStr() == "Template9"
-                    || objTemplate.TemplateName.ToStr() == "Template10"  || objTemplate.TemplateName.ToStr() == "Template49" || objTemplate.TemplateName.ToStr() == "Template11"
+                    || objTemplate.TemplateName.ToStr() == "Template10" || objTemplate.TemplateName.ToStr() == "Template49" || objTemplate.TemplateName.ToStr() == "Template11"
                     || objTemplate.TemplateName.ToStr() == "Template15" || objTemplate.TemplateName.ToStr() == "Template16"
                     || objTemplate.TemplateName.ToStr() == "Template17" || objTemplate.TemplateName.ToStr() == "Template18"
                     || objTemplate.TemplateName.ToStr() == "Template21" || objTemplate.TemplateName.ToStr() == "Template22"
@@ -636,8 +636,8 @@ namespace Taxi_AppMain
                             vatNumber = vatNumber.Replace("VAT Number: ", "VAT NO.").Trim();
                         }
                     }
-                    else if (objTemplate.TemplateName.ToStr() == "Template10" || objTemplate.TemplateName.ToStr() == "Template49" || objTemplate.TemplateName.ToStr() == "Template11" || 
-                        objTemplate.TemplateName.ToStr() == "Template15" || objTemplate.TemplateName.ToStr() == "Template17" || 
+                    else if (objTemplate.TemplateName.ToStr() == "Template10" || objTemplate.TemplateName.ToStr() == "Template49" || objTemplate.TemplateName.ToStr() == "Template11" ||
+                        objTemplate.TemplateName.ToStr() == "Template15" || objTemplate.TemplateName.ToStr() == "Template17" ||
                         objTemplate.TemplateName.ToStr() == "Template21" || objTemplate.TemplateName.ToStr() == "Template22" ||
                         objTemplate.TemplateName.ToStr() == "Template23" || objTemplate.TemplateName.ToStr() == "Template52" || objTemplate.TemplateName.ToStr() == "Template24"
                         || objTemplate.TemplateName.ToStr() == "Template25" || objTemplate.TemplateName.ToStr() == "Template26"
@@ -679,7 +679,7 @@ namespace Taxi_AppMain
 
                             this.reportViewer1.LocalReport.ReportEmbeddedResource = className + "excel_rptCompanyInvoice.rdlc";
                         }
-                        else  if (objTemplate.TemplateName.ToStr() == "Template25" && this.ExportFileType.ToStr().ToLower() == "excel")
+                        else if (objTemplate.TemplateName.ToStr() == "Template25" && this.ExportFileType.ToStr().ToLower() == "excel")
                         {
 
                             this.reportViewer1.LocalReport.ReportEmbeddedResource = className + "excel_rptCompanyInvoice.rdlc";
@@ -702,7 +702,7 @@ namespace Taxi_AppMain
                             param[27] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_EmergencyNo", objSubCompany.EmergencyNo);
                             //Report_Parameter_EmergencyNo
                             //Report_Parameter_Fax
-                        
+
                         }
                         else if (objTemplate.TemplateName.ToStr() == "Template23" || objTemplate.TemplateName.ToStr() == "Template52")
                         {
@@ -716,10 +716,10 @@ namespace Taxi_AppMain
 
 
                             param[7] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_SortCode", sortCode);
-                         
+
                             param[10] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_Bank", bank);
                         }
-                       
+
                         else if ((objTemplate.TemplateName.ToStr() == "Template10" || objTemplate.TemplateName.ToStr() == "Template49" || objTemplate.TemplateName.ToStr() == "Template32" || objTemplate.TemplateName.ToStr() == "Template45" || objTemplate.TemplateName.ToStr() == "Template48" || objTemplate.TemplateName.ToStr() == "Template50") && HasSplitByField == "Split By Department")
                         {
                             this.reportViewer1.LocalReport.ReportEmbeddedResource = className + "SplitByDept_rptCompanyInvoice.rdlc";
@@ -738,16 +738,16 @@ namespace Taxi_AppMain
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = className + "rptCompanyInvoice.rdlc";
 
                 }
-              
+
                 else if (objTemplate.TemplateName.ToStr() == "Template20" || objTemplate.TemplateName.ToStr() == "Template53")
                 {
                     this.reportViewer1.LocalReport.ReportEmbeddedResource = className + "rptCompanyInvoice.rdlc";
 
-                    objLogo.Add(new ClsLogo { ImageInBytes = objSubCompany.CompanyFooterLogo != null ? objSubCompany.CompanyFooterLogo.ToArray() : null });                  
+                    objLogo.Add(new ClsLogo { ImageInBytes = objSubCompany.CompanyFooterLogo != null ? objSubCompany.CompanyFooterLogo.ToArray() : null });
                 }
 
 
-               
+
                 else
                 {
 
@@ -818,14 +818,14 @@ namespace Taxi_AppMain
                 }
                 else if (objTemplate.TemplateName.ToStr() == "Template17")
                 {
-                //    NetCharges = this.DataSource.Where(c => c.VehicleType != "Coach" && c.PaymentTypeId.ToInt() != 6).Sum(c => c.Charges.ToDecimal() + c.WaitingCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
-                //    netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
-                //.Sum(c => c.Charges.ToDecimal() + c.ExtraDropCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal() );
+                    //    NetCharges = this.DataSource.Where(c => c.VehicleType != "Coach" && c.PaymentTypeId.ToInt() != 6).Sum(c => c.Charges.ToDecimal() + c.WaitingCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
+                    //    netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
+                    //.Sum(c => c.Charges.ToDecimal() + c.ExtraDropCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal() );
 
-                 
-                //    invoiceGrandTotal = NetCharges + data.AdminFees.ToDecimal();
-                 
-                //    invoiceGrandTotal2 = netAmount + data.AdminFees.ToDecimal();
+
+                    //    invoiceGrandTotal = NetCharges + data.AdminFees.ToDecimal();
+
+                    //    invoiceGrandTotal2 = netAmount + data.AdminFees.ToDecimal();
 
                     netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
                                   .Sum(c => c.Charges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
@@ -885,15 +885,15 @@ namespace Taxi_AppMain
                     //else
                     //{
 
-                        netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
-                                       .Sum(c => c.Charges.ToDecimal() + c.WaitingCharges.ToDecimal());
+                    netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
+                                   .Sum(c => c.Charges.ToDecimal() + c.WaitingCharges.ToDecimal());
 
-                        totalExtra = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
-                                       .Sum(c => c.ParkingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
+                    totalExtra = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
+                                   .Sum(c => c.ParkingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
 
-                        invoiceGrandTotal = netAmount;
-                 //   }
-                   
+                    invoiceGrandTotal = netAmount;
+                    //   }
+
                 }
                 else if (objTemplate.TemplateName.ToStr() == "Template25"
                     || objTemplate.TemplateName.ToStr() == "Template27" || objTemplate.TemplateName.ToStr() == "Template32"
@@ -905,7 +905,19 @@ namespace Taxi_AppMain
                     netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
                                    .Sum(c => c.Charges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal() + c.ExtraDropCharges.ToDecimal());
 
+                    //new code
+                    if (AppVars.listUserRights.Count(c => c.functionId.ToUpper() == "PRINT INVOICE CALCULATION") > 0)
+                    {
+                        var firstMatchingRecord = this.DataSource
+          .Where(c => c.PaymentTypeId.ToInt() != 6)
+          .FirstOrDefault();
 
+                        if (firstMatchingRecord != null)
+                        {
+                            netAmount = firstMatchingRecord.InvoiceTotal.ToDecimal();
+                        }
+                    }
+                    //end
                     invoiceGrandTotal = netAmount + data.AdminFees.ToDecimal();
 
                 }
@@ -923,7 +935,7 @@ namespace Taxi_AppMain
                 {
 
                     netAmount = this.DataSource.Where(c => c.PaymentTypeId.ToInt() != 6)
-                                   .Sum(c => c.Charges.ToDecimal() + c.ExtraDropCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal()+c.EscortPrice.ToDecimal());
+                                   .Sum(c => c.Charges.ToDecimal() + c.ExtraDropCharges.ToDecimal() + c.ParkingCharges.ToDecimal() + c.WaitingCharges.ToDecimal() + c.EscortPrice.ToDecimal());
 
 
                     invoiceGrandTotal = netAmount + data.AdminFees.ToDecimal();
@@ -955,7 +967,7 @@ namespace Taxi_AppMain
                 string CompanyAccountNo = string.Empty;
                 string VATType = "VAT:";
                 string vatOnServiceChargeString = "VAT";
-              //  decimal subTotal = netAmount;
+                //  decimal subTotal = netAmount;
 
                 if (companyId != null)
                 {
@@ -980,9 +992,9 @@ namespace Taxi_AppMain
                             netAmount = netAmount - discountAmount;
                         }
 
-                        if (objCompany.AdminFees > 0) 
+                        if (objCompany.AdminFees > 0)
                         {
-                          
+
 
                             if (objCompany.AdminFeeType.ToString() == "Amount")
                             {
@@ -996,8 +1008,8 @@ namespace Taxi_AppMain
                             HasAdminFees = "1";
 
 
-                            if(param.Count()>23)
-                               param[23] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeValue", string.Format("{0:c}", AdminFees).Substring(1) );
+                            if (param.Count() > 23)
+                                param[23] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeValue", string.Format("{0:c}", AdminFees).Substring(1));
 
 
                         }
@@ -1007,7 +1019,7 @@ namespace Taxi_AppMain
                         {
 
 
-                            valueAddedTax = ((netAmount+AdminFees) * 20) / 100;
+                            valueAddedTax = ((netAmount + AdminFees) * 20) / 100;
                             vat = "1";
                             if (objCompany.VatOnlyOnAdminFees.ToBool())
                             {
@@ -1019,7 +1031,7 @@ namespace Taxi_AppMain
 
                         }
 
-                        invoiceGrandTotal = netAmount+discountAmount + totalExtra+ AdminFees;
+                        invoiceGrandTotal = netAmount + discountAmount + totalExtra + AdminFees;
 
 
                         if (objTemplate.TemplateName.ToStr() == "Template15")
@@ -1028,8 +1040,8 @@ namespace Taxi_AppMain
 
 
                         }
-                      
-                        else if (objTemplate.TemplateName.ToStr() == "Template26" || objTemplate.TemplateName.ToStr() == "Template45" || objTemplate.TemplateName.ToStr() == "Template48" 
+
+                        else if (objTemplate.TemplateName.ToStr() == "Template26" || objTemplate.TemplateName.ToStr() == "Template45" || objTemplate.TemplateName.ToStr() == "Template48"
                             || objTemplate.TemplateName.ToStr() == "Template50" || objTemplate.TemplateName.ToStr() == "Template53")
                         {
                             if (vat == "1")
@@ -1059,8 +1071,8 @@ namespace Taxi_AppMain
                     }
 
                 }
-               
-           
+
+
                 //OC
                 // invoiceGrandTotal = (invoiceGrandTotal + valueAddedTax) -discountAmount;
                 //
@@ -1115,7 +1127,7 @@ namespace Taxi_AppMain
                     param[23] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeValue", AdminFees.ToStr());
                     param[24] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_IBAN", "IBAN No : " + objSubCompany.IbanNumber.ToStr());
                     param[25] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_BLC", "SWIFT Code : " + objSubCompany.BlcNumber.ToStr());
-                    
+
                 }
 
                 if (objTemplate.TemplateName.ToStr() == "Template18")
@@ -1146,8 +1158,8 @@ namespace Taxi_AppMain
 
                     minRows = 2;
 
-                    if(objSubCompany.CompanyLogo!=null)
-                    param[6] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_CompanyHeader", "");
+                    if (objSubCompany.CompanyLogo != null)
+                        param[6] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_CompanyHeader", "");
 
                 }
                 else if (objTemplate.TemplateName.ToStr() == "Template30")
@@ -1167,11 +1179,11 @@ namespace Taxi_AppMain
                     param[16] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_Email", email);
                     param[26] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_Fax", Fax);
                     param[27] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_EmergencyNo", vatOnServiceChargeString);
-                    param[28] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_DiscountPercent", "Discount ("+DiscountPercent.ToStr()+"%)");
+                    param[28] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_DiscountPercent", "Discount (" + DiscountPercent.ToStr() + "%)");
                     param[29] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_HasAdminFees", HasAdminFees);
                     param[30] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_HasDisCount", HasDiscount);
                     //Report_Parameter_HasAdminFees
-                    param[22] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeLabel", "Admin Fees %"+AdminFeesPercent);
+                    param[22] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeLabel", "Admin Fees %" + AdminFeesPercent);
                     param[23] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_AdminFeeValue", AdminFees.ToStr());
                     minRows = 2;
 
@@ -1189,9 +1201,9 @@ namespace Taxi_AppMain
 
 
 
-                    param[26] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_DiscountLabel", "Discount " +string.Format("{0:##0.##}", DiscountPercent)+"%");
+                    param[26] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_DiscountLabel", "Discount " + string.Format("{0:##0.##}", DiscountPercent) + "%");
 
-                   // minRows = 2;
+                    // minRows = 2;
                 }
 
                 if (data != null && IsSplitByOrder == false)// && HasSplitByField != "Split By Order No")
@@ -1215,15 +1227,15 @@ namespace Taxi_AppMain
                 }
 
 
-           
-               
-                   reportViewer1.LocalReport.SetParameters(param);
 
-                   this.vuInvoiceBindingSource.DataSource = this.DataSource;
-          
+
+                reportViewer1.LocalReport.SetParameters(param);
+
+                this.vuInvoiceBindingSource.DataSource = this.DataSource;
+
                 this.reportViewer1.ZoomPercent = 100;
                 this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
-                
+
                 // Create the PageSettings object
                 PageSettings pgSettings = new PageSettings
                 {
@@ -1233,7 +1245,7 @@ namespace Taxi_AppMain
 
                 // Assign the PageSettings to the ReportViewer
                 reportViewer1.SetPageSettings(pgSettings);
-                
+
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
@@ -1621,12 +1633,12 @@ namespace Taxi_AppMain
 
             this.LIST = lst;
             this.Shown += FrmInvoiceReport_Shown;
-          //  this.Shown += new EventHandler(frmDriverCommisionTransactionExpensesReport2_Shown);
+            //  this.Shown += new EventHandler(frmDriverCommisionTransactionExpensesReport2_Shown);
 
 
 
 
-        //    lblCriteria.Text = "From : " + string.Format("{0:dd/MM/yyyy}", from) + " to " + string.Format("{0:dd/MM/yyyy}", till);
+            //    lblCriteria.Text = "From : " + string.Format("{0:dd/MM/yyyy}", from) + " to " + string.Format("{0:dd/MM/yyyy}", till);
 
         }
 
@@ -1638,7 +1650,7 @@ namespace Taxi_AppMain
             {
 
                 grdDriverCommission.RowCount = LIST.Count;
-                for(int i=0; i<LIST.Count; i++)
+                for (int i = 0; i < LIST.Count; i++)
                 {
                     grdDriverCommission.Rows[i].Cells["Id"].Value = LIST[i].Id;
                     grdDriverCommission.Rows[i].Cells["InvoiceNo"].Value = LIST[i].InvoiceNo;
@@ -1647,7 +1659,7 @@ namespace Taxi_AppMain
 
                 }
 
-             
+
                 this.FormBorderStyle = FormBorderStyle.FixedSingle;
                 this.ControlBox = true;
                 if (grdDriverCommission.Rows.Count > 0)
@@ -1656,16 +1668,16 @@ namespace Taxi_AppMain
 
 
                     grdDriverCommission.Columns["Id"].IsVisible = false;
-             //       grdDriverCommission.Columns["DriverId"].IsVisible = false;
+                    //       grdDriverCommission.Columns["DriverId"].IsVisible = false;
 
-               //     grdDriverCommission.Columns["VAT"].IsVisible = false;
+                    //     grdDriverCommission.Columns["VAT"].IsVisible = false;
 
                     grdDriverCommission.AllowAutoSizeColumns = true;
                     grdDriverCommission.AutoSizeColumnsMode = GridViewAutoSizeColumnsMode.Fill;
 
 
                     grdDriverCommission.Columns["Check"].Width = 60;
-                 
+
 
 
                     grdDriverCommission.Rows.ToList().ForEach(c => c.Cells["Check"].Value = true);
@@ -1682,7 +1694,7 @@ namespace Taxi_AppMain
 
                     if (row != null)
                     {
-                        SetDataSourceAndGenerateReport(row.Cells["Id"].Value.ToInt(),0);
+                        SetDataSourceAndGenerateReport(row.Cells["Id"].Value.ToInt(), 0);
                     }
 
 
@@ -1705,7 +1717,7 @@ namespace Taxi_AppMain
 
         }
 
-      
+
 
         private void cbAllDrivers_CheckedChanged(object sender, EventArgs e)
         {
@@ -1739,12 +1751,12 @@ namespace Taxi_AppMain
 
             if (Id > 0)
             {
-            
+
                 var list = General.GetQueryable<vu_Invoice>(a => a.Id == Id).OrderBy(c => c.PickupDate).ToList();
                 int count = list.Count;
                 this.ObjInvoice = General.GetObject<Invoice>(c => c.Id == Id);
                 this.DataSource = list;
-           
+
 
                 GenerateReport();
 
@@ -1873,7 +1885,7 @@ namespace Taxi_AppMain
 
                         int TransId = row.Cells["Id"].Value.ToInt();
 
-                        SetDataSourceAndGenerateReport(TransId,0);
+                        SetDataSourceAndGenerateReport(TransId, 0);
                     }
 
 
@@ -1895,10 +1907,10 @@ namespace Taxi_AppMain
         private void PrintDocument(long TransId)
         {
 
-           
+
             try
             {
-                
+
 
                 List<GridViewRowInfo> rows = null;
 
@@ -1967,7 +1979,7 @@ namespace Taxi_AppMain
                     }
 
 
-                  
+
 
                 }
             }
@@ -2069,15 +2081,15 @@ namespace Taxi_AppMain
                 {
                     frmInvoiceReport frm = new frmInvoiceReport();
                     frm.reportViewer1.Tag = "invoice";
-                   
+
 
 
                     frmEmail frmEmail = new frmEmail(null, "", "");
 
-                  //  Fleet_Driver objDriver = null;
+                    //  Fleet_Driver objDriver = null;
                     foreach (var item in rows)
                     {
-                    
+
 
 
 
@@ -2097,13 +2109,13 @@ namespace Taxi_AppMain
                         string email = item.Cells["Email"].Value.ToStr();
                         if (!string.IsNullOrEmpty(email))
                         {
-                            frm.SendEmailInternally(frmEmail,txtSubject.Text, item.Cells["InvoiceNo"].Value.ToStr(), item.Cells["Email"].Value.ToStr());
+                            frm.SendEmailInternally(frmEmail, txtSubject.Text, item.Cells["InvoiceNo"].Value.ToStr(), item.Cells["Email"].Value.ToStr());
 
                             IsSuccess = true;
-                           // IsSuccess = frm.SendEmailInternally(frmEmail, subject, objDriver.DriverNo.ToStr().Trim(), email);
+                            // IsSuccess = frm.SendEmailInternally(frmEmail, subject, objDriver.DriverNo.ToStr().Trim(), email);
                         }
 
-                      
+
 
 
 
@@ -2298,7 +2310,7 @@ namespace Taxi_AppMain
 
             }
 
-        //    lblCriteria.Text = "Account Invoice Report Related to '" + ddlCompany.Text.ToStr() + "', Date Range :" + string.Format("{0:dd/MM/yyyy}", fromDate) + " to " + string.Format("{0:dd/MM/yyyy}", tillDate);
+            //    lblCriteria.Text = "Account Invoice Report Related to '" + ddlCompany.Text.ToStr() + "', Date Range :" + string.Format("{0:dd/MM/yyyy}", fromDate) + " to " + string.Format("{0:dd/MM/yyyy}", tillDate);
 
 
 
@@ -2338,7 +2350,7 @@ namespace Taxi_AppMain
         {
             reportViewer1.Tag = "invoice";
 
-            General.ShowEmailForm(reportViewer1, "Account Invoice # " + invoiceNo, email, objSubCompany,false);
+            General.ShowEmailForm(reportViewer1, "Account Invoice # " + invoiceNo, email, objSubCompany, false);
 
         }
 
@@ -2354,10 +2366,10 @@ namespace Taxi_AppMain
             frmE.txtSubject.Text = subject;
             frmE.txtAttachment.Text = "Account Invoice # " + invoiceNo;
 
-            
-           
-       
-            frmE.SendEmail(true,objSubCompany);
+
+
+
+            frmE.SendEmail(true, objSubCompany);
 
             //         General.ShowEmailForm(reportViewer1, "Account Invoice # " + invoiceNo, email);
 
