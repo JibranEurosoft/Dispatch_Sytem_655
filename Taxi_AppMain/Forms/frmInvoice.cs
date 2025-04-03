@@ -16,6 +16,7 @@ using Telerik.WinControls;
 using System.Linq.Expressions;
 using Telerik.Data;
 using Taxi_AppMain.Classes;
+using System.Security.Cryptography;
 
 namespace Taxi_AppMain
 {
@@ -925,9 +926,65 @@ namespace Taxi_AppMain
 
                 Utils.General.SyncChildCollection(ref savedList, ref listofDetail, "Id", skipProperties);
 
+                string newInvoiceNo = "";
+
+
+                if (objMaster.Current.InvoiceTypeId == 1)
+                {
+                    using (var db = new TaxiDataContext())
+                    {
+                        // 1. Get the latest invoice number (assuming format like 'INV3329')
+                        var lastInvoiceNo = db.Invoices
+                                              .OrderByDescending(i => i.Id).Where(i => i.InvoiceTypeId == 1)
+                                              .Select(i => i.InvoiceNo)
+                                              .FirstOrDefault();
+
+                        string prefix = "INV";
+                        int newNumber = 1;
+
+                        if (!string.IsNullOrEmpty(lastInvoiceNo) && lastInvoiceNo.StartsWith(prefix))
+                        {
+                            string numberPart = lastInvoiceNo.Substring(prefix.Length);
+                            if (int.TryParse(numberPart, out int numericPart))
+                            {
+                                newNumber = numericPart + 1;
+                            }
+                        }
+
+                         newInvoiceNo = $"{prefix}{newNumber}";
+
+                        // 2. Get the invoice by primary key and update it
+                        //var invoice = db.Invoices.FirstOrDefault(i => i.Id == objMaster.PrimaryKeyValue.ToInt());
+                        //if (invoice != null)
+                        //{
+                        //    invoice.InvoiceNo = newInvoiceNo;
+                        //    db.SubmitChanges(); // save the update
+                        //    objMaster.Current.InvoiceNo = newInvoiceNo;
+                        //}
+                    }
+                }
+
+
                 objMaster.Save();
 
                 objMaster.GetByPrimaryKey(objMaster.PrimaryKeyValue);
+                if (objMaster.Current.InvoiceTypeId == 1)
+                {
+                    using (var db = new TaxiDataContext())
+                    {
+                        
+                        
+                        // 2. Get the invoice by primary key and update it
+                        var invoice = db.Invoices.FirstOrDefault(i => i.Id == objMaster.PrimaryKeyValue.ToInt());
+                        if (invoice != null)
+                        {
+                            invoice.InvoiceNo = newInvoiceNo;
+                            db.SubmitChanges(); // save the update
+                            objMaster.Current.InvoiceNo= newInvoiceNo;
+                        }
+                    }
+                }
+
                 DisplayRecord();
 
 
