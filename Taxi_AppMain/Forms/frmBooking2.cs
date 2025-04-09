@@ -12022,7 +12022,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                btnPickAccountBooking.Enabled = false;
+                                //btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
@@ -12047,7 +12047,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                btnPickAccountBooking.Enabled = false;
+                                //btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
