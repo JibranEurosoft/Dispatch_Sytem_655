@@ -937,9 +937,11 @@ namespace Taxi_AppMain
                         {
                             // 1. Get the latest invoice number (assuming format like 'INV3329')
                             var lastInvoiceNo = db.Invoices
-                                                  .OrderByDescending(i => i.Id).Where(i => i.InvoiceTypeId == 1)
-                                                  .Select(i => i.InvoiceNo)
-                                                  .FirstOrDefault();
+                                 .Where(i => i.InvoiceTypeId == 1 && i.InvoiceNo.StartsWith("INV"))
+                                 .OrderByDescending(i => i.Id)
+                                 .Select(i => i.InvoiceNo)
+                                 .FirstOrDefault();
+
 
                             string prefix = "INV";
                             int newNumber = 1;
