@@ -329,7 +329,7 @@ namespace Taxi_AppMain
                 param[23] = new Microsoft.Reporting.WinForms.ReportParameter("Report_Parameter_CashJobTotal", CashBooking);
                 string BalanceType = string.Empty;
                 int DriverId = this.DataSource.FirstOrDefault().DriverId.ToInt();
-                int Id = this.DataSource.FirstOrDefault().Id.ToInt(); ;
+                int Id = this.DataSource.FirstOrDefault().Id.ToInt(); 
 
                 string StatementDate = string.Empty;
                 using (TaxiDataContext db = new TaxiDataContext())
@@ -468,17 +468,18 @@ namespace Taxi_AppMain
                 this.vu_FleetDriverCommissionExpenseBindingSource.DataSource = this.DataSource2;
 
                 // Create the PageSettings object
-                PageSettings pgSettings = new PageSettings
-                {
-                    PaperSize = new PaperSize("A4", 827, 1169), // A4 in hundredths of an inch
-                    Margins = new Margins(50, 50, 50, 50)       // Set margins (optional)
-                };
-
-                // Assign the PageSettings to the ReportViewer
-                reportViewer1.SetPageSettings(pgSettings);
+               // PageSettings pgSettings = new PageSettings
+               // {
+               //     PaperSize = new PaperSize("A4", 827, 1169), // A4 in hundredths of an inch
+               //     Margins = new Margins(50, 50, 50, 50)       // Set margins (optional)
                 
+               // };
+
+               //// Assign the PageSettings to the ReportViewer
+               // reportViewer1.SetPageSettings(pgSettings);
+
                 this.reportViewer1.ZoomPercent = 100;
-                this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.Percent;
+                this.reportViewer1.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
                 this.reportViewer1.RefreshReport();
             }
             catch (Exception ex)
