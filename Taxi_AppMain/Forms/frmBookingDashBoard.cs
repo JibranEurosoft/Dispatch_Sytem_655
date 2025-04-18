@@ -14339,6 +14339,7 @@ namespace Taxi_AppMain
                     MethodInvoker inv = new MethodInvoker(delegate () { this.CreateAndShowAlert(captionText, contentText, contentImage, alertSound, false, "", "", ""); AddNotifyMessage(notifyMsg); });
 
                     this.Invoke(inv);
+                    
 
                     return;
 
@@ -14399,6 +14400,20 @@ namespace Taxi_AppMain
 
                     }
 
+
+                    return;
+
+                }
+                else if (message.StartsWith("Payment has been Done"))
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.BeginInvoke(new UIParameterizedDelegate(ShowPaymentForm), message, "");
+                    }
+                    else
+                    {
+                        ShowPaymentForm(message, "");
+                    }
 
                     return;
 
@@ -37093,8 +37108,15 @@ namespace Taxi_AppMain
 
         List<RadDesktopAlert> listOfBreakPopups = new List<RadDesktopAlert>();
 
+        #region Payment
+        private void ShowPaymentForm(string msg, string msg2)
+        {
+            ENUtils.ShowMessage(msg);
+        }
 
+       
 
+        #endregion
 
         #region BreakAuth
 
