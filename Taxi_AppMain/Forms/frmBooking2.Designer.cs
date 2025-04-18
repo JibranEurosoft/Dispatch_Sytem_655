@@ -190,7 +190,7 @@ namespace Taxi_AppMain
             this.ddlSubCompany = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
+           // this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.numHandLugg = new System.Windows.Forms.NumericUpDown();
             this.pnlMain.SuspendLayout();

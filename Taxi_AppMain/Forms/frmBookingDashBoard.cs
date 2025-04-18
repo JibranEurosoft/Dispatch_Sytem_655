@@ -2570,7 +2570,7 @@ namespace Taxi_AppMain
 
 
 
-                        if (e.Column.Name == "Account" || e.Column.Name == "To" || e.Column.Name == "From" || e.Column.Name == "Time")
+                        if (e.Column.Name == "Account")
                         {
 
 
@@ -18246,7 +18246,7 @@ namespace Taxi_AppMain
                 (grdPendingJobs.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
 
-                grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
+                grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
                 grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
                 grdPendingJobs.Columns["Vias"].Width = 30;
 
@@ -18369,7 +18369,7 @@ namespace Taxi_AppMain
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).CustomFormat = "HH:mm";
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
-                grdPreBookings.Columns["NoofLuggages"].IsVisible = false;
+                grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
 
                 grdPreBookings.Columns["Vias"].Width = 30;
 
@@ -22867,9 +22867,7 @@ namespace Taxi_AppMain
 
 
 
-                        if (e.Column.Name == "Account"
-
-                            )
+                        if (e.Column.Name == "Account")
                         {
 
 

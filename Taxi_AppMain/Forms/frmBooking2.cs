@@ -15746,6 +15746,7 @@ namespace Taxi_AppMain
                 txtViaAddress.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
                 //   txtViaAddress.Text = AppVars.objPolicyConfiguration.BaseAddress.ToStr().Trim();
                 txtViaAddress.Text = AppVars.objSubCompany.Address.ToStr().ToUpper().Trim();
+
                 txtViaAddress.TextChanged += new EventHandler(TextBoxElement_TextChanged);
             }
 

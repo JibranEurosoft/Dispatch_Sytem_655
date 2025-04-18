@@ -19,6 +19,7 @@ using System.Data.Linq;
 using System.Xml;
 using System.Threading;
 using System.Collections;
+using System.IO;
 
 namespace Taxi_AppMain
 {
@@ -8022,7 +8023,7 @@ namespace Taxi_AppMain
 
                 AddViaPoint();
                 FocusOnViAddress();
-
+                
             }
         }
 
@@ -8809,7 +8810,7 @@ namespace Taxi_AppMain
 
         //}
         private void FocusOnViAddress()
-        {
+                {
             ddlViaFromLocType.Select();
             SendKeys.Send("{TAB}");
             //txtViaAddress.Select();
@@ -10057,66 +10058,100 @@ namespace Taxi_AppMain
 
             int locTypeId = ddlViaFromLocType.SelectedValue.ToInt();
 
-            if (locTypeId == Enums.LOCATION_TYPES.ADDRESS || locTypeId == Enums.LOCATION_TYPES.BASE)
+
+            lblViaLoc.Text = "Via Address";
+            txtViaAddress.Visible = true;
+
+            ddlViaLocation.SelectedValue = null;
+            // ddlViaLocation.Visible = false;
+
+            // txtviaPostCode.Text = string.Empty;
+            // txtviaPostCode.Visible = false;
+
+
+            if (locTypeId == Enums.LOCATION_TYPES.BASE)
             {
-                lblViaLoc.Text = "Via Address";
-                txtViaAddress.Visible = true;
-                txtCustomerNameViaPoint.Text = string.Empty;
-                txtMobileNoViaPoint.Text = string.Empty;
+                txtViaAddress.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
+                //   txtViaAddress.Text = AppVars.objPolicyConfiguration.BaseAddress.ToStr().Trim();
+                txtViaAddress.Text = AppVars.objSubCompany.Address.ToStr().ToUpper().Trim();
 
-                ddlViaLocation.SelectedValue = null;
-                ddlViaLocation.Visible = false;
-
-                txtviaPostCode.Text = string.Empty;
-                txtviaPostCode.Visible = false;
-
-
-                if (locTypeId == Enums.LOCATION_TYPES.BASE)
-                {
-                    txtViaAddress.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
-                    txtViaAddress.Text = AppVars.objPolicyConfiguration.BaseAddress.ToStr().Trim();
-                    txtViaAddress.TextChanged += new EventHandler(TextBoxElement_TextChanged);
-                }
-
-
-            }
-            else if (locTypeId == Enums.LOCATION_TYPES.POSTCODE)
-            {
-                txtViaAddress.Text = string.Empty;
-                txtViaAddress.Visible = false;
-                txtCustomerNameViaPoint.Text = string.Empty;
-                txtMobileNoViaPoint.Text = string.Empty;
-
-                ddlViaLocation.SelectedValue = null;
-                ddlViaLocation.Visible = false;
-
-                txtviaPostCode.Visible = true;
-
-
-                lblViaLoc.Text = "Via PostCode";
-
-
-
+                txtViaAddress.TextChanged += new EventHandler(TextBoxElement_TextChanged);
             }
 
 
-            else
-            {
-                txtviaPostCode.Text = string.Empty;
-                txtviaPostCode.Visible = false;
 
-                txtViaAddress.Text = string.Empty;
-                txtViaAddress.Visible = false;
 
-                txtCustomerNameViaPoint.Text = string.Empty;
-                txtMobileNoViaPoint.Text = string.Empty;
 
-                ddlViaLocation.Visible = true;
-                lblViaLoc.Text = "Via Location";
-                ComboFunctions.FillLocationsCombo(ddlViaLocation, c => c.LocationTypeId == locTypeId);
 
-            }
+
         }
+
+        //private void FillViaLocations()
+        //{
+
+
+        //    int locTypeId = ddlViaFromLocType.SelectedValue.ToInt();
+
+        //    if (locTypeId == Enums.LOCATION_TYPES.ADDRESS || locTypeId == Enums.LOCATION_TYPES.BASE)
+        //    {
+        //        lblViaLoc.Text = "Via Address";
+        //        txtViaAddress.Visible = true;
+        //        txtCustomerNameViaPoint.Text = string.Empty;
+        //        txtMobileNoViaPoint.Text = string.Empty;
+
+        //        ddlViaLocation.SelectedValue = null;
+        //        ddlViaLocation.Visible = false;
+
+        //        txtviaPostCode.Text = string.Empty;
+        //        txtviaPostCode.Visible = false;
+
+
+        //        if (locTypeId == Enums.LOCATION_TYPES.BASE)
+        //        {
+        //            txtViaAddress.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
+        //            txtViaAddress.Text = AppVars.objPolicyConfiguration.BaseAddress.ToStr().Trim();
+        //            txtViaAddress.TextChanged += new EventHandler(TextBoxElement_TextChanged);
+        //        }
+
+
+        //    }
+        //    else if (locTypeId == Enums.LOCATION_TYPES.POSTCODE)
+        //    {
+        //        txtViaAddress.Text = string.Empty;
+        //        txtViaAddress.Visible = false;
+        //        txtCustomerNameViaPoint.Text = string.Empty;
+        //        txtMobileNoViaPoint.Text = string.Empty;
+
+        //        ddlViaLocation.SelectedValue = null;
+        //        ddlViaLocation.Visible = false;
+
+        //        txtviaPostCode.Visible = true;
+
+
+        //        lblViaLoc.Text = "Via PostCode";
+
+
+
+        //    }
+
+
+        //    else
+        //    {
+        //        txtviaPostCode.Text = string.Empty;
+        //        txtviaPostCode.Visible = false;
+
+        //        txtViaAddress.Text = string.Empty;
+        //        txtViaAddress.Visible = false;
+
+        //        txtCustomerNameViaPoint.Text = string.Empty;
+        //        txtMobileNoViaPoint.Text = string.Empty;
+
+        //        ddlViaLocation.Visible = true;
+        //        lblViaLoc.Text = "Via Location";
+        //        ComboFunctions.FillLocationsCombo(ddlViaLocation, c => c.LocationTypeId == locTypeId);
+
+        //    }
+        //}
 
 
         private void FillReturnViaLocations()
@@ -12408,63 +12443,281 @@ namespace Taxi_AppMain
 
         }
 
-
-
-
-
-
         private void ShowAddressesPOI(string[] resValue)
         {
             int sno = 1;
 
             // var finalList = resValue;
 
-
-
-            var finalList = (from a in AppVars.zonesList
-                             from b in resValue
-                             where b.Contains(a) && (b.Substring(b.IndexOf(a), a.Length) == a && (b.IndexOf(a) - 1) >= 0 && b[b.IndexOf(a) - 1] == ' ' && GeneralBLL.GetHalfPostCodeMatch(b) == a)
-
-                             select b).ToArray<string>();
-
-
-            if (finalList.Count() > 0)
+            try
             {
-                finalList = finalList.Union(resValue).ToArray<string>();
 
+
+
+
+
+
+                //
+
+                var finalList = (from a in AppVars.zonesList
+                                 from b in resValue
+                                 where b.Contains(a) && (b.Substring(b.IndexOf(a), a.Length) == a && (b.IndexOf(a) - 1) >= 0 && b[b.IndexOf(a) - 1] == ' ' && GeneralBLL.GetHalfPostCodeMatch(b) == a)
+
+                                 select b).ToArray<string>();
+
+
+                if (finalList.Count() > 0)
+                {
+
+
+
+                    finalList = finalList.Union(resValue).ToArray<string>();
+
+
+                    var finalList2 = (from a in resValue
+                                      where General.GetPostCodeMatch(a).Length == 0
+                                      select a).ToArray<string>();
+
+
+                    finalList = finalList2.Union(finalList).ToArray<string>();
+
+                }
+                else
+                {
+                    finalList = resValue;
+
+                    var finalList2 = (from a in resValue
+                                      where General.GetPostCodeMatch(a).Length == 0
+                                      select a).ToArray<string>();
+
+
+                    finalList = finalList2.Union(finalList).ToArray<string>();
+                }
+
+
+
+                //if (AppVars.objPolicyConfiguration.RecentAddressesFrequency.ToInt() > 0)
+                //{
+                //    searchTxt = searchTxt.Replace("#", "").Trim();
+
+
+
+                //    string[] list = null;
+                //    using (TaxiDataContext db = new TaxiDataContext())
+                //    {
+                //        list = db.Gen_RecentAddresses.OrderByDescending(c => c.SearchedOn).Take(50)
+                //       .Where(c => c.AddressLine1.Contains(searchTxt) && (ddlCompany.SelectedValue == null || c.CompanyId == ddlCompany.SelectedValue.ToIntorNull()))
+                //       .Distinct().Select(c => c.AddressLine1.Replace("&", "AND")).ToArray<string>();
+                //    }
+
+
+                //    if (list!=null && list.Count() > 0)
+                //    {
+
+
+                //        try
+                //        {
+
+
+                //            list = (from a in XDocument.Parse("<?xml version=\"1.0\" encoding=\"utf-8\"?><adds>" + String.Join(" ", list) + "</adds>").Element("adds").Nodes()
+                //                    where (a as XElement).Value.Contains(searchTxt)
+                //                    select (a as XElement).Value).Distinct().ToArray<string>();
+
+
+                //            if (finalList != null)
+                //            {
+
+                //                finalList = list.Union(finalList).ToArray<string>();
+                //            }
+                //            else
+                //            {
+
+                //                finalList = list;
+                //            }
+                //        }
+                //        catch
+                //        {
+
+
+                //        }
+                //    }
+                //}
+
+                if (AppVars.objPolicyConfiguration.RecentAddressesFrequency.ToInt() > 0 && searchTxt.ToStr().Trim().Length > 0)
+                {
+                    try
+                    {
+                        searchTxt = searchTxt.Replace("#", "").Trim();
+
+
+                        string serch = "<add>" + searchTxt;
+                        string[] list = null;
+                        using (TaxiDataContext db = new TaxiDataContext())
+                        {
+                            db.CommandTimeout = 6;
+
+                            list = db.Gen_RecentAddresses
+                           .Where(c => c.AddressLine1.Contains(serch))
+                           .OrderByDescending(c => c.SearchedOn).Take(50)
+                           .Distinct().Select(c => c.AddressLine1.Replace("&", "AND")).ToArray<string>();
+                        }
+
+
+                        if (list != null && list.Count() > 0)
+                        {
+
+
+
+
+
+                            list = (from a in XDocument.Parse("<?xml version=\"1.0\" encoding=\"utf-8\"?><adds>" + String.Join(" ", list) + "</adds>").Element("adds").Nodes()
+                                    where (a as XElement).Value.StartsWith(searchTxt)
+                                    select (a as XElement).Value).Distinct().ToArray<string>();
+
+
+                            if (finalList != null)
+                            {
+
+                                finalList = list.Union(finalList).ToArray<string>();
+                            }
+                            else
+                            {
+
+                                finalList = list;
+                            }
+
+
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        try
+                        {
+                            File.AppendAllText("recentaddress_exception.txt", DateTime.Now + " : " + ex.Message + Environment.NewLine);
+
+                        }
+                        catch
+                        {
+
+
+                        }
+
+
+                    }
+                }
+
+
+                if (finalList.Count() < 10 && aTxt.Text.EndsWith("\\") == false)
+                {
+                    finalList = finalList.Select(args => (sno++) + ". " + args).ToArray();
+                }
+
+
+                aTxt.ListBoxElement.Items.Clear();
+                aTxt.ListBoxElement.Items.AddRange(finalList);
+                //
+
+
+
+                if (aTxt.ListBoxElement.Items.Count == 0)
+                    aTxt.ResetListBox();
+                else
+                {
+
+
+                    aTxt.ShowListBox();
+
+
+                }
+
+                if (searchTxt != aTxt.FormerValue.ToLower())
+                {
+                    aTxt.FormerValue = aTxt.Text;
+
+                }
+
+                if (aTxt.ListBoxElement.Items.Count > 0 && aTxt.ListBoxElement.SelectedIndex == -1)
+                {
+
+                    //aTxt.onUpdating = true;
+                    //aTxt.ListBoxElement.SelectedIndex = 0;
+                    //aTxt.onUpdating = false;
+                }
+
+                //if (aTxt.ListBoxElement.Items.Count > 0 && aTxt.ListBoxElement.SelectedIndex == -1)
+                //{
+
+
+                //    //aTxt.onUpdating = true;
+                //    //   aTxt.ListBoxElement.SelectedValueChanged -= ;
+                //    //  aTxt.ListBoxElement.SelectedIndex = 0;
+                //    //aTxt.onUpdating = false;
+                //}
             }
-            else
-                finalList = resValue;
-
-
-
-            if (finalList.Count() < 10)
+            catch (Exception ex)
             {
-                finalList = finalList.Select(args => (sno++) + ". " + args).ToArray();
-            }
+                //AddExcepLog("POIWORKER_COMPLETED : " + ex.Message);
 
-
-            aTxt.ListBoxElement.Items.Clear();
-            aTxt.ListBoxElement.Items.AddRange(finalList);
-
-
-            if (aTxt.ListBoxElement.Items.Count == 0)
-                aTxt.ResetListBox();
-            else
-            {
-
-
-                aTxt.ShowListBox();
-
-
-            }
-
-            if (searchTxt != aTxt.FormerValue.ToLower())
-            {
-                aTxt.FormerValue = aTxt.Text;
 
             }
         }
+
+
+
+
+
+        //private void ShowAddressesPOI(string[] resValue)
+        //{
+        //    int sno = 1;
+
+        //    // var finalList = resValue;
+
+
+
+        //    var finalList = (from a in AppVars.zonesList
+        //                     from b in resValue
+        //                     where b.Contains(a) && (b.Substring(b.IndexOf(a), a.Length) == a && (b.IndexOf(a) - 1) >= 0 && b[b.IndexOf(a) - 1] == ' ' && GeneralBLL.GetHalfPostCodeMatch(b) == a)
+
+        //                     select b).ToArray<string>();
+
+
+        //    if (finalList.Count() > 0)
+        //    {
+        //        finalList = finalList.Union(resValue).ToArray<string>();
+
+        //    }
+        //    else
+        //        finalList = resValue;
+
+
+
+        //    if (finalList.Count() < 10)
+        //    {
+        //        finalList = finalList.Select(args => (sno++) + ". " + args).ToArray();
+        //    }
+
+
+        //    aTxt.ListBoxElement.Items.Clear();
+        //    aTxt.ListBoxElement.Items.AddRange(finalList);
+
+
+        //    if (aTxt.ListBoxElement.Items.Count == 0)
+        //        aTxt.ResetListBox();
+        //    else
+        //    {
+
+
+        //        aTxt.ShowListBox();
+
+
+        //    }
+
+        //    if (searchTxt != aTxt.FormerValue.ToLower())
+        //    {
+        //        aTxt.FormerValue = aTxt.Text;
+
+        //    }
+        //}
 
 
 
