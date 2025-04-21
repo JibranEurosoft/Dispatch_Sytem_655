@@ -816,10 +816,10 @@ namespace Taxi_AppMain
 
             txtAddress.Text = Address;
 
-
-
-          
-
+            if(chkCountry.Checked)
+            {
+                txtRadius.Value = 0;
+            }
 
 
             LoadGoogleMap();
