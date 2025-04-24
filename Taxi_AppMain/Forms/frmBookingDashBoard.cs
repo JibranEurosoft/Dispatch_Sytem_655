@@ -2287,11 +2287,30 @@ namespace Taxi_AppMain
 
                     }
                 }
-                else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" || e.Column.Name == "PickUpDate")
+                else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" )
                 {
 
                     if (e.CellElement.BackColor != Color.Yellow && e.CellElement.BackColor != Color.LightPink)
                         e.CellElement.DrawFill = false;
+
+
+                }
+                 else if (e.Column.Name == "RefNumber" || e.Column.Name == "PickUpDate")
+                {
+
+                    if (e.CellElement.RowElement.IsSelected == false)
+                    {
+                        e.CellElement.BackColor = GridBackColor;
+                    }
+
+                    int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                    if (bgColor != 0)
+                    {
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.FromArgb(bgColor);
+                        e.CellElement.DrawFill = true;
+                    }
 
 
                 }
@@ -2935,11 +2954,31 @@ namespace Taxi_AppMain
 
                             }
                         }
-                        else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" || e.Column.Name == "PickUpDate")
+                        else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" )
                         {
 
                             if (e.CellElement.BackColor != Color.Yellow && e.CellElement.BackColor != Color.LightPink)
                                 e.CellElement.DrawFill = false;
+
+                            
+
+                        }
+                        else if (e.Column.Name == "RefNumber" || e.Column.Name == "PickUpDate")
+                        {
+
+                            if (e.CellElement.RowElement.IsSelected == false)
+                            {
+                                e.CellElement.BackColor = GridBackColor;
+                            }
+
+                            int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                            if (bgColor != 0)
+                            {
+                                e.CellElement.NumberOfColors = 1;
+                                e.CellElement.BackColor = Color.FromArgb(bgColor);
+                                e.CellElement.DrawFill = true;
+                            }
 
 
                         }
@@ -18247,7 +18286,7 @@ namespace Taxi_AppMain
 
 
                 grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
-                grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
+                //grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
                 grdPendingJobs.Columns["Vias"].Width = 30;
 
                 grdPendingJobs.Columns["TelephoneNo"].IsVisible = false;
@@ -30938,7 +30977,7 @@ namespace Taxi_AppMain
 
 
                 }
-                grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
+                //grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
 
                 grdPendingJobs.Columns["Due"].IsVisible = false;
                 grdPendingJobs.Columns["JourneyTypeId"].IsVisible = false;
