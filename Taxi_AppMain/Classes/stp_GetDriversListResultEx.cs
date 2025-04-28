@@ -82,9 +82,14 @@ namespace Taxi_AppMain
     
         public DateTime? RoadTaxExpiry { get; set; }
 
+        public DateTime? SchoolBadgeExpiry1 { get; set; }
+
+        public DateTime? SchoolBadgeExpiry2 { get; set; }
+
+        public DateTime? SchoolBadgeExpiry3 { get; set; }
 
 
-       
+
         public string MobileNo { get; set; }
 
 

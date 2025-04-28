@@ -29,12 +29,12 @@ using System.Runtime.InteropServices;
 //      Minor Version 
 //      Build Number
 //      Revision
-[assembly: AssemblyFileVersion("5.2.655.0")]
+[assembly: AssemblyFileVersion("5.10.655.0")]
 //////
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.2.655")]
+[assembly: AssemblyVersion("5.10.655")]
 
 //5.1.655
 // fix ryde247 issue

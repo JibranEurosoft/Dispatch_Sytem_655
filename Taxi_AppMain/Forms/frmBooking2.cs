@@ -8749,6 +8749,7 @@ namespace Taxi_AppMain
 
                 objMaster.Current.NoofPassengers = num_TotalPassengers.Value.ToInt();
                 objMaster.Current.NoofLuggages = numTotalLuggages.Value.ToInt();
+                objMaster.Current.NoofHandLuggages = numHandLugg.Value.ToInt();
 
                 objMaster.Current.SMSType = Enums.SMSACCOUNT_TYPE.MODEMSMS;
 
@@ -10504,6 +10505,9 @@ namespace Taxi_AppMain
                             listofSummary.Add(new BookingSummary { label = "Agent Fee", value = string.Format("{0:0.00}", objMaster.Current.AgentCommission.ToDecimal() + objMaster.Current.CashRate.ToDecimal()) });
 
 
+                        listofSummary.Add(new BookingSummary { label = "BookingFee", value = string.Format("{0:0.00}", objMaster.Current.ServiceCharges.ToDecimal()) });
+
+
                         listofSummary.Add(new BookingSummary { label = "Parking", value = string.Format("{0:0.00}", objMaster.Current.CongtionCharges.ToDecimal()) });
                         listofSummary.Add(new BookingSummary { label = "Waiting", value = string.Format("{0:0.00}", objMaster.Current.MeetAndGreetCharges.ToDecimal()) });
 
@@ -11546,6 +11550,7 @@ namespace Taxi_AppMain
 
                 num_TotalPassengers.Value = objMaster.Current.NoofPassengers.ToDecimal();
                 numTotalLuggages.Value = objMaster.Current.NoofLuggages.ToDecimal();
+                numHandLugg.Value = objMaster.Current.NoofHandLuggages.ToDecimal();
 
                 numFareRate.Value = objMaster.Current.FareRate.ToDecimal();
 
@@ -12017,7 +12022,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                btnPickAccountBooking.Enabled = false;
+                                //btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
@@ -12042,7 +12047,7 @@ namespace Taxi_AppMain
                                 btnCustomerLister.Enabled = false;
                                 btnExcludeDrivers.Enabled = false;
                                 btnAttributes.Enabled = false;
-                                btnPickAccountBooking.Enabled = false;
+                                //btnPickAccountBooking.Enabled = false;
                                 btnSearch.Enabled = false;
 
                                 chkIsCompanyRates.Enabled = false;
@@ -15741,6 +15746,7 @@ namespace Taxi_AppMain
                 txtViaAddress.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
                 //   txtViaAddress.Text = AppVars.objPolicyConfiguration.BaseAddress.ToStr().Trim();
                 txtViaAddress.Text = AppVars.objSubCompany.Address.ToStr().ToUpper().Trim();
+
                 txtViaAddress.TextChanged += new EventHandler(TextBoxElement_TextChanged);
             }
 

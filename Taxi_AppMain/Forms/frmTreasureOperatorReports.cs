@@ -115,8 +115,8 @@ namespace Taxi_AppMain
                 radGridView2.Columns["OperatorLicenceNumber"].HeaderText = "Operator Licence Number";
                 radGridView2.Columns["OperatorName"].HeaderText = "Operator Name";
                 radGridView2.Columns["VehicleRegistrationMark"].HeaderText = "VRM";
-                radGridView2.Columns["VehicleMake"].HeaderText = "Vehicle Make";
-                radGridView2.Columns["PHCVehicle"].HeaderText = "Vehicle Licence Number";
+                radGridView2.Columns["VehicleMake"].HeaderText = "Vehicle make";
+                radGridView2.Columns["PHCVehicle"].HeaderText = "Vehicle licence number";
 
 
                 if (radGridView2.Rows.Count > 0)
@@ -368,7 +368,7 @@ namespace Taxi_AppMain
                 radGridView1.Columns["MonthCommencing"].HeaderText = "Month Commencing";
                 radGridView1.Columns["OperatorLicenceNumber"].HeaderText = "Operator Licence Number";
                 radGridView1.Columns["OperatorName"].HeaderText = "Operator Name";
-                radGridView1.Columns["PrivateHireLicenceNumber"].HeaderText = "Private Hire Driver Licence Number";
+                radGridView1.Columns["PrivateHireLicenceNumber"].HeaderText = "Private hire driver licence number";
                 radGridView1.Columns["FirstName"].HeaderText = "Forename";
                 radGridView1.Columns["Surname"].HeaderText = "Surname";
                 radGridView1.Columns["Surname2"].HeaderText = "";

@@ -1463,6 +1463,862 @@ namespace Taxi_AppMain
             {
 
 
+                //if (e.Column.Name == "Account")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+                //else if (e.Column.Name == "From")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "To")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Plot")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Lead")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Pickup")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Fare")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Status")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+
+                //else if (e.Column.Name == "Passenger")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+                //else if (e.Column.Name == "Pax")
+                //{
+
+
+                //    if (e.CellElement.Value.ToStr() != string.Empty)
+                //    {
+
+                //        e.CellElement.NumberOfColors = 1;
+
+                //        int bid = e.Row.Cells["BookingTypeId"].Value.ToInt();
+
+                //        string Bgcolor = listofBookingTypes.FirstOrDefault(b => b.Id == bid)?.BackgroundColor.ToStr();
+                //        // e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                //        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                //        if (Bgcolor != string.Empty || textColor != string.Empty)
+                //        {
+                //            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                //            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+
+                //        }
+                //        else
+                //        {
+                //            e.CellElement.ForeColor = GridBackColor;
+                //            e.CellElement.BackColor = Color.Crimson;
+
+                //        }
+
+                //        e.CellElement.DrawFill = true;
+                //    }
+                //    else
+                //    {
+                //        e.CellElement.DrawFill = false;
+
+                //    }
+                //}
+
+
+                 if (e.Column.Name == "Vehicle")
+                {
+
+                    e.CellElement.NumberOfColors = 1;
+
+
+
+                    string Bgcolor = e.Row.Cells["BackgroundColor"].Value.ToStr().Trim();
+                    string textColor = e.Row.Cells["TextColor"].Value.ToStr().Trim();
+
+                    if (Bgcolor != string.Empty && textColor != string.Empty)
+                    {
+
+                        e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                        e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+                        e.CellElement.DrawFill = true;
+                    }
+                }
+                else if (e.Column.Name == "Pax")
+                {
+
+                    e.CellElement.TextAlignment = ContentAlignment.MiddleCenter;
+                }
+
+
+
+
+                else if (e.Column.IsVisible && (e.Column.Name == "From" || e.Column.Name == "Pickup" || e.Column.Name == "To" ||  e.Column.Name == "Time"))
+                {
+
+
+
+
+
+                    if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                    {
+
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.DrawFill = true;
+
+                        if (listofAirports == null)
+                        {
+                            FillAirportsList();
+                        }
+
+                        if (listofAirports.Count(c => c.PostCode == e.Row.Cells["FromPostCode"].Value.ToStr()) > 0)
+                        {
+                            e.CellElement.BackColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["FromPostCode"].Value.ToStr())).BackgroundColor.ToInt());
+                            e.CellElement.ForeColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["FromPostCode"].Value.ToStr())).TextColor.ToInt());
+
+
+                            //   e.CellElement.ForeColor = Color.Black;                                
+                        }
+                        else
+                        {
+
+                            e.CellElement.BackColor = Color.FromArgb(-5374161);
+                            e.CellElement.ForeColor = Color.Black;
+                        }
+
+
+
+
+
+
+                        //if (e.Row.Cells["FromLocTextColor"].Value != null)
+                        //{
+
+                        //    e.CellElement.ForeColor = Color.FromArgb(e.Row.Cells["FromLocTextColor"].Value.ToInt());
+
+                        //}
+                        //else
+                        //    e.CellElement.ForeColor = Color.Black;
+
+
+
+                    }
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.OUTOFTOWN)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.WEB)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.LOCAL)
+                    {
+                        e.CellElement.BackColor = Color.WhiteSmoke;
+
+                        e.CellElement.ResetValue(LightVisualElement.ForeColorProperty, ValueResetFlags.Style);
+                        e.CellElement.ForeColor = Color.Black;
+                        e.CellElement.DrawText = true;
+
+                        e.CellElement.DrawFill = true;
+                        e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
+                        e.CellElement.BorderColor = Color.Black;
+                        e.CellElement.BorderColor2 = Color.Black;
+                        e.CellElement.BorderColor3 = Color.Black;
+                        e.CellElement.BorderColor4 = Color.Black;
+
+
+
+
+
+
+                    }
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.VIP)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.IVR)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.ONROAD)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.ONLINE)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+
+                    else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.OUTOFTOWN)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+
+                    }
+
+                    else
+                    {
+
+
+                       // e.CellElement.DrawFill = true;
+
+
+
+                    }
+                }
+
+                else if (e.Column.IsVisible && (e.Column.Name == "To" || e.Column.Name == "GoingTo"))
+                {
+
+                    if (e.Row.Cells["ToLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                    {
+
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.DrawFill = true;
+
+
+                        //e.CellElement.BackColor = Color.FromArgb(-5374161);
+                        //e.CellElement.ForeColor = Color.Black;
+
+
+                        if (listofAirports == null)
+                        {
+                            FillAirportsList();
+                        }
+
+                        if (listofAirports.Count(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())) > 0)
+                        {
+                            e.CellElement.BackColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).BackgroundColor.ToInt());
+                            e.CellElement.ForeColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).TextColor.ToInt());
+
+
+                        }
+                        else
+                        {
+
+                            e.CellElement.BackColor = Color.FromArgb(-5374161);
+                            e.CellElement.ForeColor = Color.Black;
+                        }
+
+
+                        //  e.CellElement.BackColor = Color.FromArgb(e.Row.Cells["ToLocBgColor"].Value.ToInt());
+
+
+                        //if (e.Row.Cells["ToLocTextColor"].Value != null)
+                        //{
+
+                        //    e.CellElement.ForeColor = Color.FromArgb(e.Row.Cells["ToLocTextColor"].Value.ToInt());
+
+                        //}
+                        //else
+                        //    e.CellElement.ForeColor = Color.Black;
+
+
+                    }
+                    else
+                        e.CellElement.DrawFill = false;
+
+
+                }
+
+                else if (e.Column.Name == "Status")
+                {
+
+
+                    e.CellElement.NumberOfColors = 1;
+                    e.CellElement.BackColor = Color.FromArgb(e.CellElement.RowInfo.Cells["StatusColor"].Value.ToInt());
+                    e.CellElement.ForeColor = Color.Black;
+
+                    e.CellElement.DrawFill = true;
+
+
+
+
+
+                }
+                else if (e.Column.Name == "Driver")
+                {
+                    if (e.Row.Cells["IsConfirmedDriver"].Value.ToBool())
+                    {
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.Aqua;
+                        e.CellElement.ForeColor = Color.Black;
+                        e.CellElement.DrawFill = true;
+                    }
+                    else
+                    {
+                        if (e.CellElement.BackColor == Color.Aqua)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                            e.CellElement.ForeColor = Color.Black;
+                        }
+                        else
+                        {
+                            e.CellElement.DrawFill = false;
+
+                        }
+                    }
+
+                }
+
+                else if (e.Column.Name == "Fare")
+                {
+
+                    e.CellElement.NumberOfColors = 1;
+
+
+
+                    string quoted = e.Row.Cells["NoofLuggages"].Value.ToStr().Trim();
+                    if (quoted == "1")
+                    {
+
+                        e.CellElement.BackColor = Color.Orange;
+                        e.CellElement.DrawFill = true;
+                    }
+                    else
+                        e.CellElement.DrawFill = false;
+                }
+
+                else if (e.Column.Name == "HasNotesImg")
+                {
+
+                    if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.OUTOFTOWN)
+                    {
+                        if (e.CellElement.RowElement.IsSelected == false)
+                        {
+                            e.CellElement.BackColor = GridBackColor;
+                        }
+
+                        int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                        if (bgColor != 0)
+                        {
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.BackColor = Color.FromArgb(bgColor);
+                            e.CellElement.DrawFill = true;
+                        }
+                        else
+                        {
+
+
+                            e.CellElement.DrawFill = false;
+
+
+
+                        }
+
+                    }
+
+                    if (e.Row.Cells["BabySeats"].Value.ToStr() != "")
+                    {
+
+                        e.CellElement.BackgroundImage = Resources.Resource1.babyseatsmall;
+
+                    }
+
+
+                    else if (e.Row.Cells["HasNotes"].Value.ToInt() > 0)
+                    {
+                        if (e.Row.Cells["StatusId"].Value.ToInt() == Enums.BOOKINGSTATUS.BID)
+                        {
+                            e.CellElement.BackgroundImage = Resources.Resource1.bid3;
+
+                        }
+                        else if (e.Row.Cells["JourneyTypeId"].Value.ToInt() == Enums.JOURNEY_TYPES.WAITANDRETURN)
+                        {
+                            e.CellElement.BackgroundImage = Resources.Resource1.text_WR;
+                        }
+                        else
+                        {
+                            e.CellElement.BackgroundImage = Resources.Resource1.text;
+
+                        }
+                    }
+                    else if (e.Row.Cells["JourneyTypeId"].Value.ToInt() == Enums.JOURNEY_TYPES.WAITANDRETURN)
+                    {
+
+                        if (e.Row.Cells["HasNotes"].Value.ToInt() == -1)
+                        {
+
+                            e.CellElement.BackgroundImage = Resources.Resource1.WaitAndReturn___Congestion;
+
+                        }
+                        else
+                            e.CellElement.BackgroundImage = Resources.Resource1.WaitAndReturn;
+
+
+
+                    }
+                    else if (e.Row.Cells["HasNotes"].Value.ToInt() == -1)
+                    {
+
+                        e.CellElement.BackgroundImage = Resources.Resource1.Congestion;
+
+                    }
+                    else if (e.Row.Cells["BookingBackgroundColor"].Value != null || e.Row.Cells["GroupId"].Value.ToStr().Length > 0)
+                    {
+                        if (listofBookingTypes == null)
+                            FillBookingTypesList();
+
+
+                        if (listofBookingTypes != null)
+                        {
+                            e.CellElement.Text = listofBookingTypes.Where(c => c.BackgroundColor == e.Row.Cells["BookingBackgroundColor"].Value.ToInt())
+                                .Select(c => c.BookingTypeName).FirstOrDefault();
+
+
+                        }
+
+                        if (e.Row.Cells["GroupId"].Value.ToStr().Length > 0)
+                        {
+                            e.CellElement.Text = e.Row.Cells["GroupId"].Value.ToStr();
+
+                        }
+
+                    }
+
+
+
+                    else
+                    {
+                        e.CellElement.DrawFill = false;
+                        e.CellElement.BackgroundImage = null;
+
+
+                    }
+                }
+                else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" )
+                {
+
+                    if (e.CellElement.BackColor != Color.Yellow && e.CellElement.BackColor != Color.LightPink)
+                        e.CellElement.DrawFill = false;
+
+
+                }
+                 else if (e.Column.Name == "RefNumber" || e.Column.Name == "PickUpDate")
+                {
+
+                    if (e.CellElement.RowElement.IsSelected == false)
+                    {
+                        e.CellElement.BackColor = GridBackColor;
+                    }
+
+                    int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                    if (bgColor != 0)
+                    {
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.FromArgb(bgColor);
+                        e.CellElement.DrawFill = true;
+                    }
+
+
+                }
+                else
+                {
+                    e.CellElement.DrawFill = false;
+
+                }
 
 
                 if (e.CellElement is GridHeaderCellElement)
@@ -1477,10 +2333,10 @@ namespace Taxi_AppMain
 
 
                         // e.CellElement.DrawBorder = false;
-                        e.CellElement.BackColor = _HeaderRowBackColor;
+                        e.CellElement.BackColor = Color.White;
                         e.CellElement.NumberOfColors = 1;
                         e.CellElement.Font = newFont;
-                        e.CellElement.ForeColor = Color.White;
+                        e.CellElement.ForeColor = Color.Black;
                         e.CellElement.DrawFill = true;
 
                         e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
@@ -1733,9 +2589,7 @@ namespace Taxi_AppMain
 
 
 
-                        if (e.Column.Name == "Account"
-
-                            )
+                        if (e.Column.Name == "Account")
                         {
 
 
@@ -1760,8 +2614,8 @@ namespace Taxi_AppMain
                                 }
                                 else
                                 {
-                                    e.CellElement.ForeColor = GridBackColor;
-                                    e.CellElement.BackColor = Color.Crimson;
+                                    //e.CellElement.ForeColor = GridBackColor;
+                                  //  e.CellElement.BackColor = Color.Crimson;
 
 
                                 }
@@ -1802,7 +2656,7 @@ namespace Taxi_AppMain
 
 
 
-                        else if (e.Column.IsVisible && (e.Column.Name == "From" || e.Column.Name == "Pickup"))
+                        else if (e.Column.IsVisible && (e.Column.Name == "From" || e.Column.Name == "Pickup" || e.Column.Name == "To" || e.Column.Name == "Time"))
                         {
 
 
@@ -1852,23 +2706,23 @@ namespace Taxi_AppMain
 
 
                             }
-                            //else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.OUTOFTOWN)
-                            //{
-                            //    if (e.CellElement.RowElement.IsSelected == false)
-                            //    {
-                            //        e.CellElement.BackColor = GridBackColor;
-                            //    }
+                            else if (e.Row.Cells["BookingTypeId"].Value.ToInt() == Enums.BOOKING_TYPES.OUTOFTOWN)
+                            {
+                                if (e.CellElement.RowElement.IsSelected == false)
+                                {
+                                    e.CellElement.BackColor = GridBackColor;
+                                }
 
-                            //    //int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+                                int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
 
-                            //    //if (bgColor != 0)
-                            //    //{
-                            //    //    e.CellElement.NumberOfColors = 1;
-                            //    //    e.CellElement.BackColor = Color.FromArgb(bgColor);
-                            //    //    e.CellElement.DrawFill = true;
-                            //    //}
+                                if (bgColor != 0)
+                                {
+                                    e.CellElement.NumberOfColors = 1;
+                                    e.CellElement.BackColor = Color.FromArgb(bgColor);
+                                    e.CellElement.DrawFill = true;
+                                }
 
-                            //}
+                            }
                             else
                             {
 
@@ -2100,11 +2954,31 @@ namespace Taxi_AppMain
 
                             }
                         }
-                        else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" || e.Column.Name == "PickUpDate")
+                        else if (e.Column.Name == "Lead" || e.Column.Name == "Plot" || e.Column.Name == "Time" )
                         {
 
                             if (e.CellElement.BackColor != Color.Yellow && e.CellElement.BackColor != Color.LightPink)
                                 e.CellElement.DrawFill = false;
+
+                            
+
+                        }
+                        else if (e.Column.Name == "RefNumber" || e.Column.Name == "PickUpDate")
+                        {
+
+                            if (e.CellElement.RowElement.IsSelected == false)
+                            {
+                                e.CellElement.BackColor = GridBackColor;
+                            }
+
+                            int bgColor = e.Row.Cells["BookingBackgroundColor"].Value.ToInt();
+
+                            if (bgColor != 0)
+                            {
+                                e.CellElement.NumberOfColors = 1;
+                                e.CellElement.BackColor = Color.FromArgb(bgColor);
+                                e.CellElement.DrawFill = true;
+                            }
 
 
                         }
@@ -2113,6 +2987,7 @@ namespace Taxi_AppMain
                             e.CellElement.DrawFill = false;
 
                         }
+                  
                     }
                     else
                     {
@@ -12468,7 +13343,7 @@ namespace Taxi_AppMain
                     if (row != null)
                     {
 
-                        var list = (List<stp_GetBookingsDataResult>)grdAllJobs.DataSource;
+                         var list = (List<stp_GetBookingsDataResult>)grdAllJobs.DataSource;
 
 
                         if (objBook != null)
@@ -13503,6 +14378,7 @@ namespace Taxi_AppMain
                     MethodInvoker inv = new MethodInvoker(delegate () { this.CreateAndShowAlert(captionText, contentText, contentImage, alertSound, false, "", "", ""); AddNotifyMessage(notifyMsg); });
 
                     this.Invoke(inv);
+                    
 
                     return;
 
@@ -13563,6 +14439,20 @@ namespace Taxi_AppMain
 
                     }
 
+
+                    return;
+
+                }
+                else if (message.StartsWith("Payment has been Done"))
+                {
+                    if (this.InvokeRequired)
+                    {
+                        this.BeginInvoke(new UIParameterizedDelegate(ShowPaymentForm), message, "");
+                    }
+                    else
+                    {
+                        ShowPaymentForm(message, "");
+                    }
 
                     return;
 
@@ -17396,13 +18286,17 @@ namespace Taxi_AppMain
 
 
                 grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
-
+                //grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
                 grdPendingJobs.Columns["Vias"].Width = 30;
 
                 grdPendingJobs.Columns["TelephoneNo"].IsVisible = false;
                 grdPendingJobs.Columns["Due"].IsVisible = false;
+                grdPendingJobs.Columns["Total"].IsVisible = false;
+
                 grdPendingJobs.Columns["JourneyTypeId"].IsVisible = false;
                 grdPendingJobs.Columns["VehicleDetails"].IsVisible = false;
+                grdPendingJobs.Columns["NoofLuggages"].HeaderText = "Lug";
+                grdPendingJobs.Columns["NoofLuggages"].Width = 20;
 
 
 
@@ -17411,7 +18305,8 @@ namespace Taxi_AppMain
 
 
 
-                grdPendingJobs.Columns["BookingDateTime"].HeaderText = "Booking Date";
+
+              grdPendingJobs.Columns["BookingDateTime"].HeaderText = "Booking Date";
                 grdPendingJobs.Columns["PickUpDate"].HeaderText = "Date";
                 grdPendingJobs.Columns["RefNumber"].HeaderText = "Ref #";
                 grdPendingJobs.Columns["PaymentMethod"].HeaderText = "Pay Meth";
@@ -17513,7 +18408,7 @@ namespace Taxi_AppMain
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).CustomFormat = "HH:mm";
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
-                grdPreBookings.Columns["NoofLuggages"].IsVisible = false;
+                grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
 
                 grdPreBookings.Columns["Vias"].Width = 30;
 
@@ -18749,7 +19644,7 @@ namespace Taxi_AppMain
 
                 grdPendingJobs.Columns["GroupId"].Width = 60;
 
-
+                grdPendingJobs.Columns["NoofLuggages"].Width = 20;
 
 
 
@@ -22011,9 +22906,7 @@ namespace Taxi_AppMain
 
 
 
-                        if (e.Column.Name == "Account"
-
-                            )
+                        if (e.Column.Name == "Account")
                         {
 
 
@@ -23486,13 +24379,18 @@ namespace Taxi_AppMain
         {
             if (optMonthWise.ToggleState == Telerik.WinControls.Enumerations.ToggleState.On)
             {
+                dtpStatsFromDate.Format = DateTimePickerFormat.Custom;
                 dtpStatsFromDate.CustomFormat = "dd/MM/yyyy HH:mm";
+
+                dtpStatsTillDate.Format = DateTimePickerFormat.Custom;
                 dtpStatsTillDate.CustomFormat = "dd/MM/yyyy HH:mm";
 
-
                 dtpStatsFromDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-                dtpStatsTillDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.LastDayOfMonthValue());
+                dtpStatsTillDate.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month,
+                                                      DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month));
+
                 pnlMonthWise.Enabled = true;
+
             }
             else if (optToday.ToggleState == ToggleState.On)
             {
@@ -30071,7 +30969,7 @@ namespace Taxi_AppMain
 
                 try
                 {
-                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
+                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
 
                 }
                 catch
@@ -30079,7 +30977,7 @@ namespace Taxi_AppMain
 
 
                 }
-
+                //grdPendingJobs.Columns["PickUpDate"].IsVisible = false;
 
                 grdPendingJobs.Columns["Due"].IsVisible = false;
                 grdPendingJobs.Columns["JourneyTypeId"].IsVisible = false;
@@ -30367,7 +31265,7 @@ namespace Taxi_AppMain
 
                 try
                 {
-                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = false;
+                    grdPendingJobs.Columns["NoofLuggages"].IsVisible = true;
                     //  grdPendingJobs.Columns["Vias"].IsVisible = true;
                 }
                 catch
@@ -36247,8 +37145,15 @@ namespace Taxi_AppMain
 
         List<RadDesktopAlert> listOfBreakPopups = new List<RadDesktopAlert>();
 
+        #region Payment
+        private void ShowPaymentForm(string msg, string msg2)
+        {
+            ENUtils.ShowMessage(msg);
+        }
 
+       
 
+        #endregion
 
         #region BreakAuth
 

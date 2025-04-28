@@ -1094,6 +1094,19 @@ namespace Taxi_AppMain
                 grdLister.Columns["MOT2Expiry"].HeaderText = "MOT 2 Expiry";
                 grdLister.Columns["LicenseExpiry"].HeaderText = "License Expiry";
 
+                if (AppVars.listUserRights.Count(c => c.functionId == "Show School Badge Expiry") > 0)
+                {
+                    grdLister.Columns["SchoolBadgeExpiry1"].HeaderText = "Schl badge Exp 1 ";
+                    grdLister.Columns["SchoolBadgeExpiry2"].HeaderText = "Schl badge Exp 2 ";
+                    grdLister.Columns["SchoolBadgeExpiry3"].HeaderText = "Schl badge Exp 3 ";
+                }
+                else
+                {
+                    grdLister.Columns["SchoolBadgeExpiry1"].IsVisible = false; 
+                    grdLister.Columns["SchoolBadgeExpiry2"].IsVisible = false;
+                    grdLister.Columns["SchoolBadgeExpiry3"].IsVisible = false;
+
+                }
 
 
                 grdLister.Columns["PCOVehicleExpiry"].HeaderText = "PHC Vehicle Expiry";

@@ -578,7 +578,323 @@ namespace Taxi_AppMain
 
         }
 
+        private void ShowNearestDrivers()
+        {
+            //NC 130919
+            StringBuilder nearestDrvLocations = new StringBuilder();
+            double jobLatitude = 0;
+            double jobLongitude = 0;
+            double milesAway = 5;
 
+
+            if (ddlMilesDrvs2 == null)
+            {
+                this.ddlMilesDrvs2 = new System.Windows.Forms.ComboBox();
+
+
+                this.ddlMilesDrvs2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+                this.ddlMilesDrvs2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.ddlMilesDrvs2.FormattingEnabled = true;
+                this.ddlMilesDrvs2.Items.AddRange(new object[] {
+                        "within 3 miles away",
+                        "within 5 miles away",
+                        "within 10 miles away"});
+                //this.ddlMilesDrvs2.Location = new System.Drawing.Point(929, 349);
+                this.ddlMilesDrvs2.Location = new System.Drawing.Point(929, 190);
+                //988, 214
+
+                this.ddlMilesDrvs2.Name = "ddlMilesDrvs2";
+                this.ddlMilesDrvs2.Size = new System.Drawing.Size(283, 22);
+                this.ddlMilesDrvs2.TabIndex = 227;
+                //this.ddlMilesDrvs2.Visible = false;
+
+                ddlMilesDrvs2.Visible = true;
+
+                ddlMilesDrvs2.SelectedItem = ddlMilesDrvs2.Items[1];
+
+                this.ddlMilesDrvs2.SelectedIndexChanged += new System.EventHandler(this.ddlMilesDrvs2_SelectedIndexChanged);
+
+
+                this.tabNearestDrivers.Controls.Add(this.ddlMilesDrvs2);
+                ddlMilesDrvs2.BringToFront();
+            }
+
+            if (ddlMilesDrvs2.SelectedIndex == 0)
+                milesAway = 3;
+            else if (ddlMilesDrvs2.SelectedIndex == 2)
+                milesAway = 10;
+
+
+            int? jobStatusId = objMaster.PrimaryKeyValue != null ? objMaster.Current.BookingStatusId : Enums.BOOKINGSTATUS.WAITING;
+            string fromAddress = General.GetPostCodeMatch(txtFromAddress.Text.Trim().ToUpper());
+            string toAddress = General.GetPostCodeMatch(txtToAddress.Text.Trim().ToUpper());
+
+
+            //Grid
+            if (grdDrivers == null)
+            {
+
+                this.grdDrivers = new System.Windows.Forms.DataGridView();
+                // ((System.ComponentModel.ISupportInitialize)(this.grdDrivers)).BeginInit();
+
+
+
+                System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+                System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+                System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+                System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+
+
+
+                this.DriverId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.btnDespatchJob = new System.Windows.Forms.DataGridViewButtonColumn();
+
+                this.DriverId.HeaderText = "DriverId";
+                this.DriverId.Name = "DriverId";
+                this.DriverId.ReadOnly = true;
+                this.DriverId.Visible = false;
+                // 
+                // details
+                // 
+                this.details.HeaderText = "details";
+                this.details.Name = "details";
+                this.details.ReadOnly = true;
+                this.details.Width = 220;
+                // 
+                // btnDespatchJob
+                // 
+                dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+                dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+                dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+                this.btnDespatchJob.DefaultCellStyle = dataGridViewCellStyle2;
+                this.btnDespatchJob.HeaderText = "btnDespatchJob";
+                this.btnDespatchJob.Name = "btnDespatchJob";
+                this.btnDespatchJob.ReadOnly = true;
+                this.btnDespatchJob.Text = "Despatch";
+                this.btnDespatchJob.UseColumnTextForButtonValue = true;
+                this.btnDespatchJob.Width = 100;
+
+
+                this.grdDrivers.AllowUserToAddRows = false;
+                this.grdDrivers.AllowUserToDeleteRows = false;
+                this.grdDrivers.BackgroundColor = System.Drawing.Color.FloralWhite;
+                dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+                dataGridViewCellStyle1.BackColor = System.Drawing.Color.SteelBlue;
+                dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+                dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+                dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+                dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+                dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+                this.grdDrivers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+                this.grdDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                this.grdDrivers.ColumnHeadersVisible = false;
+                this.grdDrivers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+                            this.DriverId,
+                            this.details,
+                            this.btnDespatchJob});
+                dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+                dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+                dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+                dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+                dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FloralWhite;
+                dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+                dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+                this.grdDrivers.DefaultCellStyle = dataGridViewCellStyle3;
+                this.grdDrivers.Location = new System.Drawing.Point(929, 36);
+                this.grdDrivers.Name = "grdDrivers";
+                this.grdDrivers.ReadOnly = true;
+                dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+                dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+                dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+                dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+                dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.AliceBlue;
+                dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+                dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+                this.grdDrivers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+                this.grdDrivers.RowHeadersVisible = false;
+                this.grdDrivers.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FloralWhite;
+                this.grdDrivers.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+                this.grdDrivers.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FloralWhite;
+                this.grdDrivers.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+                this.grdDrivers.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+                this.grdDrivers.RowTemplate.Height = 45;
+                this.grdDrivers.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+                this.grdDrivers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+                // this.grdDrivers.Size = new System.Drawing.Size(286, 650);
+                this.grdDrivers.Size = new System.Drawing.Size(310, 150);
+                this.grdDrivers.TabIndex = 226;
+                this.grdDrivers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdDrivers_CellClick);
+
+
+
+                //  ((System.ComponentModel.ISupportInitialize)(this.grdDrivers)).EndInit();
+
+                this.tabNearestDrivers.Controls.Add(this.grdDrivers);
+                grdDrivers.Dock = DockStyle.Bottom;
+            }
+
+            using (TaxiDataContext db = new TaxiDataContext())
+            {
+                var coord = db.stp_getCoordinatesByAddress(General.GetPostCodeMatch(fromAddress), General.GetPostCodeMatch(fromAddress)).ToList().FirstOrDefault();
+
+
+
+                Gen_Coordinate pickupCoord = null;
+
+                if (coord != null && coord.Latitude != null && coord.Latitude != 0)
+                {
+
+                    pickupCoord = new Gen_Coordinate();
+                    pickupCoord.Latitude = coord.Latitude;
+                    pickupCoord.Longitude = coord.Longtiude;
+                }
+                //   Gen_Coordinate pickupCoord = General.GetObject<Gen_Coordinate>(c => c.PostCode == fromAddress);
+                if (pickupCoord != null)
+                {
+                    jobLatitude = Convert.ToDouble(pickupCoord.Latitude);
+                    jobLongitude = Convert.ToDouble(pickupCoord.Longitude);
+                }
+
+            }
+
+            if (jobStatusId == Enums.BOOKINGSTATUS.WAITING)
+            {
+                // IList ListofAvailDrvs = null;
+
+                int vehicleTypeId = ddlVehicleType.SelectedValue.ToInt();
+
+                grdDrivers.Rows.Clear();
+
+                using (TaxiDataContext db = new TaxiDataContext())
+                {
+
+                    var ListofAvailDrvs = (from a in db.GetTable<Fleet_DriverQueueList>().Where(c => c.Status == true &&
+                                  (c.DriverWorkStatusId == Enums.Driver_WORKINGSTATUS.AVAILABLE))
+                                           join b in db.GetTable<Fleet_Driver_Location>().Where(c => c.Latitude != 0)
+                                           on a.DriverId equals b.DriverId
+                                           //   where a.Fleet_Driver.VehicleTypeId == vehicleTypeId
+                                           select new
+                                           {
+                                               DriverId = a.DriverId,
+                                               DriverNo = a.Fleet_Driver.DriverNo,
+                                               DriverLocation = b.LocationName,
+                                               Latitude = b.Latitude,
+                                               Longitude = b.Longitude,
+                                               NoofPassengers = a.Fleet_Driver.Fleet_VehicleType.NoofPassengers
+                                           }).ToList();
+
+
+
+                    int pax = db.Fleet_VehicleTypes.FirstOrDefault(c => c.Id == ddlVehicleType.SelectedValue.ToInt()).DefaultIfEmpty().NoofPassengers.ToInt();
+
+                    var ListofPDAAvailDrvs2 = ListofAvailDrvs.Where(c => c.NoofPassengers >= pax).ToList();
+
+
+
+
+
+
+                    //ListofAvailDrvs = (from a in AppVars.BLData.GetAll<Fleet_DriverQueueList>(c => c.Status == true && c.Fleet_Driver.HasPDA == true &&
+                    //               (c.DriverWorkStatusId == Enums.Driver_WORKINGSTATUS.AVAILABLE)).AsEnumerable()
+                    //                      join b in AppVars.BLData.GetAll<Fleet_Driver_Location>(c => c.Latitude != 0).AsEnumerable()
+                    //                      on a.DriverId equals b.DriverId
+                    //                      select new
+                    //                      {
+                    //                          DriverId = a.DriverId,
+                    //                          DriverNo = a.Fleet_Driver.DriverNo,
+                    //                          DriverLocation = b.LocationName,
+                    //                          Latitude = b.Latitude,
+                    //                          Longitude = b.Longitude
+                    //                      }).ToList();
+
+                    var nearestDrivers = ListofPDAAvailDrvs2.Select(args => new
+                    {
+                        args.DriverId,
+                        // MilesAwayFromPickup = GetNearestDistance(args.DriverLocation,fromAddress) ,
+                        MilesAwayFromPickup = new DotNetCoords.LatLng(args.Latitude, args.Longitude).DistanceMiles(new DotNetCoords.LatLng(jobLatitude, jobLongitude)),
+                        args.DriverNo,
+                        Latitude = args.Latitude,
+                        Longitude = args.Longitude,
+                        Location = args.DriverLocation
+
+                    }).OrderBy(args => args.MilesAwayFromPickup).Where(c => c.MilesAwayFromPickup <= milesAway).Take(3).ToList();
+
+                    for (int i = 0; i < nearestDrivers.Count; i++)
+                    {
+                        string MILESX = string.Empty;
+                        double milesX = Math.Round(nearestDrivers[i].MilesAwayFromPickup, 1);
+                        if (milesX > 0.1 && AppVars.listUserRights.Count(c => c.functionId == "SHOW ACTUAL DRIVER DISTANCE") > 0)
+                        {
+                            MILESX = General.GetETADistanceWithDuration(nearestDrivers[i].Latitude + "," + nearestDrivers[i].Longitude, Convert.ToDouble(jobLatitude) + "," + Convert.ToDouble(jobLongitude), AppVars.etaKey).ToStr();
+
+
+                            string dist = "";
+                            string time = Math.Ceiling((nearestDrivers[i].MilesAwayFromPickup / 0.25)) + " min(s)";
+
+                            if (MILESX.Contains(","))
+                            {
+                                dist = MILESX.Split(',')[0];
+                                time = MILESX.Split(',')[1] + "min(s)";
+                            }
+                            else
+                                dist = MILESX;
+
+                            grdDrivers.Rows.Add(nearestDrivers[i].DriverId, "Drv " + nearestDrivers[i].DriverNo + " - " + dist + " mi ," + time);
+                        }
+                        else
+                        {
+                            grdDrivers.Rows.Add(nearestDrivers[i].DriverId, "Drv " + nearestDrivers[i].DriverNo + " - " + Math.Round(milesX, 1) + " mi ," + Math.Ceiling((nearestDrivers[i].MilesAwayFromPickup / 0.25)) + " min(s)");
+                        }
+
+                        nearestDrvLocations.Append("['<h4>" + nearestDrivers[i].Location + "</h4>'," + nearestDrivers[i].Latitude + "," + nearestDrivers[i].Longitude + "],");
+                        // grdDrivers.Rows.Add(nearestDrivers[i].DriverId, nearestDrivers[i].DriverNo + " is " + milesX + " miles away");
+
+                    }
+
+                }
+            }
+
+            if (webBrowser1.Visible == false)
+            {
+                webBrowser1.Visible = true;
+                grdDrivers.Size = new Size(grdDrivers.Size.Width, 150);
+                grdDrivers.Location = new Point(967, 211);
+                grdDrivers.Font = new Font("Tahoma", 11, FontStyle.Bold);
+                grdDrivers.BringToFront();
+                ddlMilesDrvs2.Visible = true;
+                ddlMilesDrvs2.BringToFront();
+                ddlMilesDrvs2.Dock = DockStyle.Bottom;
+            }
+
+
+        }
+
+        private void grdDrivers_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdDrivers.Columns[e.ColumnIndex].Name == "btnDespatchJob" && grdDrivers.CurrentCell is DataGridViewButtonCell)
+            {
+                if (RadMessageBox.Show("Are you sure you want to Despatch the job?", "Despatch", MessageBoxButtons.YesNo, RadMessageIcon.Question) == DialogResult.Yes)
+                {
+                    FillDriversCombo();
+
+                    ddlDriver.SelectedValue = grdDrivers.CurrentRow.Cells["DriverId"].Value.ToInt();
+                    Save();
+
+                    if (!this.IsDespatched)
+                    {
+                        ddlDriver.SelectedValue = null;
+                    }
+                    else
+                    {
+
+                        Close();
+                    }
+                }
+
+
+            }
+        }
 
         private void InitializeConstructor()
         {
@@ -26857,7 +27173,7 @@ namespace Taxi_AppMain
 
                     worker_Map.RunWorkerAsync(f);
 
-
+                    ShowNearestDrivers();
 
                 }
             }
