@@ -147,6 +147,10 @@ namespace Taxi_AppMain
                     }
 
                 }
+                if(this.DataSource[0].AuthCode.ToStr().Trim().Length == 0)
+                {
+                    this.DataSource[0].AuthCode = " ";
+                }
 
                 List<ClsLogo> objLogo = new List<ClsLogo>();
                 objLogo.Add(new ClsLogo { ImageInBytes = AppVars.objSubCompany.CompanyLogo != null ? AppVars.objSubCompany.CompanyLogo.ToArray() : null });
