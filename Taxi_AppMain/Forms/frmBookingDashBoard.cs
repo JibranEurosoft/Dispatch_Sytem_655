@@ -18297,7 +18297,7 @@ namespace Taxi_AppMain
 
                 grdPendingJobs.Columns["TelephoneNo"].IsVisible = false;
                 grdPendingJobs.Columns["Due"].IsVisible = false;
-                grdPendingJobs.Columns["Total"].IsVisible = false;
+                //grdPendingJobs.Columns["Total"].IsVisible = false;
 
                 grdPendingJobs.Columns["JourneyTypeId"].IsVisible = false;
                 grdPendingJobs.Columns["VehicleDetails"].IsVisible = false;
@@ -18387,8 +18387,9 @@ namespace Taxi_AppMain
 
 
 
-                grdPreBookings.Columns["Total"].IsVisible = false;
+                //grdPreBookings.Columns["Total"].IsVisible = false;
                 grdPreBookings.Columns["OrderNo"].IsVisible = false;
+                grdPreBookings.Columns["Total"].HeaderText = "Total Charges";
 
 
 
@@ -18485,7 +18486,8 @@ namespace Taxi_AppMain
                 grdPreBookings.Columns["DropOffPlot"].Width = 60;
 
                 grdPreBookings.Columns["Total"].Width = 50;
-                grdPreBookings.Columns["Total"].HeaderText = "Fares(£)";
+                grdPreBookings.Columns["Total"].HeaderText = "Total Charges";
+                //grdPreBookings.Columns["Total"].HeaderText = "Fares(£)";
 
 
                 grdPreBookings.Columns["OrderNo"].Width = 50;
@@ -19678,7 +19680,7 @@ namespace Taxi_AppMain
 
 
                 grdPendingJobs.Columns["Total"].Width = 50;
-                grdPendingJobs.Columns["Total"].HeaderText = "Total";
+                grdPendingJobs.Columns["Total"].HeaderText = "Total Charges";
                 //grdPendingJobs.Columns["Total"].HeaderText = "Fares(£)";
 
                 grdPendingJobs.Columns["OrderNo"].Width = 50;
