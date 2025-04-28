@@ -4318,42 +4318,45 @@ namespace Taxi_AppMain
 
                             e.RowElement.RowInfo.Cells["Time"].Style.CustomizeFill = false;
 
-                            //e.RowElement.RowInfo.Cells["Passenger"].Style.CustomizeFill = false;
+                            if (AppVars.listUserRights.Where(c => c.functionId == "CHANGE DUE BOOKING ROW COLOR").Count() > 0)
+                            {
+
+                                e.RowElement.RowInfo.Cells["Passenger"].Style.CustomizeFill = false;
 
 
 
 
-                            //e.RowElement.RowInfo.Cells["To"].Style.CustomizeFill = false;
-
-
-
-
-
-
-                            //e.RowElement.RowInfo.Cells["From"].Style.CustomizeFill = false;
-
-
-
-
-
-                            //e.RowElement.RowInfo.Cells["MobileNo"].Style.CustomizeFill = false;
-
-
-
-                            //e.RowElement.RowInfo.Cells["FromPostCode"].Style.CustomizeFill = false;
+                                e.RowElement.RowInfo.Cells["To"].Style.CustomizeFill = false;
 
 
 
 
 
-                            //e.RowElement.RowInfo.Cells["ToPostCode"].Style.CustomizeFill = false;
 
-                            //e.RowElement.RowInfo.Cells["Driver"].Style.CustomizeFill = false;
+                                e.RowElement.RowInfo.Cells["From"].Style.CustomizeFill = false;
 
-                            //e.RowElement.RowInfo.Cells["UpdateBy"].Style.CustomizeFill = false;
 
-                            //e.RowElement.RowInfo.Cells["Fare"].Style.CustomizeFill = false;
 
+
+
+                                e.RowElement.RowInfo.Cells["MobileNo"].Style.CustomizeFill = false;
+
+
+
+                                e.RowElement.RowInfo.Cells["FromPostCode"].Style.CustomizeFill = false;
+
+
+
+
+
+                                e.RowElement.RowInfo.Cells["ToPostCode"].Style.CustomizeFill = false;
+
+                                e.RowElement.RowInfo.Cells["Driver"].Style.CustomizeFill = false;
+
+                                e.RowElement.RowInfo.Cells["UpdateBy"].Style.CustomizeFill = false;
+
+                                e.RowElement.RowInfo.Cells["Fare"].Style.CustomizeFill = false;
+                            }
                         }
 
                     }
@@ -4372,52 +4375,55 @@ namespace Taxi_AppMain
                         e.RowElement.RowInfo.Cells["Time"].Style.BackColor = Color.Yellow;
                         e.RowElement.RowInfo.Cells["Time"].Style.CustomizeFill = true;
 
-
-                        //e.RowElement.RowInfo.Cells["Passenger"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["Passenger"].Style.CustomizeFill = true;
-
+                        if (AppVars.listUserRights.Where(c => c.functionId == "CHANGE DUE BOOKING ROW COLOR").Count() > 0)
+                        {
 
 
-
-                        //if (e.RowElement.RowInfo.Cells["ToLocTypeId"].Value.ToInt() != Enums.LOCATION_TYPES.AIRPORT)
-                        //{
-                        //    e.RowElement.RowInfo.Cells["To"].Style.BackColor = Color.Yellow;
-                        //    e.RowElement.RowInfo.Cells["To"].Style.CustomizeFill = true;
-                        //}
-
-                        //if (e.RowElement.RowInfo.Cells["FromLocTypeId"].Value.ToInt() != Enums.LOCATION_TYPES.AIRPORT)
-                        //{
-                        //    e.RowElement.RowInfo.Cells["From"].Style.BackColor = Color.Yellow;
-                        //    e.RowElement.RowInfo.Cells["From"].Style.CustomizeFill = true;
-                        //}
-
-                        //e.RowElement.RowInfo.Cells["MobileNo"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["MobileNo"].Style.CustomizeFill = true;
-
-
-                        //e.RowElement.RowInfo.Cells["FromPostCode"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["FromPostCode"].Style.CustomizeFill = true;
-
-                        //e.RowElement.RowInfo.Cells["ToPostCode"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["ToPostCode"].Style.CustomizeFill = true;
+                            e.RowElement.RowInfo.Cells["Passenger"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["Passenger"].Style.CustomizeFill = true;
 
 
 
 
-                        //e.RowElement.RowInfo.Cells["Driver"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["Driver"].Style.CustomizeFill = true;
+                            if (e.RowElement.RowInfo.Cells["ToLocTypeId"].Value.ToInt() != Enums.LOCATION_TYPES.AIRPORT)
+                            {
+                                e.RowElement.RowInfo.Cells["To"].Style.BackColor = Color.Yellow;
+                                e.RowElement.RowInfo.Cells["To"].Style.CustomizeFill = true;
+                            }
+
+                            if (e.RowElement.RowInfo.Cells["FromLocTypeId"].Value.ToInt() != Enums.LOCATION_TYPES.AIRPORT)
+                            {
+                                e.RowElement.RowInfo.Cells["From"].Style.BackColor = Color.Yellow;
+                                e.RowElement.RowInfo.Cells["From"].Style.CustomizeFill = true;
+                            }
+
+                            e.RowElement.RowInfo.Cells["MobileNo"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["MobileNo"].Style.CustomizeFill = true;
 
 
-                        //e.RowElement.RowInfo.Cells["UpdateBy"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["UpdateBy"].Style.CustomizeFill = true;
+                            e.RowElement.RowInfo.Cells["FromPostCode"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["FromPostCode"].Style.CustomizeFill = true;
+
+                            e.RowElement.RowInfo.Cells["ToPostCode"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["ToPostCode"].Style.CustomizeFill = true;
 
 
 
 
-                        //e.RowElement.RowInfo.Cells["Fare"].Style.BackColor = Color.Yellow;
-                        //e.RowElement.RowInfo.Cells["Fare"].Style.CustomizeFill = true;
+                            e.RowElement.RowInfo.Cells["Driver"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["Driver"].Style.CustomizeFill = true;
 
 
+                            e.RowElement.RowInfo.Cells["UpdateBy"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["UpdateBy"].Style.CustomizeFill = true;
+
+
+
+
+                            e.RowElement.RowInfo.Cells["Fare"].Style.BackColor = Color.Yellow;
+                            e.RowElement.RowInfo.Cells["Fare"].Style.CustomizeFill = true;
+
+                        }
                     }
                 }
                 else
