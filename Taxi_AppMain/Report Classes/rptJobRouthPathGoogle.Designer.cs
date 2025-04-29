@@ -38,6 +38,7 @@
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn16 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn17 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
             Telerik.WinControls.UI.GridViewTextBoxColumn gridViewTextBoxColumn18 = new Telerik.WinControls.UI.GridViewTextBoxColumn();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.grdLister = new UI.MyGridView();
             this.pnlZoom = new System.Windows.Forms.GroupBox();
             this.btnZoom = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             this.optDriver = new System.Windows.Forms.RadioButton();
             this.gMapControl1 = new GMap.NET.WindowsForms.GMapControl();
             this.pnlRouteActions = new System.Windows.Forms.Panel();
+            this.chkShowPlots = new System.Windows.Forms.CheckBox();
             this.btnRecordingPlay = new Telerik.WinControls.UI.RadButton();
             this.btnPlayNav = new Telerik.WinControls.UI.RadButton();
             this.btnPauseNav = new Telerik.WinControls.UI.RadButton();
@@ -57,7 +59,6 @@
             this.lblStart = new System.Windows.Forms.Label();
             this.lblEnd = new System.Windows.Forms.Label();
             this.chkFullDetails = new Telerik.WinControls.UI.RadCheckBox();
-            this.chkShowPlots = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdLister)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdLister.MasterTemplate)).BeginInit();
             this.pnlZoom.SuspendLayout();
@@ -82,7 +83,7 @@
             this.grdLister.HeaderRowBorderColor = System.Drawing.Color.DarkSlateBlue;
             this.grdLister.Location = new System.Drawing.Point(0, 0);
             // 
-            // grdLister
+            // 
             // 
             this.grdLister.MasterTemplate.AllowAddNewRow = false;
             gridViewTextBoxColumn10.HeaderText = "Drv";
@@ -129,6 +130,7 @@
             gridViewTextBoxColumn17,
             gridViewTextBoxColumn18});
             this.grdLister.MasterTemplate.ShowRowHeaderColumn = false;
+            this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.grdLister.Name = "grdLister";
             this.grdLister.PKFieldColumnName = "";
             this.grdLister.ShowGroupPanel = false;
@@ -173,15 +175,10 @@
             this.chkETA.ForeColor = System.Drawing.Color.Red;
             this.chkETA.Location = new System.Drawing.Point(57, 3);
             this.chkETA.Name = "chkETA";
-            // 
-            // 
-            // 
-            this.chkETA.RootElement.ForeColor = System.Drawing.Color.Red;
             this.chkETA.Size = new System.Drawing.Size(41, 16);
             this.chkETA.TabIndex = 228;
             this.chkETA.TabStop = false;
             this.chkETA.Text = "&ETA";
-            this.chkETA.Visible = false;
             this.chkETA.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkETA_ToggleStateChanged);
             // 
             // optDestination
@@ -257,6 +254,18 @@
             this.pnlRouteActions.TabIndex = 124;
             this.pnlRouteActions.Visible = false;
             // 
+            // chkShowPlots
+            // 
+            this.chkShowPlots.AutoSize = true;
+            this.chkShowPlots.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkShowPlots.Location = new System.Drawing.Point(13, 213);
+            this.chkShowPlots.Name = "chkShowPlots";
+            this.chkShowPlots.Size = new System.Drawing.Size(96, 18);
+            this.chkShowPlots.TabIndex = 127;
+            this.chkShowPlots.Text = "Show Plots";
+            this.chkShowPlots.UseVisualStyleBackColor = true;
+            this.chkShowPlots.CheckedChanged += new System.EventHandler(this.chkShowPlots_CheckedChanged);
+            // 
             // btnRecordingPlay
             // 
             this.btnRecordingPlay.Image = global::Taxi_AppMain.Properties.Resources.email;
@@ -273,8 +282,8 @@
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnRecordingPlay.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnRecordingPlay.GetChildAt(0))).Text = "Email";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnRecordingPlay.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextWrap = true;
-            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnRecordingPlay.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnRecordingPlay.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnRecordingPlay.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnPlayNav
             // 
@@ -292,8 +301,8 @@
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnPlayNav.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnPlayNav.GetChildAt(0))).Text = "Play";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPlayNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextWrap = true;
-            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPlayNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPlayNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPlayNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnPauseNav
             // 
@@ -311,8 +320,8 @@
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnPauseNav.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnPauseNav.GetChildAt(0))).Text = "Pause";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPauseNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextWrap = true;
-            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPauseNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPauseNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnPauseNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnStopNav
             // 
@@ -330,8 +339,8 @@
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnStopNav.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnStopNav.GetChildAt(0))).Text = "Stop";
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnStopNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextWrap = true;
-            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnStopNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnStopNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnStopNav.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnEmail
             // 
@@ -396,27 +405,11 @@
             this.chkFullDetails.ForeColor = System.Drawing.Color.Black;
             this.chkFullDetails.Location = new System.Drawing.Point(1005, 7);
             this.chkFullDetails.Name = "chkFullDetails";
-            // 
-            // 
-            // 
-            this.chkFullDetails.RootElement.ForeColor = System.Drawing.Color.Black;
             this.chkFullDetails.Size = new System.Drawing.Size(82, 16);
             this.chkFullDetails.TabIndex = 229;
             this.chkFullDetails.TabStop = false;
             this.chkFullDetails.Text = "&Full Details";
             this.chkFullDetails.Visible = false;
-            // 
-            // chkShowPlots
-            // 
-            this.chkShowPlots.AutoSize = true;
-            this.chkShowPlots.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkShowPlots.Location = new System.Drawing.Point(13, 213);
-            this.chkShowPlots.Name = "chkShowPlots";
-            this.chkShowPlots.Size = new System.Drawing.Size(96, 18);
-            this.chkShowPlots.TabIndex = 127;
-            this.chkShowPlots.Text = "Show Plots";
-            this.chkShowPlots.UseVisualStyleBackColor = true;
-            this.chkShowPlots.CheckedChanged += new System.EventHandler(this.chkShowPlots_CheckedChanged);
             // 
             // rptJobRouthPathGoogle
             // 
