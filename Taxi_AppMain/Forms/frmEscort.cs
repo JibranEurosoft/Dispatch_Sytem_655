@@ -69,6 +69,8 @@ namespace Taxi_AppMain
         private int _MapType;
 
         private bool _IsActive;
+        private string _ServiceId;
+        private string _ServiceIdDocPath;
         public int MapType
         {
             get { return _MapType; }
@@ -1316,10 +1318,15 @@ namespace Taxi_AppMain
                     using (TaxiDataContext db = new TaxiDataContext())
                     {
 
+                        if (txtServiceId.Text.Trim().Length > 0)
+                        {
+                            db.ExecuteQuery<int>("update Gen_Escort_DBSCheck set ServiceId='" + txtServiceId.Text.Trim() + "', ServiceIdDocPath = '" + txtServiceIdDocPath.Text.Trim() + "' where id=" + objMaster.Current.Gen_Escort_DBSChecks.Id);
+                        }
                         db.ExecuteQuery<int>("update gen_escort set pincode='" + txtPinCode.Text.Trim() + "' where id=" + objMaster.Current.Id);
                         db.ExecuteQuery<int>("update gen_escort set IsActive='" + _IsActive + "' where id=" + objMaster.Current.Id);
                         txtPinCode.Text = string.Empty;
                         chkActive.Checked = false;
+
                     }
                 }
                 catch
@@ -1407,6 +1414,10 @@ namespace Taxi_AppMain
                 {
                     using (TaxiDataContext db = new TaxiDataContext())
                     {
+                        this._ServiceId = (string)db.ExecuteQuery<string>("select ServiceId from Gen_Escort_DBSCheck where id=" + objMaster.Current.Gen_Escort_DBSChecks.Id).First();
+                        txtServiceId.Text = this._ServiceId.ToString();
+                        this._ServiceIdDocPath = (string)db.ExecuteQuery<string>("select ServiceIdDocPath from Gen_Escort_DBSCheck where id=" + objMaster.Current.Gen_Escort_DBSChecks.Id).First();
+                        txtServiceIdDocPath.Text = this._ServiceIdDocPath.ToString();
                         this._IsActive = (bool)db.ExecuteQuery<bool>("select IsActive from gen_escort where id=" + objMaster.Current.Id).First();
                         if (_IsActive)
                         {
@@ -3623,8 +3634,44 @@ namespace Taxi_AppMain
 
         }
 
-      
-      
+        private void btnServiceIdClear_Click(object sender, EventArgs e)
+        {
+            txtServiceId.Text = "";
+            txtServiceIdDocPath.Text = "";
+        }
 
+        private void btnServiceIdView_Click(object sender, EventArgs e)
+        {
+            ViewDocument(txtServiceIdDocPath.Text.Trim());
+        }
+
+        private void btnServiceIdBrowse_Click(object sender, EventArgs e)
+        {
+            this.openFileDialog2.Filter = "Documents (All files (*.*)|*.*";
+            if (DialogResult.OK == openFileDialog2.ShowDialog())
+            {
+                string fileName = openFileDialog2.SafeFileName;
+                string filePath = openFileDialog2.FileName;
+
+
+                string fileNamePrefix = txtEscortNo.Text.Trim();
+                if (fileNamePrefix.Contains(" "))
+                    fileNamePrefix = fileNamePrefix.Split(' ')[0];
+
+                fileNamePrefix = fileNamePrefix + "_" + string.Format("{0:ddmmyyyyhhmmss}", DateTime.Now) + "_" + fileName;
+
+                General.payload res = General.UploadEscortFile(fileNamePrefix, filePath);
+
+                if (res.message.ToStr().ToUpper() == "SUCCESS")
+                {
+                    txtServiceIdDocPath.Text = res.filePath.ToStr().Trim().Replace("\"", "");
+                    //row.Cells[COL_DOCUMENT.FILENAME].Value = fileName;
+
+                }
+                else
+                    MessageBox.Show(res.message);
+
+            }
+        }
     }
 }

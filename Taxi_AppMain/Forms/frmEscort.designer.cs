@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.btnSaveNew = new Telerik.WinControls.UI.RadButton();
             this.btnsaveclose = new Telerik.WinControls.UI.RadButton();
@@ -95,9 +95,14 @@
             this.ddlTrainingType = new UI.MyDropDownList();
             this.grdDocuments = new UI.MyGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.radLabel32 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel58 = new Telerik.WinControls.UI.RadLabel();
+            this.btnServiceIdClear = new Telerik.WinControls.UI.RadButton();
+            this.btnServiceIdView = new Telerik.WinControls.UI.RadButton();
             this.radLabel57 = new Telerik.WinControls.UI.RadLabel();
+            this.btnServiceIdBrowse = new Telerik.WinControls.UI.RadButton();
             this.radLabel56 = new Telerik.WinControls.UI.RadLabel();
+            this.txtServiceIdDocPath = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel55 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel54 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel53 = new Telerik.WinControls.UI.RadLabel();
@@ -171,7 +176,9 @@
             this.grdRouteHistory = new UI.MyGridView();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtServiceId = new Telerik.WinControls.UI.RadTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOnNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -240,9 +247,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDocuments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDocuments.MasterTemplate)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel32)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdClear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdBrowse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel56)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServiceIdDocPath)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel55)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel54)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel53)).BeginInit();
@@ -321,6 +333,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServiceId)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExit
@@ -517,6 +530,25 @@
             this.radLabel21.Size = new System.Drawing.Size(57, 18);
             this.radLabel21.TabIndex = 274;
             this.radLabel21.Text = "Route No";
+            // 
+            // chkActive
+            // 
+            this.chkActive.BackColor = System.Drawing.Color.Transparent;
+            this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkActive.Location = new System.Drawing.Point(397, 324);
+            this.chkActive.Margin = new System.Windows.Forms.Padding(4);
+            this.chkActive.Name = "chkActive";
+            // 
+            // 
+            // 
+            this.chkActive.RootElement.StretchHorizontally = true;
+            this.chkActive.RootElement.StretchVertically = true;
+            this.chkActive.Size = new System.Drawing.Size(125, 22);
+            this.chkActive.TabIndex = 268;
+            this.chkActive.Text = "Is Active";
+            this.chkActive.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
+            this.chkActive.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkActive_ToggleStateChanged);
             // 
             // txtNi
             // 
@@ -1038,7 +1070,7 @@
             this.grdLicenseDetail.MasterTemplate.AllowAddNewRow = false;
             this.grdLicenseDetail.MasterTemplate.AllowEditRow = false;
             this.grdLicenseDetail.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grdLicenseDetail.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.grdLicenseDetail.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.grdLicenseDetail.Name = "grdLicenseDetail";
             this.grdLicenseDetail.PKFieldColumnName = "";
             this.grdLicenseDetail.ShowGroupPanel = false;
@@ -1208,7 +1240,7 @@
             this.grdDocuments.MasterTemplate.AllowAddNewRow = false;
             this.grdDocuments.MasterTemplate.AllowEditRow = false;
             this.grdDocuments.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grdDocuments.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.grdDocuments.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.grdDocuments.Name = "grdDocuments";
             this.grdDocuments.PKFieldColumnName = "";
             this.grdDocuments.ShowGroupPanel = false;
@@ -1219,9 +1251,15 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.txtServiceId);
+            this.tabPage4.Controls.Add(this.radLabel32);
             this.tabPage4.Controls.Add(this.radLabel58);
+            this.tabPage4.Controls.Add(this.btnServiceIdClear);
+            this.tabPage4.Controls.Add(this.btnServiceIdView);
             this.tabPage4.Controls.Add(this.radLabel57);
+            this.tabPage4.Controls.Add(this.btnServiceIdBrowse);
             this.tabPage4.Controls.Add(this.radLabel56);
+            this.tabPage4.Controls.Add(this.txtServiceIdDocPath);
             this.tabPage4.Controls.Add(this.radLabel55);
             this.tabPage4.Controls.Add(this.radLabel54);
             this.tabPage4.Controls.Add(this.radLabel53);
@@ -1246,6 +1284,18 @@
             this.tabPage4.Text = "DBS";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // radLabel32
+            // 
+            this.radLabel32.AutoSize = false;
+            this.radLabel32.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel32.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel32.Location = new System.Drawing.Point(9, 306);
+            this.radLabel32.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel32.Name = "radLabel32";
+            this.radLabel32.Size = new System.Drawing.Size(108, 27);
+            this.radLabel32.TabIndex = 277;
+            this.radLabel32.Text = "Service ID";
+            // 
             // radLabel58
             // 
             this.radLabel58.AutoSize = false;
@@ -1257,6 +1307,26 @@
             this.radLabel58.Size = new System.Drawing.Size(108, 27);
             this.radLabel58.TabIndex = 278;
             this.radLabel58.Text = "DBS Note";
+            // 
+            // btnServiceIdClear
+            // 
+            this.btnServiceIdClear.Location = new System.Drawing.Point(637, 305);
+            this.btnServiceIdClear.Margin = new System.Windows.Forms.Padding(4);
+            this.btnServiceIdClear.Name = "btnServiceIdClear";
+            this.btnServiceIdClear.Size = new System.Drawing.Size(59, 30);
+            this.btnServiceIdClear.TabIndex = 276;
+            this.btnServiceIdClear.Text = "Clear";
+            this.btnServiceIdClear.Click += new System.EventHandler(this.btnServiceIdClear_Click);
+            // 
+            // btnServiceIdView
+            // 
+            this.btnServiceIdView.Location = new System.Drawing.Point(569, 305);
+            this.btnServiceIdView.Margin = new System.Windows.Forms.Padding(4);
+            this.btnServiceIdView.Name = "btnServiceIdView";
+            this.btnServiceIdView.Size = new System.Drawing.Size(59, 30);
+            this.btnServiceIdView.TabIndex = 275;
+            this.btnServiceIdView.Text = "View";
+            this.btnServiceIdView.Click += new System.EventHandler(this.btnServiceIdView_Click);
             // 
             // radLabel57
             // 
@@ -1271,6 +1341,16 @@
             this.radLabel57.Text = "Auto SMS Days";
             this.radLabel57.Visible = false;
             // 
+            // btnServiceIdBrowse
+            // 
+            this.btnServiceIdBrowse.Location = new System.Drawing.Point(502, 305);
+            this.btnServiceIdBrowse.Margin = new System.Windows.Forms.Padding(4);
+            this.btnServiceIdBrowse.Name = "btnServiceIdBrowse";
+            this.btnServiceIdBrowse.Size = new System.Drawing.Size(59, 30);
+            this.btnServiceIdBrowse.TabIndex = 274;
+            this.btnServiceIdBrowse.Text = "Browse";
+            this.btnServiceIdBrowse.Click += new System.EventHandler(this.btnServiceIdBrowse_Click);
+            // 
             // radLabel56
             // 
             this.radLabel56.AutoSize = false;
@@ -1283,6 +1363,18 @@
             this.radLabel56.TabIndex = 276;
             this.radLabel56.Text = "Auto SMS";
             this.radLabel56.Visible = false;
+            // 
+            // txtServiceIdDocPath
+            // 
+            this.txtServiceIdDocPath.Enabled = false;
+            this.txtServiceIdDocPath.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServiceIdDocPath.Location = new System.Drawing.Point(308, 305);
+            this.txtServiceIdDocPath.Margin = new System.Windows.Forms.Padding(4);
+            this.txtServiceIdDocPath.MaxLength = 100;
+            this.txtServiceIdDocPath.Name = "txtServiceIdDocPath";
+            this.txtServiceIdDocPath.Size = new System.Drawing.Size(182, 21);
+            this.txtServiceIdDocPath.TabIndex = 273;
+            this.txtServiceIdDocPath.TabStop = false;
             // 
             // radLabel55
             // 
@@ -1404,25 +1496,6 @@
             this.chkAutoSMS.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;
             this.chkAutoSMS.Visible = false;
             this.chkAutoSMS.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkAutoSMS_ToggleStateChanged);
-            // 
-            // chkActive
-            // 
-            this.chkActive.BackColor = System.Drawing.Color.Transparent;
-            this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActive.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkActive.Location = new System.Drawing.Point(397, 324);
-            this.chkActive.Margin = new System.Windows.Forms.Padding(4);
-            this.chkActive.Name = "chkActive";
-            // 
-            // 
-            // 
-            this.chkActive.RootElement.StretchHorizontally = true;
-            this.chkActive.RootElement.StretchVertically = true;
-            this.chkActive.Size = new System.Drawing.Size(125, 22);
-            this.chkActive.TabIndex = 268;
-            this.chkActive.Text = "Is Active";
-            this.chkActive.ToggleState = Telerik.WinControls.Enumerations.ToggleState.On;            
-            this.chkActive.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkActive_ToggleStateChanged);
             // 
             // txtDBSNumber
             // 
@@ -1575,7 +1648,7 @@
             this.grd_IncidentLog.MasterTemplate.AllowAddNewRow = false;
             this.grd_IncidentLog.MasterTemplate.AllowEditRow = false;
             this.grd_IncidentLog.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grd_IncidentLog.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.grd_IncidentLog.MasterTemplate.ViewDefinition = tableViewDefinition7;
             this.grd_IncidentLog.Name = "grd_IncidentLog";
             this.grd_IncidentLog.PKFieldColumnName = "";
             this.grd_IncidentLog.ShowGroupPanel = false;
@@ -2280,7 +2353,7 @@
             this.grdRouteHistory.MasterTemplate.AllowAddNewRow = false;
             this.grdRouteHistory.MasterTemplate.AllowEditRow = false;
             this.grdRouteHistory.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grdRouteHistory.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.grdRouteHistory.MasterTemplate.ViewDefinition = tableViewDefinition8;
             this.grdRouteHistory.Name = "grdRouteHistory";
             this.grdRouteHistory.PKFieldColumnName = "";
             this.grdRouteHistory.ShowGroupPanel = false;
@@ -2294,16 +2367,20 @@
             this.radPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(240)))), ((int)(((byte)(249)))));
             this.radPanel1.Controls.Add(this.tabControl1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.radPanel1.Location = new System.Drawing.Point(0, 0);
+            this.radPanel1.Location = new System.Drawing.Point(0, 38);
             this.radPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(919, 708);
+            this.radPanel1.Size = new System.Drawing.Size(919, 670);
             this.radPanel1.TabIndex = 105;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel1.GetChildAt(0).GetChildAt(1))).Width = 0F;
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileDialog2
+            // 
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
             // panel1
             // 
@@ -2315,6 +2392,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(919, 81);
             this.panel1.TabIndex = 106;
+            // 
+            // txtServiceId
+            // 
+            this.txtServiceId.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtServiceId.Location = new System.Drawing.Point(151, 305);
+            this.txtServiceId.Margin = new System.Windows.Forms.Padding(4);
+            this.txtServiceId.MaxLength = 30;
+            this.txtServiceId.Name = "txtServiceId";
+            this.txtServiceId.Size = new System.Drawing.Size(147, 21);
+            this.txtServiceId.TabIndex = 3;
+            this.txtServiceId.TabStop = false;
             // 
             // frmEscort
             // 
@@ -2409,9 +2497,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDocuments)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel32)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdClear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnServiceIdBrowse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel56)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtServiceIdDocPath)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel55)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel54)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel53)).EndInit();
@@ -2495,6 +2588,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtServiceId)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2536,6 +2630,7 @@
         private Telerik.WinControls.UI.RadPanel radPanel1;
         private UI.MyGridView grdDocuments;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tabPage3;
         private UI.MyDatePicker dp_IncidentLog;
@@ -2640,5 +2735,11 @@
         private Telerik.WinControls.UI.RadLabel radLabel13;
         private Telerik.WinControls.UI.RadLabel radLabel30;
         private Telerik.WinControls.UI.RadTextBox txtPinCode;
+        private Telerik.WinControls.UI.RadLabel radLabel32;
+        private Telerik.WinControls.UI.RadButton btnServiceIdClear;
+        private Telerik.WinControls.UI.RadButton btnServiceIdView;
+        private Telerik.WinControls.UI.RadButton btnServiceIdBrowse;
+        private Telerik.WinControls.UI.RadTextBox txtServiceIdDocPath;
+        private Telerik.WinControls.UI.RadTextBox txtServiceId;
     }
 }
