@@ -36,18 +36,18 @@ namespace Taxi_AppMain
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition11 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition12 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition16 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition17 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition18 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition19 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition20 = new Telerik.WinControls.UI.TableViewDefinition();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition10 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
             this.Pg_PendingJobs = new Telerik.WinControls.UI.RadPageViewPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -472,7 +472,7 @@ namespace Taxi_AppMain
             this.radPageView1.Location = new System.Drawing.Point(0, 38);
             this.radPageView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.SelectedPage = this.Pg_RecentJobs;
+            this.radPageView1.SelectedPage = this.Pg_PreBookings;
             this.radPageView1.Size = new System.Drawing.Size(1400, 922);
             this.radPageView1.TabIndex = 106;
             this.radPageView1.Text = "Recent Jobs";
@@ -587,14 +587,14 @@ namespace Taxi_AppMain
             this.grdOnPlotDrivers.AllowUserToResizeColumns = false;
             this.grdOnPlotDrivers.AllowUserToResizeRows = false;
             this.grdOnPlotDrivers.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdOnPlotDrivers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdOnPlotDrivers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grdOnPlotDrivers.ColumnHeadersHeight = 24;
             this.grdOnPlotDrivers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdOnPlotDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -632,14 +632,14 @@ namespace Taxi_AppMain
             this.grdDriverPricePlot.AllowUserToResizeColumns = false;
             this.grdDriverPricePlot.AllowUserToResizeRows = false;
             this.grdDriverPricePlot.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdDriverPricePlot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdDriverPricePlot.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.grdDriverPricePlot.ColumnHeadersHeight = 24;
             this.grdDriverPricePlot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.grdDriverPricePlot.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -691,7 +691,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdDriverWaiting.MasterTemplate.ViewDefinition = tableViewDefinition11;
+            this.grdDriverWaiting.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.grdDriverWaiting.Name = "grdDriverWaiting";
             this.grdDriverWaiting.Size = new System.Drawing.Size(212, 291);
             this.grdDriverWaiting.TabIndex = 4;
@@ -733,7 +733,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdOnBoardDriver.MasterTemplate.ViewDefinition = tableViewDefinition12;
+            this.grdOnBoardDriver.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.grdOnBoardDriver.Name = "grdOnBoardDriver";
             this.grdOnBoardDriver.Size = new System.Drawing.Size(239, 291);
             this.grdOnBoardDriver.TabIndex = 4;
@@ -774,7 +774,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdPendingJobs.MasterTemplate.ViewDefinition = tableViewDefinition13;
+            this.grdPendingJobs.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.grdPendingJobs.Name = "grdPendingJobs";
             this.grdPendingJobs.Size = new System.Drawing.Size(1373, 452);
             this.grdPendingJobs.TabIndex = 4;
@@ -1347,7 +1347,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdPreBookings.MasterTemplate.ViewDefinition = tableViewDefinition14;
+            this.grdPreBookings.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.grdPreBookings.Name = "grdPreBookings";
             this.grdPreBookings.Size = new System.Drawing.Size(1379, 794);
             this.grdPreBookings.TabIndex = 5;
@@ -1624,7 +1624,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdAllJobs.MasterTemplate.ViewDefinition = tableViewDefinition15;
+            this.grdAllJobs.MasterTemplate.ViewDefinition = tableViewDefinition5;
             this.grdAllJobs.Name = "grdAllJobs";
             this.grdAllJobs.Size = new System.Drawing.Size(1379, 637);
             this.grdAllJobs.TabIndex = 5;
@@ -1906,7 +1906,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdNoShowJobs.MasterTemplate.ViewDefinition = tableViewDefinition16;
+            this.grdNoShowJobs.MasterTemplate.ViewDefinition = tableViewDefinition6;
             this.grdNoShowJobs.Name = "grdNoShowJobs";
             this.grdNoShowJobs.Size = new System.Drawing.Size(1375, 807);
             this.grdNoShowJobs.TabIndex = 8;
@@ -1946,7 +1946,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdCancelledJobs.MasterTemplate.ViewDefinition = tableViewDefinition17;
+            this.grdCancelledJobs.MasterTemplate.ViewDefinition = tableViewDefinition7;
             this.grdCancelledJobs.Name = "grdCancelledJobs";
             this.grdCancelledJobs.Size = new System.Drawing.Size(1379, 836);
             this.grdCancelledJobs.TabIndex = 10;
@@ -1987,7 +1987,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdQuotations.MasterTemplate.ViewDefinition = tableViewDefinition18;
+            this.grdQuotations.MasterTemplate.ViewDefinition = tableViewDefinition8;
             this.grdQuotations.Name = "grdQuotations";
             this.grdQuotations.Size = new System.Drawing.Size(1375, 765);
             this.grdQuotations.TabIndex = 111;
@@ -2149,7 +2149,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdRecentJobs.MasterTemplate.ViewDefinition = tableViewDefinition19;
+            this.grdRecentJobs.MasterTemplate.ViewDefinition = tableViewDefinition9;
             this.grdRecentJobs.Name = "grdRecentJobs";
             this.grdRecentJobs.Size = new System.Drawing.Size(1373, 494);
             this.grdRecentJobs.TabIndex = 1;
@@ -2796,7 +2796,7 @@ namespace Taxi_AppMain
             // 
             // 
             // 
-            this.grdStats.MasterTemplate.ViewDefinition = tableViewDefinition20;
+            this.grdStats.MasterTemplate.ViewDefinition = tableViewDefinition10;
             this.grdStats.Name = "grdStats";
             this.grdStats.Size = new System.Drawing.Size(587, 708);
             this.grdStats.TabIndex = 1;

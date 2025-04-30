@@ -32,7 +32,9 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.grdLister = new Telerik.WinControls.UI.RadGridView();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.ddlSubCompany = new Telerik.WinControls.UI.RadDropDownList();
             this.btnPendingApproval = new System.Windows.Forms.Button();
             this.btnExpiredDrivers = new Telerik.WinControls.UI.RadButton();
             this.label11 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdLister.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlSubCompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExpiredDrivers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,13 +73,15 @@
             // 
             this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.grdLister.Name = "grdLister";
-            this.grdLister.Size = new System.Drawing.Size(1412, 924);
+            this.grdLister.Size = new System.Drawing.Size(1815, 924);
             this.grdLister.TabIndex = 109;
             // 
             // radPanel1
             // 
             this.radPanel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.radPanel1.Controls.Add(this.label13);
             this.radPanel1.Controls.Add(this.lblTotal);
+            this.radPanel1.Controls.Add(this.ddlSubCompany);
             this.radPanel1.Controls.Add(this.btnPendingApproval);
             this.radPanel1.Controls.Add(this.btnExpiredDrivers);
             this.radPanel1.Controls.Add(this.label11);
@@ -95,8 +100,19 @@
             this.radPanel1.Location = new System.Drawing.Point(0, 38);
             this.radPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(1412, 42);
+            this.radPanel1.Size = new System.Drawing.Size(1815, 42);
             this.radPanel1.TabIndex = 108;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1172, 11);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(94, 16);
+            this.label13.TabIndex = 126;
+            this.label13.Text = "Sub Company";
             // 
             // lblTotal
             // 
@@ -105,12 +121,22 @@
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblTotal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTotal.Location = new System.Drawing.Point(1211, 0);
+            this.lblTotal.Location = new System.Drawing.Point(1614, 0);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(201, 42);
             this.lblTotal.TabIndex = 162;
             this.lblTotal.Text = "Total Driver(s) : 0";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ddlSubCompany
+            // 
+            this.ddlSubCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlSubCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlSubCompany.Location = new System.Drawing.Point(1273, 11);
+            this.ddlSubCompany.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ddlSubCompany.Name = "ddlSubCompany";
+            this.ddlSubCompany.Size = new System.Drawing.Size(181, 21);
+            this.ddlSubCompany.TabIndex = 125;
             // 
             // btnPendingApproval
             // 
@@ -266,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1412, 1004);
+            this.ClientSize = new System.Drawing.Size(1815, 1004);
             this.Controls.Add(this.grdLister);
             this.Controls.Add(this.radPanel1);
             this.FormTitle = "Drivers List";
@@ -291,6 +317,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlSubCompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExpiredDrivers)).EndInit();
             this.ResumeLayout(false);
 
@@ -316,5 +343,7 @@
         private Telerik.WinControls.UI.RadButton btnExpiredDrivers;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnPendingApproval;
+        private System.Windows.Forms.Label label13;
+        private Telerik.WinControls.UI.RadDropDownList ddlSubCompany;
     }
 }

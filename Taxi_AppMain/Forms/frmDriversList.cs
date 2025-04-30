@@ -38,7 +38,7 @@ namespace Taxi_AppMain
             grdLister.CellDoubleClick += new GridViewCellEventHandler(grdLister_CellDoubleClick);
             grdLister.RowsChanging += new Telerik.WinControls.UI.GridViewCollectionChangingEventHandler(Grid_RowsChanging);
             objMaster = new DriverBO();
-
+            LoadSubCompany();
 
             this.SetProperties((INavigation)objMaster);
 
@@ -66,6 +66,32 @@ namespace Taxi_AppMain
             //    grdLister.ContextMenuOpening += new ContextMenuOpeningEventHandler(grdLister_ContextMenuOpening);
             //}
 
+        }
+
+        private void LoadSubCompany()
+        {
+            try
+            {
+                using (TaxiDataContext db = new TaxiDataContext())
+                {
+                    var companies = db.GetTable<Gen_SubCompany>()
+                        .Select(x => new { x.Id, x.CompanyName })
+                        .ToList();
+
+                    companies.Insert(0, new { Id = 0, CompanyName = "Show All Data" });
+
+                    ddlSubCompany.DataSource = companies;
+                    ddlSubCompany.DisplayMember = "CompanyName";
+                    ddlSubCompany.ValueMember = "Id";
+                    ddlSubCompany.SelectedIndex = 0;
+                    this.ddlSubCompany.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.ddlSubCompany_SelectedIndexChanged);
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
 
@@ -199,7 +225,6 @@ namespace Taxi_AppMain
                 grdLister.ShowGroupPanel = false;
                 grdLister.AllowAddNewRow = false;
                 grdLister.AllowEditRow = false;
-
 
                 listofDocs = General.GetQueryable<Gen_Syspolicy_DriverDocumentList>(null).ToList();
 
@@ -1288,7 +1313,7 @@ namespace Taxi_AppMain
                 {
                     //  listOfData = db.stp_GetDriversList(AppVars.DefaultDriverSubCompanyId).OrderBy(item => item.No, new NaturalSortComparer<string>()).ToList();
 
-                    listOfData = db.ExecuteQuery<stp_GetDriversListResultEx>("exec stp_GetDriversList {0}", AppVars.DefaultDriverSubCompanyId)
+                    listOfData = db.ExecuteQuery<stp_GetDriversListResultEx>("exec stp_GetDriversList {0}", Convert.ToInt32(ddlSubCompany.SelectedValue))
                         .OrderBy(item => item.No, new NaturalSortComparer<string>()).ToList();
 
 
@@ -1427,6 +1452,12 @@ namespace Taxi_AppMain
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ddlSubCompany_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            PopulateData();
+            PopulateUI(listOfData);
         }
     }
 }

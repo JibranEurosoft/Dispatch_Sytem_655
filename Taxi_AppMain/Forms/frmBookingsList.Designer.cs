@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             this.radPanel1 = new Telerik.WinControls.UI.RadPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.OPTASC = new System.Windows.Forms.RadioButton();
+            this.OPTDESC = new System.Windows.Forms.RadioButton();
             this.optCompletedJobs = new Telerik.WinControls.UI.RadRadioButton();
             this.btnPrintSelected = new Telerik.WinControls.UI.RadButton();
             this.lblBookingCount = new System.Windows.Forms.Label();
@@ -47,6 +51,7 @@
             this.btnFind = new Telerik.WinControls.UI.RadButton();
             this.txtSearch = new Telerik.WinControls.UI.RadTextBox();
             this.ddlColumns = new Telerik.WinControls.UI.RadDropDownList();
+            this.ddlSubCompany = new Telerik.WinControls.UI.RadDropDownList();
             this.label1 = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
@@ -56,10 +61,7 @@
             this.btnFirstRecords = new Telerik.WinControls.UI.RadButton();
             this.grdLister = new Telerik.WinControls.UI.RadGridView();
             this.chkSelectAll = new Telerik.WinControls.UI.RadCheckBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.OPTDESC = new System.Windows.Forms.RadioButton();
-            this.OPTASC = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOnNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -67,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveAndNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).BeginInit();
             this.radPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optCompletedJobs)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSelected)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.optNoFares)).BeginInit();
@@ -81,6 +84,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFind)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlColumns)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlSubCompany)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnLastRecords)).BeginInit();
@@ -91,12 +95,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdLister.MasterTemplate)).BeginInit();
             this.grdLister.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSelectAll)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // radPanel1
             // 
             this.radPanel1.BackColor = System.Drawing.Color.AliceBlue;
+            this.radPanel1.Controls.Add(this.label5);
             this.radPanel1.Controls.Add(this.panel1);
             this.radPanel1.Controls.Add(this.optCompletedJobs);
             this.radPanel1.Controls.Add(this.btnPrintSelected);
@@ -115,6 +119,7 @@
             this.radPanel1.Controls.Add(this.btnFind);
             this.radPanel1.Controls.Add(this.txtSearch);
             this.radPanel1.Controls.Add(this.ddlColumns);
+            this.radPanel1.Controls.Add(this.ddlSubCompany);
             this.radPanel1.Controls.Add(this.label1);
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 38);
@@ -122,6 +127,56 @@
             this.radPanel1.Name = "radPanel1";
             this.radPanel1.Size = new System.Drawing.Size(1373, 71);
             this.radPanel1.TabIndex = 108;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.OPTASC);
+            this.panel1.Controls.Add(this.OPTDESC);
+            this.panel1.Location = new System.Drawing.Point(245, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(294, 21);
+            this.panel1.TabIndex = 123;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(17, 3);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 16);
+            this.label4.TabIndex = 122;
+            this.label4.Text = "Sort by";
+            // 
+            // OPTASC
+            // 
+            this.OPTASC.AutoSize = true;
+            this.OPTASC.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OPTASC.Location = new System.Drawing.Point(85, 2);
+            this.OPTASC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OPTASC.Name = "OPTASC";
+            this.OPTASC.Size = new System.Drawing.Size(88, 18);
+            this.OPTASC.TabIndex = 120;
+            this.OPTASC.Tag = "1";
+            this.OPTASC.Text = "Ascending";
+            this.OPTASC.UseVisualStyleBackColor = true;
+            this.OPTASC.CheckedChanged += new System.EventHandler(this.OPTASC_CheckedChanged);
+            // 
+            // OPTDESC
+            // 
+            this.OPTDESC.AutoSize = true;
+            this.OPTDESC.Checked = true;
+            this.OPTDESC.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OPTDESC.Location = new System.Drawing.Point(192, 2);
+            this.OPTDESC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.OPTDESC.Name = "OPTDESC";
+            this.OPTDESC.Size = new System.Drawing.Size(95, 18);
+            this.OPTDESC.TabIndex = 121;
+            this.OPTDESC.TabStop = true;
+            this.OPTDESC.Tag = "2";
+            this.OPTDESC.Text = "Descending";
+            this.OPTDESC.UseVisualStyleBackColor = true;
             // 
             // optCompletedJobs
             // 
@@ -193,7 +248,7 @@
             // optRejectedJobs
             // 
             this.optRejectedJobs.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.optRejectedJobs.Location = new System.Drawing.Point(704, 7);
+            this.optRejectedJobs.Location = new System.Drawing.Point(1126, 5);
             this.optRejectedJobs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.optRejectedJobs.Name = "optRejectedJobs";
             this.optRejectedJobs.Size = new System.Drawing.Size(115, 19);
@@ -280,7 +335,7 @@
             this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(644, 46);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(23, 16);
+            this.label3.Size = new System.Drawing.Size(22, 16);
             this.label3.TabIndex = 13;
             this.label3.Text = "To";
             // 
@@ -305,7 +360,7 @@
             this.label2.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(390, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 16);
+            this.label2.Size = new System.Drawing.Size(73, 16);
             this.label2.TabIndex = 8;
             this.label2.Text = "Date From";
             // 
@@ -348,6 +403,16 @@
             this.ddlColumns.Size = new System.Drawing.Size(129, 21);
             this.ddlColumns.TabIndex = 6;
             // 
+            // ddlSubCompany
+            // 
+            this.ddlSubCompany.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlSubCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlSubCompany.Location = new System.Drawing.Point(646, 7);
+            this.ddlSubCompany.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ddlSubCompany.Name = "ddlSubCompany";
+            this.ddlSubCompany.Size = new System.Drawing.Size(186, 21);
+            this.ddlSubCompany.TabIndex = 7;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -355,7 +420,7 @@
             this.label1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 48);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 16);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 4;
             this.label1.Text = "Search";
             // 
@@ -467,7 +532,7 @@
             // 
             // 
             // 
-            this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.grdLister.Name = "grdLister";
             this.grdLister.Size = new System.Drawing.Size(1373, 793);
             this.grdLister.TabIndex = 6;
@@ -485,55 +550,16 @@
             this.chkSelectAll.Visible = false;
             this.chkSelectAll.ToggleStateChanged += new Telerik.WinControls.UI.StateChangedEventHandler(this.chkSelectAll_ToggleStateChanged);
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(17, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 16);
-            this.label4.TabIndex = 122;
-            this.label4.Text = "Sort by";
-            // 
-            // OPTDESC
-            // 
-            this.OPTDESC.AutoSize = true;
-            this.OPTDESC.Checked = true;
-            this.OPTDESC.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OPTDESC.Location = new System.Drawing.Point(192, 2);
-            this.OPTDESC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.OPTDESC.Name = "OPTDESC";
-            this.OPTDESC.Size = new System.Drawing.Size(95, 18);
-            this.OPTDESC.TabIndex = 121;
-            this.OPTDESC.TabStop = true;
-            this.OPTDESC.Tag = "2";
-            this.OPTDESC.Text = "Descending";
-            this.OPTDESC.UseVisualStyleBackColor = true;
-            // 
-            // OPTASC
-            // 
-            this.OPTASC.AutoSize = true;
-            this.OPTASC.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OPTASC.Location = new System.Drawing.Point(85, 2);
-            this.OPTASC.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.OPTASC.Name = "OPTASC";
-            this.OPTASC.Size = new System.Drawing.Size(88, 18);
-            this.OPTASC.TabIndex = 120;
-            this.OPTASC.Tag = "1";
-            this.OPTASC.Text = "Ascending";
-            this.OPTASC.UseVisualStyleBackColor = true;
-            this.OPTASC.CheckedChanged += new System.EventHandler(this.OPTASC_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.OPTASC);
-            this.panel1.Controls.Add(this.OPTDESC);
-            this.panel1.Location = new System.Drawing.Point(245, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(294, 21);
-            this.panel1.TabIndex = 123;
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(545, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(94, 16);
+            this.label5.TabIndex = 124;
+            this.label5.Text = "Sub Company";
             // 
             // frmBookingsList
             // 
@@ -548,14 +574,14 @@
             this.Name = "frmBookingsList";
             this.ShowHeader = true;
             this.Text = "Bookings List";
+            this.Controls.SetChildIndex(this.radPanel1, 0);
+            this.Controls.SetChildIndex(this.radPanel2, 0);
+            this.Controls.SetChildIndex(this.grdLister, 0);
             this.Controls.SetChildIndex(this.btnSaveAndNew, 0);
             this.Controls.SetChildIndex(this.btnSaveAndClose, 0);
             this.Controls.SetChildIndex(this.btnExit, 0);
             this.Controls.SetChildIndex(this.btnSaveOn, 0);
             this.Controls.SetChildIndex(this.btnOnNew, 0);
-            this.Controls.SetChildIndex(this.radPanel1, 0);
-            this.Controls.SetChildIndex(this.radPanel2, 0);
-            this.Controls.SetChildIndex(this.grdLister, 0);
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOnNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).EndInit();
@@ -564,6 +590,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel1)).EndInit();
             this.radPanel1.ResumeLayout(false);
             this.radPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.optCompletedJobs)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnPrintSelected)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.optNoFares)).EndInit();
@@ -578,6 +606,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnFind)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSearch)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlColumns)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ddlSubCompany)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnLastRecords)).EndInit();
@@ -589,8 +618,6 @@
             this.grdLister.ResumeLayout(false);
             this.grdLister.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkSelectAll)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -601,6 +628,7 @@
         private Telerik.WinControls.UI.RadButton btnFind;
         private Telerik.WinControls.UI.RadTextBox txtSearch;
         private Telerik.WinControls.UI.RadDropDownList ddlColumns;
+        private Telerik.WinControls.UI.RadDropDownList ddlSubCompany;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private UI.MyDatePicker dtpToDate;
@@ -629,5 +657,6 @@
         private System.Windows.Forms.RadioButton OPTDESC;
         private System.Windows.Forms.RadioButton OPTASC;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label5;
     }
 }

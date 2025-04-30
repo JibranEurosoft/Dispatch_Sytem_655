@@ -25,6 +25,7 @@ using System.Xml;
 using System.IO;
 using System.Diagnostics;
 using Taxi_AppMain.Classes;
+using System.Web.UI.WebControls;
 
 namespace Taxi_AppMain
 {
@@ -230,7 +231,7 @@ namespace Taxi_AppMain
                 ddlColumns.Items.Add("Vehicle");
                 ddlColumns.Items.Add("Driver");
                 ddlColumns.Items.Add("Status");
-                ddlColumns.Items.Add("SubCompany");
+                //ddlColumns.Items.Add("SubCompany");
 
                 ddlColumns.SelectedIndex = 0;
 
@@ -813,7 +814,7 @@ namespace Taxi_AppMain
                     bool col_status = false;
                     bool col_pickupPoint = false;
                     bool col_destination = false;
-                    bool col_subcompany = false;
+                    //bool col_subcompany = false;
 
                     if (col == "passenger")
                     {
@@ -857,10 +858,10 @@ namespace Taxi_AppMain
                     {
                         col_destination = true;
                     }
-                    else if (col == "subcompany")
-                    {
-                        col_subcompany = true;
-                    }
+                    //else if (col == "subcompany")
+                    //{
+                    //    col_subcompany = true;
+                    //}
 
 
                     //int cnt = data1.Count();
@@ -870,7 +871,7 @@ namespace Taxi_AppMain
                     skip = 0;
 
 
-                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, AppVars.DefaultBookingSubCompanyId, searchTxt, bookingstatusId).ToList();
+                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, Convert.ToInt32(ddlSubCompany.SelectedValue), searchTxt, bookingstatusId).ToList();
 
 
 
@@ -1880,7 +1881,19 @@ namespace Taxi_AppMain
 
             this.InitializeForm("frmBooking");
 
+            using(TaxiDataContext db = new TaxiDataContext())
+            {
+                var companies = db.GetTable<Gen_SubCompany>()
+                    .Select(x => new { x.Id, x.CompanyName })
+                    .ToList();
 
+                companies.Insert(0, new { Id = 0, CompanyName = "Show All Data" });
+
+                ddlSubCompany.DataSource = companies;
+                ddlSubCompany.DisplayMember = "CompanyName";
+                ddlSubCompany.ValueMember = "Id";
+                ddlSubCompany.SelectedIndex = 0;
+            }
 
         }
 
@@ -1906,7 +1919,7 @@ namespace Taxi_AppMain
         private void ShowBookingForm(int id)
         {
             General.ShowBookingForm(id, true, "", "", Enums.BOOKING_TYPES.LOCAL);
-
+            
 
             //frmBooking frm = new frmBooking();
             //frm.OnDisplayRecord(id);
@@ -2030,7 +2043,7 @@ namespace Taxi_AppMain
                         bool col_status = false;
                         bool col_pickupPoint = false;
                         bool col_destination = false;
-                        bool col_subcompany = false;
+                        //bool col_subcompany = false;
 
                         if (col == "passenger")
                         {
@@ -2074,17 +2087,18 @@ namespace Taxi_AppMain
                         {
                             col_destination = true;
                         }
-                        else if (col == "subcompany")
-                        {
-                            col_subcompany = true;
-                        }
+                        //else if (col == "subcompany")
+                        //{
+                        //    col_subcompany = true;
+                        //}
 
                         skip = 0;
 
                  
 
 
-                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, AppVars.DefaultBookingSubCompanyId, searchTxt,bookingstatusId).ToList();
+                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, Convert.ToInt32(ddlSubCompany.SelectedValue), searchTxt,bookingstatusId).ToList();
+                        //var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, AppVars.DefaultBookingSubCompanyId, searchTxt,bookingstatusId).ToList();
 
 
                         grdLister.DataSource = query;
@@ -2374,7 +2388,7 @@ namespace Taxi_AppMain
                     bool col_status = false;
                     bool col_pickupPoint = false;
                     bool col_destination = false;
-                    bool col_subcompany = false;
+                    //bool col_subcompany = false;
                     if (col == "passenger")
                     {
                         col_name = true;
@@ -2418,10 +2432,10 @@ namespace Taxi_AppMain
                     {
                         col_destination = true;
                     }
-                    else if (col == "subcompany")
-                    {
-                        col_subcompany = true;
-                    }
+                    //else if (col == "subcompany")
+                    //{
+                    //    col_subcompany = true;
+                    //}
 
 
                     int bookingstatusId = 0;
@@ -2439,7 +2453,7 @@ namespace Taxi_AppMain
                     var data1 = General.GetQueryable<Booking>(c => c.BookingStatusId != Enums.BOOKINGSTATUS.PENDING && c.BookingStatusId != Enums.BOOKINGSTATUS.WAITING
                         && c.BookingStatusId != Enums.BOOKINGSTATUS.ONHOLD && c.BookingStatusId != Enums.BOOKINGSTATUS.WAITING_WEBBOOKING
                         && c.BookingStatusId != Enums.BOOKINGSTATUS.PENDING_WEBBOOKING && c.BookingStatusId != Enums.BOOKINGSTATUS.REJECTED_WEBBOOKING
-                        && (c.SubcompanyId == AppVars.DefaultBookingSubCompanyId || AppVars.DefaultBookingSubCompanyId == 0)
+                        && (c.SubcompanyId == Convert.ToInt32(ddlSubCompany.SelectedValue))
                         && bookingstatusId == 0 || c.BookingStatusId == bookingstatusId)
                                    .OrderByDescending(c => c.PickupDateTime);
 
@@ -2467,7 +2481,8 @@ namespace Taxi_AppMain
 
                             || (col_vehicle && (a.Fleet_VehicleType != null && a.Fleet_VehicleType.VehicleType.ToLower().Contains(searchTxt) || searchTxt == string.Empty))
                             || (col_status && (a.BookingStatus != null && a.BookingStatus.StatusName.ToLower().Contains(searchTxt)))
-                              || (col_subcompany && (a.SubcompanyId != null && a.Gen_SubCompany.CompanyName.ToLower().Contains(searchTxt)))
+                              || (a.SubcompanyId == Convert.ToInt32(ddlSubCompany.SelectedValue))
+                              //|| (col_subcompany && (a.SubcompanyId != null && a.Gen_SubCompany.CompanyName.ToLower().Contains(searchTxt)))
 
                         )
                             && ((fromDate == null || a.PickupDateTime.Value >= fromDate) && (toDate == null || a.PickupDateTime.Value <= toDate))
