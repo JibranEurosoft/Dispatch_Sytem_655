@@ -8140,7 +8140,11 @@ namespace Taxi_AppMain
                     proc.CloseMainWindow();
                     proc.Close();
                 }
-
+                if (origin == destination)
+                {
+                    destination = viaStr;
+                    viaStr = " ";
+                }
                 SetRouteType();
 
                 string conn = System.Configuration.ConfigurationManager.AppSettings["ConnectionString"].ToStr().Replace(" ", "**");
