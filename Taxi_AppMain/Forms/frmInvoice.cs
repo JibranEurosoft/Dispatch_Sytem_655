@@ -468,7 +468,7 @@ namespace Taxi_AppMain
 
                 col = new GridViewTextBoxColumn();
                 col.Name = COLS.Passenger;
-                col.ReadOnly = true;
+                //col.ReadOnly = true;
                 col.HeaderText = "Passenger";
                 grdLister.Columns.Add(col);
 
@@ -483,7 +483,7 @@ namespace Taxi_AppMain
                 col = new GridViewTextBoxColumn();
                 col.HeaderText = "Pickup Point";
                 col.Name = "PickupPoint";
-                col.ReadOnly = true;
+                //col.ReadOnly = true;
                 grdLister.Columns.Add(col);
 
 
@@ -499,7 +499,7 @@ namespace Taxi_AppMain
                 col = new GridViewTextBoxColumn();
                 col.HeaderText = "Destination";
                 col.Name = "Destination";
-                col.ReadOnly = true;
+                //col.ReadOnly = true;
                 grdLister.Columns.Add(col);
 
 
