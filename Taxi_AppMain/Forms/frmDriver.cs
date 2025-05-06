@@ -4458,17 +4458,17 @@ namespace Taxi_AppMain
                     using (TaxiDataContext db = new TaxiDataContext())
                     {
                         ClsDriverBankDetail clsDriverBankDetail = new ClsDriverBankDetail();
-                        clsDriverBankDetail = (ClsDriverBankDetail)db.ExecuteQuery<ClsDriverBankDetail>("SELECT * FROM Fleet_Driver_BankDetails WHERE DriverId = " + objMaster.Current.Id);
+                        clsDriverBankDetail = db.ExecuteQuery<ClsDriverBankDetail>("SELECT SortCode, AccountNo, AccountTitle, BankName, CompanyNumber, CompanyVatNumber, IbanNumber, BlcNumber FROM Fleet_Driver_BankDetails WHERE DriverId = " + objMaster.Current.Id).FirstOrDefault();
                         if (clsDriverBankDetail != null)
                         {
                             txtSortCode.Text = clsDriverBankDetail.SortCode.ToStr();
                             txtAccountNo.Text = clsDriverBankDetail.AccountNo.ToStr();
                             txtAccountTitle.Text = clsDriverBankDetail.AccountTitle.ToStr();
                             txtBank.Text = clsDriverBankDetail.BankName.ToStr();
-                            txtCompanyNumber.Text = clsDriverBankDetail.CompanyNo.ToStr().Trim();
-                            txtVATNumber.Text = clsDriverBankDetail.CompanyVatNo.ToStr().Trim();
-                            txtBLC.Text = clsDriverBankDetail.BlcNo.ToStr().Trim();
-                            txtIBAN.Text = clsDriverBankDetail.IbanNo.ToStr().Trim();
+                            txtCompanyNumber.Text = clsDriverBankDetail.CompanyNumber.ToStr().Trim();
+                            txtVATNumber.Text = clsDriverBankDetail.CompanyVatNumber.ToStr().Trim();
+                            txtBLC.Text = clsDriverBankDetail.BlcNumber.ToStr().Trim();
+                            txtIBAN.Text = clsDriverBankDetail.IbanNumber.ToStr().Trim();
                         }
                     }
                 }

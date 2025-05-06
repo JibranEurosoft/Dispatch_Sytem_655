@@ -14,9 +14,9 @@ namespace Taxi_AppMain.Classes
         public string AccountNo { get; set; }
         public string AccountTitle { get; set; }
         public string BankName { get; set; }
-        public string CompanyNo { get; set; }
-        public string CompanyVatNo { get; set; }
-        public string IbanNo { get; set; }
-        public string BlcNo { get; set; }
+        public string CompanyNumber { get; set; }
+        public string CompanyVatNumber { get; set; }
+        public string IbanNumber { get; set; }
+        public string BlcNumber { get; set; }
     }
 }
