@@ -341,7 +341,7 @@ namespace Taxi_AppMain
                 PageSettings pgSettings = new PageSettings
                 {
                     PaperSize = new PaperSize("A4", 827, 1169), // A4 in hundredths of an inch
-                    Margins = new Margins(50, 50, 50, 50)       // Set margins (optional)
+                    Margins = new Margins(0, 0, 50, 50)       // Set margins (optional)
                 };
 
                 // Assign the PageSettings to the ReportViewer
