@@ -18427,7 +18427,7 @@ namespace Taxi_AppMain
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).CustomFormat = "HH:mm";
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
-                grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
+                //grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
 
                 grdPreBookings.Columns["Vias"].Width = 30;
 
