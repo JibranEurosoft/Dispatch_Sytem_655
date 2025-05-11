@@ -40,6 +40,8 @@ namespace Taxi_AppMain
             this.chkAllocateDriver = new System.Windows.Forms.CheckBox();
             this.btnAccountInformation = new System.Windows.Forms.Button();
             this.dtpPickupTime_txt = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.numHandLugg = new System.Windows.Forms.NumericUpDown();
             this.pnlReturnJobNo = new System.Windows.Forms.Label();
             this.btnInfo = new System.Windows.Forms.Button();
             this.lblretto = new System.Windows.Forms.Label();
@@ -190,12 +192,10 @@ namespace Taxi_AppMain
             this.ddlSubCompany = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
-           // this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.numHandLugg = new System.Windows.Forms.NumericUpDown();
             this.pnlMain.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHandLugg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlDriver)).BeginInit();
             this.pnlAutoDespatch.SuspendLayout();
@@ -228,7 +228,6 @@ namespace Taxi_AppMain
             ((System.ComponentModel.ISupportInitialize)(this.numBookingFee)).BeginInit();
             this.pnlFares.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numFareRate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHandLugg)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlMain
@@ -346,7 +345,7 @@ namespace Taxi_AppMain
             this.chkAllocateDriver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.chkAllocateDriver.Location = new System.Drawing.Point(3, 362);
             this.chkAllocateDriver.Name = "chkAllocateDriver";
-            this.chkAllocateDriver.Size = new System.Drawing.Size(114, 21);
+            this.chkAllocateDriver.Size = new System.Drawing.Size(142, 25);
             this.chkAllocateDriver.TabIndex = 528;
             this.chkAllocateDriver.Text = "Allocate Drive&r";
             this.chkAllocateDriver.UseVisualStyleBackColor = false;
@@ -373,9 +372,35 @@ namespace Taxi_AppMain
             this.dtpPickupTime_txt.Location = new System.Drawing.Point(118, 41);
             this.dtpPickupTime_txt.MaxLength = 4;
             this.dtpPickupTime_txt.Name = "dtpPickupTime_txt";
-            this.dtpPickupTime_txt.Size = new System.Drawing.Size(60, 25);
+            this.dtpPickupTime_txt.Size = new System.Drawing.Size(60, 30);
             this.dtpPickupTime_txt.TabIndex = 526;
             this.dtpPickupTime_txt.Text = "ASAP";
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.AliceBlue;
+            this.label18.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(343, 388);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 22);
+            this.label18.TabIndex = 531;
+            this.label18.Text = "H. Lugg";
+            // 
+            // numHandLugg
+            // 
+            this.numHandLugg.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numHandLugg.InterceptArrowKeys = false;
+            this.numHandLugg.Location = new System.Drawing.Point(414, 385);
+            this.numHandLugg.Maximum = new decimal(new int[] {
+            99999999,
+            0,
+            0,
+            0});
+            this.numHandLugg.Name = "numHandLugg";
+            this.numHandLugg.Size = new System.Drawing.Size(57, 30);
+            this.numHandLugg.TabIndex = 530;
+            this.numHandLugg.TabStop = false;
             // 
             // pnlReturnJobNo
             // 
@@ -410,7 +435,7 @@ namespace Taxi_AppMain
             this.lblretto.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblretto.Location = new System.Drawing.Point(363, 152);
             this.lblretto.Name = "lblretto";
-            this.lblretto.Size = new System.Drawing.Size(39, 14);
+            this.lblretto.Size = new System.Drawing.Size(46, 18);
             this.lblretto.TabIndex = 523;
             this.lblretto.Text = "R. To";
             this.lblretto.Visible = false;
@@ -421,7 +446,7 @@ namespace Taxi_AppMain
             this.lblretfrom.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.lblretfrom.Location = new System.Drawing.Point(364, 86);
             this.lblretfrom.Name = "lblretfrom";
-            this.lblretfrom.Size = new System.Drawing.Size(35, 14);
+            this.lblretfrom.Size = new System.Drawing.Size(44, 18);
             this.lblretfrom.TabIndex = 522;
             this.lblretfrom.Text = "R. Fr";
             this.lblretfrom.Visible = false;
@@ -475,7 +500,7 @@ namespace Taxi_AppMain
             this.chkLead.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.chkLead.Location = new System.Drawing.Point(687, 184);
             this.chkLead.Name = "chkLead";
-            this.chkLead.Size = new System.Drawing.Size(55, 18);
+            this.chkLead.Size = new System.Drawing.Size(66, 22);
             this.chkLead.TabIndex = 519;
             this.chkLead.Text = "&Lead";
             this.chkLead.CheckedChanged += new System.EventHandler(this.chkLead_CheckedChanged);
@@ -488,7 +513,7 @@ namespace Taxi_AppMain
             this.chkReverse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.chkReverse.Location = new System.Drawing.Point(275, 117);
             this.chkReverse.Name = "chkReverse";
-            this.chkReverse.Size = new System.Drawing.Size(85, 17);
+            this.chkReverse.Size = new System.Drawing.Size(105, 21);
             this.chkReverse.TabIndex = 0;
             this.chkReverse.Text = "SWAP (F9)";
             this.chkReverse.UseVisualStyleBackColor = false;
@@ -502,7 +527,7 @@ namespace Taxi_AppMain
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.label6.Location = new System.Drawing.Point(792, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.Size = new System.Drawing.Size(40, 17);
             this.label6.TabIndex = 518;
             this.label6.Text = "mins";
             // 
@@ -518,7 +543,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numLead.Name = "numLead";
-            this.numLead.Size = new System.Drawing.Size(50, 22);
+            this.numLead.Size = new System.Drawing.Size(50, 26);
             this.numLead.TabIndex = 517;
             this.numLead.TabStop = false;
             // 
@@ -542,7 +567,7 @@ namespace Taxi_AppMain
             this.ddlDriver.Name = "ddlDriver";
             this.ddlDriver.Property = null;
             this.ddlDriver.ShowDownArrow = true;
-            this.ddlDriver.Size = new System.Drawing.Size(220, 24);
+            this.ddlDriver.Size = new System.Drawing.Size(220, 28);
             this.ddlDriver.TabIndex = 0;
             // 
             // pnlAutoDespatch
@@ -582,7 +607,7 @@ namespace Taxi_AppMain
             this.chkHasPriority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(66)))), ((int)(((byte)(139)))));
             this.chkHasPriority.Location = new System.Drawing.Point(5, 31);
             this.chkHasPriority.Name = "chkHasPriority";
-            this.chkHasPriority.Size = new System.Drawing.Size(71, 18);
+            this.chkHasPriority.Size = new System.Drawing.Size(88, 22);
             this.chkHasPriority.TabIndex = 531;
             this.chkHasPriority.Text = "Priority";
             this.chkHasPriority.Visible = false;
@@ -600,7 +625,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numPriority.Name = "numPriority";
-            this.numPriority.Size = new System.Drawing.Size(48, 22);
+            this.numPriority.Size = new System.Drawing.Size(48, 26);
             this.numPriority.TabIndex = 529;
             this.numPriority.TabStop = false;
             this.numPriority.Visible = false;
@@ -644,7 +669,7 @@ namespace Taxi_AppMain
             this.numBeforeMinutes.InterceptArrowKeys = false;
             this.numBeforeMinutes.Location = new System.Drawing.Point(176, 4);
             this.numBeforeMinutes.Name = "numBeforeMinutes";
-            this.numBeforeMinutes.Size = new System.Drawing.Size(24, 26);
+            this.numBeforeMinutes.Size = new System.Drawing.Size(24, 30);
             this.numBeforeMinutes.TabIndex = 10;
             this.numBeforeMinutes.TabStop = false;
             this.numBeforeMinutes.Value = new decimal(new int[] {
@@ -673,7 +698,7 @@ namespace Taxi_AppMain
             this.chkIsCompanyRates.ForeColor = System.Drawing.Color.Black;
             this.chkIsCompanyRates.Location = new System.Drawing.Point(406, 303);
             this.chkIsCompanyRates.Name = "chkIsCompanyRates";
-            this.chkIsCompanyRates.Size = new System.Drawing.Size(84, 21);
+            this.chkIsCompanyRates.Size = new System.Drawing.Size(102, 25);
             this.chkIsCompanyRates.TabIndex = 238;
             this.chkIsCompanyRates.Text = "&Account";
             this.chkIsCompanyRates.UseVisualStyleBackColor = false;
@@ -718,7 +743,7 @@ namespace Taxi_AppMain
             this.opt_one.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opt_one.Location = new System.Drawing.Point(5, 4);
             this.opt_one.Name = "opt_one";
-            this.opt_one.Size = new System.Drawing.Size(88, 22);
+            this.opt_one.Size = new System.Drawing.Size(107, 27);
             this.opt_one.TabIndex = 7;
             this.opt_one.TabStop = true;
             this.opt_one.Text = "&One Way";
@@ -732,7 +757,7 @@ namespace Taxi_AppMain
             this.opt_waitreturn.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opt_waitreturn.Location = new System.Drawing.Point(175, 4);
             this.opt_waitreturn.Name = "opt_waitreturn";
-            this.opt_waitreturn.Size = new System.Drawing.Size(55, 22);
+            this.opt_waitreturn.Size = new System.Drawing.Size(67, 27);
             this.opt_waitreturn.TabIndex = 9;
             this.opt_waitreturn.TabStop = true;
             this.opt_waitreturn.Text = "&W/R";
@@ -746,7 +771,7 @@ namespace Taxi_AppMain
             this.opt_return.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.opt_return.Location = new System.Drawing.Point(99, 4);
             this.opt_return.Name = "opt_return";
-            this.opt_return.Size = new System.Drawing.Size(69, 22);
+            this.opt_return.Size = new System.Drawing.Size(88, 27);
             this.opt_return.TabIndex = 8;
             this.opt_return.TabStop = true;
             this.opt_return.Text = "Ret&urn";
@@ -839,7 +864,7 @@ namespace Taxi_AppMain
             this.ddlDropOffPlot.FormattingEnabled = true;
             this.ddlDropOffPlot.Location = new System.Drawing.Point(8, 152);
             this.ddlDropOffPlot.Name = "ddlDropOffPlot";
-            this.ddlDropOffPlot.Size = new System.Drawing.Size(105, 24);
+            this.ddlDropOffPlot.Size = new System.Drawing.Size(105, 27);
             this.ddlDropOffPlot.TabIndex = 0;
             // 
             // ddlPickupPlot
@@ -849,7 +874,7 @@ namespace Taxi_AppMain
             this.ddlPickupPlot.FormattingEnabled = true;
             this.ddlPickupPlot.Location = new System.Drawing.Point(7, 88);
             this.ddlPickupPlot.Name = "ddlPickupPlot";
-            this.ddlPickupPlot.Size = new System.Drawing.Size(106, 24);
+            this.ddlPickupPlot.Size = new System.Drawing.Size(106, 27);
             this.ddlPickupPlot.TabIndex = 0;
             // 
             // lblDropOffPlot
@@ -859,7 +884,7 @@ namespace Taxi_AppMain
             this.lblDropOffPlot.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDropOffPlot.Location = new System.Drawing.Point(976, 270);
             this.lblDropOffPlot.Name = "lblDropOffPlot";
-            this.lblDropOffPlot.Size = new System.Drawing.Size(87, 16);
+            this.lblDropOffPlot.Size = new System.Drawing.Size(117, 21);
             this.lblDropOffPlot.TabIndex = 261;
             this.lblDropOffPlot.Text = "Return From";
             this.lblDropOffPlot.Visible = false;
@@ -871,7 +896,7 @@ namespace Taxi_AppMain
             this.lblPickupPlot.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPickupPlot.Location = new System.Drawing.Point(795, 363);
             this.lblPickupPlot.Name = "lblPickupPlot";
-            this.lblPickupPlot.Size = new System.Drawing.Size(71, 16);
+            this.lblPickupPlot.Size = new System.Drawing.Size(94, 21);
             this.lblPickupPlot.TabIndex = 259;
             this.lblPickupPlot.Text = "Return To";
             this.lblPickupPlot.Visible = false;
@@ -920,7 +945,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numTotalLuggages.Name = "numTotalLuggages";
-            this.numTotalLuggages.Size = new System.Drawing.Size(57, 26);
+            this.numTotalLuggages.Size = new System.Drawing.Size(57, 30);
             this.numTotalLuggages.TabIndex = 0;
             this.numTotalLuggages.TabStop = false;
             // 
@@ -935,7 +960,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.num_TotalPassengers.Name = "num_TotalPassengers";
-            this.num_TotalPassengers.Size = new System.Drawing.Size(67, 26);
+            this.num_TotalPassengers.Size = new System.Drawing.Size(67, 30);
             this.num_TotalPassengers.TabIndex = 0;
             this.num_TotalPassengers.TabStop = false;
             this.num_TotalPassengers.Value = new decimal(new int[] {
@@ -949,9 +974,9 @@ namespace Taxi_AppMain
             this.ddlCompany.FilterRule = null;
             this.ddlCompany.Font = new System.Drawing.Font("Tahoma", 10.5F, System.Drawing.FontStyle.Bold);
             this.ddlCompany.Location = new System.Drawing.Point(486, 120);
-            this.ddlCompany.Size = new System.Drawing.Size(406, 25);
             this.ddlCompany.Name = "ddlCompany";
             this.ddlCompany.PropertySelector = null;
+            this.ddlCompany.Size = new System.Drawing.Size(406, 29);
             this.ddlCompany.SuggestBoxHeight = 96;
             this.ddlCompany.SuggestListOrderRule = null;
             this.ddlCompany.TabIndex = 240;
@@ -963,7 +988,7 @@ namespace Taxi_AppMain
             this.ddlVehicleType.FormattingEnabled = true;
             this.ddlVehicleType.Location = new System.Drawing.Point(112, 119);
             this.ddlVehicleType.Name = "ddlVehicleType";
-            this.ddlVehicleType.Size = new System.Drawing.Size(120, 26);
+            this.ddlVehicleType.Size = new System.Drawing.Size(120, 31);
             this.ddlVehicleType.TabIndex = 8;
             // 
             // radLabel2
@@ -982,7 +1007,7 @@ namespace Taxi_AppMain
             this.txtEmail.Location = new System.Drawing.Point(112, 90);
             this.txtEmail.MaxLength = 50;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(285, 26);
+            this.txtEmail.Size = new System.Drawing.Size(285, 30);
             this.txtEmail.TabIndex = 0;
             this.txtEmail.TabStop = false;
             // 
@@ -1020,7 +1045,7 @@ namespace Taxi_AppMain
             this.txtCustomerPhoneNo.Location = new System.Drawing.Point(112, 35);
             this.txtCustomerPhoneNo.MaxLength = 30;
             this.txtCustomerPhoneNo.Name = "txtCustomerPhoneNo";
-            this.txtCustomerPhoneNo.Size = new System.Drawing.Size(285, 26);
+            this.txtCustomerPhoneNo.Size = new System.Drawing.Size(285, 30);
             this.txtCustomerPhoneNo.TabIndex = 0;
             this.txtCustomerPhoneNo.TabStop = false;
             // 
@@ -1031,7 +1056,7 @@ namespace Taxi_AppMain
             this.txtCustomerMobileNo.Location = new System.Drawing.Point(112, 63);
             this.txtCustomerMobileNo.MaxLength = 30;
             this.txtCustomerMobileNo.Name = "txtCustomerMobileNo";
-            this.txtCustomerMobileNo.Size = new System.Drawing.Size(285, 26);
+            this.txtCustomerMobileNo.Size = new System.Drawing.Size(285, 30);
             this.txtCustomerMobileNo.TabIndex = 0;
             this.txtCustomerMobileNo.TabStop = false;
             // 
@@ -1042,7 +1067,7 @@ namespace Taxi_AppMain
             this.ddlCustomerName.Location = new System.Drawing.Point(112, 6);
             this.ddlCustomerName.MaxLength = 100;
             this.ddlCustomerName.Name = "ddlCustomerName";
-            this.ddlCustomerName.Size = new System.Drawing.Size(285, 26);
+            this.ddlCustomerName.Size = new System.Drawing.Size(285, 30);
             this.ddlCustomerName.TabIndex = 6;
             this.ddlCustomerName.TabStop = false;
             // 
@@ -1055,7 +1080,7 @@ namespace Taxi_AppMain
             this.dtpPickupDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpPickupDate.Name = "dtpPickupDate";
             this.dtpPickupDate.NullDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.dtpPickupDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpPickupDate.Size = new System.Drawing.Size(140, 28);
             this.dtpPickupDate.TabIndex = 5;
             this.dtpPickupDate.TabStop = false;
             this.dtpPickupDate.Value = null;
@@ -1067,7 +1092,7 @@ namespace Taxi_AppMain
             this.lblDate.ForeColor = System.Drawing.Color.Red;
             this.lblDate.Location = new System.Drawing.Point(181, 43);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(43, 18);
+            this.lblDate.Size = new System.Drawing.Size(54, 23);
             this.lblDate.TabIndex = 4;
             this.lblDate.Text = "Dat&e";
             // 
@@ -1081,10 +1106,10 @@ namespace Taxi_AppMain
             this.dtpPickupTime.Name = "dtpPickupTime";
             this.dtpPickupTime.NullDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpPickupTime.ShowUpDown = true;
-            this.dtpPickupTime.Size = new System.Drawing.Size(69, 23);
+            this.dtpPickupTime.Size = new System.Drawing.Size(69, 28);
             this.dtpPickupTime.TabIndex = 4;
             this.dtpPickupTime.TabStop = false;
-            this.dtpPickupTime.Text = "13:54";
+            this.dtpPickupTime.Text = "22:50";
             this.dtpPickupTime.Value = null;
             this.dtpPickupTime.Visible = false;
             // 
@@ -1140,7 +1165,7 @@ namespace Taxi_AppMain
             "Fastest"});
             this.ddlRoute.Location = new System.Drawing.Point(679, 5);
             this.ddlRoute.Name = "ddlRoute";
-            this.ddlRoute.Size = new System.Drawing.Size(100, 26);
+            this.ddlRoute.Size = new System.Drawing.Size(100, 30);
             this.ddlRoute.TabIndex = 283;
             this.ddlRoute.Text = "Shortest";
             this.ddlRoute.Visible = false;
@@ -1297,7 +1322,7 @@ namespace Taxi_AppMain
             this.txtFromPostCode.Location = new System.Drawing.Point(955, 40);
             this.txtFromPostCode.MaxLength = 100;
             this.txtFromPostCode.Name = "txtFromPostCode";
-            this.txtFromPostCode.Size = new System.Drawing.Size(206, 26);
+            this.txtFromPostCode.Size = new System.Drawing.Size(206, 30);
             this.txtFromPostCode.TabIndex = 1;
             this.txtFromPostCode.TabStop = false;
             this.txtFromPostCode.Visible = false;
@@ -1309,7 +1334,7 @@ namespace Taxi_AppMain
             this.txtFromStreetComing.Location = new System.Drawing.Point(681, 95);
             this.txtFromStreetComing.MaxLength = 100;
             this.txtFromStreetComing.Name = "txtFromStreetComing";
-            this.txtFromStreetComing.Size = new System.Drawing.Size(197, 24);
+            this.txtFromStreetComing.Size = new System.Drawing.Size(197, 28);
             this.txtFromStreetComing.TabIndex = 300;
             this.txtFromStreetComing.TabStop = false;
             // 
@@ -1320,7 +1345,7 @@ namespace Taxi_AppMain
             this.txtFromFlightDoorNo.Location = new System.Drawing.Point(681, 70);
             this.txtFromFlightDoorNo.MaxLength = 100;
             this.txtFromFlightDoorNo.Name = "txtFromFlightDoorNo";
-            this.txtFromFlightDoorNo.Size = new System.Drawing.Size(197, 24);
+            this.txtFromFlightDoorNo.Size = new System.Drawing.Size(197, 28);
             this.txtFromFlightDoorNo.TabIndex = 2;
             this.txtFromFlightDoorNo.TabStop = false;
             // 
@@ -1383,7 +1408,7 @@ namespace Taxi_AppMain
             this.ddlFromLocType.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlFromLocType.Location = new System.Drawing.Point(988, 155);
             this.ddlFromLocType.Name = "ddlFromLocType";
-            this.ddlFromLocType.Size = new System.Drawing.Size(36, 24);
+            this.ddlFromLocType.Size = new System.Drawing.Size(36, 27);
             this.ddlFromLocType.TabIndex = 500;
             this.ddlFromLocType.TabStop = false;
             this.ddlFromLocType.Visible = false;
@@ -1394,7 +1419,7 @@ namespace Taxi_AppMain
             this.ddlToLocType.BackColor = System.Drawing.Color.White;
             this.ddlToLocType.Location = new System.Drawing.Point(948, 153);
             this.ddlToLocType.Name = "ddlToLocType";
-            this.ddlToLocType.Size = new System.Drawing.Size(24, 26);
+            this.ddlToLocType.Size = new System.Drawing.Size(24, 31);
             this.ddlToLocType.TabIndex = 501;
             this.ddlToLocType.TabStop = false;
             this.ddlToLocType.Visible = false;
@@ -1417,7 +1442,7 @@ namespace Taxi_AppMain
             this.txtToStreetComing.Location = new System.Drawing.Point(681, 153);
             this.txtToStreetComing.MaxLength = 100;
             this.txtToStreetComing.Name = "txtToStreetComing";
-            this.txtToStreetComing.Size = new System.Drawing.Size(197, 24);
+            this.txtToStreetComing.Size = new System.Drawing.Size(197, 28);
             this.txtToStreetComing.TabIndex = 301;
             this.txtToStreetComing.TabStop = false;
             // 
@@ -1431,7 +1456,7 @@ namespace Taxi_AppMain
             this.txtToPostCode.Location = new System.Drawing.Point(841, 44);
             this.txtToPostCode.MaxLength = 100;
             this.txtToPostCode.Name = "txtToPostCode";
-            this.txtToPostCode.Size = new System.Drawing.Size(206, 26);
+            this.txtToPostCode.Size = new System.Drawing.Size(206, 30);
             this.txtToPostCode.TabIndex = 4;
             this.txtToPostCode.TabStop = false;
             this.txtToPostCode.Visible = false;
@@ -1454,7 +1479,7 @@ namespace Taxi_AppMain
             this.txtToFlightDoorNo.Location = new System.Drawing.Point(681, 129);
             this.txtToFlightDoorNo.MaxLength = 100;
             this.txtToFlightDoorNo.Name = "txtToFlightDoorNo";
-            this.txtToFlightDoorNo.Size = new System.Drawing.Size(197, 24);
+            this.txtToFlightDoorNo.Size = new System.Drawing.Size(197, 28);
             this.txtToFlightDoorNo.TabIndex = 4;
             this.txtToFlightDoorNo.TabStop = false;
             // 
@@ -1672,7 +1697,7 @@ namespace Taxi_AppMain
             this.chkMiles.ForeColor = System.Drawing.Color.Blue;
             this.chkMiles.Location = new System.Drawing.Point(277, 102);
             this.chkMiles.Name = "chkMiles";
-            this.chkMiles.Size = new System.Drawing.Size(67, 22);
+            this.chkMiles.Size = new System.Drawing.Size(82, 27);
             this.chkMiles.TabIndex = 509;
             this.chkMiles.Text = "Miles";
             this.chkMiles.UseVisualStyleBackColor = false;
@@ -1694,7 +1719,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numMiles.Name = "numMiles";
-            this.numMiles.Size = new System.Drawing.Size(72, 26);
+            this.numMiles.Size = new System.Drawing.Size(72, 30);
             this.numMiles.TabIndex = 508;
             this.numMiles.TabStop = false;
             this.numMiles.Visible = false;
@@ -1765,7 +1790,7 @@ namespace Taxi_AppMain
             0,
             -2147483648});
             this.numTipAmount.Name = "numTipAmount";
-            this.numTipAmount.Size = new System.Drawing.Size(48, 24);
+            this.numTipAmount.Size = new System.Drawing.Size(48, 28);
             this.numTipAmount.TabIndex = 0;
             this.numTipAmount.TabStop = false;
             // 
@@ -1791,7 +1816,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numDrvWaitingMins.Name = "numDrvWaitingMins";
-            this.numDrvWaitingMins.Size = new System.Drawing.Size(48, 24);
+            this.numDrvWaitingMins.Size = new System.Drawing.Size(48, 28);
             this.numDrvWaitingMins.TabIndex = 0;
             this.numDrvWaitingMins.TabStop = false;
             // 
@@ -1820,7 +1845,7 @@ namespace Taxi_AppMain
             0});
             this.numTotalChrgs.Name = "numTotalChrgs";
             this.numTotalChrgs.ReadOnly = true;
-            this.numTotalChrgs.Size = new System.Drawing.Size(61, 24);
+            this.numTotalChrgs.Size = new System.Drawing.Size(61, 28);
             this.numTotalChrgs.TabIndex = 0;
             this.numTotalChrgs.TabStop = false;
             // 
@@ -1848,7 +1873,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numCongChrgs.Name = "numCongChrgs";
-            this.numCongChrgs.Size = new System.Drawing.Size(59, 24);
+            this.numCongChrgs.Size = new System.Drawing.Size(59, 28);
             this.numCongChrgs.TabIndex = 0;
             this.numCongChrgs.TabStop = false;
             // 
@@ -1876,7 +1901,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numMeetCharges.Name = "numMeetCharges";
-            this.numMeetCharges.Size = new System.Drawing.Size(61, 24);
+            this.numMeetCharges.Size = new System.Drawing.Size(61, 28);
             this.numMeetCharges.TabIndex = 0;
             this.numMeetCharges.TabStop = false;
             // 
@@ -1888,7 +1913,7 @@ namespace Taxi_AppMain
             this.radLabel17.ForeColor = System.Drawing.Color.Black;
             this.radLabel17.Location = new System.Drawing.Point(43, 61);
             this.radLabel17.Name = "radLabel17";
-            this.radLabel17.Size = new System.Drawing.Size(119, 17);
+            this.radLabel17.Size = new System.Drawing.Size(144, 21);
             this.radLabel17.TabIndex = 144;
             this.radLabel17.Text = "Extra Charges £";
             // 
@@ -1905,7 +1930,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numExtraChrgs.Name = "numExtraChrgs";
-            this.numExtraChrgs.Size = new System.Drawing.Size(60, 24);
+            this.numExtraChrgs.Size = new System.Drawing.Size(60, 28);
             this.numExtraChrgs.TabIndex = 0;
             this.numExtraChrgs.TabStop = false;
             // 
@@ -1935,7 +1960,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numWaitingChrgs.Name = "numWaitingChrgs";
-            this.numWaitingChrgs.Size = new System.Drawing.Size(61, 24);
+            this.numWaitingChrgs.Size = new System.Drawing.Size(61, 28);
             this.numWaitingChrgs.TabIndex = 0;
             this.numWaitingChrgs.TabStop = false;
             // 
@@ -1965,7 +1990,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numParkingChrgs.Name = "numParkingChrgs";
-            this.numParkingChrgs.Size = new System.Drawing.Size(59, 24);
+            this.numParkingChrgs.Size = new System.Drawing.Size(59, 28);
             this.numParkingChrgs.TabIndex = 0;
             this.numParkingChrgs.TabStop = false;
             // 
@@ -2052,7 +2077,7 @@ namespace Taxi_AppMain
             this.ddlPaymentType.ForeColor = System.Drawing.Color.Black;
             this.ddlPaymentType.Location = new System.Drawing.Point(100, 6);
             this.ddlPaymentType.Name = "ddlPaymentType";
-            this.ddlPaymentType.Size = new System.Drawing.Size(157, 26);
+            this.ddlPaymentType.Size = new System.Drawing.Size(157, 31);
             this.ddlPaymentType.TabIndex = 0;
             // 
             // btnViewMapReport
@@ -2136,7 +2161,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numReturnBookingFee.Name = "numReturnBookingFee";
-            this.numReturnBookingFee.Size = new System.Drawing.Size(58, 26);
+            this.numReturnBookingFee.Size = new System.Drawing.Size(58, 30);
             this.numReturnBookingFee.TabIndex = 0;
             this.numReturnBookingFee.TabStop = false;
             this.numReturnBookingFee.Visible = false;
@@ -2164,7 +2189,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numBookingFee.Name = "numBookingFee";
-            this.numBookingFee.Size = new System.Drawing.Size(59, 26);
+            this.numBookingFee.Size = new System.Drawing.Size(59, 30);
             this.numBookingFee.TabIndex = 0;
             this.numBookingFee.TabStop = false;
             // 
@@ -2203,6 +2228,7 @@ namespace Taxi_AppMain
             this.btnDetailMap.TabStop = false;
             this.btnDetailMap.Text = "Show Map (F3)";
             this.btnDetailMap.UseVisualStyleBackColor = false;
+            
             // 
             // radLabel25
             // 
@@ -2233,7 +2259,7 @@ namespace Taxi_AppMain
             this.radLabel5.ForeColor = System.Drawing.Color.Black;
             this.radLabel5.Location = new System.Drawing.Point(9, 9);
             this.radLabel5.Name = "radLabel5";
-            this.radLabel5.Size = new System.Drawing.Size(57, 18);
+            this.radLabel5.Size = new System.Drawing.Size(71, 23);
             this.radLabel5.TabIndex = 237;
             this.radLabel5.Text = "&Fares £";
             // 
@@ -2271,7 +2297,7 @@ namespace Taxi_AppMain
             0,
             0});
             this.numFareRate.Name = "numFareRate";
-            this.numFareRate.Size = new System.Drawing.Size(105, 25);
+            this.numFareRate.Size = new System.Drawing.Size(105, 30);
             this.numFareRate.TabIndex = 2;
             this.numFareRate.TabStop = false;
             // 
@@ -2312,7 +2338,7 @@ namespace Taxi_AppMain
             this.ddlBookingType.Font = new System.Drawing.Font("Tahoma", 11F);
             this.ddlBookingType.Location = new System.Drawing.Point(995, 7);
             this.ddlBookingType.Name = "ddlBookingType";
-            this.ddlBookingType.Size = new System.Drawing.Size(146, 26);
+            this.ddlBookingType.Size = new System.Drawing.Size(146, 30);
             this.ddlBookingType.TabIndex = 218;
             // 
             // lblBookingType
@@ -2344,7 +2370,7 @@ namespace Taxi_AppMain
             this.ddlSubCompany.FormattingEnabled = true;
             this.ddlSubCompany.Location = new System.Drawing.Point(7, 6);
             this.ddlSubCompany.Name = "ddlSubCompany";
-            this.ddlSubCompany.Size = new System.Drawing.Size(246, 27);
+            this.ddlSubCompany.Size = new System.Drawing.Size(246, 32);
             this.ddlSubCompany.TabIndex = 0;
             // 
             // label1
@@ -2376,46 +2402,9 @@ namespace Taxi_AppMain
             this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // label17
-            // 
-            this.label17.BackColor = this.pnlOtherCharges.BackColor;
-            this.label17.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(232, 7);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(32, 20);
-            this.label17.TabIndex = 509;
-            this.label17.Text = "Tip";
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.AliceBlue;
-            this.label18.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(343, 388);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(73, 22);
-            this.label18.TabIndex = 531;
-            this.label18.Text = "H. Lugg";
-            // 
-            // numHandLugg
-            // 
-            this.numHandLugg.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numHandLugg.InterceptArrowKeys = false;
-            this.numHandLugg.Location = new System.Drawing.Point(414, 385);
-            this.numHandLugg.Maximum = new decimal(new int[] {
-            99999999,
-            0,
-            0,
-            0});
-            this.numHandLugg.Name = "numHandLugg";
-            this.numHandLugg.Size = new System.Drawing.Size(57, 26);
-            this.numHandLugg.TabIndex = 530;
-            this.numHandLugg.TabStop = false;
-            // 
             // frmBooking2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
             this.ClientSize = new System.Drawing.Size(1284, 761);
@@ -2440,6 +2429,7 @@ namespace Taxi_AppMain
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numHandLugg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numLead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ddlDriver)).EndInit();
             this.pnlAutoDespatch.ResumeLayout(false);
@@ -2477,7 +2467,6 @@ namespace Taxi_AppMain
             ((System.ComponentModel.ISupportInitialize)(this.numBookingFee)).EndInit();
             this.pnlFares.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numFareRate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numHandLugg)).EndInit();
             this.ResumeLayout(false);
 
         }
