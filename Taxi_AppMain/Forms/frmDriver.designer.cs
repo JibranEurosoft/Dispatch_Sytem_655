@@ -48,14 +48,14 @@ namespace Taxi_AppMain
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition5 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition6 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition7 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition8 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition10 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition9 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition11 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition12 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition13 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition14 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition15 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition16 = new Telerik.WinControls.UI.TableViewDefinition();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.radpageview1 = new Telerik.WinControls.UI.RadPageView();
             this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
@@ -147,6 +147,23 @@ namespace Taxi_AppMain
             this.radLabel8 = new Telerik.WinControls.UI.RadLabel();
             this.txtNI = new Telerik.WinControls.UI.RadTextBox();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.Pg_BankDetail = new Telerik.WinControls.UI.RadPageViewPage();
+            this.radLabel58 = new Telerik.WinControls.UI.RadLabel();
+            this.txtBLC = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel59 = new Telerik.WinControls.UI.RadLabel();
+            this.radLabel69 = new Telerik.WinControls.UI.RadLabel();
+            this.txtIBAN = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel87 = new Telerik.WinControls.UI.RadLabel();
+            this.txtVATNumber = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel88 = new Telerik.WinControls.UI.RadLabel();
+            this.txtCompanyNumber = new Telerik.WinControls.UI.RadTextBox();
+            this.txtBank = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel57 = new Telerik.WinControls.UI.RadLabel();
+            this.txtAccountTitle = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel60 = new Telerik.WinControls.UI.RadLabel();
+            this.txtAccountNo = new Telerik.WinControls.UI.RadTextBox();
+            this.radLabel61 = new Telerik.WinControls.UI.RadLabel();
+            this.txtSortCode = new Telerik.WinControls.UI.RadTextBox();
             this.grdDocuments = new UI.MyGridView();
             this.radLabel21 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel7 = new Telerik.WinControls.UI.RadLabel();
@@ -357,6 +374,23 @@ namespace Taxi_AppMain
             ((System.ComponentModel.ISupportInitialize)(this.radLabel8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            this.Pg_BankDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel58)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBLC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel59)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel69)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIBAN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel87)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVATNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel88)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompanyNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBank)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel57)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountTitle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel60)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel61)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSortCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDocuments)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDocuments.MasterTemplate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel21)).BeginInit();
@@ -466,6 +500,7 @@ namespace Taxi_AppMain
             this.radpageview1.Controls.Add(this.radPageViewPage3);
             this.radpageview1.Controls.Add(this.radPageViewPage4);
             this.radpageview1.Controls.Add(this.pg_pdasettings);
+            this.radpageview1.Controls.Add(this.Pg_BankDetail);
             this.radpageview1.Controls.Add(this.Pg_notes);
             this.radpageview1.Controls.Add(this.pg_complaint);
             this.radpageview1.Controls.Add(this.Pg_Attributes);
@@ -477,7 +512,7 @@ namespace Taxi_AppMain
             this.radpageview1.Location = new System.Drawing.Point(0, 38);
             this.radpageview1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radpageview1.Name = "radpageview1";
-            this.radpageview1.SelectedPage = this.radPageViewPage1;
+            this.radpageview1.SelectedPage = this.pg_pdasettings;
             this.radpageview1.Size = new System.Drawing.Size(1050, 722);
             this.radpageview1.TabIndex = 108;
             this.radpageview1.Text = "radPageView1";
@@ -1672,7 +1707,7 @@ namespace Taxi_AppMain
             this.grdAvailability.MasterTemplate.AllowAddNewRow = false;
             this.grdAvailability.MasterTemplate.AllowEditRow = false;
             this.grdAvailability.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grdAvailability.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.grdAvailability.MasterTemplate.ViewDefinition = tableViewDefinition10;
             this.grdAvailability.Name = "grdAvailability";
             this.grdAvailability.PKFieldColumnName = "";
             this.grdAvailability.ShowGroupPanel = false;
@@ -1793,7 +1828,7 @@ namespace Taxi_AppMain
             this.grdDocuments.MasterTemplate.AllowAddNewRow = false;
             this.grdDocuments.MasterTemplate.AllowEditRow = false;
             this.grdDocuments.MasterTemplate.ShowRowHeaderColumn = false;
-            this.grdDocuments.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.grdDocuments.MasterTemplate.ViewDefinition = tableViewDefinition9;
             this.grdDocuments.Name = "grdDocuments";
             this.grdDocuments.PKFieldColumnName = "";
             this.grdDocuments.ShowGroupPanel = false;
@@ -1967,7 +2002,7 @@ namespace Taxi_AppMain
             // 
             // 
             this.grdDriverShifts.MasterTemplate.AllowAddNewRow = false;
-            this.grdDriverShifts.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.grdDriverShifts.MasterTemplate.ViewDefinition = tableViewDefinition11;
             this.grdDriverShifts.Name = "grdDriverShifts";
             this.grdDriverShifts.ShowGroupPanel = false;
             this.grdDriverShifts.Size = new System.Drawing.Size(426, 542);
@@ -1999,7 +2034,7 @@ namespace Taxi_AppMain
             this.radPageViewPage4.Location = new System.Drawing.Point(10, 36);
             this.radPageViewPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radPageViewPage4.Name = "radPageViewPage4";
-            this.radPageViewPage4.Size = new System.Drawing.Size(1029, 790);
+            this.radPageViewPage4.Size = new System.Drawing.Size(1029, 675);
             this.radPageViewPage4.Text = "PDA/SIM Details";
             // 
             // radGroupBox2
@@ -2289,8 +2324,222 @@ namespace Taxi_AppMain
             this.pg_pdasettings.Location = new System.Drawing.Point(10, 36);
             this.pg_pdasettings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pg_pdasettings.Name = "pg_pdasettings";
-            this.pg_pdasettings.Size = new System.Drawing.Size(1029, 790);
+            this.pg_pdasettings.Size = new System.Drawing.Size(1029, 675);
             this.pg_pdasettings.Text = "PDA Settings";
+            // 
+            // tabPage5
+            // 
+            this.Pg_BankDetail.Controls.Add(this.radLabel58);
+            this.Pg_BankDetail.Controls.Add(this.txtBLC);
+            this.Pg_BankDetail.Controls.Add(this.radLabel59);
+            this.Pg_BankDetail.Controls.Add(this.radLabel69);
+            this.Pg_BankDetail.Controls.Add(this.txtIBAN);
+            this.Pg_BankDetail.Controls.Add(this.radLabel87);
+            this.Pg_BankDetail.Controls.Add(this.txtVATNumber);
+            this.Pg_BankDetail.Controls.Add(this.radLabel88);
+            this.Pg_BankDetail.Controls.Add(this.txtCompanyNumber);
+            this.Pg_BankDetail.Controls.Add(this.txtBank);
+            this.Pg_BankDetail.Controls.Add(this.radLabel57);
+            this.Pg_BankDetail.Controls.Add(this.txtAccountTitle);
+            this.Pg_BankDetail.Controls.Add(this.radLabel60);
+            this.Pg_BankDetail.Controls.Add(this.txtAccountNo);
+            this.Pg_BankDetail.Controls.Add(this.radLabel61);
+            this.Pg_BankDetail.Controls.Add(this.txtSortCode);
+            this.Pg_BankDetail.Location = new System.Drawing.Point(4, 25);
+            this.Pg_BankDetail.Margin = new System.Windows.Forms.Padding(4);
+            this.Pg_BankDetail.Name = "tabPage5";
+            this.Pg_BankDetail.Padding = new System.Windows.Forms.Padding(4);
+            this.Pg_BankDetail.Size = new System.Drawing.Size(903, 547);
+            this.Pg_BankDetail.TabIndex = 4;
+            this.Pg_BankDetail.Text = "Bank Details";
+            //this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // radLabel58
+            // 
+            this.radLabel58.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel58.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel58.ForeColor = System.Drawing.Color.Black;
+            this.radLabel58.Location = new System.Drawing.Point(64, 290);
+            this.radLabel58.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel58.Name = "radLabel58";
+            this.radLabel58.Size = new System.Drawing.Size(29, 19);
+            this.radLabel58.TabIndex = 40;
+            this.radLabel58.Text = "BLC";
+            this.radLabel58.TextWrap = false;
+            // 
+            // txtBLC
+            // 
+            this.txtBLC.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBLC.Location = new System.Drawing.Point(210, 289);
+            this.txtBLC.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBLC.MaxLength = 30;
+            this.txtBLC.Name = "txtBLC";
+            this.txtBLC.Size = new System.Drawing.Size(264, 21);
+            this.txtBLC.TabIndex = 39;
+            this.txtBLC.TabStop = false;
+            // 
+            // radLabel69
+            // 
+            this.radLabel69.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel69.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel69.ForeColor = System.Drawing.Color.Black;
+            this.radLabel69.Location = new System.Drawing.Point(63, 255);
+            this.radLabel69.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel69.Name = "radLabel69";
+            this.radLabel69.Size = new System.Drawing.Size(37, 19);
+            this.radLabel69.TabIndex = 41;
+            this.radLabel69.Text = "IBAN";
+            // 
+            // txtIBAN
+            // 
+            this.txtIBAN.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIBAN.Location = new System.Drawing.Point(210, 254);
+            this.txtIBAN.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIBAN.MaxLength = 30;
+            this.txtIBAN.Name = "txtIBAN";
+            this.txtIBAN.Size = new System.Drawing.Size(264, 21);
+            this.txtIBAN.TabIndex = 38;
+            this.txtIBAN.TabStop = false;
+            // 
+            // radLabel87
+            // 
+            this.radLabel87.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel87.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel87.ForeColor = System.Drawing.Color.Black;
+            this.radLabel87.Location = new System.Drawing.Point(62, 219);
+            this.radLabel87.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel87.Name = "radLabel87";
+            this.radLabel87.Size = new System.Drawing.Size(82, 19);
+            this.radLabel87.TabIndex = 36;
+            this.radLabel87.Text = "VAT Number";
+            this.radLabel87.TextWrap = false;
+            // 
+            // txtVATNumber
+            // 
+            this.txtVATNumber.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVATNumber.Location = new System.Drawing.Point(210, 218);
+            this.txtVATNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVATNumber.MaxLength = 30;
+            this.txtVATNumber.Name = "txtVATNumber";
+            this.txtVATNumber.Size = new System.Drawing.Size(264, 21);
+            this.txtVATNumber.TabIndex = 35;
+            this.txtVATNumber.TabStop = false;
+            // 
+            // radLabel88
+            // 
+            this.radLabel88.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel88.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel88.ForeColor = System.Drawing.Color.Black;
+            this.radLabel88.Location = new System.Drawing.Point(62, 183);
+            this.radLabel88.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel88.Name = "radLabel88";
+            this.radLabel88.Size = new System.Drawing.Size(113, 19);
+            this.radLabel88.TabIndex = 37;
+            this.radLabel88.Text = "Company Number";
+            // 
+            // txtCompanyNumber
+            // 
+            this.txtCompanyNumber.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCompanyNumber.Location = new System.Drawing.Point(210, 182);
+            this.txtCompanyNumber.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCompanyNumber.MaxLength = 30;
+            this.txtCompanyNumber.Name = "txtCompanyNumber";
+            this.txtCompanyNumber.Size = new System.Drawing.Size(264, 21);
+            this.txtCompanyNumber.TabIndex = 34;
+            this.txtCompanyNumber.TabStop = false;
+            // 
+            // radLabel59
+            // 
+            this.radLabel59.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel59.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel59.ForeColor = System.Drawing.Color.Black;
+            this.radLabel59.Location = new System.Drawing.Point(62, 148);
+            this.radLabel59.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel59.Name = "radLabel59";
+            this.radLabel59.Size = new System.Drawing.Size(36, 19);
+            this.radLabel59.TabIndex = 32;
+            this.radLabel59.Text = "Bank";
+            this.radLabel59.TextWrap = false;
+            // 
+            // txtBank
+            // 
+            this.txtBank.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBank.Location = new System.Drawing.Point(210, 146);
+            this.txtBank.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBank.MaxLength = 50;
+            this.txtBank.Name = "txtBank";
+            this.txtBank.Size = new System.Drawing.Size(264, 21);
+            this.txtBank.TabIndex = 29;
+            this.txtBank.TabStop = false;
+            // 
+            // radLabel57
+            // 
+            this.radLabel57.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel57.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel57.ForeColor = System.Drawing.Color.Black;
+            this.radLabel57.Location = new System.Drawing.Point(62, 112);
+            this.radLabel57.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel57.Name = "radLabel57";
+            this.radLabel57.Size = new System.Drawing.Size(84, 19);
+            this.radLabel57.TabIndex = 33;
+            this.radLabel57.Text = "Account Title";
+            // 
+            // txtAccountTitle
+            // 
+            this.txtAccountTitle.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountTitle.Location = new System.Drawing.Point(210, 111);
+            this.txtAccountTitle.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAccountTitle.MaxLength = 50;
+            this.txtAccountTitle.Name = "txtAccountTitle";
+            this.txtAccountTitle.Size = new System.Drawing.Size(264, 21);
+            this.txtAccountTitle.TabIndex = 28;
+            this.txtAccountTitle.TabStop = false;
+            // 
+            // radLabel60
+            // 
+            this.radLabel60.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel60.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel60.ForeColor = System.Drawing.Color.Black;
+            this.radLabel60.Location = new System.Drawing.Point(62, 76);
+            this.radLabel60.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel60.Name = "radLabel60";
+            this.radLabel60.Size = new System.Drawing.Size(74, 19);
+            this.radLabel60.TabIndex = 31;
+            this.radLabel60.Text = "Account No";
+            // 
+            // txtAccountNo
+            // 
+            this.txtAccountNo.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAccountNo.Location = new System.Drawing.Point(210, 75);
+            this.txtAccountNo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAccountNo.MaxLength = 20;
+            this.txtAccountNo.Name = "txtAccountNo";
+            this.txtAccountNo.Size = new System.Drawing.Size(264, 21);
+            this.txtAccountNo.TabIndex = 27;
+            this.txtAccountNo.TabStop = false;
+            // 
+            // radLabel61
+            // 
+            this.radLabel61.BackColor = System.Drawing.Color.Transparent;
+            this.radLabel61.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel61.ForeColor = System.Drawing.Color.Black;
+            this.radLabel61.Location = new System.Drawing.Point(62, 41);
+            this.radLabel61.Margin = new System.Windows.Forms.Padding(4);
+            this.radLabel61.Name = "radLabel61";
+            this.radLabel61.Size = new System.Drawing.Size(65, 19);
+            this.radLabel61.TabIndex = 30;
+            this.radLabel61.Text = "Sort Code";
+            // 
+            // txtSortCode
+            // 
+            this.txtSortCode.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSortCode.Location = new System.Drawing.Point(210, 39);
+            this.txtSortCode.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSortCode.MaxLength = 20;
+            this.txtSortCode.Name = "txtSortCode";
+            this.txtSortCode.Size = new System.Drawing.Size(264, 21);
+            this.txtSortCode.TabIndex = 26;
+            this.txtSortCode.TabStop = false;
             // 
             // pnlSettings
             // 
@@ -3045,10 +3294,10 @@ namespace Taxi_AppMain
             // 
             this.Pg_notes.Controls.Add(this.radPanel3);
             this.Pg_notes.ItemSize = new System.Drawing.SizeF(88F, 27F);
-            this.Pg_notes.Location = new System.Drawing.Point(12, 44);
+            this.Pg_notes.Location = new System.Drawing.Point(10, 36);
             this.Pg_notes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Pg_notes.Name = "Pg_notes";
-            this.Pg_notes.Size = new System.Drawing.Size(1025, 770);
+            this.Pg_notes.Size = new System.Drawing.Size(1029, 675);
             this.Pg_notes.Text = "Driver Notes";
             // 
             // radPanel3
@@ -3062,7 +3311,7 @@ namespace Taxi_AppMain
             this.radPanel3.Location = new System.Drawing.Point(0, 0);
             this.radPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(1025, 769);
+            this.radPanel3.Size = new System.Drawing.Size(1029, 769);
             this.radPanel3.TabIndex = 0;
             // 
             // grdLister
@@ -3077,10 +3326,10 @@ namespace Taxi_AppMain
             this.grdLister.MasterTemplate.AllowAddNewRow = false;
             this.grdLister.MasterTemplate.AllowDeleteRow = false;
             this.grdLister.MasterTemplate.AllowEditRow = false;
-            this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.grdLister.MasterTemplate.ViewDefinition = tableViewDefinition12;
             this.grdLister.Name = "grdLister";
             this.grdLister.ShowGroupPanel = false;
-            this.grdLister.Size = new System.Drawing.Size(1025, 628);
+            this.grdLister.Size = new System.Drawing.Size(1029, 628);
             this.grdLister.TabIndex = 52;
             this.grdLister.Text = "radGridView1";
             // 
@@ -3094,7 +3343,9 @@ namespace Taxi_AppMain
             this.btnNew.Text = "New";
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnNew.GetChildAt(0))).Text = "New";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnNew.GetChildAt(0).GetChildAt(1).GetChildAt(1))).LineLimit = false;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnNew.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnNew.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnAdd
             // 
@@ -3108,7 +3359,9 @@ namespace Taxi_AppMain
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnAdd.GetChildAt(0))).Image = global::Taxi_AppMain.Properties.Resources.AddBig;
             ((Telerik.WinControls.UI.RadButtonElement)(this.btnAdd.GetChildAt(0))).Text = "Add";
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnAdd.GetChildAt(0).GetChildAt(1).GetChildAt(1))).LineLimit = false;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnAdd.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            ((Telerik.WinControls.Primitives.TextPrimitive)(this.btnAdd.GetChildAt(0).GetChildAt(1).GetChildAt(1))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtNotes
             // 
@@ -3128,7 +3381,7 @@ namespace Taxi_AppMain
             this.radLabel35.Location = new System.Drawing.Point(10, 64);
             this.radLabel35.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radLabel35.Name = "radLabel35";
-            this.radLabel35.Size = new System.Drawing.Size(61, 27);
+            this.radLabel35.Size = new System.Drawing.Size(52, 22);
             this.radLabel35.TabIndex = 48;
             this.radLabel35.Text = "Notes";
             // 
@@ -3154,7 +3407,7 @@ namespace Taxi_AppMain
             this.grdDriverComplaints.MasterTemplate.AllowAddNewRow = false;
             this.grdDriverComplaints.MasterTemplate.AllowDeleteRow = false;
             this.grdDriverComplaints.MasterTemplate.AllowEditRow = false;
-            this.grdDriverComplaints.MasterTemplate.ViewDefinition = tableViewDefinition5;
+            this.grdDriverComplaints.MasterTemplate.ViewDefinition = tableViewDefinition13;
             this.grdDriverComplaints.Name = "grdDriverComplaints";
             this.grdDriverComplaints.ShowGroupPanel = false;
             this.grdDriverComplaints.Size = new System.Drawing.Size(1025, 770);
@@ -3181,7 +3434,7 @@ namespace Taxi_AppMain
             // 
             // 
             this.grdDriverAttributes.MasterTemplate.AllowAddNewRow = false;
-            this.grdDriverAttributes.MasterTemplate.ViewDefinition = tableViewDefinition6;
+            this.grdDriverAttributes.MasterTemplate.ViewDefinition = tableViewDefinition14;
             this.grdDriverAttributes.Name = "grdDriverAttributes";
             this.grdDriverAttributes.ShowGroupPanel = false;
             this.grdDriverAttributes.Size = new System.Drawing.Size(426, 542);
@@ -3218,7 +3471,7 @@ namespace Taxi_AppMain
             // 
             // 
             this.grdCompanyVehicles.MasterTemplate.AllowAddNewRow = false;
-            this.grdCompanyVehicles.MasterTemplate.ViewDefinition = tableViewDefinition7;
+            this.grdCompanyVehicles.MasterTemplate.ViewDefinition = tableViewDefinition15;
             this.grdCompanyVehicles.Name = "grdCompanyVehicles";
             this.grdCompanyVehicles.ShowGroupPanel = false;
             this.grdCompanyVehicles.Size = new System.Drawing.Size(565, 542);
@@ -3247,7 +3500,7 @@ namespace Taxi_AppMain
             this.grdDebitCreditNotes.MasterTemplate.AllowAddNewRow = false;
             this.grdDebitCreditNotes.MasterTemplate.AllowDeleteRow = false;
             this.grdDebitCreditNotes.MasterTemplate.AllowEditRow = false;
-            this.grdDebitCreditNotes.MasterTemplate.ViewDefinition = tableViewDefinition8;
+            this.grdDebitCreditNotes.MasterTemplate.ViewDefinition = tableViewDefinition16;
             this.grdDebitCreditNotes.Name = "grdDebitCreditNotes";
             this.grdDebitCreditNotes.ShowGroupPanel = false;
             this.grdDebitCreditNotes.Size = new System.Drawing.Size(1025, 770);
@@ -3466,6 +3719,24 @@ namespace Taxi_AppMain
             ((System.ComponentModel.ISupportInitialize)(this.grdDebitCreditNotes.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdDebitCreditNotes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radTextBox1)).EndInit();
+            this.Pg_BankDetail.ResumeLayout(false);
+            this.Pg_BankDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel58)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBLC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel59)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel69)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtIBAN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel87)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtVATNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel88)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCompanyNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtBank)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel57)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountTitle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel60)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtAccountNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel61)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtSortCode)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3511,7 +3782,24 @@ namespace Taxi_AppMain
         private Telerik.WinControls.UI.RadLabel radLabel10;
         private Telerik.WinControls.UI.RadTextBox txtTelephoneNo;
         private Telerik.WinControls.UI.RadPageViewPage radPageViewPage2;
-        private Telerik.WinControls.UI.RadPanel radPanel2;
+        private Telerik.WinControls.UI.RadPanel radPanel2; 
+        private Telerik.WinControls.UI.RadPageViewPage Pg_BankDetail;
+        private Telerik.WinControls.UI.RadLabel radLabel58;
+        private Telerik.WinControls.UI.RadTextBox txtBLC;
+        private Telerik.WinControls.UI.RadLabel radLabel59;
+        private Telerik.WinControls.UI.RadLabel radLabel69;
+        private Telerik.WinControls.UI.RadTextBox txtIBAN;
+        private Telerik.WinControls.UI.RadLabel radLabel87;
+        private Telerik.WinControls.UI.RadTextBox txtVATNumber;
+        private Telerik.WinControls.UI.RadLabel radLabel88;
+        private Telerik.WinControls.UI.RadTextBox txtCompanyNumber;
+        private Telerik.WinControls.UI.RadTextBox txtBank;
+        private Telerik.WinControls.UI.RadLabel radLabel57;
+        private Telerik.WinControls.UI.RadTextBox txtAccountTitle;
+        private Telerik.WinControls.UI.RadLabel radLabel60;
+        private Telerik.WinControls.UI.RadTextBox txtAccountNo;
+        private Telerik.WinControls.UI.RadLabel radLabel61;
+        private Telerik.WinControls.UI.RadTextBox txtSortCode;
         private System.Windows.Forms.Panel panel3;
         private Telerik.WinControls.UI.RadGridView grdShifts;
         private System.Windows.Forms.Panel panel4;
@@ -3662,7 +3950,6 @@ namespace Taxi_AppMain
         private Telerik.WinControls.UI.RadCheckBox chkBidding;
         private Telerik.WinControls.UI.RadSpinEditor numPDARent;
         private Telerik.WinControls.UI.RadLabel lblpdarent;
-
         private System.Windows.Forms.CheckBox chkEnablePriceBidding;
         private System.Windows.Forms.CheckBox chkEnableManualFares;
         private System.Windows.Forms.CheckBox chkEnableOptionalManualFares;

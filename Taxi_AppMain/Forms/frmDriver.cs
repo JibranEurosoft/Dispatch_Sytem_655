@@ -21,6 +21,7 @@ using Telerik.WinControls;
 using System.Threading;
 using System.Data.SqlClient;
 using System.Net.NetworkInformation;
+using System.Security.Cryptography;
 
 namespace Taxi_AppMain
 {
@@ -223,12 +224,12 @@ namespace Taxi_AppMain
 
             pg_charges.Item.Visibility = ElementVisibility.Collapsed;
 
-           
 
-          
+
+
         }
 
-      
+
 
         public void FormatNotesGrid()
         {
@@ -334,11 +335,11 @@ namespace Taxi_AppMain
             objMaster = new DriverBO();
             this.SetProperties((INavigation)objMaster);
             this.Load += new EventHandler(frmDriver_Load);
-           
-          
 
-        //    numPrimeCompanyRent.Visible = false;
-         //   lblPrimeCompanyRent.Visible = false;
+
+
+            //    numPrimeCompanyRent.Visible = false;
+            //   lblPrimeCompanyRent.Visible = false;
 
             FillCombos();
             FormatDocumentsGrid();
@@ -347,9 +348,9 @@ namespace Taxi_AppMain
             FormatDebitCreditNotesGrid();
             FormatDriverShiftGrid();
 
-          
+
             radpageview1.Pages.Remove(Pg_Rating);
-           // Pg_Rating.Item.Visibility = ElementVisibility.Hidden;
+            // Pg_Rating.Item.Visibility = ElementVisibility.Hidden;
 
 
             openFileDialog1 = new OpenFileDialog();
@@ -389,18 +390,18 @@ namespace Taxi_AppMain
             grdLister.AutoExpandGroups = true;
 
             grdDriverComplaints.CellDoubleClick += new GridViewCellEventHandler(grdDriverComplaints_CellDoubleClick);
-            
+
             //grdDriverNotes.AllowAddNewRow = false;
 
-         //   chkBidding.Visible = AppVars.objPolicyConfiguration.EnableBidding.ToBool();
-          //  chkUseCompanyVehicle.ToggleStateChanged += new StateChangedEventHandler(chkUseCompanyVehicle_ToggleStateChanged);
+            //   chkBidding.Visible = AppVars.objPolicyConfiguration.EnableBidding.ToBool();
+            //  chkUseCompanyVehicle.ToggleStateChanged += new StateChangedEventHandler(chkUseCompanyVehicle_ToggleStateChanged);
 
 
             try
             {
 
-                if(AppVars.listUserRights.Count(c=>c.functionId=="DAY WISE SHIFTS" && c.formName==this.Name)==0)
-                 pg_Shifts.Item.Visibility = ElementVisibility.Collapsed;
+                if (AppVars.listUserRights.Count(c => c.functionId == "DAY WISE SHIFTS" && c.formName == this.Name) == 0)
+                    pg_Shifts.Item.Visibility = ElementVisibility.Collapsed;
                 else
                 {
 
@@ -414,7 +415,7 @@ namespace Taxi_AppMain
 
 
             }
-            
+
         }
 
 
@@ -466,7 +467,7 @@ namespace Taxi_AppMain
             DisplayCompanyVehicle();
 
 
-        
+
         }
 
         private void FormatDriverAttributesGrid()
@@ -525,7 +526,7 @@ namespace Taxi_AppMain
 
         }
 
-      
+
         void grdDriverComplaints_CellDoubleClick(object sender, GridViewCellEventArgs e)
         {
             try
@@ -792,10 +793,10 @@ namespace Taxi_AppMain
             else if (radpageview1.SelectedPage == Pg_Rating)
             {
                 InitializeRatingPanel();
-               
-               
+
+
                 PopulateDriverRating();
-            
+
             }
             else
             {
@@ -805,7 +806,7 @@ namespace Taxi_AppMain
 
         }
 
-       
+
 
         private void InitializeRatingPanel()
         {
@@ -813,45 +814,45 @@ namespace Taxi_AppMain
                 return;
             //if (pnlSettings == null)
             //{
-               // private UI.MyGridView grdRating;
-                this.grdRating = new UI.MyGridView();
+            // private UI.MyGridView grdRating;
+            this.grdRating = new UI.MyGridView();
 
-                //this.Pg_Rating.Controls.Add(this.grdRating);
-                //this.Pg_Rating.Location = new System.Drawing.Point(10, 37);
-                //this.Pg_Rating.Name = "Pg_Rating";
-                //this.Pg_Rating.Size = new System.Drawing.Size(879, 625);
-                //this.Pg_Rating.Text = "Rating";
-                // 
-                // grdRating
-                // 
-                this.grdRating.AutoCellFormatting = false;
-                this.grdRating.EnableCheckInCheckOut = false;
-                this.grdRating.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.grdRating.HeaderRowBackColor = System.Drawing.Color.SteelBlue;
-                this.grdRating.HeaderRowBorderColor = System.Drawing.Color.DarkSlateBlue;
-                this.grdRating.Location = new System.Drawing.Point(8, 8);
-                // 
-                // grdRating
-                // 
-                this.grdRating.MasterTemplate.AllowAddNewRow = false;
-                this.grdRating.MasterTemplate.AllowEditRow = false;
-                this.grdRating.MasterTemplate.ShowRowHeaderColumn = false;
-                this.grdRating.Name = "grdRating";
-                this.grdRating.PKFieldColumnName = "";
-                this.grdRating.ShowGroupPanel = false;
-                this.grdRating.ShowImageOnActionButton = true;
-                this.grdRating.Size = new System.Drawing.Size(644, 600);
-                this.grdRating.TabIndex = 98;
-                this.grdRating.Text = "myGridView1";
+            //this.Pg_Rating.Controls.Add(this.grdRating);
+            //this.Pg_Rating.Location = new System.Drawing.Point(10, 37);
+            //this.Pg_Rating.Name = "Pg_Rating";
+            //this.Pg_Rating.Size = new System.Drawing.Size(879, 625);
+            //this.Pg_Rating.Text = "Rating";
+            // 
+            // grdRating
+            // 
+            this.grdRating.AutoCellFormatting = false;
+            this.grdRating.EnableCheckInCheckOut = false;
+            this.grdRating.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRating.HeaderRowBackColor = System.Drawing.Color.SteelBlue;
+            this.grdRating.HeaderRowBorderColor = System.Drawing.Color.DarkSlateBlue;
+            this.grdRating.Location = new System.Drawing.Point(8, 8);
+            // 
+            // grdRating
+            // 
+            this.grdRating.MasterTemplate.AllowAddNewRow = false;
+            this.grdRating.MasterTemplate.AllowEditRow = false;
+            this.grdRating.MasterTemplate.ShowRowHeaderColumn = false;
+            this.grdRating.Name = "grdRating";
+            this.grdRating.PKFieldColumnName = "";
+            this.grdRating.ShowGroupPanel = false;
+            this.grdRating.ShowImageOnActionButton = true;
+            this.grdRating.Size = new System.Drawing.Size(644, 600);
+            this.grdRating.TabIndex = 98;
+            this.grdRating.Text = "myGridView1";
 
-                ((System.ComponentModel.ISupportInitialize)(this.grdRating)).BeginInit();
-                ((System.ComponentModel.ISupportInitialize)(this.grdRating.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRating)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRating.MasterTemplate)).BeginInit();
 
 
-                ((System.ComponentModel.ISupportInitialize)(this.grdRating.MasterTemplate)).EndInit();
-                ((System.ComponentModel.ISupportInitialize)(this.grdRating)).EndInit();
-                this.Pg_Rating.Controls.Add(grdRating);
-               grdRating.CommandCellClick += new CommandCellClickEventHandler(grdRating_CommandCellClick);
+            ((System.ComponentModel.ISupportInitialize)(this.grdRating.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRating)).EndInit();
+            this.Pg_Rating.Controls.Add(grdRating);
+            grdRating.CommandCellClick += new CommandCellClickEventHandler(grdRating_CommandCellClick);
 
             FormateRatingGride();
             // }
@@ -1552,17 +1553,17 @@ namespace Taxi_AppMain
 
         void chkEnableCompanyCars_CheckedChanged(object sender, EventArgs e)
         {
-          
+
             if (chkEnableCompanyCars.Checked == true)
             {
                 CompanyVehicle.Item.Visibility = ElementVisibility.Visible;
                 //radpageview1.Pages.Add(CompanyVehicle);
-                
+
             }
             else if (chkEnableCompanyCars.Checked == false)
             {
-               CompanyVehicle.Item.Visibility = ElementVisibility.Hidden;
-               // radpageview1.Pages.Remove(CompanyVehicle);
+                CompanyVehicle.Item.Visibility = ElementVisibility.Hidden;
+                // radpageview1.Pages.Remove(CompanyVehicle);
                 if (objMaster.Current != null && objMaster.Current.Id > 0)
                 {
                     int driverId = objMaster.Current.Id;
@@ -1576,7 +1577,7 @@ namespace Taxi_AppMain
                         }
                     }
                 }
-               
+
                 DisplayCompanyVehicle();
 
             }
@@ -1703,7 +1704,7 @@ namespace Taxi_AppMain
 
                     chkEnableFareMeter.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableFareMeter.ToBool();
 
-                 
+
                     chkEnableJobExtraCharges.Checked = false;
                     chkShowFareonExtraCharges.Checked = false;
 
@@ -1721,7 +1722,7 @@ namespace Taxi_AppMain
                     chkEnableMeterWaitingCharges.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableFareMeterWaitingCharges.ToBool();
                     chkEnableOptionalMeter.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].OptionalFareMeter.ToBool();
                     chkVoiceOnClearMeter.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableFareMeterVoice.ToBool();
-               
+
                     chkEnableRecoverJob.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableRecoverJob.ToBool();
                     chkEnableBidding.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableBidding.ToBool();
 
@@ -1756,10 +1757,10 @@ namespace Taxi_AppMain
                     numBreakDuration.Value = objMaster.Current.Fleet_Driver_PDASettings[0].BreakTime.ToDecimal();
                     numJobTimeout.Value = objMaster.Current.Fleet_Driver_PDASettings[0].JobTimeOutInterval.ToDecimal();
 
-                    if( objMaster.Current.Fleet_Driver_PDASettings[0].CurrentPdaVersion.ToDecimal()>=23.29m)
+                    if (objMaster.Current.Fleet_Driver_PDASettings[0].CurrentPdaVersion.ToDecimal() >= 23.29m)
                     {
 
-                        chkHidePickupAndDest.CheckedChanged+=new EventHandler(chkHidePickupAndDest_CheckedChanged); 
+                        chkHidePickupAndDest.CheckedChanged += new EventHandler(chkHidePickupAndDest_CheckedChanged);
                     }
 
                     chkHidePickupAndDest.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].HidePickAndDestination.ToBool();
@@ -1801,7 +1802,7 @@ namespace Taxi_AppMain
 
                     chkEnableOptionalManualFares.Checked = objMaster.Current.Fleet_Driver_PDASettings[0].EnableOptionalManualFares.ToBool();
 
-                    
+
 
                     //if (AppVars.objPolicyConfiguration.TcpConnectionType.ToInt() == 2 || objMaster.Current.Fleet_Driver_PDASettings[0].CurrentPdaVersion.ToDecimal() < 8.90m)
                     //{
@@ -2089,14 +2090,14 @@ namespace Taxi_AppMain
             ComboFunctions.FillDriverTypeCombo(ddlDriverType);
             ComboFunctions.FillVehicleColorsCombo(ddlVehicleColor);
             FillSubCompanyCombo(ddlSubCompany);
-       //     ddlSubCompany.SelectedIndexChanged += new EventHandler(ddlSubCompany_SelectedIndexChanged);
+            //     ddlSubCompany.SelectedIndexChanged += new EventHandler(ddlSubCompany_SelectedIndexChanged);
 
-          //  ddlCategory.Items.Add(new RadListDataItem { Text = "Hackney", Value = 0 });
-            ddlCategory.Items.Add(new RadListDataItem { Text="Hackney", Value=1 });
+            //  ddlCategory.Items.Add(new RadListDataItem { Text = "Hackney", Value = 0 });
+            ddlCategory.Items.Add(new RadListDataItem { Text = "Hackney", Value = 1 });
             ddlCategory.Items.Add(new RadListDataItem { Text = "Private Hire", Value = 2 });
         }
 
- 
+
 
 
         private void FillSubCompanyCombo(ComboBox cbo)
@@ -2120,13 +2121,13 @@ namespace Taxi_AppMain
         string[] res = null;
         string searchTxt = "";
 
-     
+
 
 
         AutoCompleteTextBox aTxt = null;
         WebClient wc = null;
 
-     
+
         private void CancelWebClientAsync()
         {
             if (wc != null)
@@ -2135,7 +2136,7 @@ namespace Taxi_AppMain
             }
         }
 
-      
+
 
 
 
@@ -2156,8 +2157,8 @@ namespace Taxi_AppMain
 
                 res = (from elm in xmlElm.Descendants()
 
-                       // where elm.Name == "description"
-                       //&& (elm.Value.ToLower().Contains("united kingdom") || elm.Value.ToLower().Contains("uk"))
+                           // where elm.Name == "description"
+                           //&& (elm.Value.ToLower().Contains("united kingdom") || elm.Value.ToLower().Contains("uk"))
                        where elm.Name == "formatted_address"
                        select elm.Value).ToArray<string>();
 
@@ -2546,31 +2547,31 @@ namespace Taxi_AppMain
             var list = (from a in General.GetQueryable<Fleet_Master>(null)
                         select new
                         {
-                          Id =  a.Id,
-                          VehicleNo =  a.VehicleNo,
-                          VehicleType = a.Plateno + " - " + a.VehicleNo + " - " +  a.Fleet_VehicleType.VehicleType,
-                          VehicleId = a.Id,
-                        
+                            Id = a.Id,
+                            VehicleNo = a.VehicleNo,
+                            VehicleType = a.Plateno + " - " + a.VehicleNo + " - " + a.Fleet_VehicleType.VehicleType,
+                            VehicleId = a.Id,
+
                         }).ToList();
 
             foreach (var item in list)
             {
                 row = grdCompanyVehicles.Rows.AddNew();
 
-                  row.Cells[COL_CompanyVehicle.Vehicles].Value = item.VehicleType.ToString();
-                  row.Cells[COL_CompanyVehicle.VehicleTypeId].Value = item.VehicleId.ToString();
-                  row.Cells[COL_CompanyVehicle.ID].Value = 0;
-                
+                row.Cells[COL_CompanyVehicle.Vehicles].Value = item.VehicleType.ToString();
+                row.Cells[COL_CompanyVehicle.VehicleTypeId].Value = item.VehicleId.ToString();
+                row.Cells[COL_CompanyVehicle.ID].Value = 0;
+
             }
 
-            int driverId = objMaster.Current.Id; 
+            int driverId = objMaster.Current.Id;
             var rows1 = General.GetQueryable<Fleet_Driver_CompanyVehicle>(c => c.DriverId == driverId).ToList();
-         
+
             for (int i = 0; i < grdCompanyVehicles.RowCount; i++)
             {
                 foreach (var item in rows1)
                 {
-                    if(grdCompanyVehicles.Rows[i].Cells[COL_CompanyVehicle.VehicleTypeId].Value.ToInt()==item.FleetMasterId)
+                    if (grdCompanyVehicles.Rows[i].Cells[COL_CompanyVehicle.VehicleTypeId].Value.ToInt() == item.FleetMasterId)
                     {
                         grdCompanyVehicles.Rows[i].Cells[COL_CompanyVehicle.Check].Value = true;
                         grdCompanyVehicles.Rows[i].Cells[COL_CompanyVehicle.ID].Value = item.ID;
@@ -3142,8 +3143,8 @@ namespace Taxi_AppMain
                 }
 
 
-                if(txtAffiliateKey!=null)
-                txtAffiliateKey.Text = string.Empty;
+                if (txtAffiliateKey != null)
+                    txtAffiliateKey.Text = string.Empty;
             }
             catch
             {
@@ -3179,7 +3180,7 @@ namespace Taxi_AppMain
             try
             {
 
-               
+
 
 
                 if (this.OpenedFromInActiveList == false)
@@ -3286,14 +3287,14 @@ namespace Taxi_AppMain
                 objMaster.Current.PostCode = numTrainingCompletedHours.Value.ToStr();
                 objMaster.Current.VAT = numVAT.Value.ToDecimal();
                 objMaster.Current.SubcompanyId = ddlSubCompany.SelectedValue.ToIntorNull();
-          
-             
-                    objMaster.Current.UseCompanyVehicle = false;
-                    objMaster.Current.CarRent = 0;
-                    objMaster.Current.CarInsuranceRent = 0;
-                    objMaster.Current.PrimeCompanyRent = numAccComm.Value;
-                    objMaster.Current.IsPrimeCompanyDriver = chkAccComm.Checked;
-               
+
+
+                objMaster.Current.UseCompanyVehicle = false;
+                objMaster.Current.CarRent = 0;
+                objMaster.Current.CarInsuranceRent = 0;
+                objMaster.Current.PrimeCompanyRent = numAccComm.Value;
+                objMaster.Current.IsPrimeCompanyDriver = chkAccComm.Checked;
+
 
                 if (objMaster.Current.SubcompanyId == null)
                     objMaster.Current.SubcompanyId = AppVars.objSubCompany.Id;
@@ -3362,7 +3363,7 @@ namespace Taxi_AppMain
                 objMaster.Current.Fleet_Driver_DeviceInfos.SIMNetworkName = txt_SIM_NetworkName.Text.Trim();
                 objMaster.Current.Fleet_Driver_DeviceInfos.SIMNumber = txt_SIM_Number.Text.Trim();
 
-                if(objMaster.Current.Fleet_Driver_DeviceInfos.SIMNumber.ToStr().Trim().Length==0)
+                if (objMaster.Current.Fleet_Driver_DeviceInfos.SIMNumber.ToStr().Trim().Length == 0)
                 {
 
                     objMaster.Current.Fleet_Driver_DeviceInfos.SIMNumber = objMaster.Current.MobileNo.ToStr();
@@ -3620,14 +3621,27 @@ namespace Taxi_AppMain
                 //
 
 
+                /////Bank Details
+                try
+                {
+                    using (TaxiDataContext db = new TaxiDataContext())
+                    {
+                        db.ExecuteQuery<int>("exec stp_DriverBankDetails {0}, {1}, {2}, {3}, {4}, {5}, {6}, {7}, {8}", objMaster.Current.Id, txtSortCode.Text, txtAccountNo.Text, txtAccountTitle.Text
+                            , txtBank.Text, txtCompanyNumber.Text, txtVATNumber.Text, txtBLC.Text, txtIBAN.Text);
 
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
 
 
 
                 UploadAll();
 
 
-               
+
 
 
                 if (grdDriverAttributes != null)
@@ -3642,7 +3656,7 @@ namespace Taxi_AppMain
                     objMaster.Current.AttributeValues = "," + objMaster.Current.AttributeValues + ",";
                 }
 
-              //  objMaster.Current.Fleet_DriverVehicleDetails = string.Join(",", grdCompanyVehicles.Rows.Where(c => c.Cells[COL_CompanyVehicle.Check].Value.ToBool() == true).Select(c => c.Cells[COL_CompanyVehicle.Vehicles].Value.ToStr()).ToArray<string>());
+                //  objMaster.Current.Fleet_DriverVehicleDetails = string.Join(",", grdCompanyVehicles.Rows.Where(c => c.Cells[COL_CompanyVehicle.Check].Value.ToBool() == true).Select(c => c.Cells[COL_CompanyVehicle.Vehicles].Value.ToStr()).ToArray<string>());
 
                 objMaster.Current.DriverCategory = ddlCategory.SelectedValue.ToInt();
 
@@ -3652,9 +3666,9 @@ namespace Taxi_AppMain
                     objMaster.RestrictDriverNo = true;
 
 
-                if(txtAffiliateKey!=null)
-                objMaster.AffiliateKey = txtAffiliateKey.Text.Trim();
-             
+                if (txtAffiliateKey != null)
+                    objMaster.AffiliateKey = txtAffiliateKey.Text.Trim();
+
 
                 objMaster.Save();
 
@@ -3669,11 +3683,11 @@ namespace Taxi_AppMain
                 General.RefreshListWithoutSelected<frmInActiveDriversList>("frmInActiveDriversList1");
 
 
-                
 
-                    if (newPhotoLength>0 && AppVars.listofSMSTags.Count(c => c.TagMemberValue == "<DrvImage>") > 0 && objMaster.Current.Fleet_Driver_Images.Count > 0 && objMaster.Current.Fleet_Driver_Images[0].Photo != null)
-                        UploadImage(objMaster.Current.Id, objMaster.Current.DriverNo, objMaster.Current.Fleet_Driver_Images[0].Photo, AppVars.objPolicyConfiguration.DefaultClientId.ToStr().Replace("/", "").Trim().Replace("*", "").Replace("_", "").Trim() + "_" + objMaster.Current.DriverNo, objMaster.Current.Fleet_Driver_Images[0].PhotoLinkId.ToStr());
-                
+
+                if (newPhotoLength > 0 && AppVars.listofSMSTags.Count(c => c.TagMemberValue == "<DrvImage>") > 0 && objMaster.Current.Fleet_Driver_Images.Count > 0 && objMaster.Current.Fleet_Driver_Images[0].Photo != null)
+                    UploadImage(objMaster.Current.Id, objMaster.Current.DriverNo, objMaster.Current.Fleet_Driver_Images[0].Photo, AppVars.objPolicyConfiguration.DefaultClientId.ToStr().Replace("/", "").Trim().Replace("*", "").Replace("_", "").Trim() + "_" + objMaster.Current.DriverNo, objMaster.Current.Fleet_Driver_Images[0].PhotoLinkId.ToStr());
+
             }
             catch (Exception ex)
             {
@@ -3689,18 +3703,18 @@ namespace Taxi_AppMain
 
         }
 
-        private void UploadImage(int driverId,string driverNo, byte[] arrImage,string fileName,string smsLinkId)
+        private void UploadImage(int driverId, string driverNo, byte[] arrImage, string fileName, string smsLinkId)
         {
-            
+
             try
             {
-               
 
 
-                if (smsLinkId.Length == 0 || (oldPhotoLength>0 && oldPhotoLength!=newPhotoLength))
+
+                if (smsLinkId.Length == 0 || (oldPhotoLength > 0 && oldPhotoLength != newPhotoLength))
                     smsLinkId = null;
 
-                 WebUploadFile obje = new WebUploadFile();
+                WebUploadFile obje = new WebUploadFile();
 
                 string response = obje.UploadFileGetPhotoLinkId(arrImage, fileName, smsLinkId, driverNo, AppVars.objPolicyConfiguration.DefaultClientId.ToStr());
 
@@ -3725,7 +3739,7 @@ namespace Taxi_AppMain
             catch (Exception ex)
             {
                 ENUtils.ShowMessage(ex.Message);
-            }         
+            }
         }
         List<Fleet_Driver_CommissionRange> CommissionRangeList = null;
 
@@ -3963,8 +3977,8 @@ namespace Taxi_AppMain
 
                 if (objMaster.Current == null) return;
 
-                radpageview1.Pages.Insert(8,Pg_Rating);
-                
+                radpageview1.Pages.Insert(8, Pg_Rating);
+
                 //Pg_Rating.Item.Visibility = ElementVisibility.Visible;
                 txtRating.Visible = true;
                 label1.Visible = true;
@@ -4032,34 +4046,34 @@ namespace Taxi_AppMain
                 txtNI.Text = objMaster.Current.NI.ToStr().Trim();
 
                 ddlDriverType.SelectedValue = objMaster.Current.DriverTypeId;
-              
+
                 ddlCategory.SelectedValue = objMaster.Current.DriverCategory.ToInt();
 
                 chkHasPDA.Checked = objMaster.Current.HasPDA.ToBool();
                 chkBidding.Checked = objMaster.Current.EnableBidding.ToBool();
 
-                
+
                 if (objMaster.Current.Fleet_Driver_PDASettings.Count() > 0 && objMaster.Current.Fleet_Driver_PDASettings.FirstOrDefault().DefaultIfEmpty().HasCompanyCars == true)
                 {
                     //if (objMaster.Current.Fleet_VehicleType.Fleet_Masters.Where(c => c.VehicleTypeId == objMaster.Current.VehicleTypeId).Count() > 0)
                     //{
-                        CompanyVehicle.Item.Visibility = ElementVisibility.Visible;
-                     
+                    CompanyVehicle.Item.Visibility = ElementVisibility.Visible;
+
                     //}
                     //else
                     //{
                     //    CompanyVehicle.Item.Visibility = ElementVisibility.Hidden;
-                        
-                      
+
+
                     //}
                 }
                 else
                 {
                     CompanyVehicle.Item.Visibility = ElementVisibility.Hidden;
-                   // radpageview1.Pages.Remove(CompanyVehicle);
+                    // radpageview1.Pages.Remove(CompanyVehicle);
                 }
                 ///
-  
+
                 if (objMaster.Current.City.ToStr().Length > 0 && objMaster.Current.City.ToStr().Length <= 4 && objMaster.Current.City.ToStr().IsNumeric())
                 {
                     numTrainingReqHours.Value = objMaster.Current.City.ToInt();
@@ -4116,14 +4130,14 @@ namespace Taxi_AppMain
                 }
 
                 numPDARent.Value = objMaster.Current.PDARent.ToDecimal();
-                numVAT.Value= objMaster.Current.VAT.ToDecimal();
+                numVAT.Value = objMaster.Current.VAT.ToDecimal();
 
                 dtpVehAssignedOn.Value = objMaster.Current.LicenseExpiryDate.ToDateorNull();
 
 
-                chkAccComm.Checked = objMaster.Current.IsPrimeCompanyDriver.ToBool();    
-                    numAccComm.Value = objMaster.Current.PrimeCompanyRent.ToDecimal();
-               
+                chkAccComm.Checked = objMaster.Current.IsPrimeCompanyDriver.ToBool();
+                numAccComm.Value = objMaster.Current.PrimeCompanyRent.ToDecimal();
+
 
                 // PDA/SIM Details
 
@@ -4261,7 +4275,7 @@ namespace Taxi_AppMain
 
                 }
 
-               
+
 
                 ClearAvailability();
 
@@ -4273,7 +4287,7 @@ namespace Taxi_AppMain
                     ClearCommissionGrid();
 
                     CommissionRangeList = new List<Fleet_Driver_CommissionRange>();
-                      
+
 
                     if (grdRangeWiseComm.Visible == true)
                     {
@@ -4307,11 +4321,11 @@ namespace Taxi_AppMain
                     MOT2ExpiryDate = objMaster.Current.MOT2ExpiryDate.ToDateTimeorNull()
                     ,
                     RoadTaxiExpiryDate = objMaster.Current.RoadTaxiExpiryDate.ToDateTimeorNull(),
-                    DrivingLicenseExpiryDate=objMaster.Current.DrivingLicenseExpiryDate.ToDateTimeorNull(),
-                    DriverNo=objMaster.Current.DriverNo,
-                    MaxCommission=objMaster.Current.MaxCommission,
-                    VehicleTypeId=objMaster.Current.VehicleTypeId,
-                    VehicleNo=objMaster.Current.VehicleTypeId!=null?objMaster.Current.Fleet_VehicleType.VehicleType:""
+                    DrivingLicenseExpiryDate = objMaster.Current.DrivingLicenseExpiryDate.ToDateTimeorNull(),
+                    DriverNo = objMaster.Current.DriverNo,
+                    MaxCommission = objMaster.Current.MaxCommission,
+                    VehicleTypeId = objMaster.Current.VehicleTypeId,
+                    VehicleNo = objMaster.Current.VehicleTypeId != null ? objMaster.Current.Fleet_VehicleType.VehicleType : ""
                 });
                 //
 
@@ -4429,11 +4443,37 @@ namespace Taxi_AppMain
                     //    RateDriver.CurrentRating = objMaster.Current.AvgRating.ToInt();
 
                     if (objMaster.Current.AvgRating.ToDecimal() > 0)
-                    txtRating.Text = Math.Round(objMaster.Current. AvgRating.ToDecimal(), 1).ToStr();
+                        txtRating.Text = Math.Round(objMaster.Current.AvgRating.ToDecimal(), 1).ToStr();
                 }
                 catch
                 {
 
+
+                }
+
+
+                /////Bank Details
+                try
+                {
+                    using (TaxiDataContext db = new TaxiDataContext())
+                    {
+                        ClsDriverBankDetail clsDriverBankDetail = new ClsDriverBankDetail();
+                        clsDriverBankDetail = db.ExecuteQuery<ClsDriverBankDetail>("SELECT SortCode, AccountNo, AccountTitle, BankName, CompanyNumber, CompanyVatNumber, IbanNumber, BlcNumber FROM Fleet_Driver_BankDetails WHERE DriverId = " + objMaster.Current.Id).FirstOrDefault();
+                        if (clsDriverBankDetail != null)
+                        {
+                            txtSortCode.Text = clsDriverBankDetail.SortCode.ToStr();
+                            txtAccountNo.Text = clsDriverBankDetail.AccountNo.ToStr();
+                            txtAccountTitle.Text = clsDriverBankDetail.AccountTitle.ToStr();
+                            txtBank.Text = clsDriverBankDetail.BankName.ToStr();
+                            txtCompanyNumber.Text = clsDriverBankDetail.CompanyNumber.ToStr().Trim();
+                            txtVATNumber.Text = clsDriverBankDetail.CompanyVatNumber.ToStr().Trim();
+                            txtBLC.Text = clsDriverBankDetail.BlcNumber.ToStr().Trim();
+                            txtIBAN.Text = clsDriverBankDetail.IbanNumber.ToStr().Trim();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
 
                 }
 
@@ -4619,14 +4659,14 @@ namespace Taxi_AppMain
                     //  numDriverRentComm.Value = AppVars.objPolicyConfiguration.DriverMonthlyRent.ToDecimal();
                     ShowMaxCommission(false);
                     ShowCommissionRange(false);
-                  //  groupOtherCharges.Visible = true;
+                    //  groupOtherCharges.Visible = true;
                 }
                 else if (ddlDriverType.SelectedValue.Equals(2))
                 {
                     lblDriverType.Text = "Commision %";
                     numDriverRentComm.Value = AppVars.objPolicyConfiguration.DriverCommissionPerBooking.ToDecimal();
                     ShowMaxCommission(true);
-                //    groupOtherCharges.Visible = false;
+                    //    groupOtherCharges.Visible = false;
                     ShowCommissionRange(true);
                 }
             }
@@ -4948,7 +4988,7 @@ namespace Taxi_AppMain
             col.Name = COL_SHIFT.SHIFT;
             grdDriverShifts.Columns.Add(col);
 
-            
+
         }
         private void ClearShift()
         {
@@ -5633,13 +5673,13 @@ namespace Taxi_AppMain
             {
                 if (grdRating.CurrentRow != null && grdRating.CurrentRow is GridViewDataRowInfo)
                 {
-                   int Id = grdRating.CurrentRow.Cells["BookingId"].Value.ToInt();
+                    int Id = grdRating.CurrentRow.Cells["BookingId"].Value.ToInt();
                     if (Id > 0)
-                    General.ShowBookingForm(Id, true, "", "", Enums.BOOKING_TYPES.LOCAL);
+                        General.ShowBookingForm(Id, true, "", "", Enums.BOOKING_TYPES.LOCAL);
                 }
             }
         }
-       
+
 
         private void PopulateDriverRating()
         {
@@ -5651,7 +5691,7 @@ namespace Taxi_AppMain
                     db.DeferredLoadingEnabled = true;
 
 
-                    var data1 =db.Fleet_Driver_Ratings.Where(c => c.DriverId == objMaster.Current.Id).OrderByDescending(c => c.UpdatedOn).ToList();
+                    var data1 = db.Fleet_Driver_Ratings.Where(c => c.DriverId == objMaster.Current.Id).OrderByDescending(c => c.UpdatedOn).ToList();
 
                     grdRating.RowCount = data1.Count;
                     for (int i = 0; i < data1.Count; i++)
@@ -5713,7 +5753,7 @@ namespace Taxi_AppMain
                 col.Name = COL_RATING.FeedBack;
                 col.Width = 200;
                 grdRating.Columns.Add(col);
-              
+
                 GridViewDateTimeColumn colDate = new GridViewDateTimeColumn();
                 colDate.HeaderText = "Feedback On";
                 colDate.Name = COL_RATING.UpdatedOn;
@@ -5765,10 +5805,10 @@ namespace Taxi_AppMain
                 }
                 else
                 {
-                   
+
                     if (objMaster.Current.Fleet_Driver_PDASettings.Count > 0 && objMaster.Current.Fleet_Driver_PDASettings[0].CurrentPdaVersion < 10)
                     {
-                       if (General.GetQueryable<Fleet_Driver_Location>(c => c.DriverId == objMaster.Current.Id && c.UpdateDate.AddMinutes(1) < DateTime.Now).Count() > 0)
+                        if (General.GetQueryable<Fleet_Driver_Location>(c => c.DriverId == objMaster.Current.Id && c.UpdateDate.AddMinutes(1) < DateTime.Now).Count() > 0)
                         {
                             ENUtils.ShowMessage("Driver PDA is not working at the moment! Please Re-Login it or Check pda Internet settings");
                             return;
@@ -5824,7 +5864,7 @@ namespace Taxi_AppMain
                 string navigationApp = "4";
 
                 string manualFares = (chkEnableManualFares.Checked ? "1" : "0");
-                 
+
 
 
                 if (ddlNavigation.SelectedIndex == 1)
@@ -5841,7 +5881,7 @@ namespace Taxi_AppMain
 
 
                 if (chkEnableOptionalManualFares.Checked && chkEnableManualFares.Checked)
-                    manualFares = "2";          
+                    manualFares = "2";
 
                 if (chkEnableJobExtraCharges.Checked)
                 {
@@ -5856,203 +5896,203 @@ namespace Taxi_AppMain
 
                     }
                 }
-                
+
 
                 btnUpdateSettings.Enabled = false;
 
 
-                StringBuilder contents = new StringBuilder();            
+                StringBuilder contents = new StringBuilder();
 
                 contents.Append("update settings<<<");
 
-              
-               
-                    // update settings in json Format
 
-                    DriverPDASettings pda = new DriverPDASettings();
-                    pda.Ip = AppVars.objPolicyConfiguration.ListenerIP.ToStr().Trim();
-                    pda.DrvId = objMaster.Current.Id.ToStr();
 
-                    pda.DrvNo = objMaster.Current.DriverNo.ToStr();
-                    pda.DrvName = objMaster.Current.DriverName.ToStr().Trim();
-                    pda.VehType = objMaster.Current.Fleet_VehicleType.VehicleType.ToStr().ToUpper();
-                    pda.GPSInterval = "4";
-                   
-                    pda.EnableJobExtraCharges= ((chkEnableJobExtraCharges.Checked ? "1" : "0"));  // Extra Charges
-                    pda.ShowCompletedJobs=((chkShowCompletedJobs.Checked ? "1" : "0") ); // Show Completed Jobs
+                // update settings in json Format
 
-                    pda.EnableBidding=(chkEnableBidding.Checked ? "1" : "0") ; // Enable Bidding
+                DriverPDASettings pda = new DriverPDASettings();
+                pda.Ip = AppVars.objPolicyConfiguration.ListenerIP.ToStr().Trim();
+                pda.DrvId = objMaster.Current.Id.ToStr();
 
-                    pda.ShowPlots=(chkShowPlots.Checked ? "1" : "0") ; // Show Plots  -- index 10
+                pda.DrvNo = objMaster.Current.DriverNo.ToStr();
+                pda.DrvName = objMaster.Current.DriverName.ToStr().Trim();
+                pda.VehType = objMaster.Current.Fleet_VehicleType.VehicleType.ToStr().ToUpper();
+                pda.GPSInterval = "4";
 
-                    pda.ShowNavigation=((chkShowNavigation.Checked ? "1" : "0") ); // Show Plots -- index 11
+                pda.EnableJobExtraCharges = ((chkEnableJobExtraCharges.Checked ? "1" : "0"));  // Extra Charges
+                pda.ShowCompletedJobs = ((chkShowCompletedJobs.Checked ? "1" : "0")); // Show Completed Jobs
 
-                    pda.JobTimeout=((numJobTimeout.Value.ToStr())); // Show Plots -- index 12
-                    pda.ZoneInterval=(("40") ); // Zone Update Interval -- index 13
-                    pda.SoundOnZoneChange=((chkShowSoundOnZoneChange.Checked ? "1" : "0") ); // Sound On Zone Change -- index 14
-                    pda.MessageStayOnScreen=((chkMessageStay.Checked ? "1" : "0") ); // Message Stay -- index 15
+                pda.EnableBidding = (chkEnableBidding.Checked ? "1" : "0"); // Enable Bidding
 
+                pda.ShowPlots = (chkShowPlots.Checked ? "1" : "0"); // Show Plots  -- index 10
 
-                    pda.EnableCompanyCars=((chkEnableCompanyCars.Checked ? "1" : "0") ); // Show Plots -- index 16
-                  //  pda.Append((" ") + ","); // Show Plots -- index 17
-                    pda.EnableFareMeter=((chkEnableFareMeter.Checked ? "1" : "0") ); // Show Plots -- index 18
-                    pda.ShowCustomerNo=((chkShowCustomerMobileNo.Checked ? "1" : "0") ); // Show Plots -- index 19
-                    pda.HidePickupAndDest=((chkHidePickupAndDest.Checked ? "1" : "0") ); // Show Plots -- index 20
+                pda.ShowNavigation = ((chkShowNavigation.Checked ? "1" : "0")); // Show Plots -- index 11
 
-                    if (pda.HidePickupAndDest == "1")
-                    {
-                        if (ddlHidePickupAndDestinationType.SelectedIndex == 1)
-                            pda.HidePickupAndDest = "2";
+                pda.JobTimeout = ((numJobTimeout.Value.ToStr())); // Show Plots -- index 12
+                pda.ZoneInterval = (("40")); // Zone Update Interval -- index 13
+                pda.SoundOnZoneChange = ((chkShowSoundOnZoneChange.Checked ? "1" : "0")); // Sound On Zone Change -- index 14
+                pda.MessageStayOnScreen = ((chkMessageStay.Checked ? "1" : "0")); // Message Stay -- index 15
 
-                        else if (ddlHidePickupAndDestinationType.SelectedIndex == 2)
-                            pda.HidePickupAndDest = "3";
 
-                        else if (ddlHidePickupAndDestinationType.SelectedIndex == 3)
-                            pda.HidePickupAndDest = "4";
+                pda.EnableCompanyCars = ((chkEnableCompanyCars.Checked ? "1" : "0")); // Show Plots -- index 16
+                                                                                      //  pda.Append((" ") + ","); // Show Plots -- index 17
+                pda.EnableFareMeter = ((chkEnableFareMeter.Checked ? "1" : "0")); // Show Plots -- index 18
+                pda.ShowCustomerNo = ((chkShowCustomerMobileNo.Checked ? "1" : "0")); // Show Plots -- index 19
+                pda.HidePickupAndDest = ((chkHidePickupAndDest.Checked ? "1" : "0")); // Show Plots -- index 20
 
-                    }
+                if (pda.HidePickupAndDest == "1")
+                {
+                    if (ddlHidePickupAndDestinationType.SelectedIndex == 1)
+                        pda.HidePickupAndDest = "2";
 
-                  
+                    else if (ddlHidePickupAndDestinationType.SelectedIndex == 2)
+                        pda.HidePickupAndDest = "3";
 
+                    else if (ddlHidePickupAndDestinationType.SelectedIndex == 3)
+                        pda.HidePickupAndDest = "4";
 
-                    pda.EnableLogoutOnRejectJob=((chkEnableLogoutOnReject.Checked ? "1" : "0") ); // Show Plots -- index 21
-                   // contents.Append((" ") + ","); // DeviceId -- index 22
-                 
+                }
 
-                    pda.FontSize = "20"; // index no 23
-                    pda.NavigationType=(navigationApp ); // DeviceId -- index 24
 
 
-                    pda.EnableFlagDown=((chkEnableFlagDown.Checked ? "1" : "0") ); // -- index 25
-                    pda.MessageStayOnScreen=((chkMessageStay.Checked ? "1" : "0") ); // -- index 26
 
-                    pda.DisablePanic=((chkDisablePanic.Checked ? "1" : "0")); // index 27
-                    pda.DisableRank=((chkDisableRank.Checked ? "1" : "0") ); // index 28
+                pda.EnableLogoutOnRejectJob = ((chkEnableLogoutOnReject.Checked ? "1" : "0")); // Show Plots -- index 21
+                                                                                               // contents.Append((" ") + ","); // DeviceId -- index 22
 
 
+                pda.FontSize = "20"; // index no 23
+                pda.NavigationType = (navigationApp); // DeviceId -- index 24
 
-                    pda.MeterVoice = ((chkVoiceOnClearMeter.Checked ? "1" : "0")); // index 28
-                    pda.DisableChangeJobPlot=((chkDisableChangeJobPlot.Checked ? "1" : "0") );// index 30
 
-                    pda.EnableJ15Jobs=((chkEnableJ15Jobs.Checked ? "1" : "0")); // index 31
-                    pda.EnableLogoutAuth=((chkEnableLogoutAuthorization.Checked ? "1" : "0") ); // index 32
-                    pda.EnableIgnoreArrive=((chkIgnoreArriveAction.Checked ? "1" : "0") ); // index 33
-                    pda.BiddingType=((txtBiddingMessage.Text.Trim() == string.Empty ? " " : txtBiddingMessage.Text.Trim())); // index 34
+                pda.EnableFlagDown = ((chkEnableFlagDown.Checked ? "1" : "0")); // -- index 25
+                pda.MessageStayOnScreen = ((chkMessageStay.Checked ? "1" : "0")); // -- index 26
 
-                    pda.FareMeterType=((txtFareMessage.Text.Trim() == string.Empty ? " " : txtFareMessage.Text.Trim())); // index 35
+                pda.DisablePanic = ((chkDisablePanic.Checked ? "1" : "0")); // index 27
+                pda.DisableRank = ((chkDisableRank.Checked ? "1" : "0")); // index 28
 
 
-                    pda.EnableOptMeter=((chkEnableOptionalMeter.Checked ? "1" : "0") ); // index 36
-                    pda.DisableMeterForAccJob=((chkDisableMeterAccJob.Checked ? "1" : "0") );// index 37
-                
-                    pda.Courier = "0"; // index 38
 
-                    pda.ShowFaresOnExtraCharges=((chkShowFareonExtraCharges.Checked ? "1" : "0") ); // index 39
-                    pda.EnableCallCustomer=((chkEnableCallCustomer.Checked ? "1" : "0")); // index 40
+                pda.MeterVoice = ((chkVoiceOnClearMeter.Checked ? "1" : "0")); // index 28
+                pda.DisableChangeJobPlot = ((chkDisableChangeJobPlot.Checked ? "1" : "0"));// index 30
 
+                pda.EnableJ15Jobs = ((chkEnableJ15Jobs.Checked ? "1" : "0")); // index 31
+                pda.EnableLogoutAuth = ((chkEnableLogoutAuthorization.Checked ? "1" : "0")); // index 32
+                pda.EnableIgnoreArrive = ((chkIgnoreArriveAction.Checked ? "1" : "0")); // index 33
+                pda.BiddingType = ((txtBiddingMessage.Text.Trim() == string.Empty ? " " : txtBiddingMessage.Text.Trim())); // index 34
 
-                    pda.EnableRecoverJob=((chkEnableRecoverJob.Checked ? "1" : "0") );// index 41
+                pda.FareMeterType = ((txtFareMessage.Text.Trim() == string.Empty ? " " : txtFareMessage.Text.Trim())); // index 35
 
-                    pda.EnableMeterWaitingCharges=((chkEnableMeterWaitingCharges.Checked ? "1" : "0") ); // index 42
 
-           
-                    pda.LogoutOnOverShift=((chkShiftOverLogout.Checked ? "1" : "0")); // // Shift Logout                 
-                    pda.DisableBase=((chkDisableBase.Checked ? "1" : "0") ); // //Disable Base // DeviceId -- index 44               
-                    pda.DisableBreak=((chkDisableOnBreak.Checked ? "1" : "0") ); // //Disable OnBreak -- index 45
-                    pda.DisableRejectJob=((chkDisableRejectJob.Checked ? "1" : "0")); // //Disable Reject Job
+                pda.EnableOptMeter = ((chkEnableOptionalMeter.Checked ? "1" : "0")); // index 36
+                pda.DisableMeterForAccJob = ((chkDisableMeterAccJob.Checked ? "1" : "0"));// index 37
 
-               
-                    pda.DisableChangeDest=((chkDisableChangeDest.Checked ? "1" : "0"));
+                pda.Courier = "0"; // index 38
 
+                pda.ShowFaresOnExtraCharges = ((chkShowFareonExtraCharges.Checked ? "1" : "0")); // index 39
+                pda.EnableCallCustomer = ((chkEnableCallCustomer.Checked ? "1" : "0")); // index 40
 
 
-                    
-                    
-                    pda.ShowJobasAlert=((chkShowJobAsAlert.Checked ? "1" : "0") );
-                    pda.DisableNoPickup=((chkDisableNoPickup.Checked ? "1" : "0") );
-                    
-                    
-                    pda.DisableAlarm=((chkDisableAlarm.Checked ? "1" : "0") );
-                    pda.ShowSpecialReqOnFront=((chkShowSpecReq.Checked ? "1" : "0") );
+                pda.EnableRecoverJob = ((chkEnableRecoverJob.Checked ? "1" : "0"));// index 41
 
+                pda.EnableMeterWaitingCharges = ((chkEnableMeterWaitingCharges.Checked ? "1" : "0")); // index 42
 
 
-                    pda.DisableFareOnAccJob=((chkDisableFareOnAccJob.Checked ? "1" : "0"));
-                    
-                    
-                    pda.DisableSTC=((chkDisableSTC.Checked ? "1" : "0") );
+                pda.LogoutOnOverShift = ((chkShiftOverLogout.Checked ? "1" : "0")); // // Shift Logout                 
+                pda.DisableBase = ((chkDisableBase.Checked ? "1" : "0")); // //Disable Base // DeviceId -- index 44               
+                pda.DisableBreak = ((chkDisableOnBreak.Checked ? "1" : "0")); // //Disable OnBreak -- index 45
+                pda.DisableRejectJob = ((chkDisableRejectJob.Checked ? "1" : "0")); // //Disable Reject Job
 
 
+                pda.DisableChangeDest = ((chkDisableChangeDest.Checked ? "1" : "0"));
 
 
-                    // version 10.0
-                    
-                    
-                    pda.ShowAlertOnJobLate=((chkShowAlertOnJobLater.Checked ? "1" : "0") );
-                    pda.EnableAutoRotate=((chkEnableAutoRotate.Checked ? "1" : "0") );
-                    
-                    
-                    pda.ShowPlotOnOffer=((ShowPlotOnJobOffer.Checked ? "1" : "0") );
 
 
 
+                pda.ShowJobasAlert = ((chkShowJobAsAlert.Checked ? "1" : "0"));
+                pda.DisableNoPickup = ((chkDisableNoPickup.Checked ? "1" : "0"));
 
-                    pda.OnBreakDur=((numBreakDuration.Value.ToStr()) );
 
+                pda.DisableAlarm = ((chkDisableAlarm.Checked ? "1" : "0"));
+                pda.ShowSpecialReqOnFront = ((chkShowSpecReq.Checked ? "1" : "0"));
 
 
-                    pda.ManualFares=(manualFares );
-                    
-                    
-                    pda.EnablePriceBid=((chkEnablePriceBidding.Checked ? "1" : "0"));
 
-                    
-                    
-                    pda.DrvWaitingMins=(drvWaitingCharges.ToStr() );
-                    pda.AccWaitingMins=(drvAccWaitingCharges.ToStr());
+                pda.DisableFareOnAccJob = ((chkDisableFareOnAccJob.Checked ? "1" : "0"));
 
 
+                pda.DisableSTC = ((chkDisableSTC.Checked ? "1" : "0"));
 
-                    // need to comment
-                    
-                    
-                    pda.DisableJobAuth = ((chkDisableJobAuth.Checked ? "1" : "0"));
 
 
-                    //new
-                    pda.isDriverConnectEnabled = ((chkEnableDriverConnect.Checked ? "1" : "0"));
-                   // pda.disableWriteMsg = ((chkDisableWriteMessage.Checked ? "1" : "0"));
-                    pda.showDestAfterPob = ((chkShowDestAfterPOB.Checked ? "1" : "0"));
 
+                // version 10.0
 
 
-                    if (pda.isDriverConnectEnabled.ToStr() == "1" && AppVars.objPolicyConfiguration.DriverConnectCredentials.ToStr().Trim().Length > 0)
-                    {
-                        string[] drvConnectArr = AppVars.objPolicyConfiguration.DriverConnectCredentials.ToStr().Trim().Split(',');
+                pda.ShowAlertOnJobLate = ((chkShowAlertOnJobLater.Checked ? "1" : "0"));
+                pda.EnableAutoRotate = ((chkEnableAutoRotate.Checked ? "1" : "0"));
 
-                        pda.drvConHost = drvConnectArr[0].ToStr();
-                        pda.drvConusername = drvConnectArr[1].ToStr();
-                        pda.drvConPass = drvConnectArr[2].ToStr();
-                        pda.drvConPort = drvConnectArr[3].ToStr();
 
-                    }
-                    //
+                pda.ShowPlotOnOffer = ((ShowPlotOnJobOffer.Checked ? "1" : "0"));
 
 
-                    string json= Newtonsoft.Json.JsonConvert.SerializeObject(pda);
 
 
+                pda.OnBreakDur = ((numBreakDuration.Value.ToStr()));
 
 
 
-                   
-                       
-                       contents.Append(json);
-                    //fahad
-                  //  General.SendMessageToPDA(contents.ToString(), pda.DrvId);
+                pda.ManualFares = (manualFares);
 
 
-               
+                pda.EnablePriceBid = ((chkEnablePriceBidding.Checked ? "1" : "0"));
+
+
+
+                pda.DrvWaitingMins = (drvWaitingCharges.ToStr());
+                pda.AccWaitingMins = (drvAccWaitingCharges.ToStr());
+
+
+
+                // need to comment
+
+
+                pda.DisableJobAuth = ((chkDisableJobAuth.Checked ? "1" : "0"));
+
+
+                //new
+                pda.isDriverConnectEnabled = ((chkEnableDriverConnect.Checked ? "1" : "0"));
+                // pda.disableWriteMsg = ((chkDisableWriteMessage.Checked ? "1" : "0"));
+                pda.showDestAfterPob = ((chkShowDestAfterPOB.Checked ? "1" : "0"));
+
+
+
+                if (pda.isDriverConnectEnabled.ToStr() == "1" && AppVars.objPolicyConfiguration.DriverConnectCredentials.ToStr().Trim().Length > 0)
+                {
+                    string[] drvConnectArr = AppVars.objPolicyConfiguration.DriverConnectCredentials.ToStr().Trim().Split(',');
+
+                    pda.drvConHost = drvConnectArr[0].ToStr();
+                    pda.drvConusername = drvConnectArr[1].ToStr();
+                    pda.drvConPass = drvConnectArr[2].ToStr();
+                    pda.drvConPort = drvConnectArr[3].ToStr();
+
+                }
+                //
+
+
+                string json = Newtonsoft.Json.JsonConvert.SerializeObject(pda);
+
+
+
+
+
+
+
+                contents.Append(json);
+                //fahad
+                //  General.SendMessageToPDA(contents.ToString(), pda.DrvId);
+
+
+
 
 
 
@@ -6088,20 +6128,20 @@ namespace Taxi_AppMain
 
                 System.Threading.Thread.Sleep(2000);
 
-                
-                
+
+
                 objMaster.GetByPrimaryKey(objMaster.PrimaryKeyValue);
 
 
 
 
 
-                
-                
+
+
                 Fleet_Driver_PDASetting objPDA = null;
 
-                
-                
+
+
                 if (objMaster.Current.Fleet_Driver_PDASettings.Count == 0)
                     objMaster.Current.Fleet_Driver_PDASettings.Add(new Fleet_Driver_PDASetting());
 
@@ -6120,60 +6160,60 @@ namespace Taxi_AppMain
 
 
                 objPDA.ShowPlotOnJobOffer = ShowPlotOnJobOffer.Checked;
-                
-                
+
+
                 objPDA.DriverId = objMaster.Current.Id;
                 objPDA.ShowFaresOnExtraCharges = chkShowFareonExtraCharges.Checked;
 
 
 
                 objPDA.EnableJobExtraCharges = chkEnableJobExtraCharges.Checked;
-                
-                
+
+
                 objPDA.EnableFareMeterWaitingCharges = chkEnableMeterWaitingCharges.Checked;
                 objPDA.EnableRecoverJob = chkEnableRecoverJob.Checked;
-                
-                
+
+
                 objPDA.EnableCallCustomer = chkEnableCallCustomer.Checked;
                 objPDA.EnableBidding = chkEnableBidding.Checked;
-         
-       
 
-                
-                
-                
+
+
+
+
+
                 objPDA.EnableAutoRotateScreen = chkEnableAutoRotate.Checked;
                 objPDA.EnableFareMeter = chkEnableFareMeter.Checked;
-                
 
 
-                
-                
-                
+
+
+
+
                 objPDA.EnableFlagDown = chkEnableFlagDown.Checked;
                 objPDA.EnableJ15J30Jobs = chkEnableJ15Jobs.Checked;
-                
 
 
-                
-                
-                
+
+
+
+
                 objPDA.EnableLogoutAuthorization = chkEnableLogoutAuthorization.Checked;
                 objPDA.DisableChangeJobPlots = chkDisableChangeJobPlot.Checked;
-                
 
 
-                
-                
-                
+
+
+
+
                 objPDA.BreakTime = numBreakDuration.Value.ToInt();
                 objPDA.DisableDriverRank = chkDisableRank.Checked;
-                
 
 
-                
-                
-                
+
+
+
+
                 objPDA.DisablePanicButton = chkDisablePanic.Checked;
                 objPDA.DisableFareMeterOnAccJob = chkDisableMeterAccJob.Checked;
 
@@ -6184,44 +6224,44 @@ namespace Taxi_AppMain
 
 
 
-                
-                
+
+
                 objPDA.NavigationApp = navigationApp.ToInt();
                 objPDA.MessageStayOnScreen = chkMessageStay.Checked;
-                
-                
+
+
                 objPDA.ShowCompletedJob = chkShowCompletedJobs.Checked;
                 objPDA.ShowCustomerMobileNo = chkShowCustomerMobileNo.Checked;
-                
-                
+
+
                 objPDA.ShowNavigation = chkShowNavigation.Checked;
                 objPDA.ShowPlots = chkShowPlots.Checked;
 
 
 
 
-                
-                
+
+
                 objPDA.FareMeterType = txtFareMessage.Text.Trim();
                 objPDA.BiddingType = txtBiddingMessage.Text.Trim();
 
 
 
                 objPDA.JobTimeOutInterval = numJobTimeout.Value.ToInt();
-                
-                
+
+
                 objPDA.NotifyOnZoneChange = chkShowSoundOnZoneChange.Checked;
 
-                
-                
+
+
                 objPDA.HasCompanyCars = chkEnableCompanyCars.Checked;
                 objPDA.LogoutOnRejectJob = chkEnableLogoutOnReject.Checked;
-                
-                
+
+
                 objPDA.IgnoreArriveAction = chkIgnoreArriveAction.Checked;
                 objPDA.GPSInterval = 3;
-                
-                
+
+
                 objPDA.HidePickAndDestination = chkHidePickupAndDest.Checked;
 
 
@@ -6260,55 +6300,55 @@ namespace Taxi_AppMain
 
 
                 objPDA.LogoutOnOverShift = chkShiftOverLogout.Checked;
-                
-                
+
+
                 objPDA.NotifyOnJobLate = chkShowAlertOnJobLater.Checked;
                 objPDA.EnableAutoRotateScreen = chkEnableAutoRotate.Checked;
-                
-                
+
+
                 objPDA.OptionalFareMeter = chkEnableOptionalMeter.Checked;
                 objPDA.DisableChangeJobPlots = chkDisableChangeJobPlot.Checked;
-                
-                
+
+
                 objPDA.DisableOnBreak = chkDisableOnBreak.Checked;
                 objPDA.DisableBase = chkDisableBase.Checked;
 
 
 
                 objPDA.DisableRejectJob = chkDisableRejectJob.Checked;
-                
-                
+
+
                 objPDA.DisableChangeDestination = chkDisableChangeDest.Checked;
                 objPDA.DisableRejectJobAuth = chkDisableJobAuth.Checked;
 
 
 
 
-                
-                
+
+
                 objPDA.DisableFareOnAccJob = chkDisableFareOnAccJob.Checked;
                 objPDA.DisableSTC = chkDisableSTC.Checked;
-                
-                
+
+
                 objPDA.DisableSetAlarm = chkDisableAlarm.Checked;
                 objPDA.DisableNoPickup = chkDisableNoPickup.Checked;
-                
-                
+
+
                 objPDA.ShowJobAsAlert = chkShowJobAsAlert.Checked;
                 objPDA.ShowSpecReqOnFront = chkShowSpecReq.Checked;
 
 
 
 
-                
-                
+
+
                 objPDA.EnablePriceBidding = chkEnablePriceBidding.Checked;
                 objPDA.EnableManualFares = chkEnableManualFares.Checked;
-                
-                
+
+
                 objPDA.EnableOptionalManualFares = chkEnableOptionalManualFares.Checked;
                 objPDA.EnableFareMeterVoice = chkVoiceOnClearMeter.Checked;
-           
+
                 objPDA.EnableDriverConnect = chkEnableDriverConnect.Checked;
 
                 objPDA.ShowDestinationAfterPOB = chkShowDestAfterPOB.Checked;
@@ -6327,25 +6367,25 @@ namespace Taxi_AppMain
                 {
                     CompanyVehicle.Item.Visibility = ElementVisibility.Hidden;
                     //radpageview1.Pages.Remove(radpageview1.Pages[9]);
-                   // radpageview1.Pages.Remove(CompanyVehicle);
+                    // radpageview1.Pages.Remove(CompanyVehicle);
                 }
-                
+
                 btnUpdateSettings.Enabled = true;
 
-                
-                
+
+
                 //,"3","0","1","0","1","1","60","40","1","1","0","","0","1",
                 //            "0","0",deviceId,"20","1","0","1","1","0","1","0","1","0","0","not specified","not specified",
-                
-                
+
+
                 //            "0","0","0","0","0","0","0");	
 
-                
-                
+
+
                 // contents.Append("," + DriverString.Replace(",", "<<")); // Show Plots
             }
-            
-             catch (Exception ex)
+
+            catch (Exception ex)
             {
 
 
@@ -6439,24 +6479,24 @@ namespace Taxi_AppMain
             }
 
         }
-     
+
         private void radpageview1_PageIndexChanged(object sender, RadPageViewIndexChangedEventArgs e)
-        
-        
+
+
         {
-            
+
 
         }
 
 
 
         private void chkEnableFareMeter_CheckedChanged(object sender, EventArgs e)
-        
-        
+
+
         {
 
-        
-            
+
+
             SetFareMeterState();
 
 
@@ -6467,72 +6507,72 @@ namespace Taxi_AppMain
 
 
         private void SetFareMeterState()
-        
-        
+
+
         {
 
-        
-            
+
+
             if (chkEnableFareMeter.Checked)
             {
-            
-                
+
+
                 chkEnableOptionalMeter.Enabled = true;
                 chkEnableMeterWaitingCharges.Enabled = true;
-                
-                
+
+
                 chkDisableMeterAccJob.Enabled = true;
                 chkVoiceOnClearMeter.Enabled = true;
 
 
 
                 chkEnableManualFares.Checked = false;
-                
-                
+
+
                 chkEnableOptionalManualFares.Checked = false;
                 chkEnableManualFares.Enabled = false;
-                
-                
-                chkEnableOptionalManualFares.Enabled = false;              
+
+
+                chkEnableOptionalManualFares.Enabled = false;
             }
             else
 
 
             {
-                
-                
+
+
                 chkEnableOptionalMeter.Enabled = false;
                 chkEnableMeterWaitingCharges.Enabled = false;
-                
-                
+
+
                 chkDisableMeterAccJob.Enabled = false;
                 chkVoiceOnClearMeter.Enabled = false;
 
 
 
                 chkEnableOptionalMeter.Checked = false;
-                
-                
+
+
                 chkEnableMeterWaitingCharges.Checked = false;
                 chkDisableMeterAccJob.Checked = false;
-                
-                
+
+
                 chkVoiceOnClearMeter.Checked = false;
 
-              
 
 
 
 
-                
-                
+
+
+
                 chkEnableManualFares.Enabled = true;
-                
-                
+
+
 
 
                 chkEnableOptionalManualFares.Enabled = true;
-        
+
 
 
 
@@ -6564,8 +6604,8 @@ namespace Taxi_AppMain
 
 
 
-        
-        
+
+
         private void FormatRangeWiseCommissionGrid()
         {
 
@@ -6576,68 +6616,68 @@ namespace Taxi_AppMain
 
 
 
-            
-            
+
+
             grdRangeWiseComm.ShowGroupPanel = false;
             GridViewTextBoxColumn col = new GridViewTextBoxColumn();
-            
-            
+
+
             col.IsVisible = false;
             col.Name = "ID";
-            
-            
+
+
             grdRangeWiseComm.Columns.Add(col);
 
 
 
 
             col = new GridViewTextBoxColumn();
-            
-            
+
+
             col.IsVisible = false;
             col.Name = "MASTERID";
-            
-            
+
+
             grdRangeWiseComm.Columns.Add(col);
 
-            
-            
+
+
             GridViewDecimalColumn colD = new GridViewDecimalColumn();
             colD.HeaderText = "From";
-            
-            
+
+
             colD.Width = 70;
             colD.ReadOnly = false;
-            
-            
+
+
             colD.DecimalPlaces = 2;
             colD.Minimum = 0;
-            
-            
+
+
             colD.Maximum = 100000;
             colD.Name = "FROMPRICE";
-            
-            
+
+
             grdRangeWiseComm.Columns.Add(colD);
 
 
 
 
             colD = new GridViewDecimalColumn();
-            
-            
+
+
             colD.HeaderText = "Till";
             colD.Width = 70;
-            
-            
+
+
             colD.ReadOnly = false;
             colD.DecimalPlaces = 2;
-            
-            
+
+
             colD.Minimum = 0;
             colD.Maximum = 100000;
-            
-            
+
+
             colD.Name = "TOPRICE";
             grdRangeWiseComm.Columns.Add(colD);
 
@@ -6648,20 +6688,20 @@ namespace Taxi_AppMain
 
 
             colD = new GridViewDecimalColumn();
-            
-            
+
+
             colD.HeaderText = "Commission %";
             colD.Width = 90;
-            
-            
+
+
             colD.ReadOnly = false;
             colD.DecimalPlaces = 0;
-            
-            
+
+
             colD.Minimum = 0;
             colD.Maximum = 100;
-            
-            
+
+
             colD.Name = "COMMISSIONPERCENT";
             grdRangeWiseComm.Columns.Add(colD);
 
@@ -6676,32 +6716,32 @@ namespace Taxi_AppMain
 
 
             //   grdSurchargeRates.ShowGroupPanel = false;
-            
-            
+
+
             grdRangeWiseComm.AddNewRowPosition = SystemRowPosition.Bottom;
 
 
 
 
 
-            
-            
+
+
             GridViewRowInfo row = null;
             foreach (var item in General.GetQueryable<Gen_SysPolicy_CommissionPriceRange>(c => c.SysPolicyId != null).ToList())
-            
-            
+
+
             {
                 row = grdRangeWiseComm.Rows.AddNew();
 
 
 
 
-                
-                
+
+
                 row.Cells["FROMPRICE"].Value = item.FromPrice.ToDecimal();
                 row.Cells["TOPRICE"].Value = item.ToPrice.ToDecimal();
-                
-                
+
+
                 row.Cells["COMMISSIONPERCENT"].Value = item.CommissionValue.ToDecimal();
 
 
@@ -6712,8 +6752,8 @@ namespace Taxi_AppMain
 
 
 
-            
-            
+
+
             grdRangeWiseComm.CurrentRow = null;
 
 
@@ -6724,111 +6764,111 @@ namespace Taxi_AppMain
 
 
         private void btnAdd_Click(object sender, EventArgs e)
-        
-        
+
+
         {
             try
-        
-            
+
+
             {
 
-            
-                
+
+
                 string error = string.Empty;
 
-                
-                
+
+
                 string Notes = txtNotes.Text.Trim();
-               
-                
-                
+
+
+
                 // DriverId = objMaster.Current.Id;
 
 
 
 
                 if (string.IsNullOrEmpty(Notes))
-                
-                
+
+
                 {
                     error = "Required : Notes";
-                
-                
+
+
                 }
 
 
 
 
                 //if (DriverId == 0)
-                
-                
+
+
                 //{ 
                 //    error+=Environment.NewLine+"Required Driver";
-                
-                
+
+
                 //}
 
 
 
 
                 if (!string.IsNullOrEmpty(error))
-                
-                
+
+
                 {
                     ENUtils.ShowMessage(error);
-                
-                    
+
+
                     return;
                 }
                 //if               
-              //  (grdDriverNotes.Rows.Count(c => c.Cells["Notes"].Value.ToStr() == Notes) > 0)
+                //  (grdDriverNotes.Rows.Count(c => c.Cells["Notes"].Value.ToStr() == Notes) > 0)
                 //{
 
 
 
                 //    ENUtils.ShowMessage("Note already exists");
-                
-                
+
+
                 //    return;
 
-                
-                
+
+
                 //}
                 if (IsNotesEdit == true && grdLister.CurrentRow != null)
-                
-                
+
+
                 {
                     grdLister.CurrentRow.Delete();
-                
-                
+
+
                 }
 
 
 
 
                 DateTime dt = DateTime.Now;
-                
-                
+
+
                 GridViewRowInfo row = grdLister.Rows.AddNew();
 
 
 
 
                 row.Cells[COL_NOTES.Notes].Value = Notes;
-                
-                
+
+
                 row.Cells[COL_NOTES.Time].Value = dt; //string.Format("{0: HH:mm}",DateTime.Now);
                 row.Cells[COL_NOTES.AddBy].Value = AppVars.LoginObj.LoginName;
-                
-                
+
+
                 row.Cells[COL_NOTES.AddOn].Value = dt.ToDate();
                 row.Cells[COL_NOTES.DateTime].Value = DateTime.Now.ToDateTime();
 
 
 
                 IsNotesEdit = false;
-                
-                
+
+
                 txtNotes.Text = "";
                 txtNotes.Focus();
             }
@@ -6847,32 +6887,32 @@ namespace Taxi_AppMain
 
 
         private void btnNew_Click(object sender, EventArgs e)
-        
-        
+
+
         {
             txtNotes.Text = "";
-        
-            
+
+
             txtNotes.Focus();
             //grdDriverNotes.Rows.Clear();
         }
 
 
 
-        
-        
+
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-        
-            
+
+
             LoadDocument("");
         }
 
 
 
         private void btnView_Click(object sender, EventArgs e)
-        
-        
+
+
         {
             if (txtLogBookDocPath.Tag.ToStr().StartsWith("http:"))
             {
@@ -6889,7 +6929,7 @@ namespace Taxi_AppMain
         {
             try
             {
-         
+
                 var list = General.GetQueryable<Gen_Attribute>(null).OrderBy(c => c.Name).ToList();
 
                 foreach (var item in list)
@@ -6935,7 +6975,7 @@ namespace Taxi_AppMain
 
 
                     row.Cells[COL_SHIFT.SHIFT_ID].Value = item.Id;
-                   // row.Cells[COL_SHIFT.MASTERID].Value = item.;
+                    // row.Cells[COL_SHIFT.MASTERID].Value = item.;
                     row.Cells[COL_SHIFT.SHIFT].Value = item.ShiftName;
 
                 }
@@ -6957,20 +6997,20 @@ namespace Taxi_AppMain
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-        
-            
+
+
             ClearDocument("");
         }
 
 
 
         private void frmDriver_Load_1(object sender, EventArgs e)
-        
-        
+
+
         {
 
-        
-        
+
+
         }
 
 
@@ -6982,7 +7022,7 @@ namespace Taxi_AppMain
 
 
 
-#region TextChanged
+        #region TextChanged
 
         void TextBoxElement_TextChanged(object sender, EventArgs e)
         {
@@ -6991,7 +7031,7 @@ namespace Taxi_AppMain
             try
             {
 
-               // IsKeyword = false;
+                // IsKeyword = false;
 
                 InitializeTimer();
                 timer1.Stop();
@@ -7319,46 +7359,46 @@ namespace Taxi_AppMain
                         if (aTxt.Name == "txtFromAddress")
                         {
 
-                      
-                           
-                                if (loctypeId == Enums.LOCATION_TYPES.ADDRESS && aTxt.SelectedItem.ToStr().Length > 0)
-                                {
-                                    aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
-                                    aTxt.Text = doorNo + " " + aTxt.SelectedItem.ToStr().Trim();
-                                    aTxt.Text = aTxt.Text.Trim();
-                                    aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
-                                    //if (aTxt.Name == "txtFromAddress")
-                                    //{
-                                    //    SetPickupZone(aTxt.Text);
-
-                                    //    UpdateAutoCalculateFares();
-                                    //}
 
 
-                                }                   
+                            if (loctypeId == Enums.LOCATION_TYPES.ADDRESS && aTxt.SelectedItem.ToStr().Length > 0)
+                            {
+                                aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
+                                aTxt.Text = doorNo + " " + aTxt.SelectedItem.ToStr().Trim();
+                                aTxt.Text = aTxt.Text.Trim();
+                                aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
+                                //if (aTxt.Name == "txtFromAddress")
+                                //{
+                                //    SetPickupZone(aTxt.Text);
+
+                                //    UpdateAutoCalculateFares();
+                                //}
+
+
+                            }
 
 
                         }
                         else if (aTxt.Name == "txtToAddress")
                         {
 
-                           
-                              if (loctypeId == Enums.LOCATION_TYPES.ADDRESS && aTxt.SelectedItem.ToStr().Length > 0)
-                                {
-                                    aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
-                                    aTxt.Text = doorNo + " " + aTxt.SelectedItem.ToStr().Trim();
-                                    aTxt.Text = aTxt.Text.Trim();
-                                    aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
 
-                                    //  SetDropOffZone(aTxt.Text);
-                                    //  UpdateAutoCalculateFares();
+                            if (loctypeId == Enums.LOCATION_TYPES.ADDRESS && aTxt.SelectedItem.ToStr().Length > 0)
+                            {
+                                aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
+                                aTxt.Text = doorNo + " " + aTxt.SelectedItem.ToStr().Trim();
+                                aTxt.Text = aTxt.Text.Trim();
+                                aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
+
+                                //  SetDropOffZone(aTxt.Text);
+                                //  UpdateAutoCalculateFares();
 
 
-                                }
+                            }
 
-                            
 
-                           
+
+
                         }
                     }
                     else if (aTxt.Text.Contains('.'))
@@ -7366,7 +7406,7 @@ namespace Taxi_AppMain
 
                         //   RemoveNumbering(doorNo);
 
-                        
+
                     }
                     else if (!string.IsNullOrEmpty(doorNo))
                     {
@@ -7467,7 +7507,7 @@ namespace Taxi_AppMain
 
                     if (res.Count() > 0)
                     {
-                     
+
 
 
                         var finalList = (from a in AppVars.zonesList
@@ -7560,7 +7600,7 @@ namespace Taxi_AppMain
 
                     if (res.Count() > 0)
                     {
-                     
+
 
 
                         var finalList = (from a in AppVars.zonesList
@@ -7583,7 +7623,7 @@ namespace Taxi_AppMain
                             aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
                             aTxt.Text = finalList[0];
                             aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
-                           
+
                         }
                         else
                         {
@@ -7759,10 +7799,10 @@ namespace Taxi_AppMain
 
                     string formerValue = aTxt.FormerValue.ToLower().Trim();
 
-                
 
-                
-                  
+
+
+
                     //else if (!string.IsNullOrEmpty(doorNo))
                     //{
                     //    aTxt.TextChanged -= TextBoxElement_TextChanged;
@@ -7801,7 +7841,7 @@ namespace Taxi_AppMain
 
                 text = text.ToLower();
 
-                
+
 
 
                 if (MapType == Enums.MAP_TYPE.NONE) return;
@@ -7865,7 +7905,7 @@ namespace Taxi_AppMain
 
                     if (res.Count() > 0)
                     {
-                      //  IsKeyword = true;
+                        //  IsKeyword = true;
 
 
                         var finalList = (from a in AppVars.zonesList
@@ -7888,7 +7928,7 @@ namespace Taxi_AppMain
                             aTxt.TextChanged -= new EventHandler(TextBoxElement_TextChanged);
                             aTxt.Text = finalList[0];
                             aTxt.TextChanged += new EventHandler(TextBoxElement_TextChanged);
-                         
+
                         }
                         else
                         {
@@ -8189,7 +8229,7 @@ namespace Taxi_AppMain
                         street = street.Remove(2);
 
                         res = (from b in AppVars.listOfAddress.Where(a => areas.Any(c => a.AddressLine1.Contains(c)) && a.AddressLine1.Split(' ').Count() > 5)
-                               //  let x = (areas.Any(c => b.Address.Contains(c)) ? b.Address.Split(' ') : null)
+                                   //  let x = (areas.Any(c => b.Address.Contains(c)) ? b.Address.Split(' ') : null)
                                let x = b.AddressLine1.Split(' ')
                                where
 
@@ -8498,7 +8538,7 @@ namespace Taxi_AppMain
 
         private void chkAccComm_ToggleStateChanged(object sender, StateChangedEventArgs args)
         {
-            if(args.ToggleState== ToggleState.On)
+            if (args.ToggleState == ToggleState.On)
             {
 
                 lblAccComm.Visible = true;

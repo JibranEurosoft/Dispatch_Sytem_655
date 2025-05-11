@@ -314,6 +314,7 @@
     <Compile Include="Classes\ClsDataTransfer.cs" />
     <Compile Include="Classes\ClsDigimap.cs" />
     <Compile Include="Classes\ClsDriverAccountBookings.cs" />
+    <Compile Include="Classes\ClsDriverBankDetail.cs" />
     <Compile Include="Classes\ClsDriverInvoiceStatement.cs" />
     <Compile Include="Classes\ClsDriverOnlineStats.cs" />
     <Compile Include="Classes\ClsDrivers.cs" />

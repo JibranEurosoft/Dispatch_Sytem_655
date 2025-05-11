@@ -1868,7 +1868,7 @@ namespace Taxi_AppMain
 
 
 
-                    if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                    if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT || e.Row.Cells["ToLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
                     {
 
                         e.CellElement.NumberOfColors = 1;
@@ -1886,6 +1886,12 @@ namespace Taxi_AppMain
 
 
                             //   e.CellElement.ForeColor = Color.Black;                                
+                        }
+                        else if (listofAirports.Count(c => c.PostCode == e.Row.Cells["ToPostCode"].Value.ToStr()) > 0)
+                        {
+                            e.CellElement.BackColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).BackgroundColor.ToInt());
+                            e.CellElement.ForeColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).TextColor.ToInt());
+
                         }
                         else
                         {
@@ -2663,7 +2669,7 @@ namespace Taxi_AppMain
 
 
 
-                            if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                            if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT || e.Row.Cells["ToLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
                             {
 
                                 e.CellElement.NumberOfColors = 1;
@@ -2681,6 +2687,12 @@ namespace Taxi_AppMain
 
 
                                     //   e.CellElement.ForeColor = Color.Black;                                
+                                }
+                                else if (listofAirports.Count(c => c.PostCode == e.Row.Cells["ToPostCode"].Value.ToStr()) > 0)
+                                {
+                                    e.CellElement.BackColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).BackgroundColor.ToInt());
+                                    e.CellElement.ForeColor = Color.FromArgb(listofAirports.FirstOrDefault(c => c.PostCode == (e.Row.Cells["ToPostCode"].Value.ToStr())).TextColor.ToInt());
+
                                 }
                                 else
                                 {
@@ -18415,7 +18427,7 @@ namespace Taxi_AppMain
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).CustomFormat = "HH:mm";
                 (grdPreBookings.Columns["Lead"] as GridViewDateTimeColumn).FormatString = "{0:HH:mm}";
 
-                grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
+                //grdPreBookings.Columns["NoofLuggages"].IsVisible = true;
 
                 grdPreBookings.Columns["Vias"].Width = 30;
 
