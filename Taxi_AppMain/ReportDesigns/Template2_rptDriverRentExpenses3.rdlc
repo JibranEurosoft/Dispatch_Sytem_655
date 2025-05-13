@@ -782,7 +782,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=FormatNumber(First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")+(((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")*Parameters!Report_Parameter_VAT.Value)/100) ),2)</Value>
+                    <Value>=FormatNumber(First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense"),2)</Value>
                     <Style>
                       <FontFamily>Tahoma</FontFamily>
                     </Style>
@@ -1821,7 +1821,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=FormatNumber((((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")*Parameters!Report_Parameter_VAT.Value)/100) ),2)</Value>
+                        <Value>=FormatNumber((((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")*Parameters!Report_Parameter_VAT.Value)/100) / 1.2),2)</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1853,7 +1853,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=FormatNumber(First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense"),2)</Value>
+                        <Value>=FormatNumber((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")-(((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")*Parameters!Report_Parameter_VAT.Value)/100) / 1.2)),2)</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
@@ -1885,7 +1885,7 @@
                   <Paragraph>
                     <TextRuns>
                       <TextRun>
-                        <Value>=FormatNumber(First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")+(((First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense")*Parameters!Report_Parameter_VAT.Value)/100) ),2)</Value>
+                        <Value>=FormatNumber(First(Fields!DriverRent.Value, "Taxi_Model_vu_DriverRentExpense"),2)</Value>
                         <Style />
                       </TextRun>
                     </TextRuns>
