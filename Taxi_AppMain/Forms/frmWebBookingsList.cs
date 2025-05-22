@@ -14,6 +14,8 @@ using Utils;
 using Telerik.WinControls;
 using Telerik.Data;
 using Taxi_AppMain.Forms;
+using Gecko.WebIDL;
+using Telerik.WinControls.UI.Export;
 
 
 namespace Taxi_AppMain
@@ -23,7 +25,12 @@ namespace Taxi_AppMain
 
         //RadGridViewExcelExporter exporter = null;
 
-         BookingBO objMaster;       
+        BackgroundWorker worker = null;
+
+        ExportToExcelML export = null;
+
+
+        BookingBO objMaster;       
       
          public frmWebBookingsList()
         {
@@ -658,13 +665,17 @@ namespace Taxi_AppMain
 
 
 
+        void export_ExcelCellFormatting(object sender, Telerik.WinControls.UI.Export.ExcelML.ExcelCellFormattingEventArgs e)
+        {
 
-      
+            e.ExcelStyleElement.AlignmentElement.WrapText = false;
+        }
 
 
-       
 
-      
+
+
+
         private void btnExport_Click(object sender, EventArgs e)
         {
 
@@ -763,7 +774,20 @@ namespace Taxi_AppMain
                     radGridView1.Columns["From"].HeaderText = "Pick-up Address";
                     radGridView1.Columns["To"].HeaderText = "Drop-off Address";
 
+                    export = new ExportToExcelML(this.radGridView1);
+                    export.SheetMaxRows = ExcelMaxRows._1048576;
+                    //   export.ExportVisualSettings = true;
+                    export.HiddenColumnOption = HiddenOption.ExportAsHidden;
+                    export.HiddenColumnOption = Telerik.WinControls.UI.Export.HiddenOption.DoNotExport;
+                    export.ExcelCellFormatting += new Telerik.WinControls.UI.Export.ExcelML.ExcelCellFormattingEventHandler(export_ExcelCellFormatting);
 
+                    if (worker == null)
+                    {
+                        worker = new BackgroundWorker();
+                        worker.DoWork += new DoWorkEventHandler(worker_DoWork);
+                        worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bg_RunWorkerCompleted);
+                        worker.RunWorkerAsync(saveFileDialog1.FileName);
+                    }
                     //exporter = new RadGridViewExcelExporter();
                     //BackgroundWorker worker = new BackgroundWorker();
                     //worker.DoWork += new DoWorkEventHandler(worker_DoWork);
@@ -793,8 +817,8 @@ namespace Taxi_AppMain
                 return;
 
             }
-
-          //  exporter.Export(this.radGridView1, (String)e.Argument, "InComplete Bookings");
+            export.RunExport((String)e.Argument);
+            //  exporter.Export(this.radGridView1, (String)e.Argument, "InComplete Bookings");
         }
 
         //Update the progress bar with the export progress    
