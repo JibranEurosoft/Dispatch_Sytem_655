@@ -449,23 +449,68 @@ namespace Taxi_AppMain
                 //if (grdLister.Columns["AccountFare"].IsVisible)
                 //{
 
-                    //    if (grdLister.Columns["AccountFare"].FilterDescriptor == null)
-                    //        grdLister.Columns["AccountFare"].FilterDescriptor = new Telerik.WinControls.Data.FilterDescriptor();
+                //    if (grdLister.Columns["AccountFare"].FilterDescriptor == null)
+                //        grdLister.Columns["AccountFare"].FilterDescriptor = new Telerik.WinControls.Data.FilterDescriptor();
 
 
 
-                    //    grdLister.Columns["AccountFare"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
-                    //}
+                //    grdLister.Columns["AccountFare"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+                //}
 
 
 
 
-                    //    if (grdLister.Columns["Fare"].FilterDescriptor == null)
-                    //        grdLister.Columns["Fare"].FilterDescriptor = new Telerik.WinControls.Data.FilterDescriptor();
+                //    if (grdLister.Columns["Fare"].FilterDescriptor == null)
+                //        grdLister.Columns["Fare"].FilterDescriptor = new Telerik.WinControls.Data.FilterDescriptor();
 
 
 
-                    //    grdLister.Columns["Fare"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+                //    grdLister.Columns["Fare"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+
+                if (AppVars.ShowAllBookings.ToBool())
+                {
+                    ddlSubCompany.Visible = true;
+                    lblSubCompany.Visible = true;
+                    foreach (var item in General.GetQueryable<Gen_SubCompany>(null).Select(args => new { args.BackgroundColor, args.CompanyName, args.Id }).ToList())
+                    {
+                        ddlSubCompany.Items.Add(new RadCustomListDataItem { Text = item.CompanyName, Value = item.BackgroundColor, Tag = item.Id });
+                    }
+
+                    if (ddlSubCompany.Items.Count == 1)
+                    {
+                        ddlSubCompany.Visible = false;
+                        lblSubCompany.Visible = false;
+                    }
+                    else
+                    {
+                        ddlSubCompany.Items.Insert(0, new RadCustomListDataItem { Text = "Show All Data", Value = 0, Font = new Font("Tahoma", 10, FontStyle.Bold), ForeColor = Color.Black });
+                        ddlSubCompany.SelectedIndex = 0;
+                        //  ddlSubCompany.DropDownStyle = RadDropDownStyle.DropDownList;
+                        ddlSubCompany.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(ddlSubCompany_SelectedIndexChanged);
+                    }
+
+                }
+                else
+                {
+                    if (AppVars.DefaultBookingSubCompanyId > 0)
+                    {
+                        foreach (var item in General.GetQueryable<Gen_SubCompany>(null).Select(args => new { args.BackgroundColor, args.CompanyName, args.Id }).ToList())
+                        {
+                            ddlSubCompany.Items.Add(new RadCustomListDataItem { Text = item.CompanyName, Value = item.BackgroundColor, Tag = item.Id });
+                        }
+
+
+                        ddlSubCompany.Items.Insert(0, new RadCustomListDataItem { Text = "Show All Data", Value = 0, Font = new Font("Tahoma", 10, FontStyle.Bold), ForeColor = Color.Black });
+
+                        //  ddlSubCompany.DropDownStyle = RadDropDownStyle.DropDownList;
+                        ddlSubCompany.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(ddlSubCompany_SelectedIndexChanged);
+                        ddlSubCompany.SelectedItem = ddlSubCompany.Items.OfType<RadCustomListDataItem>().FirstOrDefault(c => c.Tag.ToInt() == AppVars.DefaultBookingSubCompanyId);
+
+                        ddlSubCompany.Visible = false;
+                        lblSubCompany.Visible = false;
+                    }
+                }
+
 
             }
             catch
@@ -1374,6 +1419,8 @@ namespace Taxi_AppMain
 
                     }
 
+                    e.CellElement.BackColor = Color.FromArgb(e.Row.Cells["SubCompanyBgColor"].Value.ToInt());
+
                     //else
                     //{
 
@@ -1881,20 +1928,20 @@ namespace Taxi_AppMain
 
             this.InitializeForm("frmBooking");
 
-            using(TaxiDataContext db = new TaxiDataContext())
-            {
-                var companies = db.GetTable<Gen_SubCompany>()
-                    .Select(x => new { x.Id, x.CompanyName })
-                    .ToList();
+            //using(TaxiDataContext db = new TaxiDataContext())
+            //{
+            //    var companies = db.GetTable<Gen_SubCompany>()
+            //        .Select(x => new { x.Id, x.CompanyName })
+            //        .ToList();
 
-                companies.Insert(0, new { Id = 0, CompanyName = "Show All Data" });
+            //    companies.Insert(0, new { Id = 0, CompanyName = "Show All Data" });
 
-                ddlSubCompany.DataSource = companies;
-                ddlSubCompany.DisplayMember = "CompanyName";
-                ddlSubCompany.ValueMember = "Id";
-                ddlSubCompany.SelectedIndex = 0;
-            }
-
+            //    ddlSubCompany.DataSource = companies;
+            //    ddlSubCompany.DisplayMember = "CompanyName";
+            //    ddlSubCompany.ValueMember = "Id";
+            //    ddlSubCompany.SelectedIndex = 0;
+            //}
+            
         }
 
         void grdLister_CellDoubleClick(object sender, GridViewCellEventArgs e)
@@ -2094,11 +2141,11 @@ namespace Taxi_AppMain
 
                         skip = 0;
 
-                 
 
 
-                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, Convert.ToInt32(ddlSubCompany.SelectedValue), searchTxt,bookingstatusId).ToList();
-                        //var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, AppVars.DefaultBookingSubCompanyId, searchTxt,bookingstatusId).ToList();
+
+                        //var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, Convert.ToInt32(ddlSubCompany.SelectedValue), searchTxt,bookingstatusId).ToList();
+                        var query = db.ExecuteQuery<ClsBookingListData>("exec stp_GetBookingsListData {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13}", col_name, col_refNo, col_telNo, col_mobileno, col_driver, col_pickupPoint, col_destination, col_status, col_vehicle, fromDate, toDate, AppVars.DefaultBookingSubCompanyId, searchTxt, bookingstatusId).ToList();
 
 
                         grdLister.DataSource = query;
@@ -2927,6 +2974,53 @@ namespace Taxi_AppMain
             }
             catch
             {
+
+            }
+        }
+
+
+        void ddlSubCompany_SelectedIndexChanged(object sender, Telerik.WinControls.UI.Data.PositionChangedEventArgs e)
+        {
+            try
+            {
+                if (grdLister.Columns["BackgroundColor1"].FilterDescriptor == null)
+                {
+                    grdLister.Columns["BackgroundColor1"].FilterDescriptor = new Telerik.WinControls.Data.FilterDescriptor();
+                    //   grdPendingJobs.Columns["PickupDateTemp"].FilterDescriptor.v
+                }
+
+                int index = ddlSubCompany.SelectedIndex;
+
+                if (index == -1 || index == 0)
+                {
+                    grdLister.Columns["BackgroundColor1"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.None;
+
+                    grdLister.Columns["BackgroundColor1"].FilterDescriptor.Value = null;
+
+
+                    AppVars.DefaultDriverSubCompanyId = 0;
+                    AppVars.DefaultBookingSubCompanyId = 0;
+
+                }
+                else
+                {
+                    //if (ddlSubCompany.Items[index].Value != null && ddlSubCompany.Items[index].Value.ToInt() != 0)
+                    if (ddlSubCompany.Items[index].Value != null)
+                    {
+
+                        grdLister.Columns["BackgroundColor1"].FilterDescriptor.Operator = Telerik.WinControls.Data.FilterOperator.IsEqualTo;
+
+                        grdLister.Columns["BackgroundColor1"].FilterDescriptor.Value = ddlSubCompany.Items[index].Value.ToInt();
+
+
+                        AppVars.DefaultDriverSubCompanyId = (ddlSubCompany.Items[index] as RadCustomListDataItem).Tag.ToInt();
+                        AppVars.DefaultBookingSubCompanyId = (ddlSubCompany.Items[index] as RadCustomListDataItem).Tag.ToInt();
+                    }
+                }
+            }
+            catch
+            {
+
 
             }
         }

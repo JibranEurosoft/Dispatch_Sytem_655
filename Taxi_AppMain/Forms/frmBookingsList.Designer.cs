@@ -61,7 +61,7 @@
             this.btnFirstRecords = new Telerik.WinControls.UI.RadButton();
             this.grdLister = new Telerik.WinControls.UI.RadGridView();
             this.chkSelectAll = new Telerik.WinControls.UI.RadCheckBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblSubCompany = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnOnNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnExit)).BeginInit();
@@ -100,7 +100,7 @@
             // radPanel1
             // 
             this.radPanel1.BackColor = System.Drawing.Color.AliceBlue;
-            this.radPanel1.Controls.Add(this.label5);
+            this.radPanel1.Controls.Add(this.lblSubCompany);
             this.radPanel1.Controls.Add(this.panel1);
             this.radPanel1.Controls.Add(this.optCompletedJobs);
             this.radPanel1.Controls.Add(this.btnPrintSelected);
@@ -552,14 +552,14 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(545, 7);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(94, 16);
-            this.label5.TabIndex = 124;
-            this.label5.Text = "Sub Company";
+            this.lblSubCompany.AutoSize = true;
+            this.lblSubCompany.BackColor = System.Drawing.Color.Transparent;
+            this.lblSubCompany.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubCompany.Location = new System.Drawing.Point(545, 7);
+            this.lblSubCompany.Name = "label5";
+            this.lblSubCompany.Size = new System.Drawing.Size(94, 16);
+            this.lblSubCompany.TabIndex = 124;
+            this.lblSubCompany.Text = "Sub Company";
             // 
             // frmBookingsList
             // 
@@ -657,6 +657,6 @@
         private System.Windows.Forms.RadioButton OPTDESC;
         private System.Windows.Forms.RadioButton OPTASC;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblSubCompany;
     }
 }
