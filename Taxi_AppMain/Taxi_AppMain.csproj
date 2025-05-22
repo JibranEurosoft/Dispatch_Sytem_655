@@ -337,6 +337,7 @@
     <Compile Include="Classes\ClsSurcharge.cs" />
     <Compile Include="Classes\ComboBoxItem.cs" />
     <Compile Include="Classes\CoordinatesWithUpdatedDate.cs" />
+    <Compile Include="Classes\DriverCarbonEmission.cs" />
     <Compile Include="Classes\DriverStats.cs" />
     <Compile Include="Classes\FlightAlertApi.cs" />
     <Compile Include="Classes\FlightData.cs" />
@@ -1817,6 +1818,12 @@
     </Compile>
     <Compile Include="Report Classes\rptfrmDriverCommissionStatement.Designer.cs">
       <DependentUpon>rptfrmDriverCommissionStatement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report Classes\rptfrmDriverCarbonEmission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Report Classes\rptfrmDriverCarbonEmission.Designer.cs">
+      <DependentUpon>rptfrmDriverCarbonEmission.cs</DependentUpon>
     </Compile>
     <Compile Include="Report Classes\rptfrmDriverEarning.cs">
       <SubType>Form</SubType>
@@ -3543,6 +3550,9 @@
       <DependentUpon>rptfrmDriverCommissionStatement.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report Classes\rptfrmDriverCarbonEmission.resx">
+      <DependentUpon>rptfrmDriverCarbonEmission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report Classes\rptfrmDriverEarning.resx">
       <DependentUpon>rptfrmDriverEarning.cs</DependentUpon>
     </EmbeddedResource>
@@ -4245,6 +4255,7 @@
     <EmbeddedResource Include="ReportDesigns\rptCompanyVehicleDetail.rdlc" />
     <EmbeddedResource Include="ReportDesigns\rptCustomerAppUsers.rdlc" />
     <EmbeddedResource Include="ReportDesigns\rptCustomerFeedback.rdlc" />
+    <EmbeddedResource Include="ReportDesigns\rptDriverCarbonEmissionReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\rptDriverCommissionDetailReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\rptDriverJobHistoryReport.rdlc" />
     <EmbeddedResource Include="ReportDesigns\rptDriverLoginHistoryReport.rdlc" />

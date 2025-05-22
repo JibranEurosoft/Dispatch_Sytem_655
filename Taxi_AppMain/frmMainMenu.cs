@@ -4727,6 +4727,19 @@ namespace Taxi_AppMain
 
                 }
 
+                if (this.ListofUserRights.Count(c => c.formName == "rptfrmDriverCarbonEmission") > 0)
+                {
+
+
+                    itemSubInner = new RadMenuItem();
+                    itemSubInner.Font = contentFont;
+                    itemSubInner.Text = "Driver Carbon Emission Report";
+                    itemSubInner.Name = "rptfrmDriverCarbonEmission";
+                    itemSubInner.Click += new EventHandler(itemInner_Click);
+                    itemInner.Items.Add(itemSubInner);
+
+                }
+
                 if (this.ListofUserRights.Count(c => c.formName == "rptfrmDriverOnlineStatsReport") > 0)
                 {
 
