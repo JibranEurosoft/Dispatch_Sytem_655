@@ -154,7 +154,7 @@ namespace Taxi_AppMain
                 }
 
 
-                SetConfirmationEmail(this.objSubCompany.SmtpUserName.ToStr().Trim(), toEmail, true
+                SetConfirmationEmail(this.objSubCompany.EmailAddress.ToStr().Trim(), toEmail, true
                     , emailType, subject, true);
             }
             catch
@@ -243,7 +243,7 @@ namespace Taxi_AppMain
                 item.Click += new EventHandler(item_Click);
                 btnPickEmail.Items.Add(item);
 
-                this.DefaultFromEmail = this.objSubCompany.SmtpUserName.ToStr().Trim();
+                this.DefaultFromEmail = this.objSubCompany.EmailAddress.ToStr().Trim();
 
                 txtSubject.Text = "BOOKING CONFIRMATION -  " + string.Format("{0:dd MMMM yyyy}", objBooking.PickupDateTime) + ", TIME " + string.Format("{0:HH.mm}", objBooking.PickupDateTime) + " - BOOKING ID " + objBooking.BookingNo.ToStr();
 
@@ -261,7 +261,7 @@ namespace Taxi_AppMain
                 listofSubCompanies = General.GetQueryable<Gen_SubCompany>(null).ToList();
 
                 ddlFrom.DataSource = listofSubCompanies;
-                ddlFrom.DisplayMember = "SmtpUserName";
+                ddlFrom.DisplayMember = "EmailAddress";
                 ddlFrom.ValueMember = "Id";
                 ddlFrom.SelectedIndex= ddlFrom.FindStringExact(this.DefaultFromEmail.ToStr());
                   
