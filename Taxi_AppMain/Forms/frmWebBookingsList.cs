@@ -30,306 +30,306 @@ namespace Taxi_AppMain
         ExportToExcelML export = null;
 
 
-        BookingBO objMaster;       
-      
-         public frmWebBookingsList()
+        BookingBO objMaster;
+
+        public frmWebBookingsList()
         {
 
-           
+
 
             InitializeComponent();
             this.Load += new EventHandler(frmBookingsList_Load);
             grdLister.CellDoubleClick += new GridViewCellEventHandler(grdLister_CellDoubleClick);
-          
-           
+
+
             objMaster = new BookingBO();
 
             this.SetProperties((INavigation)objMaster);
             grdLister.ShowGroupPanel = false;
 
-   
+
             grdLister.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-          
+
             grdLister.ViewCellFormatting += new CellFormattingEventHandler(grdLister_ViewCellFormatting);
             grdLister.VerticalScroll.LargeChange = 100;
             grdLister.TableElement.VScrollBar.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-      
-                 
+
+
         }
 
-         private void StartLoading()
-         {
+        private void StartLoading()
+        {
 
-             InitializeLoading();
-         }
+            InitializeLoading();
+        }
 
-         delegate void DisplayProgressBar();
-         private void InitializeLoading()
-         {
+        delegate void DisplayProgressBar();
+        private void InitializeLoading()
+        {
 
-             if (this.InvokeRequired)
-             {
-                 DisplayProgressBar d = new DisplayProgressBar(ShowLoadingImage);
-                 this.BeginInvoke(d);
-             }
-             else
-             {
-                 ShowLoadingImage();
+            if (this.InvokeRequired)
+            {
+                DisplayProgressBar d = new DisplayProgressBar(ShowLoadingImage);
+                this.BeginInvoke(d);
+            }
+            else
+            {
+                ShowLoadingImage();
 
-             }
+            }
 
-         }
+        }
 
-         frmLoadingScreen frmLoading = null;
-         private void ShowLoadingImage()
-         {
+        frmLoadingScreen frmLoading = null;
+        private void ShowLoadingImage()
+        {
 
-             frmLoading = new frmLoadingScreen();
-             frmLoading.ShowInTaskbar = false;
-             frmLoading.Show();
-         }
-             
+            frmLoading = new frmLoadingScreen();
+            frmLoading.ShowInTaskbar = false;
+            frmLoading.Show();
+        }
 
 
-         private void FinishLoading()
-         {
-             if (frmLoading != null)
-             {
-                 frmLoading.BackgroundImage.Dispose();
-                 frmLoading.Dispose();
-                 frmLoading.Close();
 
+        private void FinishLoading()
+        {
+            if (frmLoading != null)
+            {
+                frmLoading.BackgroundImage.Dispose();
+                frmLoading.Dispose();
+                frmLoading.Close();
 
-             }
-         }
 
+            }
+        }
 
 
-         private void InitializeExportGrid()
-         {
-             this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
 
-             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
-             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
+        private void InitializeExportGrid()
+        {
+            this.radGridView1 = new Telerik.WinControls.UI.RadGridView();
 
-            
-             this.radGridView1.Location = new System.Drawing.Point(405, 60);
-             this.radGridView1.Name = "radGridView1";
-             this.radGridView1.Size = new System.Drawing.Size(240, 150);
-             this.radGridView1.TabIndex = 18;
-             this.radGridView1.Text = "radGridView1";
-             this.radGridView1.Visible = false;
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).BeginInit();
 
-             ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
-             ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
 
-             this.radPanel1.Controls.Add(this.radGridView1);
-         }
+            this.radGridView1.Location = new System.Drawing.Point(405, 60);
+            this.radGridView1.Name = "radGridView1";
+            this.radGridView1.Size = new System.Drawing.Size(240, 150);
+            this.radGridView1.TabIndex = 18;
+            this.radGridView1.Text = "radGridView1";
+            this.radGridView1.Visible = false;
 
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1.MasterTemplate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radGridView1)).EndInit();
 
-         
+            this.radPanel1.Controls.Add(this.radGridView1);
+        }
 
-        
 
-         Font oldFont = new Font("Tahoma", 10, FontStyle.Regular);
-         Font newFont = new Font("Tahoma", 10, FontStyle.Bold);
 
 
-         private Color _HeaderRowBackColor = Color.SteelBlue;
 
-         public Color HeaderRowBackColor
-         {
-             get { return _HeaderRowBackColor; }
-             set { _HeaderRowBackColor = value; }
-         }
 
+        Font oldFont = new Font("Tahoma", 10, FontStyle.Regular);
+        Font newFont = new Font("Tahoma", 10, FontStyle.Bold);
 
-         private Color _HeaderRowBorderColor = Color.DarkSlateBlue;
 
-         public Color HeaderRowBorderColor
-         {
-             get { return _HeaderRowBorderColor; }
-             set { _HeaderRowBorderColor = value; }
-         }
+        private Color _HeaderRowBackColor = Color.SteelBlue;
 
-       
-      
+        public Color HeaderRowBackColor
+        {
+            get { return _HeaderRowBackColor; }
+            set { _HeaderRowBackColor = value; }
+        }
 
-         void grdLister_ViewCellFormatting(object sender, CellFormattingEventArgs e)
-         {
-             try
-             {
 
+        private Color _HeaderRowBorderColor = Color.DarkSlateBlue;
 
+        public Color HeaderRowBorderColor
+        {
+            get { return _HeaderRowBorderColor; }
+            set { _HeaderRowBorderColor = value; }
+        }
 
-                 if (e.CellElement is GridHeaderCellElement)
-                 {
-                     //    e.CellElement
-                     e.CellElement.BorderColor = _HeaderRowBorderColor;
-                     e.CellElement.BorderColor2 = _HeaderRowBorderColor;
-                     e.CellElement.BorderColor3 = _HeaderRowBorderColor;
-                     e.CellElement.BorderColor4 = _HeaderRowBorderColor;
 
 
-                     // e.CellElement.DrawBorder = false;
-                     e.CellElement.BackColor = _HeaderRowBackColor;
-                     e.CellElement.NumberOfColors = 1;
-                     e.CellElement.Font = newFont;
-                     e.CellElement.ForeColor = Color.White;
-                     e.CellElement.DrawFill = true;
 
-                     e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
+        void grdLister_ViewCellFormatting(object sender, CellFormattingEventArgs e)
+        {
+            try
+            {
 
-                 }
 
-                 else if (e.CellElement is GridFilterCellElement)
-                 {
 
+                if (e.CellElement is GridHeaderCellElement)
+                {
+                    //    e.CellElement
+                    e.CellElement.BorderColor = _HeaderRowBorderColor;
+                    e.CellElement.BorderColor2 = _HeaderRowBorderColor;
+                    e.CellElement.BorderColor3 = _HeaderRowBorderColor;
+                    e.CellElement.BorderColor4 = _HeaderRowBorderColor;
 
 
-                     e.CellElement.Font = oldFont;
-                     e.CellElement.NumberOfColors = 1;
-                     e.CellElement.BackColor = Color.White;
-                     e.CellElement.RowElement.BackColor = Color.White;
-                     e.CellElement.RowElement.NumberOfColors = 1;
+                    // e.CellElement.DrawBorder = false;
+                    e.CellElement.BackColor = _HeaderRowBackColor;
+                    e.CellElement.NumberOfColors = 1;
+                    e.CellElement.Font = newFont;
+                    e.CellElement.ForeColor = Color.White;
+                    e.CellElement.DrawFill = true;
 
-                     e.CellElement.BorderColor = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor2 = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor3 = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor4 = Color.DarkSlateBlue;
+                    e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                     e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
-                 }
-                 else if (e.CellElement is GridRowHeaderCellElement)
-                 {
+                }
 
-                     if (e.CellElement is GridTableHeaderCellElement)
-                     {
+                else if (e.CellElement is GridFilterCellElement)
+                {
 
-                         e.CellElement.BorderColor = _HeaderRowBorderColor;
-                         e.CellElement.BorderColor2 = _HeaderRowBorderColor;
-                         e.CellElement.BorderColor3 = _HeaderRowBorderColor;
-                         e.CellElement.BorderColor4 = _HeaderRowBorderColor;
 
 
-                         // e.CellElement.DrawBorder = false;
-                         e.CellElement.BackColor = _HeaderRowBackColor;
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.Font = newFont;
-                         e.CellElement.ForeColor = Color.White;
-                         e.CellElement.DrawFill = true;
+                    e.CellElement.Font = oldFont;
+                    e.CellElement.NumberOfColors = 1;
+                    e.CellElement.BackColor = Color.White;
+                    e.CellElement.RowElement.BackColor = Color.White;
+                    e.CellElement.RowElement.NumberOfColors = 1;
 
-                         e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
+                    e.CellElement.BorderColor = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor2 = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor3 = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor4 = Color.DarkSlateBlue;
 
-                     }
-                     else if (e.CellElement is GridRowHeaderCellElement && e.Row is GridViewFilteringRowInfo)
-                     {
+                    e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
+                }
+                else if (e.CellElement is GridRowHeaderCellElement)
+                {
 
-                         e.CellElement.Font = oldFont;
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.BackColor = Color.White;
-                         e.CellElement.RowElement.BackColor = Color.White;
-                         e.CellElement.RowElement.NumberOfColors = 1;
+                    if (e.CellElement is GridTableHeaderCellElement)
+                    {
 
-                         e.CellElement.BorderColor = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor2 = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor3 = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor4 = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor = _HeaderRowBorderColor;
+                        e.CellElement.BorderColor2 = _HeaderRowBorderColor;
+                        e.CellElement.BorderColor3 = _HeaderRowBorderColor;
+                        e.CellElement.BorderColor4 = _HeaderRowBorderColor;
 
-                         e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                     }
+                        // e.CellElement.DrawBorder = false;
+                        e.CellElement.BackColor = _HeaderRowBackColor;
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.Font = newFont;
+                        e.CellElement.ForeColor = Color.White;
+                        e.CellElement.DrawFill = true;
 
-                     else
-                     {
+                        e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                         e.CellElement.BackColor = Color.FromArgb(e.Row.Cells["SubCompanyBgColor"].Value.ToInt());
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.BorderColor = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor2 = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor3 = Color.DarkSlateBlue;
-                         e.CellElement.BorderColor4 = Color.DarkSlateBlue;
+                    }
+                    else if (e.CellElement is GridRowHeaderCellElement && e.Row is GridViewFilteringRowInfo)
+                    {
 
-                         e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
+                        e.CellElement.Font = oldFont;
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.White;
+                        e.CellElement.RowElement.BackColor = Color.White;
+                        e.CellElement.RowElement.NumberOfColors = 1;
 
-                         e.CellElement.DrawFill = true;
+                        e.CellElement.BorderColor = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor2 = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor3 = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor4 = Color.DarkSlateBlue;
 
-                     }
+                        e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
+                    }
 
+                    else
+                    {
 
-                 }
+                        e.CellElement.BackColor = Color.FromArgb(e.Row.Cells["SubCompanyBgColor"].Value.ToInt());
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BorderColor = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor2 = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor3 = Color.DarkSlateBlue;
+                        e.CellElement.BorderColor4 = Color.DarkSlateBlue;
 
+                        e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                 else if (e.CellElement is GridDataCellElement)
-                 {
+                        e.CellElement.DrawFill = true;
 
-                     e.CellElement.ToolTipText = e.CellElement.Text;
+                    }
 
-                     e.CellElement.BorderColor = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor2 = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor3 = Color.DarkSlateBlue;
-                     e.CellElement.BorderColor4 = Color.DarkSlateBlue;
 
-                     e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                     e.CellElement.ForeColor = Color.Black;
+                }
 
-                     e.CellElement.Font = oldFont;
 
-                     if (e.CellElement.RowElement.IsSelected == true)
-                     {
+                else if (e.CellElement is GridDataCellElement)
+                {
 
-                         e.CellElement.RowElement.NumberOfColors = 1;
-                         e.CellElement.RowElement.BackColor = Color.DeepSkyBlue;
+                    e.CellElement.ToolTipText = e.CellElement.Text;
 
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.BackColor = Color.DeepSkyBlue;
-                         e.CellElement.ForeColor = Color.White;
-                         e.CellElement.Font = newFont;
+                    e.CellElement.BorderColor = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor2 = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor3 = Color.DarkSlateBlue;
+                    e.CellElement.BorderColor4 = Color.DarkSlateBlue;
 
-                     }
+                    e.CellElement.BorderBoxStyle = BorderBoxStyle.SingleBorder;
 
-                     else
-                     {
-                         e.CellElement.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.TwoWayBindingLocal);
+                    e.CellElement.ForeColor = Color.Black;
 
-                     }
+                    e.CellElement.Font = oldFont;
 
-                     e.CellElement.DrawFill = false;
+                    if (e.CellElement.RowElement.IsSelected == true)
+                    {
 
-                    
+                        e.CellElement.RowElement.NumberOfColors = 1;
+                        e.CellElement.RowElement.BackColor = Color.DeepSkyBlue;
 
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.DeepSkyBlue;
+                        e.CellElement.ForeColor = Color.White;
+                        e.CellElement.Font = newFont;
 
-                     if (e.Column.Name == "Account" && e.CellElement.Value.ToStr() != string.Empty)
-                     {
+                    }
 
+                    else
+                    {
+                        e.CellElement.RowElement.ResetValue(LightVisualElement.BackColorProperty, ValueResetFlags.TwoWayBindingLocal);
 
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.DrawFill = true;
+                    }
 
+                    e.CellElement.DrawFill = false;
 
-                         string Bgcolor = e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
-                         string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
 
-                         if (Bgcolor != string.Empty && textColor != string.Empty)
-                         {
 
-                             Color bgClr = Color.FromArgb(Bgcolor.ToInt());
-                             Color txtClr = Color.FromArgb(textColor.ToInt());
 
-                             e.CellElement.BackColor = bgClr;
-                             e.CellElement.ForeColor = txtClr;
+                    if (e.Column.Name == "Account" && e.CellElement.Value.ToStr() != string.Empty)
+                    {
 
-                         }
-                         else
-                         {
-                             e.CellElement.ForeColor = Color.White;
-                             e.CellElement.BackColor = Color.Crimson;
 
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.DrawFill = true;
 
-                         }
-                     }
+
+                        string Bgcolor = e.Row.Cells["BackgroundColor1"].Value.ToStr().Trim();
+                        string textColor = e.Row.Cells["TextColor1"].Value.ToStr().Trim();
+
+                        if (Bgcolor != string.Empty && textColor != string.Empty)
+                        {
+
+                            Color bgClr = Color.FromArgb(Bgcolor.ToInt());
+                            Color txtClr = Color.FromArgb(textColor.ToInt());
+
+                            e.CellElement.BackColor = bgClr;
+                            e.CellElement.ForeColor = txtClr;
+
+                        }
+                        else
+                        {
+                            e.CellElement.ForeColor = Color.White;
+                            e.CellElement.BackColor = Color.Crimson;
+
+
+                        }
+                    }
 
                     else if (e.Column.Name == "RefNumber")
                     {
@@ -338,12 +338,12 @@ namespace Taxi_AppMain
 
 
                         string Bgcolor = e.Row.Cells["BookingTypeBackground"].Value.ToStr().Trim();
-                    
+
                         if (Bgcolor != string.Empty)
                         {
 
                             e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
-                           // e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+                            // e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
 
                         }
                         else
@@ -356,200 +356,201 @@ namespace Taxi_AppMain
                     }
 
                     else if (e.Column.Name == "Vehicle")
-                     {
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.DrawFill = true;
+                    {
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.DrawFill = true;
 
 
-                         string Bgcolor = e.Row.Cells["VehicleBgColor"].Value.ToStr().Trim();
-                         string textColor = e.Row.Cells["VehicleTextColor"].Value.ToStr().Trim();
+                        string Bgcolor = e.Row.Cells["VehicleBgColor"].Value.ToStr().Trim();
+                        string textColor = e.Row.Cells["VehicleTextColor"].Value.ToStr().Trim();
 
-                         if (Bgcolor != string.Empty && textColor != string.Empty)
-                         {
+                        if (Bgcolor != string.Empty && textColor != string.Empty)
+                        {
 
-                             e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
-                             e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
+                            e.CellElement.BackColor = Color.FromArgb(Bgcolor.ToInt());
+                            e.CellElement.ForeColor = Color.FromArgb(textColor.ToInt());
 
-                         }
-                       
+                        }
+
                     }
 
 
-                     else if (e.Column.Name == "From")
-                     {
-                         if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
-                         {
+                    else if (e.Column.Name == "From")
+                    {
+                        if (e.Row.Cells["FromLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                        {
 
-                             e.CellElement.NumberOfColors = 1;
-                             e.CellElement.DrawFill = true;
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.DrawFill = true;
 
-                             e.CellElement.BackColor = Color.GreenYellow;
-                             e.CellElement.ForeColor = Color.Black;
+                            e.CellElement.BackColor = Color.GreenYellow;
+                            e.CellElement.ForeColor = Color.Black;
 
-                         }
+                        }
 
-                     }
+                    }
 
-                     else if (e.Column.Name == "To")
-                     {
-                         if (e.Row.Cells["ToLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
-                         {
+                    else if (e.Column.Name == "To")
+                    {
+                        if (e.Row.Cells["ToLocTypeId"].Value.ToInt() == Enums.LOCATION_TYPES.AIRPORT)
+                        {
 
-                             e.CellElement.NumberOfColors = 1;
-                             e.CellElement.DrawFill = true;
+                            e.CellElement.NumberOfColors = 1;
+                            e.CellElement.DrawFill = true;
 
-                             e.CellElement.BackColor = Color.GreenYellow;
-                             e.CellElement.ForeColor = Color.Black;
+                            e.CellElement.BackColor = Color.GreenYellow;
+                            e.CellElement.ForeColor = Color.Black;
 
-                         }
-                     }
+                        }
+                    }
 
-                     else if (e.Column.Name == "Status")
-                     {
+                    else if (e.Column.Name == "Status")
+                    {
 
-                         e.CellElement.NumberOfColors = 1;
-                         e.CellElement.BackColor = Color.FromArgb(e.CellElement.RowInfo.Cells["StatusColor"].Value.ToInt());
-                         e.CellElement.ForeColor = Color.Black;
+                        e.CellElement.NumberOfColors = 1;
+                        e.CellElement.BackColor = Color.FromArgb(e.CellElement.RowInfo.Cells["StatusColor"].Value.ToInt());
+                        e.CellElement.ForeColor = Color.Black;
 
-                         e.CellElement.DrawFill = true;
-                     }
-
-
-
-                 }
-             }
-             catch { }
-         }
+                        e.CellElement.DrawFill = true;
+                    }
 
 
 
-      
-
-
-         
-
-         private void AddCommandColumn(string name,string headerText,int width)
-         {
-             GridViewCommandColumn col = new GridViewCommandColumn();
-             col.Width = width;
-          
-             col.UseDefaultText = true;
-             col.DefaultText = headerText;
-             col.Name = name;
-             grdLister.Columns.Add(col);
-
-         }
+                }
+            }
+            catch { }
+        }
 
 
 
-         void frmBookingsList_Load(object sender, EventArgs e)
-         {
-
-             this.InitializeForm("frmBooking");
-             ClearFilter();
-
-             ddlColumns.Items.Add(new RadListDataItem { Text = "All", Value = 0 , Selected=true});
-             ddlColumns.Items.Add(new RadListDataItem { Text = "Waiting", Value = Enums.BOOKINGSTATUS.WAITING, Selected = false });
-             ddlColumns.Items.Add(new RadListDataItem { Text = "Cancelled", Value = Enums.BOOKINGSTATUS.CANCELLED, Selected = false });
-             ddlColumns.Items.Add(new RadListDataItem { Text = "Despatched", Value = Enums.BOOKINGSTATUS.DISPATCHED, Selected = false });
 
 
 
-             PopulateData();         
 
-           
-             grdLister.Columns["MobileNo"].IsVisible = false;
-             grdLister.Columns["Id"].IsVisible = false;
-             grdLister.Columns["DriverId"].IsVisible = false;
+
+        private void AddCommandColumn(string name, string headerText, int width)
+        {
+            GridViewCommandColumn col = new GridViewCommandColumn();
+            col.Width = width;
+
+            col.UseDefaultText = true;
+            col.DefaultText = headerText;
+            col.Name = name;
+            grdLister.Columns.Add(col);
+
+        }
+
+
+
+        void frmBookingsList_Load(object sender, EventArgs e)
+        {
+
+            this.InitializeForm("frmBooking");
+            ClearFilter();
+
+            ddlColumns.Items.Add(new RadListDataItem { Text = "All", Value = 0, Selected = true });
+            ddlColumns.Items.Add(new RadListDataItem { Text = "Waiting", Value = Enums.BOOKINGSTATUS.WAITING, Selected = false });
+            ddlColumns.Items.Add(new RadListDataItem { Text = "Cancelled", Value = Enums.BOOKINGSTATUS.CANCELLED, Selected = false });
+            ddlColumns.Items.Add(new RadListDataItem { Text = "Despatched", Value = Enums.BOOKINGSTATUS.DISPATCHED, Selected = false });
+
+
+
+            PopulateData();
+
+
+            grdLister.Columns["MobileNo"].IsVisible = false;
+            grdLister.Columns["Id"].IsVisible = false;
+            grdLister.Columns["DriverId"].IsVisible = false;
 
 
             grdLister.Columns["BookingTypeBackground"].IsVisible = false;
             grdLister.Columns["VehicleBgColor"].IsVisible = false;
-             grdLister.Columns["VehicleTextColor"].IsVisible = false;
+            grdLister.Columns["VehicleTextColor"].IsVisible = false;
 
-             grdLister.Columns["BackgroundColor1"].IsVisible = false;
-             grdLister.Columns["TextColor1"].IsVisible = false;
-
-
-             grdLister.Columns["BookingTypeId"].IsVisible = false;
+            grdLister.Columns["BackgroundColor1"].IsVisible = false;
+            grdLister.Columns["TextColor1"].IsVisible = false;
 
 
-             grdLister.Columns["StatusColor"].IsVisible = false;
-             grdLister.Columns["FromLocTypeId"].IsVisible = false;
-             grdLister.Columns["ToLocTypeId"].IsVisible = false;
+            grdLister.Columns["BookingTypeId"].IsVisible = false;
 
-            
-           //  AddCommandColumn("btnReDespatch", "Despatch", 70);
 
-             //if (this.CanDelete)
-             //{
-             //  //  grdLister.AddDeleteColumn();
-             //    grdLister.Columns["btnDelete"].Width = 70;
-             //}
+            grdLister.Columns["StatusColor"].IsVisible = false;
+            grdLister.Columns["FromLocTypeId"].IsVisible = false;
+            grdLister.Columns["ToLocTypeId"].IsVisible = false;
 
-             UI.GridFunctions.SetFilter(grdLister);
+
+            //  AddCommandColumn("btnReDespatch", "Despatch", 70);
+
+            //if (this.CanDelete)
+            //{
+            //  //  grdLister.AddDeleteColumn();
+            //    grdLister.Columns["btnDelete"].Width = 70;
+            //}
+
+            UI.GridFunctions.SetFilter(grdLister);
 
             grdLister.EnableHotTracking = false;
-             grdLister.AllowEditRow = true;
-
-           
-             grdLister.Columns["RefNumber"].Width = 50;
-             grdLister.Columns["RefNumber"].HeaderText = "Ref #";
-             grdLister.Columns["Fare"].Width = 70;
-             grdLister.Columns["Fare"].HeaderText = "Fare £";
-             grdLister.Columns["Vehicle"].Width = 70;
-             grdLister.Columns["Driver"].Width = 50;
-
-             grdLister.Columns["Status"].Width = 80;
-             grdLister.Columns["Passenger"].Width = 70;
-
-             grdLister.Columns["From"].Width = 110;
-             grdLister.Columns["From"].HeaderText = "Pickup Point";
-
-             grdLister.Columns["To"].Width = 110;
-             grdLister.Columns["To"].HeaderText = "Destination";
+            grdLister.AllowEditRow = true;
 
 
-             grdLister.Columns["BookingDate"].Width = 90;
-             grdLister.Columns["BookingDate"].HeaderText = "Booking Date";
+            grdLister.Columns["RefNumber"].Width = 50;
+            grdLister.Columns["RefNumber"].HeaderText = "Ref #";
+            grdLister.Columns["Fare"].Width = 70;
+            grdLister.Columns["Fare"].HeaderText = "Fare £";
+            grdLister.Columns["Vehicle"].Width = 70;
+            grdLister.Columns["Driver"].Width = 50;
+
+            grdLister.Columns["Status"].Width = 80;
+            grdLister.Columns["Passenger"].Width = 70;
+
+            grdLister.Columns["From"].Width = 110;
+            grdLister.Columns["From"].HeaderText = "Pickup Point";
+
+            grdLister.Columns["To"].Width = 110;
+            grdLister.Columns["To"].HeaderText = "Destination";
 
 
-             (grdLister.Columns["PickupDate"] as GridViewDateTimeColumn).CustomFormat = "dd/MM/yyyy HH:mm";
-             (grdLister.Columns["PickupDate"] as GridViewDateTimeColumn).FormatString = "{0:dd/MM/yyyy HH:mm}";
+            grdLister.Columns["BookingDate"].Width = 90;
+            grdLister.Columns["BookingDate"].HeaderText = "Booking Date";
 
 
-             grdLister.Columns["PickupDate"].Width = 130;
-             grdLister.Columns["PickupDate"].HeaderText = "Pickup Date-Time";
+            (grdLister.Columns["PickupDate"] as GridViewDateTimeColumn).CustomFormat = "dd/MM/yyyy HH:mm";
+            (grdLister.Columns["PickupDate"] as GridViewDateTimeColumn).FormatString = "{0:dd/MM/yyyy HH:mm}";
 
 
-             grdLister.Columns["Account"].Width = 60;
-             grdLister.Columns["Account"].HeaderText = "A/C";
+            grdLister.Columns["PickupDate"].Width = 130;
+            grdLister.Columns["PickupDate"].HeaderText = "Pickup Date-Time";
 
 
-           
-         }
+            grdLister.Columns["Account"].Width = 60;
+            grdLister.Columns["Account"].HeaderText = "A/C";
 
-         void grdLister_CellDoubleClick(object sender, GridViewCellEventArgs e)
-         {
-             ViewDetailForm();
-         }
+            ComboFunctions.FillBookingTypeCombo(ddlBookingType);
+            this.ddlBookingType.SelectedIndexChanged += new Telerik.WinControls.UI.Data.PositionChangedEventHandler(this.ddlBookingType_SelectedIndexChanged);
 
-         private void ViewDetailForm()
-         {
+        }
 
-             if (grdLister.CurrentRow != null && grdLister.CurrentRow is GridViewDataRowInfo)
-             {
-                 ShowBookingForm(grdLister.CurrentRow.Cells["Id"].Value.ToInt());
-             }
-             else
-             {
-                 ENUtils.ShowMessage("Please select a record");
-             }
-         }
+        void grdLister_CellDoubleClick(object sender, GridViewCellEventArgs e)
+        {
+            ViewDetailForm();
+        }
+
+        private void ViewDetailForm()
+        {
+
+            if (grdLister.CurrentRow != null && grdLister.CurrentRow is GridViewDataRowInfo)
+            {
+                ShowBookingForm(grdLister.CurrentRow.Cells["Id"].Value.ToInt());
+            }
+            else
+            {
+                ENUtils.ShowMessage("Please select a record");
+            }
+        }
 
 
-         private void ShowBookingForm(int id)
-         {
+        private void ShowBookingForm(int id)
+        {
 
 
             General.ShowBookingForm(id, true, "", "", Enums.BOOKING_TYPES.LOCAL);
@@ -561,18 +562,18 @@ namespace Taxi_AppMain
             //frm.MaximizeBox = false;
             //frm.ShowDialog();     
 
-         }
+        }
 
 
-     
 
 
-     
-       
+
+
+
 
         public override void RefreshData()
         {
-         
+
             PopulateData();
         }
 
@@ -587,24 +588,24 @@ namespace Taxi_AppMain
 
 
 
-                DateTime? fromDate=dtpFromDate.Value.ToDateorNull();
-                DateTime? toDate=dtpToDate.Value.ToDateorNull();
+                DateTime? fromDate = dtpFromDate.Value.ToDateorNull();
+                DateTime? toDate = dtpToDate.Value.ToDateorNull();
 
 
 
 
-               
+
                 var data1 = General.GetQueryable<Booking>(c =>
                             (
-                            (fromDate==null || c.PickupDateTime.Value.Date>=fromDate) && (toDate==null || c.PickupDateTime.Value.Date<=toDate)
+                            (fromDate == null || c.PickupDateTime.Value.Date >= fromDate) && (toDate == null || c.PickupDateTime.Value.Date <= toDate)
 
                             )
-                                      
-                    
-                    && (c.BookingTypeId==Enums.BOOKING_TYPES.WEB || c.BookingTypeId==Enums.BOOKING_TYPES.ONLINE)
-                    
 
-                    && (bookingstatusId==0 || c.BookingStatusId==bookingstatusId)
+
+                    && (c.BookingTypeId == Enums.BOOKING_TYPES.WEB || c.BookingTypeId == Enums.BOOKING_TYPES.ONLINE)
+
+
+                    && (bookingstatusId == 0 || c.BookingStatusId == bookingstatusId)
 
                     )
 
@@ -613,54 +614,54 @@ namespace Taxi_AppMain
 
 
 
-                 
 
 
-                    var query = (from a in data1
+
+                var query = (from a in data1
 
 
-                                 select new
-                                 {
-                                     Id = a.Id,
-                                     RefNumber = a.BookingNo,
-                                     BookingDate = a.BookingDate,
-                                     PickupDate = a.PickupDateTime,
-                                     Passenger = a.CustomerName,
-                                     From = a.FromDoorNo != string.Empty ? a.FromDoorNo + " - " + a.FromAddress : a.FromAddress,
-                                     To = a.ToDoorNo != string.Empty ? a.ToDoorNo + " - " + a.ToAddress : a.ToAddress,
-                                     Fare = a.FareRate,
-                                     Account = a.Gen_Company.CompanyName,
-                                     Driver = a.Fleet_Driver.DriverNo,
-                                     DriverId = a.DriverId,
-                                     Vehicle = a.Fleet_VehicleType.VehicleType,
-                                     Status = a.BookingStatus.StatusName,
-                                     StatusColor = a.BookingStatus.BackgroundColor,
-                                     BookingTypeId = a.BookingTypeId,
-                                     VehicleBgColor = a.Fleet_VehicleType.BackgroundColor,
-                                     VehicleTextColor = a.Fleet_VehicleType.TextColor,
-                                     BackgroundColor1 = a.Gen_Company.BackgroundColor,
-                                     TextColor1 = a.Gen_Company.TextColor,
-                                     MobileNo = a.CustomerMobileNo,
-                                     FromLocTypeId = a.FromLocTypeId,
-                                     ToLocTypeId = a.ToLocTypeId,
-                                     BookingTypeBackground= a.BookingType.BackgroundColor,
-                                  
-                                 }).ToList();
-                 
+                             select new
+                             {
+                                 Id = a.Id,
+                                 RefNumber = a.BookingNo,
+                                 BookingDate = a.BookingDate,
+                                 PickupDate = a.PickupDateTime,
+                                 Passenger = a.CustomerName,
+                                 From = a.FromDoorNo != string.Empty ? a.FromDoorNo + " - " + a.FromAddress : a.FromAddress,
+                                 To = a.ToDoorNo != string.Empty ? a.ToDoorNo + " - " + a.ToAddress : a.ToAddress,
+                                 Fare = a.FareRate,
+                                 Account = a.Gen_Company.CompanyName,
+                                 Driver = a.Fleet_Driver.DriverNo,
+                                 DriverId = a.DriverId,
+                                 Vehicle = a.Fleet_VehicleType.VehicleType,
+                                 Status = a.BookingStatus.StatusName,
+                                 StatusColor = a.BookingStatus.BackgroundColor,
+                                 BookingTypeId = a.BookingTypeId,
+                                 VehicleBgColor = a.Fleet_VehicleType.BackgroundColor,
+                                 VehicleTextColor = a.Fleet_VehicleType.TextColor,
+                                 BackgroundColor1 = a.Gen_Company.BackgroundColor,
+                                 TextColor1 = a.Gen_Company.TextColor,
+                                 MobileNo = a.CustomerMobileNo,
+                                 FromLocTypeId = a.FromLocTypeId,
+                                 ToLocTypeId = a.ToLocTypeId,
+                                 BookingTypeBackground = a.BookingType.BackgroundColor,
 
-                    this.grdLister.TableElement.BeginUpdate();
-                  
-                    grdLister.DataSource = query;
-                    this.grdLister.TableElement.EndUpdate();
-               
+                             }).ToList();
+
+
+                this.grdLister.TableElement.BeginUpdate();
+
+                grdLister.DataSource = query;
+                this.grdLister.TableElement.EndUpdate();
+
             }
             catch (Exception ex)
             {
 
 
             }
-        
-            
+
+
         }
 
 
@@ -684,15 +685,15 @@ namespace Taxi_AppMain
                 if (DialogResult.OK == saveFileDialog1.ShowDialog())
                 {
                     if (radGridView1 == null)
-                       InitializeExportGrid();
+                        InitializeExportGrid();
 
                     DateTime recentDays = DateTime.Now.AddDays(-1);
 
-                 //   radGridView1.VirtualMode = true;
+                    //   radGridView1.VirtualMode = true;
                     radGridView1.Columns.Clear();
                     radGridView1.Columns.Add(new GridViewTextBoxColumn("RefNo", "RefNo"));
 
-                    radGridView1.Columns.Add(new GridViewTextBoxColumn("PickupDate","PickupDate"));
+                    radGridView1.Columns.Add(new GridViewTextBoxColumn("PickupDate", "PickupDate"));
                     radGridView1.Columns.Add(new GridViewTextBoxColumn("From", "From"));
                     radGridView1.Columns.Add(new GridViewTextBoxColumn("To", "To"));
                     radGridView1.Columns.Add(new GridViewTextBoxColumn("Customer", "Customer"));
@@ -710,21 +711,33 @@ namespace Taxi_AppMain
                     DateTime? fromDate = dtpFromDate.Value.ToDateorNull();
                     DateTime? toDate = dtpToDate.Value.ToDateorNull();
 
+                    // Start with base query
+                    var query1 = General.GetQueryable<Booking>(c => true);
 
+                    // Apply date filters
+                    if (fromDate != null)
+                        query1 = query1.Where(c => c.PickupDateTime.HasValue && c.PickupDateTime.Value.Date >= fromDate);
 
+                    if (toDate != null)
+                        query1 = query1.Where(c => c.PickupDateTime.HasValue && c.PickupDateTime.Value.Date <= toDate);
 
+                    // Apply booking status filter
+                    if (bookingstatusId != 0)
+                        query1 = query1.Where(c => c.BookingStatusId == bookingstatusId);
 
-                    var data1 = General.GetQueryable<Booking>(c =>
-                                (
-                                (fromDate == null || c.PickupDateTime.Value.Date >= fromDate) && (toDate == null || c.PickupDateTime.Value.Date <= toDate)
+                    // Apply booking type filter if selected
+                    if (ddlBookingType.SelectedValue != null && ddlBookingType.SelectedValue.ToString() != "-1")
+                    {
+                        int bookingTypeId = ddlBookingType.SelectedValue.ToInt();
+                        query1 = query1.Where(c => c.BookingTypeId == bookingTypeId);
+                    }
+                    else
+                    {
+                        query1 = query1.Where(c => c.BookingTypeId == Enums.BOOKING_TYPES.WEB);
+                    }
 
-                                )
-
-
-                        && c.BookingTypeId == Enums.BOOKING_TYPES.WEB
-                         && (bookingstatusId == 0 || c.BookingStatusId == bookingstatusId)
-
-                        ).OrderByDescending(c => c.PickupDateTime).AsEnumerable();
+                    // Final ordering and execution
+                    var data1 = query1.OrderByDescending(c => c.PickupDateTime).AsEnumerable();
 
 
 
@@ -739,15 +752,15 @@ namespace Taxi_AppMain
                                      To = a.ToDoorNo != string.Empty ? a.ToDoorNo + " - " + a.ToAddress : a.ToAddress,
                                      Customer = a.CustomerName,
                                      Telephone = a.CustomerPhoneNo != string.Empty ? " " + string.Format(" {0:dd/MM/yyyy HH:mm} ", a.CustomerPhoneNo) + " " : " " + string.Format(" {0:dd/MM/yyyy HH:mm} ", a.CustomerMobileNo) + " ",
-                                     Account =a.CompanyId!=null? a.Gen_Company.CompanyName:"",
+                                     Account = a.CompanyId != null ? a.Gen_Company.CompanyName : "",
                                      Vehicle = a.Fleet_VehicleType != null ? a.Fleet_VehicleType.VehicleType : "",
                                      Price = a.FareRate,
-                                     Status=a.BookingStatus.StatusName
+                                     Status = a.BookingStatus.StatusName
 
                                  }).ToList();
 
-                  
-                
+
+
 
                     radGridView1.RowCount = query.Count;
                     for (int i = 0; i < query.Count; i++)
@@ -798,8 +811,8 @@ namespace Taxi_AppMain
                     this.btnExport.Enabled = false;
 
 
-                    
-                  
+
+
                 }
             }
             catch (Exception ex)
@@ -860,7 +873,7 @@ namespace Taxi_AppMain
         {
             this.btnExport.Enabled = true;
             this.radProgressBar1.Value1 = 0;
-           
+
             ENUtils.ShowMessage("Export successfully.");
         }
 
@@ -885,11 +898,42 @@ namespace Taxi_AppMain
             dtpToDate.Value = DateTime.Now.GetEndOfCurrentWeek();
             ddlColumns.SelectedIndex = 0;
 
+            ddlBookingType.SelectedIndex = -1;
+
         }
-      
+
+        private void ddlBookingType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlBookingType.SelectedItem == null)
+                {
+                    grdLister.MasterTemplate.FilterDescriptors.Clear();
+                    return;
+                }
+                string selectedType = ddlBookingType.SelectedValue.ToString();
 
 
-     
+                if (!string.IsNullOrEmpty(selectedType) && selectedType != "All")
+                {
+                    grdLister.MasterTemplate.EnableFiltering = true;
+                    grdLister.MasterTemplate.FilterDescriptors.Clear();
+
+                    grdLister.MasterTemplate.FilterDescriptors.Add(
+                        new Telerik.WinControls.Data.FilterDescriptor("BookingTypeId", Telerik.WinControls.Data.FilterOperator.IsEqualTo, selectedType));
+                }
+                else
+                {
+                    // Clear filter if "All" is selected or nothing selected
+                    grdLister.MasterTemplate.FilterDescriptors.Clear();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
 
     }
 }
